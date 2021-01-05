@@ -1,0 +1,32 @@
+{
+  "email": null,
+  "partnerTrackingCode": null,
+  "password": null,
+  "phone": null,
+  "repeatedEmail": null,
+  "repeatedPassword": null,
+  "termsAndConditionDto": {
+    "accept": null
+  },
+  "userProfileDto": {
+    "addresses": [
+      {
+        "city": "Minsk",
+        "countryCode": "DE",
+        "homeNumber": "24",
+        "postalCode": "220089",
+        "street": "Dzerzhinskogo"
+      }
+    ],
+    "birthDate": null,
+    "dataTransferToBp": null,
+    "dataTransferToCashOn": null,
+    "name": null,
+    "surname": null,
+    "nationalityId": null,
+    "passportNumber": null,
+    "phoneCode": "+375",
+    "title": 1
+  },
+  "username": null
+}
