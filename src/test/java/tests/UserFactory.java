@@ -24,10 +24,12 @@ public class UserFactory extends BaseTest {
         user.setRepeatedEmail(repeatedEmail);
         user.setRepeatedPassword(repeatedPassword);
 
+        //setting "termsAndConditionDton" object
         termsAndConditionDton = user.getTermsAndConditionDto();
         termsAndConditionDton.setAccept(accept);
         user.setTermsAndConditionDto(termsAndConditionDton);
 
+        //setting "userProfileDto" object
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setBirthDate(birthDate);
         userProfileDto.setDataTransferToBp(dataTransferToBp);
@@ -38,7 +40,9 @@ public class UserFactory extends BaseTest {
         userProfileDto.setPassportNumber(faker.idNumber().valid());
         userProfileDto.setTitle(title);
         user.setUserProfileDto(userProfileDto);
+
         user.setUserName(userName);
+
         return user;
     }
 
