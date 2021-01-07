@@ -1,7 +1,7 @@
 package tests;
 
 import adapters.AuthorizationAdapter;
-import models.Response;
+import models.ResponseBody;
 import models.User;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,7 +14,7 @@ import static org.testng.Assert.assertNotEquals;
 
 public class AuthorizationTest extends BaseTest {
 
-    Response response;
+    ResponseBody responseBody;
     User user = gson.fromJson(new FileReader("src/test/resources/Data/userForLogin.json"), User.class);
 
     public AuthorizationTest() throws FileNotFoundException {
@@ -53,24 +53,24 @@ public class AuthorizationTest extends BaseTest {
 
     @Test(description = "Login with valid login/pass")
     public void validLogin() {
-        response = new AuthorizationAdapter().post(user);
-        assertEquals(response.getEmail(), user.getEmail(), "Invalid email");
-        assertNotEquals(response.getAccessToken(), null, "Invalid access token");
+        responseBody = new AuthorizationAdapter().post(user);
+        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
+        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
     }
 
     @Test(description = "Login with refresh token", dependsOnMethods = "validLogin")
     public void validLoginWithRefreshToken() {
-        response = new AuthorizationAdapter().post(response.getRefreshToken());
-        assertEquals(response.getEmail(), user.getEmail(), "Invalid email");
-        assertNotEquals(response.getAccessToken(), null, "Invalid access token");
+        responseBody = new AuthorizationAdapter().post(responseBody.getRefreshToken());
+        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
+        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
     }
 
     @Test(description = "Login with invalid username/pass", dataProvider = "List of invalid username/pass")
-    public void invalidLoginWithCredentials(String userName, String password, String code, String description, int errorCode) {
-        Response[] response = new AuthorizationAdapter().post(userName, password, errorCode);
-        assertEquals(response[0].getType(), "AUTHENTICATION", "Invalid type");
-        assertEquals(response[0].getCode(), code, "Invalid code");
-        assertEquals(response[0].getDescription(), description, "Invalid description");
+    public void invalidLoginWithCredentials(String userName, String password, String code, String description, int responseCode) {
+        ResponseBody[] responseBody = new AuthorizationAdapter().post(userName, password, responseCode);
+        assertEquals(responseBody[0].getType(), "AUTHENTICATION", "Invalid type");
+        assertEquals(responseBody[0].getCode(), code, "Invalid code");
+        assertEquals(responseBody[0].getDescription(), description, "Invalid description");
         //for avoid blocking user
         if (userName == user.getUserName()) {
             new AuthorizationAdapter().post(user);
@@ -79,9 +79,9 @@ public class AuthorizationTest extends BaseTest {
 
     @Test(description = "Login with invalid clientId/clientSecret", dataProvider = "List of invalid clientId/clientSecret")
     public void invalidLoginWithFormData(String clientID, String clientSecret, String errorDescription) {
-        response = new AuthorizationAdapter().post(clientID, clientSecret, user);
-        assertEquals(response.getError(), "invalid_client", "Invalid error message");
-        assertEquals(response.getErrorDescription(), errorDescription, "Invalid error description");
+        responseBody = new AuthorizationAdapter().post(clientID, clientSecret, user);
+        assertEquals(responseBody.getError(), "invalid_client", "Invalid error message");
+        assertEquals(responseBody.getErrorDescription(), errorDescription, "Invalid error description");
 
     }
 

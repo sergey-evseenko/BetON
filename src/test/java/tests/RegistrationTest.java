@@ -2,7 +2,7 @@ package tests;
 
 import adapters.RegistrationAdapter;
 import com.github.javafaker.Faker;
-import models.Response;
+import models.ResponseBody;
 import models.User;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,7 +14,7 @@ import static org.testng.Assert.assertNotEquals;
 
 public class RegistrationTest {
     Faker faker = new Faker();
-    Response response;
+    ResponseBody responseBody;
     String email = faker.internet().emailAddress();
     String password = faker.internet().password() + "Q!123";
     String repeatedEmail = email;
@@ -170,28 +170,28 @@ public class RegistrationTest {
     @Test(description = "Registration with invalid data", dataProvider = "Invalid registration data")
     public void registrationWithInvalidData(String field, String code, String description, String email, String password, String phone, String repeatedEmail, String repeatedPassword, Boolean accept, String birthDate, Boolean dataTransferToBp, Boolean dataTransferToCashOn, String name, String surname, int nationalityId, String title, String userName) throws FileNotFoundException {
         User user = new UserFactory().getUser(email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName);
-        response = new RegistrationAdapter().post(user, 400);
-        assertEquals(response.getField(), field, "Invalid field");
-        assertEquals(response.getType(), "VALIDATION", "Invalid type");
-        assertEquals(response.getCode(), code, "Invalid code");
-        assertEquals(response.getDescription(), description, "Invalid description");
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), field, "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
 
     }
 
     @Test(description = "Registration with valid data", dataProvider = "Valid registration data")
     public void registrationWithValidData(String email, String password, String phone, String repeatedEmail, String repeatedPassword, Boolean accept, String birthDate, Boolean dataTransferToBp, Boolean dataTransferToCashOn, String name, String surname, int nationalityId, String title, String userName) throws FileNotFoundException {
         User user = new UserFactory().getUser(email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName);
-        response = new RegistrationAdapter().post(user, 200);
-        assertEquals(response.getEmail(), user.getEmail(), "Invalid email");
-        assertNotEquals(response.getAccessToken(), null, "Invalid access token");
+        responseBody = new RegistrationAdapter().post(user, 200);
+        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
+        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
     }
 
     @Test(description = "Registration with Partner Tracking Code")
     public void registrationWithPartnerTrackingCode() throws FileNotFoundException {
         User user = new UserFactory().getUser(email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName);
         user.setPartnerTrackingCode(partnerTrackingCode);
-        response = new RegistrationAdapter().post(user, 200);
-        assertEquals(response.getEmail(), user.getEmail(), "Invalid email");
-        assertNotEquals(response.getAccessToken(), null, "Invalid access token");
+        responseBody = new RegistrationAdapter().post(user, 200);
+        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
+        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
     }
 }

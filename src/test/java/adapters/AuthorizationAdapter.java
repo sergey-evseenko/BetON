@@ -1,16 +1,17 @@
 package adapters;
 
 import io.restassured.http.ContentType;
-import models.Response;
+import io.restassured.response.Response;
+import models.ResponseBody;
 import models.User;
 
 import static io.restassured.RestAssured.given;
 
 public class AuthorizationAdapter extends MainAdapter {
 
-    io.restassured.response.Response response;
+    Response response;
 
-    public Response post(String refreshToken) {
+    public ResponseBody post(String refreshToken) {
         response = given()
                 .formParam("grant_type", "refresh_token")
                 .formParam("client_id", "clientId")
@@ -22,10 +23,10 @@ public class AuthorizationAdapter extends MainAdapter {
                 .statusCode(200)
                 .contentType(ContentType.JSON).extract().response();
 
-        return gson.fromJson(response.asString().trim(), Response.class);
+        return gson.fromJson(response.asString().trim(), ResponseBody.class);
     }
 
-    public Response post(User user) {
+    public ResponseBody post(User user) {
         response = given()
                 .formParam("username", user.getUserName())
                 .formParam("password", user.getPassword())
@@ -39,10 +40,10 @@ public class AuthorizationAdapter extends MainAdapter {
                 .statusCode(200)
                 .contentType(ContentType.JSON).extract().response();
 
-        return gson.fromJson(response.asString().trim(), Response.class);
+        return gson.fromJson(response.asString().trim(), ResponseBody.class);
     }
 
-    public Response[] post(String userName, String password, int errorCode) {
+    public ResponseBody[] post(String userName, String password, int responseCode) {
         response = given()
                 .formParam("username", userName)
                 .formParam("password", password)
@@ -53,13 +54,13 @@ public class AuthorizationAdapter extends MainAdapter {
                 .when()
                 .post("auth/v1/oauth/token/beton")
                 .then()
-                .statusCode(errorCode)
+                .statusCode(responseCode)
                 .contentType(ContentType.JSON).extract().response();
 
-        return gson.fromJson(response.asString().trim(), Response[].class);
+        return gson.fromJson(response.asString().trim(), ResponseBody[].class);
     }
 
-    public Response post(String clientID, String clientSecret, User user) {
+    public ResponseBody post(String clientID, String clientSecret, User user) {
         response = given()
                 .formParam("username", user.getUserName())
                 .formParam("password", user.getPassword())
@@ -73,7 +74,7 @@ public class AuthorizationAdapter extends MainAdapter {
                 .statusCode(401)
                 .contentType(ContentType.JSON).extract().response();
 
-        return gson.fromJson(response.asString().trim(), Response.class);
+        return gson.fromJson(response.asString().trim(), ResponseBody.class);
     }
 
 }

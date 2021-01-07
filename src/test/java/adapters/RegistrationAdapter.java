@@ -1,16 +1,18 @@
 package adapters;
 
 import io.restassured.http.ContentType;
-import models.Response;
+import io.restassured.response.Response;
+import models.ResponseBody;
 import models.User;
 
 import static io.restassured.RestAssured.given;
 
+
 public class RegistrationAdapter extends MainAdapter {
 
-    io.restassured.response.Response response;
+    Response response;
 
-    public Response post(User user, int statusCode) {
+    public ResponseBody post(User user, int statusCode) {
         response = given()
                 .contentType(ContentType.JSON)
                 .header("lang", "en")
@@ -22,10 +24,10 @@ public class RegistrationAdapter extends MainAdapter {
                 .contentType(ContentType.JSON).extract().response();
 
         if (statusCode == 200) {
-            return gson.fromJson(response.asString().trim(), Response.class);
+            return gson.fromJson(response.asString().trim(), ResponseBody.class);
         } else {
-            Response[] responseErrors = gson.fromJson(response.asString().trim(), Response[].class);
-            return responseErrors[0];
+            ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
+            return responseBodyErrors[0];
         }
     }
 
