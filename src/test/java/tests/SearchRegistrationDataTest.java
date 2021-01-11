@@ -37,9 +37,6 @@ public class SearchRegistrationDataTest {
             assertEquals(listOfAddresses.length, 0, "Invalid search result");
         } else {
             assertEquals(listOfAddresses[0].getId(), id, "Invalid search result");
-
         }
-
-
     }
 }
