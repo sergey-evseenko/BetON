@@ -1,0 +1,1962 @@
+{
+  "ru": {
+    "countries": [
+      {
+        "countryCode": "AU",
+        "country": "Австралия",
+        "playerAge": 18,
+        "phoneCode": "+61"
+      },
+      {
+        "countryCode": "AT",
+        "country": "Австрия",
+        "playerAge": 18,
+        "phoneCode": "+43"
+      },
+      {
+        "countryCode": "AZ",
+        "country": "Азербайджан",
+        "playerAge": 18,
+        "phoneCode": "+994"
+      },
+      {
+        "countryCode": "AL",
+        "country": "Албания",
+        "playerAge": 18,
+        "phoneCode": "+355"
+      },
+      {
+        "countryCode": "DZ",
+        "country": "Алжир",
+        "playerAge": 18,
+        "phoneCode": "+213"
+      },
+      {
+        "countryCode": "AO",
+        "country": "Ангола",
+        "playerAge": 18,
+        "phoneCode": "+244"
+      },
+      {
+        "countryCode": "AD",
+        "country": "Андорра",
+        "playerAge": 18,
+        "phoneCode": "+376"
+      },
+      {
+        "countryCode": "AG",
+        "country": "Антигуа и Барбуда",
+        "playerAge": 18,
+        "phoneCode": "+1268"
+      },
+      {
+        "countryCode": "AR",
+        "country": "Аргентина",
+        "playerAge": 18,
+        "phoneCode": "+54"
+      },
+      {
+        "countryCode": "AM",
+        "country": "Армения",
+        "playerAge": 18,
+        "phoneCode": "+374"
+      },
+      {
+        "countryCode": "AF",
+        "country": "Афганистан",
+        "playerAge": 18,
+        "phoneCode": "+93"
+      },
+      {
+        "countryCode": "BS",
+        "country": "Багамские Острова",
+        "playerAge": 18,
+        "phoneCode": "+1242"
+      },
+      {
+        "countryCode": "BD",
+        "country": "Бангладеш",
+        "playerAge": 18,
+        "phoneCode": "+880"
+      },
+      {
+        "countryCode": "BB",
+        "country": "Барбадос",
+        "playerAge": 18,
+        "phoneCode": "+1246"
+      },
+      {
+        "countryCode": "BH",
+        "country": "Бахрейн",
+        "playerAge": 18,
+        "phoneCode": "+973"
+      },
+      {
+        "countryCode": "BZ",
+        "country": "Белиз",
+        "playerAge": 18,
+        "phoneCode": "+501"
+      },
+      {
+        "countryCode": "BY",
+        "country": "Белоруссия",
+        "playerAge": 18,
+        "phoneCode": "+375"
+      },
+      {
+        "countryCode": "BE",
+        "country": "Бельгия",
+        "playerAge": 18,
+        "phoneCode": "+32"
+      },
+      {
+        "countryCode": "BJ",
+        "country": "Бенин",
+        "playerAge": 18,
+        "phoneCode": "+229"
+      },
+      {
+        "countryCode": "BG",
+        "country": "Болгария",
+        "playerAge": 18,
+        "phoneCode": "+359"
+      },
+      {
+        "countryCode": "BO",
+        "country": "Боливия",
+        "playerAge": 18,
+        "phoneCode": "+591"
+      },
+      {
+        "countryCode": "BA",
+        "country": "Босния и Герцеговина",
+        "playerAge": 18,
+        "phoneCode": "+387"
+      },
+      {
+        "countryCode": "BW",
+        "country": "Ботсвана",
+        "playerAge": 18,
+        "phoneCode": "+267"
+      },
+      {
+        "countryCode": "BR",
+        "country": "Бразилия",
+        "playerAge": 18,
+        "phoneCode": "+55"
+      },
+      {
+        "countryCode": "BN",
+        "country": "Бруней",
+        "playerAge": 18,
+        "phoneCode": "+673"
+      },
+      {
+        "countryCode": "BF",
+        "country": "Буркина-Фасо",
+        "playerAge": 18,
+        "phoneCode": "+226"
+      },
+      {
+        "countryCode": "BI",
+        "country": "Бурунди",
+        "playerAge": 18,
+        "phoneCode": "+257"
+      },
+      {
+        "countryCode": "BT",
+        "country": "Бутан",
+        "playerAge": 18,
+        "phoneCode": "+975"
+      },
+      {
+        "countryCode": "VU",
+        "country": "Вануату",
+        "playerAge": 18,
+        "phoneCode": "+678"
+      },
+      {
+        "countryCode": "GB",
+        "country": "Великобритания",
+        "playerAge": 18,
+        "phoneCode": "+44"
+      },
+      {
+        "countryCode": "HU",
+        "country": "Венгрия",
+        "playerAge": 18,
+        "phoneCode": "+36"
+      },
+      {
+        "countryCode": "VE",
+        "country": "Венесуэла",
+        "playerAge": 18,
+        "phoneCode": "+58"
+      },
+      {
+        "countryCode": "TL",
+        "country": "Восточный Тимор",
+        "playerAge": 18,
+        "phoneCode": "+670"
+      },
+      {
+        "countryCode": "VN",
+        "country": "Вьетнам",
+        "playerAge": 18,
+        "phoneCode": "+84"
+      },
+      {
+        "countryCode": "GA",
+        "country": "Габон",
+        "playerAge": 18,
+        "phoneCode": "+241"
+      },
+      {
+        "countryCode": "HT",
+        "country": "Гаити",
+        "playerAge": 18,
+        "phoneCode": "+509"
+      },
+      {
+        "countryCode": "GY",
+        "country": "Гайана",
+        "playerAge": 18,
+        "phoneCode": "+592"
+      },
+      {
+        "countryCode": "GM",
+        "country": "Гамбия",
+        "playerAge": 18,
+        "phoneCode": "+220"
+      },
+      {
+        "countryCode": "GH",
+        "country": "Гана",
+        "playerAge": 18,
+        "phoneCode": "+233"
+      },
+      {
+        "countryCode": "GT",
+        "country": "Гватемала",
+        "playerAge": 18,
+        "phoneCode": "+502"
+      },
+      {
+        "countryCode": "GN",
+        "country": "Гвинея",
+        "playerAge": 18,
+        "phoneCode": "+224"
+      },
+      {
+        "countryCode": "GW",
+        "country": "Гвинея-Бисау",
+        "playerAge": 18,
+        "phoneCode": "+245"
+      },
+      {
+        "countryCode": "DE",
+        "country": "Германия",
+        "playerAge": 18,
+        "phoneCode": "+49"
+      },
+      {
+        "countryCode": "HN",
+        "country": "Гондурас",
+        "playerAge": 18,
+        "phoneCode": "+504"
+      },
+      {
+        "countryCode": "GD",
+        "country": "Гренада",
+        "playerAge": 18,
+        "phoneCode": "+1473"
+      },
+      {
+        "countryCode": "GR",
+        "country": "Греция",
+        "playerAge": 18,
+        "phoneCode": "+30"
+      },
+      {
+        "countryCode": "GE",
+        "country": "Грузия",
+        "playerAge": 18,
+        "phoneCode": "+995"
+      },
+      {
+        "countryCode": "DK",
+        "country": "Дания",
+        "playerAge": 18,
+        "phoneCode": "+45"
+      },
+      {
+        "countryCode": "DJ",
+        "country": "Джибути",
+        "playerAge": 18,
+        "phoneCode": "+253"
+      },
+      {
+        "countryCode": "DM",
+        "country": "Доминика",
+        "playerAge": 18,
+        "phoneCode": "+1767"
+      },
+      {
+        "countryCode": "DO",
+        "country": "Доминиканская Республика",
+        "playerAge": 18,
+        "phoneCode": "+1809"
+      },
+      {
+        "countryCode": "CD",
+        "country": "ДР Конго",
+        "playerAge": 18,
+        "phoneCode": "+242"
+      },
+      {
+        "countryCode": "EG",
+        "country": "Египет",
+        "playerAge": 18,
+        "phoneCode": "+20"
+      },
+      {
+        "countryCode": "ZM",
+        "country": "Замбия",
+        "playerAge": 18,
+        "phoneCode": "+260"
+      },
+      {
+        "countryCode": "ZW",
+        "country": "Зимбабве",
+        "playerAge": 18,
+        "phoneCode": "+263"
+      },
+      {
+        "countryCode": "IL",
+        "country": "Израиль",
+        "playerAge": 18,
+        "phoneCode": "+972"
+      },
+      {
+        "countryCode": "IN",
+        "country": "Индия",
+        "playerAge": 18,
+        "phoneCode": "+91"
+      },
+      {
+        "countryCode": "ID",
+        "country": "Индонезия",
+        "playerAge": 18,
+        "phoneCode": "+62"
+      },
+      {
+        "countryCode": "JO",
+        "country": "Иордания",
+        "playerAge": 18,
+        "phoneCode": "+962"
+      },
+      {
+        "countryCode": "IQ",
+        "country": "Ирак",
+        "playerAge": 18,
+        "phoneCode": "+964"
+      },
+      {
+        "countryCode": "IR",
+        "country": "Иран",
+        "playerAge": 18,
+        "phoneCode": "+98"
+      },
+      {
+        "countryCode": "IE",
+        "country": "Ирландия",
+        "playerAge": 18,
+        "phoneCode": "+353"
+      },
+      {
+        "countryCode": "IS",
+        "country": "Исландия",
+        "playerAge": 18,
+        "phoneCode": "+354"
+      },
+      {
+        "countryCode": "ES",
+        "country": "Испания",
+        "playerAge": 18,
+        "phoneCode": "+34"
+      },
+      {
+        "countryCode": "IT",
+        "country": "Италия",
+        "playerAge": 18,
+        "phoneCode": "+39"
+      },
+      {
+        "countryCode": "YE",
+        "country": "Йемен",
+        "playerAge": 18,
+        "phoneCode": "+967"
+      },
+      {
+        "countryCode": "CV",
+        "country": "Кабо-Верде",
+        "playerAge": 18,
+        "phoneCode": "+238"
+      },
+      {
+        "countryCode": "KZ",
+        "country": "Казахстан",
+        "playerAge": 18,
+        "phoneCode": "+7"
+      },
+      {
+        "countryCode": "KH",
+        "country": "Камбоджа",
+        "playerAge": 18,
+        "phoneCode": "+855"
+      },
+      {
+        "countryCode": "CM",
+        "country": "Камерун",
+        "playerAge": 18,
+        "phoneCode": "+237"
+      },
+      {
+        "countryCode": "CA",
+        "country": "Канада",
+        "playerAge": 18,
+        "phoneCode": "+1"
+      },
+      {
+        "countryCode": "QA",
+        "country": "Катар",
+        "playerAge": 18,
+        "phoneCode": "+974"
+      },
+      {
+        "countryCode": "KE",
+        "country": "Кения",
+        "playerAge": 18,
+        "phoneCode": "+254"
+      },
+      {
+        "countryCode": "CY",
+        "country": "Кипр",
+        "playerAge": 18,
+        "phoneCode": "+357"
+      },
+      {
+        "countryCode": "KG",
+        "country": "Киргизия",
+        "playerAge": 18,
+        "phoneCode": "+996"
+      },
+      {
+        "countryCode": "KI",
+        "country": "Кирибати",
+        "playerAge": 18,
+        "phoneCode": "+686"
+      },
+      {
+        "countryCode": "KP",
+        "country": "КНДР (Корейская Народно-Демократическая Республика)",
+        "playerAge": 18,
+        "phoneCode": "+850"
+      },
+      {
+        "countryCode": "CN",
+        "country": "Китай (Китайская Народная Республика)",
+        "playerAge": 18,
+        "phoneCode": "+86"
+      },
+      {
+        "countryCode": "CO",
+        "country": "Колумбия",
+        "playerAge": 18,
+        "phoneCode": "+57"
+      },
+      {
+        "countryCode": "KM",
+        "country": "Коморы",
+        "playerAge": 18,
+        "phoneCode": "+269"
+      },
+      {
+        "countryCode": "CR",
+        "country": "Коста-Рика",
+        "playerAge": 18,
+        "phoneCode": "+506"
+      },
+      {
+        "countryCode": "CI",
+        "country": "Кот-д’Ивуар",
+        "playerAge": 18,
+        "phoneCode": "+225"
+      },
+      {
+        "countryCode": "CU",
+        "country": "Куба",
+        "playerAge": 18,
+        "phoneCode": "+53"
+      },
+      {
+        "countryCode": "KW",
+        "country": "Кувейт",
+        "playerAge": 18,
+        "phoneCode": "+965"
+      },
+      {
+        "countryCode": "LA",
+        "country": "Лаос",
+        "playerAge": 18,
+        "phoneCode": "+856"
+      },
+      {
+        "countryCode": "LV",
+        "country": "Латвия",
+        "playerAge": 18,
+        "phoneCode": "+371"
+      },
+      {
+        "countryCode": "LS",
+        "country": "Лесото",
+        "playerAge": 18,
+        "phoneCode": "+266"
+      },
+      {
+        "countryCode": "LR",
+        "country": "Либерия",
+        "playerAge": 18,
+        "phoneCode": "+231"
+      },
+      {
+        "countryCode": "LB",
+        "country": "Ливан",
+        "playerAge": 18,
+        "phoneCode": "+961"
+      },
+      {
+        "countryCode": "LY",
+        "country": "Ливия",
+        "playerAge": 18,
+        "phoneCode": "+218"
+      },
+      {
+        "countryCode": "LT",
+        "country": "Литва",
+        "playerAge": 18,
+        "phoneCode": "+370"
+      },
+      {
+        "countryCode": "LI",
+        "country": "Лихтенштейн",
+        "playerAge": 18,
+        "phoneCode": "+423"
+      },
+      {
+        "countryCode": "LU",
+        "country": "Люксембург",
+        "playerAge": 18,
+        "phoneCode": "+352"
+      },
+      {
+        "countryCode": "MU",
+        "country": "Маврикий",
+        "playerAge": 18,
+        "phoneCode": "+230"
+      },
+      {
+        "countryCode": "MR",
+        "country": "Мавритания",
+        "playerAge": 18,
+        "phoneCode": "+222"
+      },
+      {
+        "countryCode": "MG",
+        "country": "Мадагаскар",
+        "playerAge": 18,
+        "phoneCode": "+261"
+      },
+      {
+        "countryCode": "MK",
+        "country": "Северная Македония",
+        "playerAge": 18,
+        "phoneCode": "+389"
+      },
+      {
+        "countryCode": "MW",
+        "country": "Малави",
+        "playerAge": 18,
+        "phoneCode": "+265"
+      },
+      {
+        "countryCode": "MY",
+        "country": "Малайзия",
+        "playerAge": 18,
+        "phoneCode": "+60"
+      },
+      {
+        "countryCode": "ML",
+        "country": "Мали",
+        "playerAge": 18,
+        "phoneCode": "+223"
+      },
+      {
+        "countryCode": "MV",
+        "country": "Мальдивы",
+        "playerAge": 18,
+        "phoneCode": "+960"
+      },
+      {
+        "countryCode": "MT",
+        "country": "Мальта",
+        "playerAge": 18,
+        "phoneCode": "+356"
+      },
+      {
+        "countryCode": "MA",
+        "country": "Марокко",
+        "playerAge": 18,
+        "phoneCode": "+212"
+      },
+      {
+        "countryCode": "MH",
+        "country": "Маршалловы Острова",
+        "playerAge": 18,
+        "phoneCode": "+692"
+      },
+      {
+        "countryCode": "MX",
+        "country": "Мексика",
+        "playerAge": 18,
+        "phoneCode": "+52"
+      },
+      {
+        "countryCode": "FM",
+        "country": "Микронезия",
+        "playerAge": 18,
+        "phoneCode": "+691"
+      },
+      {
+        "countryCode": "MZ",
+        "country": "Мозамбик",
+        "playerAge": 18,
+        "phoneCode": "+258"
+      },
+      {
+        "countryCode": "MD",
+        "country": "Молдавия",
+        "playerAge": 18,
+        "phoneCode": "+373"
+      },
+      {
+        "countryCode": "MC",
+        "country": "Монако",
+        "playerAge": 18,
+        "phoneCode": "+377"
+      },
+      {
+        "countryCode": "MN",
+        "country": "Монголия",
+        "playerAge": 18,
+        "phoneCode": "+976"
+      },
+      {
+        "countryCode": "MM",
+        "country": "Мьянма",
+        "playerAge": 18,
+        "phoneCode": "+95"
+      },
+      {
+        "countryCode": "NA",
+        "country": "Намибия",
+        "playerAge": 18,
+        "phoneCode": "+264"
+      },
+      {
+        "countryCode": "NR",
+        "country": "Науру",
+        "playerAge": 18,
+        "phoneCode": "+674"
+      },
+      {
+        "countryCode": "NP",
+        "country": "Непал",
+        "playerAge": 18,
+        "phoneCode": "+977"
+      },
+      {
+        "countryCode": "NE",
+        "country": "Нигер",
+        "playerAge": 18,
+        "phoneCode": "+227"
+      },
+      {
+        "countryCode": "NG",
+        "country": "Нигерия",
+        "playerAge": 18,
+        "phoneCode": "+234"
+      },
+      {
+        "countryCode": "NL",
+        "country": "Нидерланды",
+        "playerAge": 18,
+        "phoneCode": "+31"
+      },
+      {
+        "countryCode": "NI",
+        "country": "Никарагуа",
+        "playerAge": 18,
+        "phoneCode": "+505"
+      },
+      {
+        "countryCode": "NZ",
+        "country": "Новая Зеландия",
+        "playerAge": 18,
+        "phoneCode": "+64"
+      },
+      {
+        "countryCode": "NO",
+        "country": "Норвегия",
+        "playerAge": 18,
+        "phoneCode": "+47"
+      },
+      {
+        "countryCode": "AE",
+        "country": "ОАЭ",
+        "playerAge": 18,
+        "phoneCode": "+971"
+      },
+      {
+        "countryCode": "OM",
+        "country": "Оман",
+        "playerAge": 18,
+        "phoneCode": "+968"
+      },
+      {
+        "countryCode": "PK",
+        "country": "Пакистан",
+        "playerAge": 18,
+        "phoneCode": "+92"
+      },
+      {
+        "countryCode": "PW",
+        "country": "Палау",
+        "playerAge": 18,
+        "phoneCode": "+680"
+      },
+      {
+        "countryCode": "PA",
+        "country": "Панама",
+        "playerAge": 18,
+        "phoneCode": "+507"
+      },
+      {
+        "countryCode": "PG",
+        "country": "Папуа — Новая Гвинея",
+        "playerAge": 18,
+        "phoneCode": "+675"
+      },
+      {
+        "countryCode": "PY",
+        "country": "Парагвай",
+        "playerAge": 18,
+        "phoneCode": "+595"
+      },
+      {
+        "countryCode": "PE",
+        "country": "Перу",
+        "playerAge": 18,
+        "phoneCode": "+51"
+      },
+      {
+        "countryCode": "PL",
+        "country": "Польша",
+        "playerAge": 18,
+        "phoneCode": "+48"
+      },
+      {
+        "countryCode": "PT",
+        "country": "Португалия",
+        "playerAge": 18,
+        "phoneCode": "+351"
+      },
+      {
+        "countryCode": "CG",
+        "country": "Республика Конго",
+        "playerAge": 18,
+        "phoneCode": "+242"
+      },
+      {
+        "countryCode": "KR",
+        "country": "Республика Корея",
+        "playerAge": 18,
+        "phoneCode": "+82"
+      },
+      {
+        "countryCode": "RU",
+        "country": "Россия",
+        "playerAge": 18,
+        "phoneCode": "+70"
+      },
+      {
+        "countryCode": "RW",
+        "country": "Руанда",
+        "playerAge": 18,
+        "phoneCode": "+250"
+      },
+      {
+        "countryCode": "RO",
+        "country": "Румыния",
+        "playerAge": 18,
+        "phoneCode": "+40"
+      },
+      {
+        "countryCode": "SV",
+        "country": "Сальвадор",
+        "playerAge": 18,
+        "phoneCode": "+503"
+      },
+      {
+        "countryCode": "WS",
+        "country": "Самоа",
+        "playerAge": 18,
+        "phoneCode": "+684"
+      },
+      {
+        "countryCode": "SM",
+        "country": "Сан-Марино",
+        "playerAge": 18,
+        "phoneCode": "+378"
+      },
+      {
+        "countryCode": "ST",
+        "country": "Сан-Томе и Принсипи",
+        "playerAge": 18,
+        "phoneCode": "+239"
+      },
+      {
+        "countryCode": "SA",
+        "country": "Саудовская Аравия",
+        "playerAge": 18,
+        "phoneCode": "+966"
+      },
+      {
+        "countryCode": "SZ",
+        "country": "Эсватини",
+        "playerAge": 18,
+        "phoneCode": "+268"
+      },
+      {
+        "countryCode": "SC",
+        "country": "Сейшельские Острова",
+        "playerAge": 18,
+        "phoneCode": "+248"
+      },
+      {
+        "countryCode": "SN",
+        "country": "Сенегал",
+        "playerAge": 18,
+        "phoneCode": "+221"
+      },
+      {
+        "countryCode": "VC",
+        "country": "Сент-Винсент и Гренадины",
+        "playerAge": 18,
+        "phoneCode": "+1784"
+      },
+      {
+        "countryCode": "KN",
+        "country": "Сент-Китс и Невис",
+        "playerAge": 18,
+        "phoneCode": "+1869"
+      },
+      {
+        "countryCode": "LC",
+        "country": "Сент-Люсия",
+        "playerAge": 18,
+        "phoneCode": "+1758"
+      },
+      {
+        "countryCode": "SG",
+        "country": "Сингапур",
+        "playerAge": 18,
+        "phoneCode": "+65"
+      },
+      {
+        "countryCode": "SY",
+        "country": "Сирия",
+        "playerAge": 18,
+        "phoneCode": "+963"
+      },
+      {
+        "countryCode": "SK",
+        "country": "Словакия",
+        "playerAge": 18,
+        "phoneCode": "+421"
+      },
+      {
+        "countryCode": "SI",
+        "country": "Словения",
+        "playerAge": 18,
+        "phoneCode": "+386"
+      },
+      {
+        "countryCode": "SB",
+        "country": "Соломоновы Острова",
+        "playerAge": 18,
+        "phoneCode": "+677"
+      },
+      {
+        "countryCode": "SO",
+        "country": "Сомали",
+        "playerAge": 18,
+        "phoneCode": "+252"
+      },
+      {
+        "countryCode": "SD",
+        "country": "Судан",
+        "playerAge": 18,
+        "phoneCode": "+249"
+      },
+      {
+        "countryCode": "SR",
+        "country": "Суринам",
+        "playerAge": 18,
+        "phoneCode": "+597"
+      },
+      {
+        "countryCode": "US",
+        "country": "США",
+        "playerAge": 18,
+        "phoneCode": "+1"
+      },
+      {
+        "countryCode": "SL",
+        "country": "Сьерра-Леоне",
+        "playerAge": 18,
+        "phoneCode": "+232"
+      },
+      {
+        "countryCode": "TJ",
+        "country": "Таджикистан",
+        "playerAge": 18,
+        "phoneCode": "+992"
+      },
+      {
+        "countryCode": "TH",
+        "country": "Таиланд",
+        "playerAge": 18,
+        "phoneCode": "+66"
+      },
+      {
+        "countryCode": "TZ",
+        "country": "Танзания",
+        "playerAge": 18,
+        "phoneCode": "+255"
+      },
+      {
+        "countryCode": "TG",
+        "country": "Того",
+        "playerAge": 18,
+        "phoneCode": "+228"
+      },
+      {
+        "countryCode": "TO",
+        "country": "Тонга",
+        "playerAge": 18,
+        "phoneCode": "+676"
+      },
+      {
+        "countryCode": "TT",
+        "country": "Тринидад и Тобаго",
+        "playerAge": 18,
+        "phoneCode": "+1868"
+      },
+      {
+        "countryCode": "TV",
+        "country": "Тувалу",
+        "playerAge": 18,
+        "phoneCode": "+688"
+      },
+      {
+        "countryCode": "TN",
+        "country": "Тунис",
+        "playerAge": 18,
+        "phoneCode": "+216"
+      },
+      {
+        "countryCode": "TM",
+        "country": "Туркмения",
+        "playerAge": 18,
+        "phoneCode": "+7370"
+      },
+      {
+        "countryCode": "TR",
+        "country": "Турция",
+        "playerAge": 18,
+        "phoneCode": "+90"
+      },
+      {
+        "countryCode": "UG",
+        "country": "Уганда",
+        "playerAge": 18,
+        "phoneCode": "+256"
+      },
+      {
+        "countryCode": "UZ",
+        "country": "Узбекистан",
+        "playerAge": 18,
+        "phoneCode": "+998"
+      },
+      {
+        "countryCode": "UA",
+        "country": "Украина",
+        "playerAge": 18,
+        "phoneCode": "+380"
+      },
+      {
+        "countryCode": "UY",
+        "country": "Уругвай",
+        "playerAge": 18,
+        "phoneCode": "+598"
+      },
+      {
+        "countryCode": "FJ",
+        "country": "Фиджи",
+        "playerAge": 18,
+        "phoneCode": "+679"
+      },
+      {
+        "countryCode": "PH",
+        "country": "Филиппины",
+        "playerAge": 18,
+        "phoneCode": "+63"
+      },
+      {
+        "countryCode": "FI",
+        "country": "Финляндия",
+        "playerAge": 18,
+        "phoneCode": "+358"
+      },
+      {
+        "countryCode": "FR",
+        "country": "Франция",
+        "playerAge": 18,
+        "phoneCode": "+33"
+      },
+      {
+        "countryCode": "HR",
+        "country": "Хорватия",
+        "playerAge": 18,
+        "phoneCode": "+385"
+      },
+      {
+        "countryCode": "CF",
+        "country": "ЦАР",
+        "playerAge": 18,
+        "phoneCode": "+236"
+      },
+      {
+        "countryCode": "TD",
+        "country": "Чад",
+        "playerAge": 18,
+        "phoneCode": "+235"
+      },
+      {
+        "countryCode": "CZ",
+        "country": "Чехия",
+        "playerAge": 18,
+        "phoneCode": "+420"
+      },
+      {
+        "countryCode": "CL",
+        "country": "Чили",
+        "playerAge": 18,
+        "phoneCode": "+56"
+      },
+      {
+        "countryCode": "CH",
+        "country": "Швейцария",
+        "playerAge": 18,
+        "phoneCode": "+41"
+      },
+      {
+        "countryCode": "SE",
+        "country": "Швеция",
+        "playerAge": 18,
+        "phoneCode": "+46"
+      },
+      {
+        "countryCode": "LK",
+        "country": "Шри-Ланка",
+        "playerAge": 18,
+        "phoneCode": "+94"
+      },
+      {
+        "countryCode": "EC",
+        "country": "Эквадор",
+        "playerAge": 18,
+        "phoneCode": "+593"
+      },
+      {
+        "countryCode": "GQ",
+        "country": "Экваториальная Гвинея",
+        "playerAge": 18,
+        "phoneCode": "+240"
+      },
+      {
+        "countryCode": "ER",
+        "country": "Эритрея",
+        "playerAge": 18,
+        "phoneCode": "+291"
+      },
+      {
+        "countryCode": "EE",
+        "country": "Эстония",
+        "playerAge": 21,
+        "phoneCode": "+372"
+      },
+      {
+        "countryCode": "ET",
+        "country": "Эфиопия",
+        "playerAge": 18,
+        "phoneCode": "+251"
+      },
+      {
+        "countryCode": "ZA",
+        "country": "ЮАР",
+        "playerAge": 18,
+        "phoneCode": "+27"
+      },
+      {
+        "countryCode": "JM",
+        "country": "Ямайка",
+        "playerAge": 18,
+        "phoneCode": "+1876"
+      },
+      {
+        "countryCode": "JP",
+        "country": "Япония",
+        "playerAge": 18,
+        "phoneCode": "+81"
+      }
+    ],
+    "nationalities": [
+      {
+        "id": 1,
+        "value": "афганский"
+      },
+      {
+        "id": 2,
+        "value": "албанский"
+      },
+      {
+        "id": 3,
+        "value": "алжирский"
+      },
+      {
+        "id": 4,
+        "value": "американский"
+      },
+      {
+        "id": 5,
+        "value": "Andorran"
+      },
+      {
+        "id": 6,
+        "value": "ангольский"
+      },
+      {
+        "id": 7,
+        "value": "Antiguans"
+      },
+      {
+        "id": 8,
+        "value": "аргентинский"
+      },
+      {
+        "id": 9,
+        "value": "армянин"
+      },
+      {
+        "id": 10,
+        "value": "австралиец"
+      },
+      {
+        "id": 11,
+        "value": "австриец"
+      },
+      {
+        "id": 12,
+        "value": "азербайджанец"
+      },
+      {
+        "id": 13,
+        "value": "багамский"
+      },
+      {
+        "id": 14,
+        "value": "Бахрейнский"
+      },
+      {
+        "id": 15,
+        "value": "житель бангладеш"
+      },
+      {
+        "id": 16,
+        "value": "Барбадосский"
+      },
+      {
+        "id": 17,
+        "value": "Barbudans"
+      },
+      {
+        "id": 18,
+        "value": "Batswana"
+      },
+      {
+        "id": 19,
+        "value": "Белорусский"
+      },
+      {
+        "id": 20,
+        "value": "бельгийский"
+      },
+      {
+        "id": 21,
+        "value": "Белиза"
+      },
+      {
+        "id": 22,
+        "value": "Бенине"
+      },
+      {
+        "id": 23,
+        "value": "Bhutanese"
+      },
+      {
+        "id": 24,
+        "value": "боливийский"
+      },
+      {
+        "id": 25,
+        "value": "боснийский"
+      },
+      {
+        "id": 26,
+        "value": "бразильский"
+      },
+      {
+        "id": 27,
+        "value": "Британская"
+      },
+      {
+        "id": 28,
+        "value": "Bruneian"
+      },
+      {
+        "id": 29,
+        "value": "болгарский"
+      },
+      {
+        "id": 30,
+        "value": "Burkinabe"
+      },
+      {
+        "id": 31,
+        "value": "бирманский"
+      },
+      {
+        "id": 32,
+        "value": "бурундийская"
+      },
+      {
+        "id": 33,
+        "value": "камбоджийский"
+      },
+      {
+        "id": 34,
+        "value": "камерунец"
+      },
+      {
+        "id": 35,
+        "value": "канадец"
+      },
+      {
+        "id": 36,
+        "value": "Кабо-Верде"
+      },
+      {
+        "id": 37,
+        "value": "Центральноафриканский"
+      },
+      {
+        "id": 38,
+        "value": "Chadian"
+      },
+      {
+        "id": 39,
+        "value": "чилийский"
+      },
+      {
+        "id": 40,
+        "value": "Китайский"
+      },
+      {
+        "id": 41,
+        "value": "колумбийский"
+      },
+      {
+        "id": 42,
+        "value": "Comoran"
+      },
+      {
+        "id": 43,
+        "value": "конголезский"
+      },
+      {
+        "id": 44,
+        "value": "Коста-Риканский"
+      },
+      {
+        "id": 45,
+        "value": "хорватский"
+      },
+      {
+        "id": 46,
+        "value": "кубинский"
+      },
+      {
+        "id": 47,
+        "value": "кипрский"
+      },
+      {
+        "id": 48,
+        "value": "Чешский"
+      },
+      {
+        "id": 49,
+        "value": "датский"
+      },
+      {
+        "id": 50,
+        "value": "Джибути"
+      },
+      {
+        "id": 51,
+        "value": "доминиканский"
+      },
+      {
+        "id": 52,
+        "value": "Голландский"
+      },
+      {
+        "id": 53,
+        "value": "Восточнотиморцы"
+      },
+      {
+        "id": 54,
+        "value": "Эквадора"
+      },
+      {
+        "id": 55,
+        "value": "египтянин"
+      },
+      {
+        "id": 56,
+        "value": "Emirian"
+      },
+      {
+        "id": 57,
+        "value": "Экваториальная Гвинея"
+      },
+      {
+        "id": 58,
+        "value": "Eritrean"
+      },
+      {
+        "id": 59,
+        "value": "эстонский"
+      },
+      {
+        "id": 60,
+        "value": "эфиопский"
+      },
+      {
+        "id": 61,
+        "value": "Fijian"
+      },
+      {
+        "id": 62,
+        "value": "Филиппинский"
+      },
+      {
+        "id": 63,
+        "value": "финский"
+      },
+      {
+        "id": 64,
+        "value": "Французский"
+      },
+      {
+        "id": 65,
+        "value": "габонский"
+      },
+      {
+        "id": 66,
+        "value": "Гамбийская"
+      },
+      {
+        "id": 67,
+        "value": "грузинский"
+      },
+      {
+        "id": 68,
+        "value": "Немецкий"
+      },
+      {
+        "id": 69,
+        "value": "ганы"
+      },
+      {
+        "id": 70,
+        "value": "греческий"
+      },
+      {
+        "id": 71,
+        "value": "Grenadian"
+      },
+      {
+        "id": 72,
+        "value": "гватемалка"
+      },
+      {
+        "id": 73,
+        "value": "Гвинея-Bissauan"
+      },
+      {
+        "id": 74,
+        "value": "Гвинейский"
+      },
+      {
+        "id": 75,
+        "value": "гайанский"
+      },
+      {
+        "id": 76,
+        "value": "гаитянский"
+      },
+      {
+        "id": 77,
+        "value": "Герцеговины"
+      },
+      {
+        "id": 78,
+        "value": "гондурасский"
+      },
+      {
+        "id": 79,
+        "value": "венгерский язык"
+      },
+      {
+        "id": 80,
+        "value": "Кирибати"
+      },
+      {
+        "id": 81,
+        "value": "исландец"
+      },
+      {
+        "id": 82,
+        "value": "индийский"
+      },
+      {
+        "id": 83,
+        "value": "индонезийский"
+      },
+      {
+        "id": 84,
+        "value": "иранец"
+      },
+      {
+        "id": 85,
+        "value": "иракский"
+      },
+      {
+        "id": 86,
+        "value": "ирландский"
+      },
+      {
+        "id": 87,
+        "value": "израильтянин"
+      },
+      {
+        "id": 88,
+        "value": "итальянский"
+      },
+      {
+        "id": 89,
+        "value": "ивуариец"
+      },
+      {
+        "id": 90,
+        "value": "ямайский"
+      },
+      {
+        "id": 91,
+        "value": "японский язык"
+      },
+      {
+        "id": 92,
+        "value": "Иорданская"
+      },
+      {
+        "id": 93,
+        "value": "казахстанская"
+      },
+      {
+        "id": 94,
+        "value": "кенийский"
+      },
+      {
+        "id": 95,
+        "value": "Китиан и Невис"
+      },
+      {
+        "id": 96,
+        "value": "Кувейтский"
+      },
+      {
+        "id": 97,
+        "value": "киргизский"
+      },
+      {
+        "id": 98,
+        "value": "лаоска"
+      },
+      {
+        "id": 99,
+        "value": "латышский язык"
+      },
+      {
+        "id": 100,
+        "value": "ливанский"
+      },
+      {
+        "id": 101,
+        "value": "Либерийский"
+      },
+      {
+        "id": 102,
+        "value": "ливийский"
+      },
+      {
+        "id": 103,
+        "value": "Liechtensteiner"
+      },
+      {
+        "id": 104,
+        "value": "Литовский"
+      },
+      {
+        "id": 105,
+        "value": "житель Люксембурга"
+      },
+      {
+        "id": 106,
+        "value": "македонский"
+      },
+      {
+        "id": 107,
+        "value": "малагасиец"
+      },
+      {
+        "id": 108,
+        "value": "малавийцем"
+      },
+      {
+        "id": 109,
+        "value": "малазийский"
+      },
+      {
+        "id": 110,
+        "value": "мальдивский"
+      },
+      {
+        "id": 111,
+        "value": "Malian"
+      },
+      {
+        "id": 112,
+        "value": "мальтийский"
+      },
+      {
+        "id": 113,
+        "value": "Marshallese"
+      },
+      {
+        "id": 114,
+        "value": "мавританец"
+      },
+      {
+        "id": 115,
+        "value": "мавританский"
+      },
+      {
+        "id": 116,
+        "value": "мексиканец"
+      },
+      {
+        "id": 117,
+        "value": "Микронезии"
+      },
+      {
+        "id": 118,
+        "value": "молдавский"
+      },
+      {
+        "id": 119,
+        "value": "Monacan"
+      },
+      {
+        "id": 120,
+        "value": "монгольский"
+      },
+      {
+        "id": 121,
+        "value": "марокканский"
+      },
+      {
+        "id": 122,
+        "value": "Mosotho"
+      },
+      {
+        "id": 123,
+        "value": "Motswana"
+      },
+      {
+        "id": 124,
+        "value": "мозамбикский"
+      },
+      {
+        "id": 125,
+        "value": "намибиец"
+      },
+      {
+        "id": 126,
+        "value": "Nauruan"
+      },
+      {
+        "id": 127,
+        "value": "непалец"
+      },
+      {
+        "id": 128,
+        "value": "Новозеландец"
+      },
+      {
+        "id": 129,
+        "value": "Ni-Вануату"
+      },
+      {
+        "id": 130,
+        "value": "никарагуанский"
+      },
+      {
+        "id": 131,
+        "value": "нигерийский"
+      },
+      {
+        "id": 132,
+        "value": "Нигера"
+      },
+      {
+        "id": 133,
+        "value": "Северокорейский"
+      },
+      {
+        "id": 134,
+        "value": "Северный ирландский"
+      },
+      {
+        "id": 135,
+        "value": "норвежский язык"
+      },
+      {
+        "id": 136,
+        "value": "оманский"
+      },
+      {
+        "id": 137,
+        "value": "пакистанский"
+      },
+      {
+        "id": 138,
+        "value": "Palauan"
+      },
+      {
+        "id": 139,
+        "value": "панамский"
+      },
+      {
+        "id": 140,
+        "value": "Папуа Новая Гвинея"
+      },
+      {
+        "id": 141,
+        "value": "парагвайский"
+      },
+      {
+        "id": 142,
+        "value": "перуанский"
+      },
+      {
+        "id": 143,
+        "value": "польский"
+      },
+      {
+        "id": 144,
+        "value": "португальский"
+      },
+      {
+        "id": 145,
+        "value": "Катарский"
+      },
+      {
+        "id": 146,
+        "value": "румынский"
+      },
+      {
+        "id": 147,
+        "value": "русский"
+      },
+      {
+        "id": 148,
+        "value": "руандийская"
+      },
+      {
+        "id": 149,
+        "value": "Святой Люциан"
+      },
+      {
+        "id": 150,
+        "value": "Сальвадорский"
+      },
+      {
+        "id": 151,
+        "value": "Samoan"
+      },
+      {
+        "id": 152,
+        "value": "Сан-Маринезе"
+      },
+      {
+        "id": 153,
+        "value": "Сан-Томеан"
+      },
+      {
+        "id": 154,
+        "value": "Саудовская"
+      },
+      {
+        "id": 155,
+        "value": "шотландский"
+      },
+      {
+        "id": 156,
+        "value": "сенегальский"
+      },
+      {
+        "id": 157,
+        "value": "сербский"
+      },
+      {
+        "id": 158,
+        "value": "Seychellois"
+      },
+      {
+        "id": 159,
+        "value": "Сьерра-Леоне"
+      },
+      {
+        "id": 160,
+        "value": "сингапурская"
+      },
+      {
+        "id": 161,
+        "value": "словацкая"
+      },
+      {
+        "id": 162,
+        "value": "словенский"
+      },
+      {
+        "id": 163,
+        "value": "Соломон Айлендер"
+      },
+      {
+        "id": 164,
+        "value": "сомалийский"
+      },
+      {
+        "id": 165,
+        "value": "Южноафриканский"
+      },
+      {
+        "id": 166,
+        "value": "южнокорейский"
+      },
+      {
+        "id": 167,
+        "value": "испанский язык"
+      },
+      {
+        "id": 168,
+        "value": "Шри-ланкийский"
+      },
+      {
+        "id": 169,
+        "value": "суданский"
+      },
+      {
+        "id": 170,
+        "value": "Surinamer"
+      },
+      {
+        "id": 171,
+        "value": "свази"
+      },
+      {
+        "id": 172,
+        "value": "шведский"
+      },
+      {
+        "id": 173,
+        "value": "швейцарцы"
+      },
+      {
+        "id": 174,
+        "value": "сириец"
+      },
+      {
+        "id": 175,
+        "value": "Тайваньская"
+      },
+      {
+        "id": 176,
+        "value": "таджикский"
+      },
+      {
+        "id": 177,
+        "value": "Танзанийский"
+      },
+      {
+        "id": 178,
+        "value": "тайский"
+      },
+      {
+        "id": 179,
+        "value": "Togolese"
+      },
+      {
+        "id": 180,
+        "value": "Тонги"
+      },
+      {
+        "id": 181,
+        "value": "Тринидадский или тобагонский"
+      },
+      {
+        "id": 182,
+        "value": "тунисский"
+      },
+      {
+        "id": 183,
+        "value": "турецкий"
+      },
+      {
+        "id": 184,
+        "value": "Тувалу"
+      },
+      {
+        "id": 185,
+        "value": "угандийско"
+      },
+      {
+        "id": 186,
+        "value": "украинец"
+      },
+      {
+        "id": 187,
+        "value": "уругвайский"
+      },
+      {
+        "id": 188,
+        "value": "узбекская"
+      },
+      {
+        "id": 189,
+        "value": "венесуэльский"
+      },
+      {
+        "id": 190,
+        "value": "вьетнамский"
+      },
+      {
+        "id": 191,
+        "value": "валлийский"
+      },
+      {
+        "id": 192,
+        "value": "йеменский"
+      },
+      {
+        "id": 193,
+        "value": "замбийский"
+      },
+      {
+        "id": 194,
+        "value": "зимбабвийский"
+      }
+    ],
+    "titles": [
+      {
+        "id": 23,
+        "value": "Господин"
+      },
+      {
+        "id": 24,
+        "value": "Госпожа"
+      }
+    ],
+    "questions": [
+      {
+        "id": 1,
+        "value": "Девичья фамилия матери"
+      },
+      {
+        "id": 2,
+        "value": "Имя первого питомца"
+      },
+      {
+        "id": 3,
+        "value": "Ваш первый босс"
+      },
+      {
+        "id": 4,
+        "value": "Ваша любимая книга"
+      },
+      {
+        "id": 5,
+        "value": "Название вашей первой машины"
+      }
+    ],
+    "defaultCountry": {
+      "countryCode": "BY",
+      "country": "Белоруссия",
+      "playerAge": 18,
+      "phoneCode": "+375"
+    }
+  }
+}
