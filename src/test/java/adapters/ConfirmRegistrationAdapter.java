@@ -9,18 +9,17 @@ import static io.restassured.RestAssured.given;
 public class ConfirmRegistrationAdapter extends MainAdapter {
 
 
-    public ResponseBody[] get(String registrationCode, int responseCode) {
+    public ResponseBody get(String registrationCode, int responseCode) {
         Response response =
                 given()
-                        //.pathParam("registrationCode", registrationCode)
                         .when()
                         .log().all()
-                        //.get("auth/v1/users/confirm/registration/{registrationCode}")
                         .get("auth/v1/users/confirm/registration/" + registrationCode)
                         .then()
                         .log().body()
                         .statusCode(responseCode)
                         .contentType(ContentType.JSON).extract().response();
-        return gson.fromJson(response.asString().trim(), ResponseBody[].class);
+        ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
+        return responseBodyErrors[0];
     }
 }
