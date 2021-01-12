@@ -43,7 +43,7 @@ public class AuthorizationAdapter extends MainAdapter {
         return gson.fromJson(response.asString().trim(), ResponseBody.class);
     }
 
-    public ResponseBody[] post(String userName, String password, int responseCode) {
+    public ResponseBody post(String userName, String password, int responseCode) {
         response = given()
                 .formParam("username", userName)
                 .formParam("password", password)
@@ -57,7 +57,8 @@ public class AuthorizationAdapter extends MainAdapter {
                 .statusCode(responseCode)
                 .contentType(ContentType.JSON).extract().response();
 
-        return gson.fromJson(response.asString().trim(), ResponseBody[].class);
+        ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
+        return responseBodyErrors[0];
     }
 
     public ResponseBody post(String clientID, String clientSecret, User user) {

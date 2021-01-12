@@ -1,8 +1,6 @@
 package tests;
 
 import adapters.RegistrationAdapter;
-import com.github.javafaker.Faker;
-import models.ResponseBody;
 import models.User;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,37 +10,7 @@ import java.io.FileNotFoundException;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
-public class RegistrationTest {
-    Faker faker = new Faker();
-    ResponseBody responseBody;
-    String email = faker.internet().emailAddress();
-    String password = faker.internet().password() + "Q!123";
-    String repeatedEmail = email;
-    String repeatedPassword = password;
-    String phone = "+37529" + faker.number().digits(7);
-    Boolean accept = true;
-    String birthDate = "1989-07-06";
-    Boolean dataTransferToBp = true;
-    Boolean dataTransferToCashOn = true;
-    String name = faker.name().firstName();
-    String surname = faker.name().lastName();
-    int nationalityId = 19;
-    String title = "2";
-    String partnerTrackingCode = "bwin";
-    String userName = faker.lorem().characters(10);
-
-
-    @DataProvider(name = "Valid registration data")
-    public Object[][] validData() {
-        return new Object[][]{
-                {"0" + email, password, phone, "0" + repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "0" + name, surname, nationalityId, title, "0" + userName},
-                //title is null
-                {"1" + email, password, phone, "1" + repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "1" + name, surname, nationalityId, null, "1" + userName},
-                //the same phone
-                {"2" + email, password, "+375292907810", "2" + repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "2" + name, surname, nationalityId, null, "2" + userName},
-
-        };
-    }
+public class RegistrationTest extends BaseTest {
 
     @DataProvider(name = "Invalid registration data")
     public Object[][] invalidData() {
@@ -162,9 +130,7 @@ public class RegistrationTest {
                 //invalid username: is null
                 {"username", "ER0004", "Field is mandatory", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, null}
                 //TODO: invalid username: empty field
-
         };
-
     }
 
     @Test(description = "Registration with invalid data", dataProvider = "Invalid registration data")
@@ -175,7 +141,17 @@ public class RegistrationTest {
         assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBody.getCode(), code, "Invalid code");
         assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
 
+    @DataProvider(name = "Valid registration data")
+    public Object[][] validData() {
+        return new Object[][]{
+                {"0" + email, password, phone, "0" + repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "0" + name, surname, nationalityId, title, "0" + userName},
+                //title is null
+                {"1" + email, password, phone, "1" + repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "1" + name, surname, nationalityId, null, "1" + userName},
+                //the same phone
+                {"2" + email, password, "+375292907810", "2" + repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "2" + name, surname, nationalityId, null, "2" + userName},
+        };
     }
 
     @Test(description = "Registration with valid data", dataProvider = "Valid registration data")

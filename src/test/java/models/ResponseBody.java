@@ -29,4 +29,6 @@ public class ResponseBody {
     String errorDescription;
     @Expose
     String field;
+    @Expose
+    String externalId;
 }
