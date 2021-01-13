@@ -13,10 +13,8 @@ public class ConfirmRegistrationAdapter extends MainAdapter {
         Response response =
                 given()
                         .when()
-                        .log().all()
                         .get("auth/v1/users/confirm/registration/" + registrationCode)
                         .then()
-                        .log().body()
                         .statusCode(responseCode)
                         .contentType(ContentType.JSON).extract().response();
         ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);

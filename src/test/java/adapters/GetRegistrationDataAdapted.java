@@ -43,7 +43,6 @@ public class GetRegistrationDataAdapted extends MainAdapter {
                 given()
                         .contentType(ContentType.JSON)
                         .queryParam("lng", langParam)
-                        .log().all()
                         .when()
                         .get("content/v1/registration/data")
                         .then()
