@@ -1,6 +1,5 @@
 package adapters;
 
-import io.restassured.response.Response;
 import models.AddressForRegistration;
 
 import static io.restassured.RestAssured.given;
@@ -36,7 +35,7 @@ public class SearchRegistrationDataAdapter extends MainAdapter {
             path = "content/v1/registration/search";
         }
 
-        Response response = given()
+        response = given()
                 .when()
                 .post(path)
                 .then()
