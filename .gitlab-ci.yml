@@ -4,8 +4,6 @@ cache:
   paths:
     - .m3/repository/
     - target/
-  tags:
-    - beton
 
 test:
   stage: test
