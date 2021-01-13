@@ -1,7 +1,6 @@
 package tests;
 
 import adapters.AuthorizationAdapter;
-import models.ResponseBody;
 import models.User;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,7 +13,6 @@ import static org.testng.Assert.assertNotEquals;
 
 public class AuthorizationTest extends BaseTest {
 
-    ResponseBody responseBody;
     User user = gson.fromJson(new FileReader("src/test/resources/Data/userForLogin.json"), User.class);
 
     public AuthorizationTest() throws FileNotFoundException {
