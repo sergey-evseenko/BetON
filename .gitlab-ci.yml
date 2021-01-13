@@ -10,3 +10,5 @@ test:
   script:
     - ls -la
     - mvn clean test
+  tags:
+    - beton    
