@@ -24,7 +24,7 @@ public class BaseTest {
     String name = faker.name().firstName();
     String surname = faker.name().lastName();
     int nationalityId = 19;
-    String title = "2";
+    int title = 2;
     String partnerTrackingCode = "bwin";
     String userName = faker.lorem().characters(10);
 }
