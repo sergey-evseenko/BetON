@@ -1,15 +1,12 @@
 package adapters;
 
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import models.ResponseBody;
 import models.User;
 
 import static io.restassured.RestAssured.given;
 
 public class AuthorizationAdapter extends MainAdapter {
-
-    Response response;
 
     public ResponseBody post(String refreshToken) {
         response = given()

@@ -1,7 +1,6 @@
 package adapters;
 
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import models.ResponseBody;
 import models.User;
 
@@ -9,8 +8,6 @@ import static io.restassured.RestAssured.given;
 
 
 public class RegistrationAdapter extends MainAdapter {
-
-    Response response;
 
     public ResponseBody post(User user, int statusCode) {
         response = given()

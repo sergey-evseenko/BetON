@@ -1,14 +1,12 @@
 package adapters;
 
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import models.ResendEmailData;
 import models.ResponseBody;
 
 import static io.restassured.RestAssured.given;
 
 public class ResendEmailAdapter extends MainAdapter {
-    Response response;
 
     public ResponseBody post(ResendEmailData resendEmailData, String token, int responseCode) {
         response = given()

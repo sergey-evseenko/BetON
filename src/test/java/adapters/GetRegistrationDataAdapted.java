@@ -1,7 +1,6 @@
 package adapters;
 
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import models.RegistrationDataAll;
 import models.RegistrationDataEN;
 import models.RegistrationDataRU;
@@ -11,7 +10,7 @@ import static io.restassured.RestAssured.given;
 public class GetRegistrationDataAdapted extends MainAdapter {
 
     public RegistrationDataEN getRegistrationDataEN() {
-        Response response =
+        response =
                 given()
                         .contentType(ContentType.JSON)
                         .queryParam("lng", "en")
@@ -25,7 +24,7 @@ public class GetRegistrationDataAdapted extends MainAdapter {
     }
 
     public RegistrationDataRU getRegistrationDataRU() {
-        Response response =
+        response =
                 given()
                         .contentType(ContentType.JSON)
                         .queryParam("lng", "ru")
@@ -39,7 +38,7 @@ public class GetRegistrationDataAdapted extends MainAdapter {
     }
 
     public RegistrationDataAll getRegistrationDataAll(String langParam) {
-        Response response =
+        response =
                 given()
                         .contentType(ContentType.JSON)
                         .queryParam("lng", langParam)

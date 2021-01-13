@@ -1,7 +1,6 @@
 package adapters;
 
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import models.ResponseBody;
 import models.ValidateField;
 
@@ -10,7 +9,7 @@ import static io.restassured.RestAssured.given;
 public class FieldValidationAdapter extends MainAdapter {
 
     public ResponseBody[] post(ValidateField validateField) {
-        Response response = given()
+        response = given()
                 .contentType(ContentType.JSON)
                 .body(gson.toJson(validateField))
                 .when()

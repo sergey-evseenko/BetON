@@ -1,7 +1,6 @@
 package adapters;
 
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import models.ResponseBody;
 
 import static io.restassured.RestAssured.given;
@@ -10,7 +9,7 @@ public class ConfirmRegistrationAdapter extends MainAdapter {
 
 
     public ResponseBody get(String registrationCode, int responseCode) {
-        Response response =
+        response =
                 given()
                         .when()
                         .get("auth/v1/users/confirm/registration/" + registrationCode)
