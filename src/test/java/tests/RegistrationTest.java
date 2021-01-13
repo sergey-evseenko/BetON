@@ -117,9 +117,9 @@ public class RegistrationTest extends BaseTest {
                 //TODO: invalid nationalityId: is null
 
                 //invalid title: is 0
-                {"userProfileDto.title", "ER0006", "Choose the value", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, "0", userName},
+                {"userProfileDto.title", "ER0006", "Choose the value", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, 0, userName},
                 //invalid title: not existing ID
-                {"titleId", "ER0009", "Incorrect value", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, "121212", userName},
+                {"titleId", "ER0009", "Incorrect value", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, 121212, userName},
 
                 //invalid username: min length
                 {"username", "ER0007", "Wrong value size", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, "qwerty"},
@@ -134,7 +134,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test(description = "Registration with invalid data", dataProvider = "Invalid registration data")
-    public void registrationWithInvalidData(String field, String code, String description, String email, String password, String phone, String repeatedEmail, String repeatedPassword, Boolean accept, String birthDate, Boolean dataTransferToBp, Boolean dataTransferToCashOn, String name, String surname, int nationalityId, String title, String userName) throws FileNotFoundException {
+    public void registrationWithInvalidData(String field, String code, String description, String email, String password, String phone, String repeatedEmail, String repeatedPassword, Boolean accept, String birthDate, Boolean dataTransferToBp, Boolean dataTransferToCashOn, String name, String surname, int nationalityId, int title, String userName) throws FileNotFoundException {
         User user = new UserFactory().getUser(email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName);
         responseBody = new RegistrationAdapter().post(user, 400);
         assertEquals(responseBody.getField(), field, "Invalid field");
@@ -147,15 +147,13 @@ public class RegistrationTest extends BaseTest {
     public Object[][] validData() {
         return new Object[][]{
                 {"0" + email, password, phone, "0" + repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "0" + name, surname, nationalityId, title, "0" + userName},
-                //title is null
-                {"1" + email, password, phone, "1" + repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "1" + name, surname, nationalityId, null, "1" + userName},
                 //the same phone
-                {"2" + email, password, "+375292907810", "2" + repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "2" + name, surname, nationalityId, null, "2" + userName},
+                {"1" + email, password, "+375292907810", "1" + repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "1" + name, surname, nationalityId, title, "2" + userName},
         };
     }
 
     @Test(description = "Registration with valid data", dataProvider = "Valid registration data")
-    public void registrationWithValidData(String email, String password, String phone, String repeatedEmail, String repeatedPassword, Boolean accept, String birthDate, Boolean dataTransferToBp, Boolean dataTransferToCashOn, String name, String surname, int nationalityId, String title, String userName) throws FileNotFoundException {
+    public void registrationWithValidData(String email, String password, String phone, String repeatedEmail, String repeatedPassword, Boolean accept, String birthDate, Boolean dataTransferToBp, Boolean dataTransferToCashOn, String name, String surname, int nationalityId, int title, String userName) throws FileNotFoundException {
         User user = new UserFactory().getUser(email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName);
         responseBody = new RegistrationAdapter().post(user, 200);
         assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");

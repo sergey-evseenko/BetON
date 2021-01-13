@@ -15,7 +15,7 @@ public class UserFactory extends BaseTest {
     UserProfileDto userProfileDto;
     TermsAndConditionDto termsAndConditionDton;
 
-    public User getUser(String email, String password, String phone, String repeatedEmail, String repeatedPassword, Boolean accept, String birthDate, Boolean dataTransferToBp, Boolean dataTransferToCashOn, String name, String surname, int nationalityId, String title, String userName) throws FileNotFoundException {
+    public User getUser(String email, String password, String phone, String repeatedEmail, String repeatedPassword, Boolean accept, String birthDate, Boolean dataTransferToBp, Boolean dataTransferToCashOn, String name, String surname, int nationalityId, int title, String userName) throws FileNotFoundException {
         user = gson.fromJson(new FileReader("src/test/resources/Data/userForRegistration.json"), User.class);
 
         user.setEmail(email);
