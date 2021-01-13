@@ -1,0 +1,23 @@
+{
+  "id": 331,
+  "externalId": 414,
+  "username": "pollyisthebestqa",
+  "email": "qwerty41779@gmail.com",
+  "phone": "+375297777777",
+  "phoneCode": "+375",
+  "title": 2,
+  "name": "Test",
+  "surname": "User",
+  "nationalityId": 19,
+  "birthDate": "1990-02-02",
+  "passportNumber": "QWE46",
+  "addresses": [
+    {
+      "countryCode": "BY",
+      "city": "Minsk",
+      "street": "Dzerzhinskogo",
+      "homeNumber": "123",
+      "postalCode": "214000"
+    }
+  ]
+}
