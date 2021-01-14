@@ -3,7 +3,6 @@ package tests;
 import adapters.RegistrationAdapter;
 import adapters.ResendEmailAdapter;
 import models.ResendEmailData;
-import models.User;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -17,9 +16,12 @@ public class ResendEmailTest extends BaseTest {
     String token;
     ResendEmailData resendEmailData = new ResendEmailData();
 
+    public ResendEmailTest() throws FileNotFoundException {
+    }
+
     @BeforeClass
     public void registration() throws FileNotFoundException {
-        User user = new UserFactory().getUser(email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName);
+        user = new UserFactory().getUser(email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName);
         responseBody = new RegistrationAdapter().post(user, 200);
         externalId = responseBody.getExternalId();
         token = responseBody.getAccessToken();

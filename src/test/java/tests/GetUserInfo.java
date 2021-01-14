@@ -19,7 +19,6 @@ public class GetUserInfo extends BaseTest {
     @Test(description = "get user info with valid token")
     public void getUserInfoWithValidToken() throws FileNotFoundException {
         UserInfo expectedUserInfo, actualUserInfo;
-        User user;
         String token;
 
         user = gson.fromJson(new FileReader("src/test/resources/Data/userForLogin.json"), User.class);

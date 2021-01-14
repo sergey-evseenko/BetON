@@ -1,22 +1,15 @@
 package tests;
 
-
-import com.github.javafaker.Faker;
-import models.TermsAndConditionDto;
 import models.User;
-import models.UserProfileDto;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 
 public class UserFactory extends BaseTest {
-    Faker faker = new Faker();
-    User user;
-    UserProfileDto userProfileDto;
-    TermsAndConditionDto termsAndConditionDton;
+
+    public UserFactory() throws FileNotFoundException {
+    }
 
     public User getUser(String email, String password, String phone, String repeatedEmail, String repeatedPassword, Boolean accept, String birthDate, Boolean dataTransferToBp, Boolean dataTransferToCashOn, String name, String surname, int nationalityId, int title, String userName) throws FileNotFoundException {
-        user = gson.fromJson(new FileReader("src/test/resources/Data/userForRegistration.json"), User.class);
 
         user.setEmail(email);
         user.setPassword(password);
@@ -25,12 +18,10 @@ public class UserFactory extends BaseTest {
         user.setRepeatedPassword(repeatedPassword);
 
         //setting "termsAndConditionDton" object
-        termsAndConditionDton = user.getTermsAndConditionDto();
         termsAndConditionDton.setAccept(accept);
         user.setTermsAndConditionDto(termsAndConditionDton);
 
         //setting "userProfileDto" object
-        userProfileDto = user.getUserProfileDto();
         userProfileDto.setBirthDate(birthDate);
         userProfileDto.setDataTransferToBp(dataTransferToBp);
         userProfileDto.setDataTransferToCashOn(dataTransferToCashOn);

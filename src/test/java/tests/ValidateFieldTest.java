@@ -13,6 +13,9 @@ import static org.testng.Assert.assertEquals;
 public class ValidateFieldTest extends BaseTest {
 
 
+    public ValidateFieldTest() throws FileNotFoundException {
+    }
+
     @DataProvider(name = "fields values")
     public Object[][] fieldsValues() {
         return new Object[][]{

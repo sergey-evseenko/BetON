@@ -1,32 +1,32 @@
 {
-  "email": null,
-  "partnerTrackingCode": null,
-  "password": null,
-  "phone": null,
-  "repeatedEmail": null,
-  "repeatedPassword": null,
+  "email": "qwerty41779@gmail.com",
+  "partnerTrackingCode": "bwin",
+  "password": "Qwerty!123",
+  "phone": "+375108656238",
+  "repeatedEmail": "qwerty41779@gmail.com",
+  "repeatedPassword": "Qwerty!123",
   "termsAndConditionDto": {
-    "accept": null
+    "accept": true
   },
   "userProfileDto": {
     "addresses": [
       {
         "city": "Minsk",
-        "countryCode": "DE",
-        "homeNumber": "24",
-        "postalCode": "220089",
+        "countryCode": "BY",
+        "homeNumber": "123",
+        "postalCode": "214000",
         "street": "Dzerzhinskogo"
       }
     ],
-    "birthDate": null,
-    "dataTransferToBp": null,
-    "dataTransferToCashOn": null,
-    "name": null,
-    "surname": null,
-    "nationalityId": null,
-    "passportNumber": null,
+    "birthDate": "1990-02-02",
+    "dataTransferToBp": true,
+    "dataTransferToCashOn": true,
+    "name": "Test",
+    "surname": "User",
+    "nationalityId": 19,
+    "passportNumber": "QWE46",
     "phoneCode": "+375",
-    "title": null
+    "title": 2
   },
-  "username": null
+  "username": "pollyisthebestqa"
 }

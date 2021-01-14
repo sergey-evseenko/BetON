@@ -12,6 +12,9 @@ import static org.testng.Assert.assertNotEquals;
 
 public class RegistrationTest extends BaseTest {
 
+    public RegistrationTest() throws FileNotFoundException {
+    }
+
     @DataProvider(name = "Invalid registration data")
     public Object[][] invalidData() {
         return new Object[][]{

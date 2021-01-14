@@ -5,9 +5,14 @@ import models.AddressForRegistration;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.FileNotFoundException;
+
 import static org.testng.Assert.assertEquals;
 
-public class SearchRegistrationDataTest {
+public class SearchRegistrationDataTest extends BaseTest {
+
+    public SearchRegistrationDataTest() throws FileNotFoundException {
+    }
 
     @DataProvider(name = "Search data params")
     public Object[][] searchDataParams() {
