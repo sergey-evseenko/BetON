@@ -28,4 +28,6 @@ public class User {
     @Expose
     String userName;
 
+    public User() {
+    }
 }

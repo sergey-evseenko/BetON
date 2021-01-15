@@ -10,9 +10,6 @@ import static org.testng.Assert.assertEquals;
 
 public class ConfirmRegistration extends BaseTest {
 
-    public ConfirmRegistration() throws FileNotFoundException {
-    }
-
     @DataProvider(name = "Registration codes")
     public Object[][] registrationCodes() {
         return new Object[][]{

@@ -9,4 +9,7 @@ import lombok.Data;
 public class TermsAndConditionDto {
     @Expose
     Boolean accept;
+
+    public TermsAndConditionDto() {
+    }
 }

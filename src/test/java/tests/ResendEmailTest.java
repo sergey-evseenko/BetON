@@ -13,15 +13,11 @@ import static org.testng.Assert.assertEquals;
 
 public class ResendEmailTest extends BaseTest {
     String externalId;
-    String token;
     ResendEmailData resendEmailData = new ResendEmailData();
-
-    public ResendEmailTest() throws FileNotFoundException {
-    }
 
     @BeforeClass
     public void registration() throws FileNotFoundException {
-        user = new UserFactory().getUser(email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName);
+        user = new UserFactory().getNewUser();
         responseBody = new RegistrationAdapter().post(user, 200);
         externalId = responseBody.getExternalId();
         token = responseBody.getAccessToken();
@@ -82,4 +78,5 @@ public class ResendEmailTest extends BaseTest {
             assertEquals(responseBody.getDescription(), errorDescription, "Invalid description");
         }
     }
+
 }

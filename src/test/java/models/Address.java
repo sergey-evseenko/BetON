@@ -12,9 +12,12 @@ public class Address {
     @Expose
     String countryCode;
     @Expose
-    int homeNumber;
+    String homeNumber;
     @Expose
-    int postalCode;
+    String postalCode;
     @Expose
     String street;
+
+    public Address() {
+    }
 }

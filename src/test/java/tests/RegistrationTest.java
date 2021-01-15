@@ -1,8 +1,11 @@
 package tests;
 
 import adapters.RegistrationAdapter;
-import models.User;
+import models.TermsAndConditionDto;
+import models.UserProfileDto;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.io.FileNotFoundException;
@@ -12,133 +15,180 @@ import static org.testng.Assert.assertNotEquals;
 
 public class RegistrationTest extends BaseTest {
 
-    public RegistrationTest() throws FileNotFoundException {
+    UserProfileDto userProfileDto;
+    TermsAndConditionDto termsAndConditionDto;
+
+    @BeforeMethod
+    public void getNewUser() throws FileNotFoundException {
+        user = new UserFactory().getNewUser();
+        userProfileDto = user.getUserProfileDto();
+        termsAndConditionDto = user.getTermsAndConditionDto();
     }
 
-    @DataProvider(name = "Invalid registration data")
-    public Object[][] invalidData() {
+    @Test(description = "Registration with valid data")
+    public void registrationWithValidData() {
+        responseBody = new RegistrationAdapter().post(user, 200);
+        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
+        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
+    }
+
+    @Test(description = "Registration with Partner Tracking Code")
+    public void registrationWithPartnerTrackingCode() {
+        user.setPartnerTrackingCode("bwin");
+        responseBody = new RegistrationAdapter().post(user, 200);
+        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
+        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
+    }
+
+    @Test(description = "Registration with the same phone")
+    public void registrationWithTheSamePhone() {
+        user.setPhone("+375292907810");
+        responseBody = new RegistrationAdapter().post(user, 200);
+        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
+        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
+    }
+
+    @DataProvider(name = "Invalid emails")
+    public Object[][] invalidEmails() {
         return new Object[][]{
-
-                //invalid email: format
-                {"email", "ER0001", "Wrong value format", "qwerty", password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid email: not unique email
-                {"email", "ER0002", "Not unique value", "qwerty77270@gmail.com", password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid email: empty field
-                {"email", "ER0001", "Wrong value format", "", password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid email: is null
-                {"email", "ER0004", "Field is mandatory", null, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid email: emails are not equal
-                {"email", "ER0005", "Values are mismatch", "qwerty98356@gmail.com", password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid email: not acceptable symbols
-                {"email", "ER0001", "Wrong value format", "йцукеув@gmail.com", password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-
-                //invalid password: upper letters
-                {"password", "ER0001", "Wrong value format", email, "QWERTY!123", phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid password: lower letters
-                {"password", "ER0001", "Wrong value format", email, "qwerty!123", phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid password: missed numbers
-                {"password", "ER0001", "Wrong value format", email, "Qwertyuiop!", phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid password: min length
-                {"password", "ER0007", "Wrong value size", email, "Qw!123", phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid password: is null
-                {"password", "ER0004", "Field is mandatory", email, null, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid password: contains first name
-                {"password.", "ER0008", "Please do not use Username / Name / Surname as password", email, name + "123!", phone, repeatedEmail, name + "123!", accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid password: contains last name
-                {"password.", "ER0008", "Please do not use Username / Name / Surname as password", email, surname + "123!", phone, repeatedEmail, surname + "123!", accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid password: contains user name
-                {"password.", "ER0008", "Please do not use Username / Name / Surname as password", email, userName + "Q123!", phone, repeatedEmail, userName + "Q123!", accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-
-                //invalid phone: + and letters
-                {"phone", "ER0001", "Wrong value format", email, password, "+xascasca", repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid phone: without +
-                {"phone", "ER0001", "Wrong value format", email, password, "375292907810", repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid phone: is null
-                {"phone", "ER0004", "Field is mandatory", email, password, null, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid phone: max length
-                {"phone", "ER0007", "Wrong value size", email, password, "+375292907810012345676543223456787654323456789", repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid phone: mix length
-                {"phone", "ER0001", "Wrong value format", email, password, "911", repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-
-                //invalid repeatedEmail: format
-                {"repeatedEmail", "ER0001", "Wrong value format", email, password, phone, "qwerty", repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid repeatedEmail: empty field
-                {"repeatedEmail", "ER0001", "Wrong value format", email, password, phone, "", repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid repeatedEmail: is nul
-                {"repeatedEmail", "ER0004", "Field is mandatory", email, password, phone, null, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-
-                //invalid repeatedPassword: lower letters
-                {"repeatedPassword", "ER0001", "Wrong value format", email, password, phone, repeatedEmail, "qwerty!123", accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid repeatedPassword: min length
-                {"repeatedPassword", "ER0007", "Wrong value size", email, password, phone, repeatedEmail, "Qw!123", accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid repeatedPassword: is null
-                {"repeatedPassword", "ER0004", "Field is mandatory", email, password, phone, repeatedEmail, null, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid repeatedPassword: passwords are not equals
-                {"password", "ER0005", "Values are mismatch", email, password, phone, repeatedEmail, "Qwerty!1234", accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-
-                //invalid termsAndConditionDto: is null
-                {"termsAndConditionDto.accept", "ER0010", "You must agree to create an account", email, password, phone, repeatedEmail, repeatedPassword, null, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid termsAndConditionDto: is false
-                {"termsAndConditionDto.accept", "ER0010", "You must agree to create an account", email, password, phone, repeatedEmail, repeatedPassword, false, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-
-                //TODO invalid adress block: is null
-                //TODO invalid adress block: empty fields
-                //TODO invalid address block: without block at all
-                //TODO invalid country code: not existing code
-                //TODO invalid country code: unacceptable symbols
-
-                //invalid birthDate: is null
-                {"userProfileDto.birthDate", "ER0004", "Field is mandatory", email, password, phone, repeatedEmail, repeatedPassword, accept, null, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid birthDate: empty field
-                {"userProfileDto.birthDate", "ER0004", "Field is mandatory", email, password, phone, repeatedEmail, repeatedPassword, accept, "", dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //TODO: invalid birthDate: format
-
-                //invalid dataTransferToBp = false
-                {"dataTransferToBp", "ER0010", "You must agree to create an account", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, false, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-                //invalid dataTransferToBp = null
-                {"userProfileDto.dataTransferToBp", "ER0004", "Field is mandatory", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, null, dataTransferToCashOn, name, surname, nationalityId, title, userName},
-
-                //invalid dataTransferToCashOn=false
-                {"dataTransferToCashOn", "ER0010", "You must agree to create an account", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, false, name, surname, nationalityId, title, userName},
-                //invalid dataTransferToCashOn: is null
-                {"userProfileDto.dataTransferToCashOn", "ER0004", "Field is mandatory", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, null, name, surname, nationalityId, title, userName},
-
-                //invalid name: empty field
-                {"userProfileDto.name", "ER0007", "Wrong value size", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "", surname, nationalityId, title, userName},
-                //invalid name: is null
-                {"userProfileDto.name", "ER0004", "Field is mandatory", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, null, surname, nationalityId, title, userName},
-
-                //invalid surname: empty field
-                {"userProfileDto.surname", "ER0007", "Wrong value size", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, "", nationalityId, title, userName},
-                //invalid surname: is null
-                {"userProfileDto.surname", "ER0004", "Field is mandatory", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, null, nationalityId, title, userName},
-
-                //invalid nationalityId: is 0
-                {"userProfileDto.nationalityId", "ER0006", "Choose the value", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, 0, title, userName},
-                //invalid nationalityId: not existing ID
-                {"nationalityId", "ER0009", "Incorrect value", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, 999999, title, userName},
-                //TODO: invalid nationalityId: is null
-
-                //invalid title: is 0
-                {"userProfileDto.title", "ER0006", "Choose the value", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, 0, userName},
-                //invalid title: not existing ID
-                {"titleId", "ER0009", "Incorrect value", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, 121212, userName},
-
-                //invalid username: min length
-                {"username", "ER0007", "Wrong value size", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, "qwerty"},
-                //invalid username: invalid symbols
-                {"username", "ER0001", "Wrong value format", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, "$%^&*(*&^%$#$%^&**&^%$#"},
-                //invalid username: existing username
-                {"username", "ER0002", "Not unique value", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, "testtest123"},
-                //invalid username: is null
-                {"username", "ER0004", "Field is mandatory", email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, null}
-                //TODO: invalid username: empty field
+                //invalid format
+                {"qwerty", "ER0001", "Wrong value format"},
+                //not unique value
+                {"qwerty77270@gmail.com", "ER0002", "Not unique value"},
+                //empty filed
+                {"", "ER0001", "Wrong value format"},
+                //is null
+                {null, "ER0004", "Field is mandatory"},
+                //emails are not equals
+                {"qwerty98356@gmail.com", "ER0005", "Values are mismatch"},
+                //not acceptable symbols
+                {"йцукеув@gmail.com", "ER0001", "Wrong value format"},
         };
     }
 
-    @Test(description = "Registration with invalid data", dataProvider = "Invalid registration data")
-    public void registrationWithInvalidData(String field, String code, String description, String email, String password, String phone, String repeatedEmail, String repeatedPassword, Boolean accept, String birthDate, Boolean dataTransferToBp, Boolean dataTransferToCashOn, String name, String surname, int nationalityId, int title, String userName) throws FileNotFoundException {
-        User user = new UserFactory().getUser(email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName);
+    @Test(description = "Registration with invalid email", dataProvider = "Invalid emails")
+    public void registrationWithInvalidEmail(String email, String code, String description) {
+        user.setEmail(email);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), "email", "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
+
+    @DataProvider(name = "Invalid passwords")
+    public Object[][] invalidPasswords() {
+        return new Object[][]{
+                //upper letters
+                {"QWERTY!123", "ER0001", "Wrong value format"},
+                //lower letters
+                {"qwerty!123", "ER0001", "Wrong value format"},
+                //missed numbers
+                {"Qwertyuiop!", "ER0001", "Wrong value format"},
+                //min length
+                {"Qw!123", "ER0007", "Wrong value size"},
+                //is null
+                {null, "ER0004", "Field is mandatory"}
+        };
+    }
+
+    @Test(description = "Registration with invalid password", dataProvider = "Invalid passwords")
+    public void registrationWithInvalidPassword(String password, String code, String description) {
+        user.setPassword(password);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), "password", "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
+
+    @DataProvider(name = "Invalid passwords with name")
+    public Object[][] invalidPasswordsWithNames() {
+        return new Object[][]{
+                //contain first name
+                {userProfileDto.getName()},
+                //contain last name
+                {userProfileDto.getSurname()},
+                //contain user name
+                {user.getUserName()}
+        };
+    }
+
+    @Ignore
+    @Test(description = "Registration with invalid password contains name", dataProvider = "Invalid passwords with name")
+    public void registrationWithInvalidPasswordContainsName(String password) {
+        user.setPassword(password + "Q123!");
+        user.setRepeatedPassword(password + "Q123!");
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), "password.", "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), "ER0008", "Invalid code");
+        assertEquals(responseBody.getDescription(), "Please do not use Username / Name / Surname as password", "Invalid description");
+    }
+
+    @DataProvider(name = "Invalid phones")
+    public Object[][] invalidPhones() {
+        return new Object[][]{
+                //+ and letters
+                {"+xascasca", "ER0001", "Wrong value format"},
+                //without +
+                {"375292907810", "ER0001", "Wrong value format"},
+                //is null
+                {null, "ER0004", "Field is mandatory"},
+                //max length
+                {"+375292907810012345676543223456787654323456789", "ER0007", "Wrong value size"}
+        };
+    }
+
+    @Test(description = "Registration with invalid phone", dataProvider = "Invalid phones")
+    public void registrationWithInvalidPhone(String phone, String code, String description) {
+        user.setPhone(phone);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), "phone", "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
+
+    @DataProvider(name = "Invalid repeated emails")
+    public Object[][] invalidRepeatedEmails() {
+        return new Object[][]{
+                //invalid format
+                {"qwerty", "ER0001", "Wrong value format"},
+                //empty field
+                {"", "ER0001", "Wrong value format"},
+                //is nul
+                {null, "ER0004", "Field is mandatory"}
+        };
+    }
+
+    @Test(description = "Registration with invalid repeated email", dataProvider = "Invalid repeated emails")
+    public void registrationWithInvalidRepeatedEmail(String repeatedEmail, String code, String description) {
+        user.setRepeatedEmail(repeatedEmail);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), "repeatedEmail", "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
+
+    @DataProvider(name = "Invalid repeated passwords")
+    public Object[][] invalidRepeatedPasswords() {
+        return new Object[][]{
+                //lower letters
+                {"qwerty!123", "repeatedPassword", "ER0001", "Wrong value format"},
+                //min length
+                {"Qw!123", "repeatedPassword", "ER0007", "Wrong value size"},
+                //is null
+                {null, "repeatedPassword", "ER0004", "Field is mandatory"},
+                //passwords are not equals
+                {"Qwerty!1234", "password", "ER0005", "Values are mismatch"}
+        };
+    }
+
+    @Test(description = "Registration with invalid repeated password", dataProvider = "Invalid repeated passwords")
+    public void registrationWithInvalidRepeatedPassword(String repeatedPassword, String field, String code, String description) {
+        user.setRepeatedPassword(repeatedPassword);
         responseBody = new RegistrationAdapter().post(user, 400);
         assertEquals(responseBody.getField(), field, "Invalid field");
         assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
@@ -146,29 +196,198 @@ public class RegistrationTest extends BaseTest {
         assertEquals(responseBody.getDescription(), description, "Invalid description");
     }
 
-    @DataProvider(name = "Valid registration data")
-    public Object[][] validData() {
+    @DataProvider(name = "Invalid terms and conditions")
+    public Object[][] invalidTermsAndConditions() {
         return new Object[][]{
-                {"0" + email, password, phone, "0" + repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "0" + name, surname, nationalityId, title, "0" + userName},
-                //the same phone
-                {"1" + email, password, "+375292907810", "1" + repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, "1" + name, surname, nationalityId, title, "2" + userName},
+                //invalid termsAndConditionDto: is null
+                {null},
+                //invalid termsAndConditionDto: is false
+                {false}
         };
     }
 
-    @Test(description = "Registration with valid data", dataProvider = "Valid registration data")
-    public void registrationWithValidData(String email, String password, String phone, String repeatedEmail, String repeatedPassword, Boolean accept, String birthDate, Boolean dataTransferToBp, Boolean dataTransferToCashOn, String name, String surname, int nationalityId, int title, String userName) throws FileNotFoundException {
-        User user = new UserFactory().getUser(email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName);
-        responseBody = new RegistrationAdapter().post(user, 200);
-        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
-        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
+    @Test(description = "Registration with invalid terms and conditions", dataProvider = "Invalid terms and conditions")
+    public void registrationWithInvalidTermsAndConditions(Boolean accept) {
+        termsAndConditionDto.setAccept(accept);
+        user.setTermsAndConditionDto(termsAndConditionDto);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), "termsAndConditionDto.accept", "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), "ER0010", "Invalid code");
+        assertEquals(responseBody.getDescription(), "You must agree to create an account", "Invalid description");
     }
 
-    @Test(description = "Registration with Partner Tracking Code")
-    public void registrationWithPartnerTrackingCode() throws FileNotFoundException {
-        User user = new UserFactory().getUser(email, password, phone, repeatedEmail, repeatedPassword, accept, birthDate, dataTransferToBp, dataTransferToCashOn, name, surname, nationalityId, title, userName);
-        user.setPartnerTrackingCode(partnerTrackingCode);
-        responseBody = new RegistrationAdapter().post(user, 200);
-        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
-        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
+    @Test(description = "Registration with null address")
+    public void registrationWithNullAddress() {
+        userProfileDto = user.getUserProfileDto();
+        userProfileDto.setAddresses(null);
+        user.setUserProfileDto(userProfileDto);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), "userProfileDto.addresses", "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), "ER0004", "Invalid code");
+        assertEquals(responseBody.getDescription(), "Field is mandatory", "Invalid description");
     }
+
+    //TODO invalid address block: empty fields
+    //TODO invalid address block: country code - not existing code
+    //TODO invalid address block: country code - unacceptable symbols
+
+    @DataProvider(name = "Invalid birth dates")
+    public Object[][] invalidBirthDate() {
+        return new Object[][]{
+                //is null
+                {null},
+                //empty filed
+                {""}
+        };
+    }
+
+    @Test(description = "Registration with invalid birth date", dataProvider = "Invalid birth dates")
+    public void registrationWithInvalidBirthDate(String birthDate) {
+        userProfileDto = user.getUserProfileDto();
+        userProfileDto.setBirthDate(birthDate);
+        user.setUserProfileDto(userProfileDto);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), "userProfileDto.birthDate", "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), "ER0004", "Invalid code");
+        assertEquals(responseBody.getDescription(), "Field is mandatory", "Invalid description");
+    }
+
+    @DataProvider(name = "Invalid dataTransferToBp")
+    public Object[][] invalidDataTransferToBp() {
+        return new Object[][]{
+                //false
+                {false, "dataTransferToBp", "ER0010", "You must agree to create an account"},
+                //null
+                {null, "userProfileDto.dataTransferToBp", "ER0004", "Field is mandatory"}
+        };
+    }
+
+    @Test(description = "Registration with invalid dataTransferToBp", dataProvider = "Invalid dataTransferToBp")
+    public void registrationWithInvalidDataTransferToBp(Boolean dataTransferToBp, String field, String code, String description) {
+        userProfileDto = user.getUserProfileDto();
+        userProfileDto.setDataTransferToBp(dataTransferToBp);
+        user.setUserProfileDto(userProfileDto);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), field, "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
+
+    @DataProvider(name = "Invalid names")
+    public Object[][] invalidName() {
+        return new Object[][]{
+                //empty field
+                {"", "ER0007", "Wrong value size"},
+                //null
+                {null, "ER0004", "Field is mandatory"}
+        };
+    }
+
+    @Test(description = "Registration with invalid name", dataProvider = "Invalid names")
+    public void registrationWithInvalidName(String name, String code, String description) {
+        userProfileDto = user.getUserProfileDto();
+        userProfileDto.setName(name);
+        user.setUserProfileDto(userProfileDto);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), "userProfileDto.name", "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
+
+    @DataProvider(name = "Invalid surnames")
+    public Object[][] invalidSurname() {
+        return new Object[][]{
+                //empty field
+                {"", "ER0007", "Wrong value size"},
+                //null
+                {null, "ER0004", "Field is mandatory"}
+        };
+    }
+
+    @Test(description = "Registration with invalid surname", dataProvider = "Invalid surnames")
+    public void registrationWithInvalidSurname(String surname, String code, String description) {
+        userProfileDto = user.getUserProfileDto();
+        userProfileDto.setSurname(surname);
+        user.setUserProfileDto(userProfileDto);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), "userProfileDto.surname", "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
+
+    @DataProvider(name = "Invalid nationality ids")
+    public Object[][] invalidNationalityId() {
+        return new Object[][]{
+                //is 0
+                {0, "userProfileDto.nationalityId", "ER0006", "Choose the value"},
+                //null
+                {999999, "nationalityId", "ER0009", "Incorrect value"}
+        };
+    }
+
+    @Test(description = "Registration with invalid nationality id", dataProvider = "Invalid nationality ids")
+    public void registrationWithInvalidNationalityId(int nationalityId, String field, String code, String description) {
+        userProfileDto = user.getUserProfileDto();
+        userProfileDto.setNationalityId(nationalityId);
+        user.setUserProfileDto(userProfileDto);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), field, "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
+
+    @DataProvider(name = "Invalid titles")
+    public Object[][] invalidTitle() {
+        return new Object[][]{
+                //is 0
+                {0, "userProfileDto.title", "ER0006", "Choose the value"},
+                //null
+                {121212, "titleId", "ER0009", "Incorrect value"}
+        };
+    }
+
+    @Test(description = "Registration with invalid title", dataProvider = "Invalid titles")
+    public void registrationWithInvalidTitle(int title, String field, String code, String description) {
+        userProfileDto = user.getUserProfileDto();
+        userProfileDto.setTitle(title);
+        user.setUserProfileDto(userProfileDto);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), field, "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
+
+    @DataProvider(name = "Invalid usernames")
+    public Object[][] invalidUsername() {
+        return new Object[][]{
+                //invalid username: min length
+                {"qwerty", "ER0007", "Wrong value size"},
+                //invalid username: invalid symbols
+                {"$%^&*(*&^%$#$%^&**&^%$#", "ER0001", "Wrong value format"},
+                //invalid username: existing username
+                {"testtest123", "ER0002", "Not unique value"},
+                //invalid username: is null
+                {null, "ER0004", "Field is mandatory"}
+        };
+    }
+
+    @Test(description = "Registration with invalid title", dataProvider = "Invalid usernames")
+    public void registrationWithInvalidUsername(String username, String code, String description) {
+        user.setUserName(username);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), "username", "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
+
+
 }

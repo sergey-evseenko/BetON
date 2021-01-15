@@ -27,4 +27,7 @@ public class UserProfileDto {
     String phoneCode;
     @Expose
     int title;
+
+    public UserProfileDto() {
+    }
 }

@@ -2,11 +2,12 @@ package adapters;
 
 import io.restassured.http.ContentType;
 import models.ResponseBody;
+import models.User;
 import models.UserInfo;
 
 import static io.restassured.RestAssured.given;
 
-public class UserInfoAdapted extends MainAdapter {
+public class UserAdapter extends MainAdapter {
 
     public UserInfo get(String token) {
         response = given()
@@ -44,5 +45,21 @@ public class UserInfoAdapted extends MainAdapter {
                 .extract().response();
 
         return gson.fromJson(response.asString().trim(), ResponseBody.class);
+    }
+
+    public UserInfo put(User user, String token) {
+        response = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token)
+                .body(gson.toJson(user))
+                .log().all()
+                .when()
+                .put("auth/v1/users")
+                .then()
+                .log().body()
+                .statusCode(200)
+                .contentType(ContentType.JSON).extract().response();
+
+        return gson.fromJson(response.asString().trim(), UserInfo.class);
     }
 }
