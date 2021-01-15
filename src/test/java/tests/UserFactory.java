@@ -20,7 +20,7 @@ public class UserFactory extends BaseTest {
     String phone = "+37529" + faker.number().digits(7);
     Boolean accept = true;
     String city = faker.address().city();
-    String countryCode = faker.address().countryCode();
+    String countryCode = "BY";
     String homeNumber = faker.address().buildingNumber();
     String postalCode = faker.address().zipCode();
     String street = faker.address().streetAddress();
