@@ -15,7 +15,7 @@ import static org.testng.Assert.assertEquals;
 
 public class GetRegistrationDataTest extends BaseTest {
 
-    @Ignore
+
     @Test(description = "get registration data for English language")
     public void getRegistrationDataEN() throws FileNotFoundException {
         RegistrationDataEN expectedRegistrationData, actualRegistrationData;

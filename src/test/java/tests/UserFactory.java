@@ -20,6 +20,7 @@ public class UserFactory extends BaseTest {
     String phone = "+37529" + faker.number().digits(7);
     Boolean accept = true;
     String city = faker.address().city();
+    //TODO faker.address().countryCode() - doesn't work. Need to investigate
     String countryCode = "BY";
     String homeNumber = faker.address().buildingNumber();
     String postalCode = faker.address().zipCode();

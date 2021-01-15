@@ -9,6 +9,6 @@ test:
   stage: test
   script:
     - ls -la
-    - mvn clean test
+    - mvn clean -Dtest=GetRegistrationDataTest test
   tags:
     - beton    

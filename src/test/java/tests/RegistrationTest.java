@@ -114,6 +114,7 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
+    //TODO fix ignored tests
     @Ignore
     @Test(description = "Registration with invalid password contains name", dataProvider = "Invalid passwords with name")
     public void registrationWithInvalidPasswordContainsName(String password) {
