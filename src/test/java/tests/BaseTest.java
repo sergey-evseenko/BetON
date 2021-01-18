@@ -7,12 +7,12 @@ import models.ResponseBody;
 import models.User;
 
 public class BaseTest {
-    Gson gson = new GsonBuilder()
+    protected Gson gson = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
             .create();
-    String token;
-    ResponseBody responseBody;
-    User user;
-    Faker faker = new Faker();
+    protected String token;
+    protected ResponseBody responseBody;
+    protected User user;
+    protected Faker faker = new Faker();
 }
 

@@ -1,8 +1,9 @@
-package tests;
+package tests.registration;
 
 import adapters.ConfirmRegistrationAdapter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 
 import java.io.FileNotFoundException;
 

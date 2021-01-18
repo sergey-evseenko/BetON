@@ -1,9 +1,10 @@
-package tests;
+package tests.registration;
 
 import adapters.SearchRegistrationDataAdapter;
 import models.AddressForRegistration;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
 

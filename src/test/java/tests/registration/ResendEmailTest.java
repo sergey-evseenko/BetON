@@ -1,4 +1,4 @@
-package tests;
+package tests.registration;
 
 import adapters.RegistrationAdapter;
 import adapters.ResendEmailAdapter;
@@ -6,6 +6,8 @@ import models.ResendEmailData;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import tests.BaseTest;
+import tests.UserFactory;
 
 import java.io.FileNotFoundException;
 

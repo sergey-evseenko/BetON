@@ -1,9 +1,10 @@
-package tests;
+package tests.authorization;
 
 import adapters.AuthorizationAdapter;
 import models.User;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

@@ -1,12 +1,12 @@
-package tests;
+package tests.registration;
 
 import adapters.GetRegistrationDataAdapted;
 import models.RegistrationDataAll;
 import models.RegistrationDataEN;
 import models.RegistrationDataRU;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -24,9 +24,8 @@ public class GetRegistrationDataTest extends BaseTest {
         assertEquals(actualRegistrationData, expectedRegistrationData, "Invalid registration data for English language");
     }
 
-    @Ignore
     @Test(description = "get registration data for Russian language")
-    public void getRegistrationDataDE() throws FileNotFoundException {
+    public void getRegistrationDataRU() throws FileNotFoundException {
         RegistrationDataRU expectedRegistrationData, actualRegistrationData;
         expectedRegistrationData = gson.fromJson(new FileReader("src/test/resources/Data/registrationDataRU.json"), RegistrationDataRU.class);
         actualRegistrationData = new GetRegistrationDataAdapted().getRegistrationDataRU();
@@ -42,7 +41,6 @@ public class GetRegistrationDataTest extends BaseTest {
         };
     }
 
-    @Ignore
     @Test(description = "get registration data with invalid language parameter", dataProvider = "Invalid language params")
     public void getRegistrationDataWithInvalidParam(String langParam) throws FileNotFoundException {
         RegistrationDataAll expectedRegistrationData, actualRegistrationData;

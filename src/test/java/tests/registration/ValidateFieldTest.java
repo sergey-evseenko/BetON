@@ -1,10 +1,11 @@
-package tests;
+package tests.registration;
 
 import adapters.FieldValidationAdapter;
 import models.ResponseBody;
 import models.ValidateField;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import tests.BaseTest;
 
 import java.io.FileNotFoundException;
 

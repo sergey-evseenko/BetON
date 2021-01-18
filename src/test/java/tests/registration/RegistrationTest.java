@@ -1,4 +1,4 @@
-package tests;
+package tests.registration;
 
 import adapters.RegistrationAdapter;
 import models.TermsAndConditionDto;
@@ -7,6 +7,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+import tests.BaseTest;
+import tests.UserFactory;
 
 import java.io.FileNotFoundException;
 
@@ -103,7 +105,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @DataProvider(name = "Invalid passwords with name")
-    public Object[][] invalidPasswordsWithNames() {
+    public Object[][] invalidPasswordsWithNames() throws FileNotFoundException {
         return new Object[][]{
                 //contain first name
                 {userProfileDto.getName()},
@@ -114,7 +116,6 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    //TODO fix ignored tests
     @Ignore
     @Test(description = "Registration with invalid password contains name", dataProvider = "Invalid passwords with name")
     public void registrationWithInvalidPasswordContainsName(String password) {

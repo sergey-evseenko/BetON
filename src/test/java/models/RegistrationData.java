@@ -15,6 +15,6 @@ public class RegistrationData {
     Title[] titles;
     @Expose
     Question[] questions;
-    @Expose
+    //@Expose
     DefaultCountry defaultCountry;
 }
