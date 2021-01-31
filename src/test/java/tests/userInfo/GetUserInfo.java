@@ -7,22 +7,19 @@ import models.UserInfo;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-
 import static org.testng.Assert.assertEquals;
 
 public class GetUserInfo extends BaseTest {
 
     @Test(description = "get user info with valid token")
-    public void getUserInfoWithValidToken() throws FileNotFoundException {
+    public void getUserInfoWithValidToken() {
         UserInfo expectedUserInfo, actualUserInfo;
 
-        User user = gson.fromJson(new FileReader("src/test/resources/Data/userForLogin.json"), User.class);
+        User user = data.get("userForLogin.json", User.class);
         responseBody = new AuthorizationAdapter().post(user);
         token = responseBody.getAccessToken();
 
-        actualUserInfo = gson.fromJson(new FileReader("src/test/resources/Data/userInfo.json"), UserInfo.class);
+        actualUserInfo = data.get("userInfo.json", UserInfo.class);
         expectedUserInfo = new UserAdapter().get(token);
         assertEquals(actualUserInfo, expectedUserInfo, "invalid user info");
     }

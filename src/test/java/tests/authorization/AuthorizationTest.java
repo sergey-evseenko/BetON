@@ -6,18 +6,12 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
 public class AuthorizationTest extends BaseTest {
 
-    User user = gson.fromJson(new FileReader("src/test/resources/Data/userForLogin.json"), User.class);
-
-    public AuthorizationTest() throws FileNotFoundException {
-    }
+    User user = data.get("userForLogin.json", User.class);
 
     @Test(description = "Login with valid login/pass")
     public void validLogin() {

@@ -29,7 +29,6 @@
         </plugins>
     </build>
 
-
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
         <dependency>
@@ -69,9 +68,5 @@
             <artifactId>log4j-core</artifactId>
             <version>2.12.1</version>
         </dependency>
-
-
     </dependencies>
-
-
 </project>
