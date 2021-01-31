@@ -2,14 +2,12 @@ package adapters;
 
 import models.AddressForRegistration;
 
-import static io.restassured.RestAssured.given;
-
 public class SearchRegistrationDataAdapter extends MainAdapter {
 
     public AddressForRegistration[] post(int resultCount, String countryCode, String postCode, String city, String street) {
 
         String path = "content/v1/registration/search?";
-        Boolean noParams = true;
+        boolean noParams = true;
 
         if (resultCount != 0) {
             path = path + "resultCount=" + resultCount + "&";
@@ -35,15 +33,7 @@ public class SearchRegistrationDataAdapter extends MainAdapter {
             path = "content/v1/registration/search";
         }
 
-        response = given()
-                .when()
-                .post(path)
-                .then()
-                .statusCode(200)
-                .extract().response();
-
+        response = post(path, 200, "");
         return gson.fromJson(response.asString().trim(), AddressForRegistration[].class);
-
-
     }
 }

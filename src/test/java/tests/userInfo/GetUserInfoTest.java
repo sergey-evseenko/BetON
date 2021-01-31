@@ -20,7 +20,7 @@ public class GetUserInfoTest extends BaseTest {
         token = responseBody.getAccessToken();
 
         actualUserInfo = data.get("userInfo.json", UserInfo.class);
-        expectedUserInfo = new UserAdapter().get(token);
+        expectedUserInfo = new UserAdapter().getUserInfoWithValidToken(token);
         assertEquals(actualUserInfo, expectedUserInfo, "invalid user info");
     }
 

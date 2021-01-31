@@ -23,7 +23,7 @@ public class ConfirmRegistrationTest extends BaseTest {
 
     @Test(description = "Confirm registration", dataProvider = "Registration codes")
     public void registrationWithInvalidData(String registrationCode, String code, String errorDescription, int responseCode) {
-        responseBody = new ConfirmRegistrationAdapter().get(registrationCode, responseCode);
+        responseBody = new ConfirmRegistrationAdapter().getConfirmRegistration(registrationCode, responseCode);
         assertEquals(responseBody.getField(), "Confirmation code", "Invalid field");
         assertEquals(responseBody.getType(), "CONFIRMATION", "Invalid type");
         assertEquals(responseBody.getCode(), code, "Invalid code");

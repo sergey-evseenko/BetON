@@ -1,24 +1,12 @@
 package adapters;
 
-import io.restassured.http.ContentType;
 import models.ResendEmailData;
 import models.ResponseBody;
-
-import static io.restassured.RestAssured.given;
 
 public class ResendEmailAdapter extends MainAdapter {
 
     public ResponseBody post(ResendEmailData resendEmailData, String token, int responseCode) {
-        response = given()
-                .contentType(ContentType.JSON)
-                .header("Authorization", "Bearer " + token)
-                .body(gson.toJson(resendEmailData))
-                .when()
-                .post("auth/v1/users/confirm/registration/resend")
-                .then()
-                .statusCode(responseCode)
-                .extract().response();
-
+        response = postWithHeader("auth/v1/users/confirm/registration/resend", responseCode, gson.toJson(resendEmailData), "Authorization", "Bearer " + token);
         if (responseCode == 200) {
             return null;
         } else {
@@ -28,16 +16,7 @@ public class ResendEmailAdapter extends MainAdapter {
     }
 
     public ResponseBody get(String externalId, String token, int responseCode) {
-        response = given()
-                .contentType(ContentType.JSON)
-                .header("Authorization", "Bearer " + token)
-                .pathParam("externalId", externalId)
-                .when()
-                .get("auth/v1/users/confirm/registration/resend/{externalId}")
-                .then()
-                .statusCode(responseCode)
-                .extract().response();
-
+        response = getWithTokenAndPathParam("auth/v1/users/confirm/registration/resend/{externalId}", responseCode, token, "externalId", externalId);
         if (responseCode == 200) {
             return null;
         } else {

@@ -1,25 +1,12 @@
 package adapters;
 
-import io.restassured.http.ContentType;
 import models.ResponseBody;
 import models.User;
-
-import static io.restassured.RestAssured.given;
-
 
 public class RegistrationAdapter extends MainAdapter {
 
     public ResponseBody post(User user, int statusCode) {
-        response = given()
-                .contentType(ContentType.JSON)
-                .header("lang", "en")
-                .body(gson.toJson(user))
-                .when()
-                .post("auth/v1/users/register")
-                .then()
-                .statusCode(statusCode)
-                .contentType(ContentType.JSON).extract().response();
-
+        response = postWithHeader("auth/v1/users/register", statusCode, gson.toJson(user), "lang", "en");
         if (statusCode == 200) {
             return gson.fromJson(response.asString().trim(), ResponseBody.class);
         } else {
