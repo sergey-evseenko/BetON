@@ -15,7 +15,7 @@ public class AuthorizationTest extends BaseTest {
 
     @Test(description = "Login with valid login/pass")
     public void validLogin() {
-        responseBody = new AuthorizationAdapter().post(user);
+        responseBody = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
         assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
         assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
     }
@@ -59,7 +59,7 @@ public class AuthorizationTest extends BaseTest {
         if (userName == user.getUserName()) {
             return;
         }
-        new AuthorizationAdapter().post(user);
+        new AuthorizationAdapter().post(user, "clientId", "secret", 200);
     }
 
     @DataProvider(name = "List of invalid clientId/clientSecret")
@@ -73,7 +73,7 @@ public class AuthorizationTest extends BaseTest {
 
     @Test(description = "Login with invalid clientId/clientSecret", dataProvider = "List of invalid clientId/clientSecret")
     public void invalidLoginWithFormData(String clientID, String clientSecret, String errorDescription) {
-        responseBody = new AuthorizationAdapter().post(clientID, clientSecret, user);
+        responseBody = new AuthorizationAdapter().post(user, clientID, clientSecret, 401);
         assertEquals(responseBody.getError(), "invalid_client", "Invalid error message");
         assertEquals(responseBody.getErrorDescription(), errorDescription, "Invalid error description");
     }

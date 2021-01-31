@@ -16,7 +16,7 @@ public class GetUserInfoTest extends BaseTest {
         UserInfo expectedUserInfo, actualUserInfo;
 
         User user = data.get("userForLogin.json", User.class);
-        responseBody = new AuthorizationAdapter().post(user);
+        responseBody = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
         token = responseBody.getAccessToken();
 
         actualUserInfo = data.get("userInfo.json", UserInfo.class);

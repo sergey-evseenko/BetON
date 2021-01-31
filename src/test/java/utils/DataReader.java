@@ -19,6 +19,7 @@ public class DataReader {
         try {
             return gson.fromJson(new FileReader(path), type);
         } catch (FileNotFoundException e) {
+            System.out.println("Can't read json file: " + fileName);
             e.printStackTrace();
             return null;
         }

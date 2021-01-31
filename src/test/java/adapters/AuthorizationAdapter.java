@@ -23,18 +23,18 @@ public class AuthorizationAdapter extends MainAdapter {
         return gson.fromJson(response.asString().trim(), ResponseBody.class);
     }
 
-    public ResponseBody post(User user) {
+    public ResponseBody post(User user, String clientID, String clientSecret, int responseCode) {
         response = given()
                 .formParam("username", user.getUserName())
                 .formParam("password", user.getPassword())
                 .formParam("grant_type", "password")
                 .formParam("response_type", "token")
-                .formParam("client_id", "clientId")
-                .formParam("client_secret", "secret")
+                .formParam("client_id", clientID)
+                .formParam("client_secret", clientSecret)
                 .when()
                 .post("auth/v1/oauth/token/beton")
                 .then()
-                .statusCode(200)
+                .statusCode(responseCode)
                 .contentType(ContentType.JSON).extract().response();
 
         return gson.fromJson(response.asString().trim(), ResponseBody.class);
@@ -57,22 +57,4 @@ public class AuthorizationAdapter extends MainAdapter {
         ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
         return responseBodyErrors[0];
     }
-
-    public ResponseBody post(String clientID, String clientSecret, User user) {
-        response = given()
-                .formParam("username", user.getUserName())
-                .formParam("password", user.getPassword())
-                .formParam("grant_type", "password")
-                .formParam("response_type", "token")
-                .formParam("client_id", clientID)
-                .formParam("client_secret", clientSecret)
-                .when()
-                .post("auth/v1/oauth/token/beton")
-                .then()
-                .statusCode(401)
-                .contentType(ContentType.JSON).extract().response();
-
-        return gson.fromJson(response.asString().trim(), ResponseBody.class);
-    }
-
 }
