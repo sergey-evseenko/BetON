@@ -11,5 +11,4 @@ public class ValidateField {
     String fieldType;
     @Expose
     String fieldValue;
-
 }

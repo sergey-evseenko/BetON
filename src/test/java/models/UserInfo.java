@@ -33,6 +33,4 @@ public class UserInfo {
     String passportNumber;
     @Expose
     Address[] addresses;
-
-
 }

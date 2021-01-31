@@ -4,8 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class User {
     @Expose
@@ -27,7 +29,4 @@ public class User {
     @SerializedName("username")
     @Expose
     String userName;
-
-    public User() {
-    }
 }

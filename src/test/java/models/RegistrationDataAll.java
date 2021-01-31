@@ -23,6 +23,4 @@ public class RegistrationDataAll {
     RegistrationData nl;
     @Expose
     RegistrationData tr;
-
-
 }

@@ -3,8 +3,10 @@ package models;
 import com.google.gson.annotations.Expose;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class UserProfileDto {
     @Expose
@@ -27,7 +29,4 @@ public class UserProfileDto {
     String phoneCode;
     @Expose
     int title;
-
-    public UserProfileDto() {
-    }
 }

@@ -3,8 +3,10 @@ package models;
 import com.google.gson.annotations.Expose;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class ResendEmailData {
     @Expose
@@ -13,8 +15,5 @@ public class ResendEmailData {
     String externalId;
     @Expose
     String repeatedEmail;
-
-    public ResendEmailData() {
-    }
 }
 
