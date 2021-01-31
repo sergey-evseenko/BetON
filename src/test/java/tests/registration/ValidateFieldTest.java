@@ -27,7 +27,7 @@ public class ValidateFieldTest extends BaseTest {
     public void fieldValidation(String fieldType, String fieldValue, String field, Boolean isEmptyResponse) throws FileNotFoundException {
         ValidateField validateField = new ValidateField(fieldType, fieldValue);
         ResponseBody[] responseBody = new FieldValidationAdapter().post(validateField);
-        if (isEmptyResponse == true) {
+        if (isEmptyResponse) {
             assertEquals(responseBody.length, 0, "Incorrect field validation");
         } else {
             assertEquals(responseBody[0].getField(), field, "Invalid field");

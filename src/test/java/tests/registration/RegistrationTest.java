@@ -10,8 +10,6 @@ import org.testng.annotations.Test;
 import tests.BaseTest;
 import tests.UserFactory;
 
-import java.io.FileNotFoundException;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
@@ -21,7 +19,7 @@ public class RegistrationTest extends BaseTest {
     TermsAndConditionDto termsAndConditionDto;
 
     @BeforeMethod
-    public void getNewUser() throws FileNotFoundException {
+    public void getNewUser() {
         user = new UserFactory().getNewUser();
         userProfileDto = user.getUserProfileDto();
         termsAndConditionDto = user.getTermsAndConditionDto();
@@ -105,7 +103,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @DataProvider(name = "Invalid passwords with name")
-    public Object[][] invalidPasswordsWithNames() throws FileNotFoundException {
+    public Object[][] invalidPasswordsWithNames() {
         return new Object[][]{
                 //contain first name
                 {userProfileDto.getName()},

@@ -9,7 +9,7 @@ import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
 
-public class GetUserInfo extends BaseTest {
+public class GetUserInfoTest extends BaseTest {
 
     @Test(description = "get user info with valid token")
     public void getUserInfoWithValidToken() {

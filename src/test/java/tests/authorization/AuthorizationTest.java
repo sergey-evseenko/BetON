@@ -57,8 +57,9 @@ public class AuthorizationTest extends BaseTest {
         assertEquals(responseBody.getDescription(), description, "Invalid description");
         //for avoid blocking user
         if (userName == user.getUserName()) {
-            new AuthorizationAdapter().post(user);
+            return;
         }
+        new AuthorizationAdapter().post(user);
     }
 
     @DataProvider(name = "List of invalid clientId/clientSecret")

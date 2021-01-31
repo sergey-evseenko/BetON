@@ -5,9 +5,6 @@ import models.TermsAndConditionDto;
 import models.User;
 import models.UserProfileDto;
 
-import java.io.FileNotFoundException;
-
-
 public class UserFactory extends BaseTest {
     User user;
     TermsAndConditionDto termsAndConditionDto;
@@ -36,9 +33,6 @@ public class UserFactory extends BaseTest {
     int title = faker.number().numberBetween(1, 10);
     String userName = faker.lorem().characters(10);
     String partnerTrackingCode = null;
-
-    public UserFactory() throws FileNotFoundException {
-    }
 
     public User getNewUser() {
         user = new User();

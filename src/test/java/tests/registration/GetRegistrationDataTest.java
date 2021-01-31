@@ -8,8 +8,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
-import java.io.FileNotFoundException;
-
 import static org.testng.Assert.assertEquals;
 
 public class GetRegistrationDataTest extends BaseTest {
@@ -41,7 +39,7 @@ public class GetRegistrationDataTest extends BaseTest {
     }
 
     @Test(description = "get registration data with invalid language parameter", dataProvider = "Invalid language params")
-    public void getRegistrationDataWithInvalidParam(String langParam) throws FileNotFoundException {
+    public void getRegistrationDataWithInvalidParam(String langParam) {
         RegistrationDataAll expectedRegistrationData, actualRegistrationData;
         expectedRegistrationData = data.get("registrationDataAll.json", RegistrationDataAll.class);
         actualRegistrationData = new GetRegistrationDataAdapted().getRegistrationDataAll(langParam);

@@ -9,8 +9,6 @@ import org.testng.annotations.Test;
 import tests.BaseTest;
 import tests.UserFactory;
 
-import java.io.FileNotFoundException;
-
 import static org.testng.Assert.assertEquals;
 
 public class ResendEmailTest extends BaseTest {
@@ -18,7 +16,7 @@ public class ResendEmailTest extends BaseTest {
     ResendEmailData resendEmailData = new ResendEmailData();
 
     @BeforeClass
-    public void registration() throws FileNotFoundException {
+    public void registration() {
         user = new UserFactory().getNewUser();
         responseBody = new RegistrationAdapter().post(user, 200);
         externalId = responseBody.getExternalId();

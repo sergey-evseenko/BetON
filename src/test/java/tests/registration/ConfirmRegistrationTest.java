@@ -5,11 +5,9 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
-import java.io.FileNotFoundException;
-
 import static org.testng.Assert.assertEquals;
 
-public class ConfirmRegistration extends BaseTest {
+public class ConfirmRegistrationTest extends BaseTest {
 
     @DataProvider(name = "Registration codes")
     public Object[][] registrationCodes() {
@@ -24,7 +22,7 @@ public class ConfirmRegistration extends BaseTest {
     }
 
     @Test(description = "Confirm registration", dataProvider = "Registration codes")
-    public void registrationWithInvalidData(String registrationCode, String code, String errorDescription, int responseCode) throws FileNotFoundException {
+    public void registrationWithInvalidData(String registrationCode, String code, String errorDescription, int responseCode) {
         responseBody = new ConfirmRegistrationAdapter().get(registrationCode, responseCode);
         assertEquals(responseBody.getField(), "Confirmation code", "Invalid field");
         assertEquals(responseBody.getType(), "CONFIRMATION", "Invalid type");

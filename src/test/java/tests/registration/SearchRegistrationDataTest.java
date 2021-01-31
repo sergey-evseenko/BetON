@@ -34,7 +34,7 @@ public class SearchRegistrationDataTest extends BaseTest {
     public void searchRegistrationData(int resultCount, String countryCode, String postcode, String city, String street, Boolean isEmptyResponse, int id) {
         AddressForRegistration[] listOfAddresses;
         listOfAddresses = new SearchRegistrationDataAdapter().post(resultCount, countryCode, postcode, city, street);
-        if (isEmptyResponse == true) {
+        if (isEmptyResponse) {
             assertEquals(listOfAddresses.length, 0, "Invalid search result");
         } else {
             assertEquals(listOfAddresses[0].getId(), id, "Invalid search result");
