@@ -2,12 +2,10 @@ package utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import lombok.NoArgsConstructor;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-@NoArgsConstructor
 public class DataReader {
     public static final String DEFAULT_PATH = "src/test/resources/Data/";
     protected Gson gson = new GsonBuilder()
@@ -23,7 +21,6 @@ public class DataReader {
             e.printStackTrace();
             return null;
         }
-
     }
 }
 
