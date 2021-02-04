@@ -8,10 +8,7 @@ cache:
 test:
   stage: test
   script:
-    - ls -la
     - mvn clean test
-  tags:
-    - beton
   after_script:
     - mvn allure:report
     artifacts:
