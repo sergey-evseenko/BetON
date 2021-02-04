@@ -8,12 +8,16 @@ cache:
 test:
   stage: test
   script:
+    - ls -la
     - mvn clean test
   after_script:
     - mvn allure:report
-    artifacts:
-      when: always
-      name: "report"
-      paths:
-        - $CI_PROJECT_DIR/target/site/allure-maven-plugin/
-      expire_in: 15 days
+  artifacts:
+    when: always
+    name: "report"
+    paths:
+      - $CI_PROJECT_DIR/target/site/allure-maven-plugin/
+    expire_in: 15 days
+  tags:
+    - beton
+  ё
