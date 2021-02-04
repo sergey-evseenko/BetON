@@ -11,4 +11,12 @@ test:
     - ls -la
     - mvn clean test
   tags:
-    - beton    
+    - beton
+  after_script:
+    - mvn allure:report
+    artifacts:
+      when: always
+      name: "report"
+      paths:
+        - $CI_PROJECT_DIR/target/site/allure-maven-plugin/
+      expire_in: 15 days
