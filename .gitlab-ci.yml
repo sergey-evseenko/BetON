@@ -16,6 +16,8 @@ build:
   stage: build
   script:
     - mvn compile
+  tags:
+    - beton
 
 test:
   stage: test
