@@ -1,0 +1,22 @@
+{
+  "password": "Qwerty!123",
+  "phone": "+375108656238",
+  "userProfileDto": {
+    "addresses": [
+      {
+        "city": "Minsk",
+        "countryCode": "BY",
+        "homeNumber": "123",
+        "postalCode": "214000",
+        "street": "Dzerzhinskogo"
+      }
+    ],
+    "birthDate": "1990-02-02",
+    "name": "Test",
+    "nationalityId": 19,
+    "passportNumber": "QWE46",
+    "phoneCode": "+375",
+    "surname": "User",
+    "title": 2
+  }
+}

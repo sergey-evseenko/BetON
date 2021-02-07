@@ -3,21 +3,21 @@
   "externalId": 414,
   "username": "pollyisthebestqa",
   "email": "qwerty41779@gmail.com",
-  "phone": "+375298343738",
-  "phoneCode": "+351",
-  "title": 10,
-  "name": "Tiana",
-  "surname": "Haag",
-  "nationalityId": 7,
-  "birthDate": "1990-01-01",
-  "passportNumber": "318-37-8059",
+  "phone": "+375108656238",
+  "phoneCode": "+375",
+  "title": 2,
+  "name": "Test",
+  "surname": "User",
+  "nationalityId": 19,
+  "birthDate": "1990-02-02",
+  "passportNumber": "QWE46",
   "addresses": [
     {
-      "countryCode": "US",
-      "city": "Las Vegas",
-      "street": "Main Street",
-      "homeNumber": "321",
-      "postalCode": "88901"
+      "countryCode": "BY",
+      "city": "Minsk",
+      "street": "Dzerzhinskogo",
+      "homeNumber": "123",
+      "postalCode": "214000"
     }
   ]
 }

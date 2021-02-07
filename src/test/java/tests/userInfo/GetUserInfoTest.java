@@ -13,12 +13,11 @@ public class GetUserInfoTest extends BaseTest {
 
     @Test(description = "get user info with valid token")
     public void getUserInfoWithValidToken() {
-        UserInfo expectedUserInfo, actualUserInfo;
-
-        User user = data.get("userForLogin.json", User.class);
+        user = data.get("userForLogin.json", User.class);
         responseBody = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
         token = responseBody.getAccessToken();
 
+        UserInfo expectedUserInfo, actualUserInfo;
         actualUserInfo = data.get("userInfo.json", UserInfo.class);
         expectedUserInfo = new UserAdapter().getUserInfoWithValidToken(token);
         assertEquals(actualUserInfo, expectedUserInfo, "invalid user info");
@@ -36,5 +35,4 @@ public class GetUserInfoTest extends BaseTest {
         responseBody = new UserAdapter().getInfoWithoutToken();
         assertEquals(responseBody.getError(), "unauthorized", "invalid error");
     }
-
 }

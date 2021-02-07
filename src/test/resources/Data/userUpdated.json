@@ -1,0 +1,22 @@
+{
+  "password": "Qwerty!123",
+  "phone": "+375297777777",
+  "userProfileDto": {
+    "addresses": [
+      {
+        "city": "Polotsk",
+        "countryCode": "RU",
+        "homeNumber": "50",
+        "postalCode": "211412",
+        "street": "Marinenko"
+      }
+    ],
+    "birthDate": "1997-02-05",
+    "name": "Polly",
+    "nationalityId": 13,
+    "passportNumber": "PB12345678",
+    "phoneCode": "+780",
+    "surname": "Best",
+    "title": 4
+  }
+}

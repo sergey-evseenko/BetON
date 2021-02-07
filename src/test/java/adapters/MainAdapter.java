@@ -15,6 +15,7 @@ public class MainAdapter {
     Gson gson;
     PropertyManager props;
     Response response;
+    String body;
 
     public MainAdapter() {
         props = new PropertyManager();
@@ -26,39 +27,36 @@ public class MainAdapter {
     }
 
     public Response get(String url, int responseCode) {
-        response = given()
+        return given()
                 .when()
                 .get(url)
                 .then()
                 .statusCode(responseCode)
                 .extract().response();
-        return response;
     }
 
     public Response getWithToken(String url, int responseCode, String token) {
-        response = given()
+        return given()
                 .header("Authorization", "Bearer " + token)
                 .when()
                 .get(url)
                 .then()
                 .statusCode(responseCode)
                 .extract().response();
-        return response;
     }
 
     public Response getWithQueryParam(String url, int responseCode, String param, String paramValue) {
-        response = given()
+        return given()
                 .queryParam(param, paramValue)
                 .when()
                 .get(url)
                 .then()
                 .statusCode(responseCode)
                 .extract().response();
-        return response;
     }
 
     public Response getWithTokenAndPathParam(String url, int responseCode, String token, String param, String paramValue) {
-        response = given()
+        return given()
                 .header("Authorization", "Bearer " + token)
                 .pathParam(param, paramValue)
                 .when()
@@ -66,11 +64,10 @@ public class MainAdapter {
                 .then()
                 .statusCode(responseCode)
                 .extract().response();
-        return response;
     }
 
     public Response post(String url, int responseCode, String body) {
-        response = given()
+        return given()
                 .contentType(ContentType.JSON)
                 .body(body)
                 .when()
@@ -78,11 +75,10 @@ public class MainAdapter {
                 .then()
                 .statusCode(responseCode)
                 .extract().response();
-        return response;
     }
 
     public Response postWithHeader(String url, int responseCode, String body, String param, String paramValue) {
-        response = given()
+        return given()
                 .contentType(ContentType.JSON)
                 .header(param, paramValue)
                 .body(body)
@@ -91,6 +87,17 @@ public class MainAdapter {
                 .then()
                 .statusCode(responseCode)
                 .extract().response();
-        return response;
+    }
+
+    public Response put(String url, String token, String body, int responseCode) {
+        return given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token)
+                .body(body)
+                .when()
+                .put(url)
+                .then()
+                .statusCode(responseCode)
+                .extract().response();
     }
 }

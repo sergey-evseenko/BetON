@@ -1,0 +1,23 @@
+{
+  "id": 331,
+  "externalId": 414,
+  "username": "pollyisthebestqa",
+  "email": "qwerty41779@gmail.com",
+  "phone": "+375297777777",
+  "phoneCode": "+780",
+  "title": 4,
+  "name": "Polly",
+  "surname": "Best",
+  "nationalityId": 13,
+  "birthDate": "1997-02-05",
+  "passportNumber": "PB12345678",
+  "addresses": [
+    {
+      "countryCode": "RU",
+      "city": "Polotsk",
+      "street": "Marinenko",
+      "homeNumber": "50",
+      "postalCode": "211412"
+    }
+  ]
+}
