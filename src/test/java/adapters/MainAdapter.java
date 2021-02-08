@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import utils.DataReader;
 import utils.PropertyManager;
 
 import static io.restassured.RestAssured.given;
@@ -16,8 +17,10 @@ public class MainAdapter {
     PropertyManager props;
     Response response;
     String body;
+    DataReader data;
 
     public MainAdapter() {
+        data = new DataReader();
         props = new PropertyManager();
         RestAssured.baseURI = props.get("baseUrl");
         RestAssured.config = RestAssured.config().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));

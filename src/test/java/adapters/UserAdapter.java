@@ -1,8 +1,6 @@
 package adapters;
 
-import models.ResponseBody;
-import models.User;
-import models.UserInfo;
+import models.*;
 
 public class UserAdapter extends MainAdapter {
 
@@ -40,5 +38,27 @@ public class UserAdapter extends MainAdapter {
         body = gson.toJson(user);
         response = put(url, token, body, 400);
         return gson.fromJson(response.asString().trim(), ResponseBody.class);
+    }
+
+    public ResponseBody putEmail(Email email, String token, int responseCode) {
+        body = gson.toJson(email);
+        response = put(url + "/update-email", token, body, responseCode);
+        if (responseCode == 400) {
+            ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
+            return responseBodyErrors[0];
+        } else {
+            return null;
+        }
+    }
+
+    public ResponseBody putPassword(Password password, String token, int responseCode) {
+        body = gson.toJson(password);
+        response = put(url + "/update-pwd", token, body, responseCode);
+        if (responseCode == 400) {
+            ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
+            return responseBodyErrors[0];
+        } else {
+            return null;
+        }
     }
 }

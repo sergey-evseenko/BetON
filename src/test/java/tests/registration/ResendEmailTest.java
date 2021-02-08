@@ -12,7 +12,7 @@ import tests.UserFactory;
 import static org.testng.Assert.assertEquals;
 
 public class ResendEmailTest extends BaseTest {
-    String externalId;
+    String externalId, accessToken;
     ResendEmailData resendEmailData = new ResendEmailData();
 
     @BeforeClass
@@ -20,7 +20,7 @@ public class ResendEmailTest extends BaseTest {
         user = new UserFactory().getNewUser();
         responseBody = new RegistrationAdapter().post(user, 200);
         externalId = responseBody.getExternalId();
-        token = responseBody.getAccessToken();
+        accessToken = responseBody.getAccessToken();
     }
 
     @DataProvider(name = "resend to new email")
@@ -49,7 +49,7 @@ public class ResendEmailTest extends BaseTest {
         resendEmailData.setEmail(email);
         resendEmailData.setRepeatedEmail(repeatedEmail);
         resendEmailData.setExternalId(externalId);
-        responseBody = new ResendEmailAdapter().post(resendEmailData, token, responseCode);
+        responseBody = new ResendEmailAdapter().post(resendEmailData, accessToken, responseCode);
         if (responseBody != null) {
             assertEquals(responseBody.getField(), "email", "Invalid field");
             assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
@@ -72,7 +72,7 @@ public class ResendEmailTest extends BaseTest {
 
     @Test(description = "resend to old email", dataProvider = "resend to old email")
     public void resendEmailToOldEmail(String externalId, String code, String errorDescription, int responseCode) {
-        responseBody = new ResendEmailAdapter().get(externalId, token, responseCode);
+        responseBody = new ResendEmailAdapter().get(externalId, accessToken, responseCode);
         if (responseBody != null) {
             assertEquals(responseBody.getCode(), code, "Invalid code");
             assertEquals(responseBody.getDescription(), errorDescription, "Invalid description");

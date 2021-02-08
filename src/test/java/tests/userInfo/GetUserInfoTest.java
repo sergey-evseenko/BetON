@@ -1,8 +1,6 @@
 package tests.userInfo;
 
-import adapters.AuthorizationAdapter;
 import adapters.UserAdapter;
-import models.User;
 import models.UserInfo;
 import org.testng.annotations.Test;
 import tests.BaseTest;
@@ -13,10 +11,6 @@ public class GetUserInfoTest extends BaseTest {
 
     @Test(description = "get user info with valid token")
     public void getUserInfoWithValidToken() {
-        user = data.get("userForLogin.json", User.class);
-        responseBody = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
-        token = responseBody.getAccessToken();
-
         UserInfo expectedUserInfo = data.get("userInfo.json", UserInfo.class);
         UserInfo actualUserInfo = new UserAdapter().getUserInfoWithValidToken(token);
         assertEquals(actualUserInfo, expectedUserInfo, "invalid user info");

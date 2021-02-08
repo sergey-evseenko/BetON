@@ -1,12 +1,10 @@
 package tests.userInfo;
 
-import adapters.AuthorizationAdapter;
 import adapters.UserAdapter;
 import models.Address;
 import models.User;
 import models.UserInfo;
 import models.UserProfileDto;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -17,13 +15,6 @@ import static org.testng.Assert.assertEquals;
 public class UpdateUserInfoTest extends BaseTest {
 
     UserProfileDto userProfileDto;
-
-    @BeforeClass
-    public void getToken() {
-        user = data.get("userForLogin.json", User.class);
-        responseBody = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
-        token = responseBody.getAccessToken();
-    }
 
     @BeforeMethod
     public void sutUpTestData() {
@@ -46,8 +37,8 @@ public class UpdateUserInfoTest extends BaseTest {
         return new Object[][]{
                 //+ and letters
                 {"+bdfbdbdf", "ER0001", "Wrong value format"},
-                //TODO: "is empty phone " case is skipped
-                //{}
+                //empty phone
+                {"", "ER0001", "Wrong value format"},
                 //is null
                 {null, "ER0004", "Field is mandatory"},
                 //without +
@@ -117,7 +108,8 @@ public class UpdateUserInfoTest extends BaseTest {
     @DataProvider(name = "Invalid phoneCodes")
     public Object[][] invalidPhoneCodes() {
         return new Object[][]{
-                //TODO: "is empty phone code" case is skipped
+                //is empty
+                {"", "ER0001", "Wrong value format"},
                 //is null
                 {null, "ER0004", "Field is mandatory"},
                 //incorrect format
@@ -246,8 +238,8 @@ public class UpdateUserInfoTest extends BaseTest {
                 {"12", "userProfileDto.addresses[0].countryCode", "ER0001", "Wrong value format"},
                 //not existing code
                 {"ZZ", "countryCode", "ER0009", "Incorrect value"},
-                //TODO: "is empty phone " case is skipped
-                //{},
+                //is empty
+                {"", "userProfileDto.addresses[0].countryCode", "ER0001", "Wrong value format"},
                 //is null
                 {null, "userProfileDto.addresses[0].countryCode", "ER0004", "Field is mandatory"}
         };
