@@ -17,9 +17,8 @@ public class GetUserInfoTest extends BaseTest {
         responseBody = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
         token = responseBody.getAccessToken();
 
-        UserInfo expectedUserInfo, actualUserInfo;
-        actualUserInfo = data.get("userInfo.json", UserInfo.class);
-        expectedUserInfo = new UserAdapter().getUserInfoWithValidToken(token);
+        UserInfo expectedUserInfo = data.get("userInfo.json", UserInfo.class);
+        UserInfo actualUserInfo = new UserAdapter().getUserInfoWithValidToken(token);
         assertEquals(actualUserInfo, expectedUserInfo, "invalid user info");
     }
 
