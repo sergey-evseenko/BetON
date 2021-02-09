@@ -10,6 +10,27 @@ import static org.testng.Assert.assertEquals;
 
 public class UpdateEmailTest extends BaseTest {
 
+    @DataProvider(name = "Invalid codes")
+    public Object[][] invalidCodes() {
+        return new Object[][]{
+                //invalid code
+                {"qwerty", "ER3001", "Code not found"},
+                //null
+                {"null", "ER3001", "Code not found"},
+                //expired code
+                {"MpSzP5lOX0", "ER3002", "Code has been expired"}
+        };
+    }
+
+    @Test(description = "Confirm that email was changed", dataProvider = "Invalid codes")
+    public void confirmChangedEmail(String confirmationCode, String code, String description) {
+        responseBody = new UserAdapter().getConfirmEmail(confirmationCode);
+        assertEquals(responseBody.getField(), "Confirmation code", "Invalid field");
+        assertEquals(responseBody.getType(), "CONFIRMATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
+
     @Test(description = "Update valid email")
     public void updateValidEmail() {
         Email validEmail = new Email("polinazz2@inbox.ru", "Qwerty!123", "polinazz2@inbox.ru");

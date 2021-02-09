@@ -6,6 +6,12 @@ public class UserAdapter extends MainAdapter {
 
     String url = "auth/v1/users";
 
+    public ResponseBody getConfirmEmail(String code) {
+        response = get(url + "/confirm/email/" + code, 400);
+        ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
+        return responseBodyErrors[0];
+    }
+
     public UserInfo getUserInfoWithValidToken(String token) {
         response = getWithToken(url + "/me", 200, token);
         return gson.fromJson(response.asString().trim(), UserInfo.class);
