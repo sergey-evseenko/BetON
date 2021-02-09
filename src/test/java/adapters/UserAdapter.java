@@ -6,7 +6,7 @@ public class UserAdapter extends MainAdapter {
 
     String url = "auth/v1/users";
 
-    public ResponseBody getConfirmEmail(String code) {
+    public ResponseBody confirmEmail(String code) {
         response = get(url + "/confirm/email/" + code, 400);
         ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
         return responseBodyErrors[0];
@@ -67,4 +67,17 @@ public class UserAdapter extends MainAdapter {
             return null;
         }
     }
+
+    public String checkPassword(String password, String token) {
+        body = String.format("{\"password\" : \"%s\"}", password);
+        response = postWithToken(url + "/check-pwd", 200, body, token);
+        return response.asString();
+    }
+
+    public ResponseBody checkNullPassword() {
+        response = post(url + "/check-pwd", 400, "{}");
+        ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
+        return responseBodyErrors[0];
+    }
+
 }

@@ -24,7 +24,7 @@ public class UpdateEmailTest extends BaseTest {
 
     @Test(description = "Confirm that email was changed", dataProvider = "Invalid codes")
     public void confirmChangedEmail(String confirmationCode, String code, String description) {
-        responseBody = new UserAdapter().getConfirmEmail(confirmationCode);
+        responseBody = new UserAdapter().confirmEmail(confirmationCode);
         assertEquals(responseBody.getField(), "Confirmation code", "Invalid field");
         assertEquals(responseBody.getType(), "CONFIRMATION", "Invalid type");
         assertEquals(responseBody.getCode(), code, "Invalid code");

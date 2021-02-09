@@ -80,6 +80,18 @@ public class MainAdapter {
                 .extract().response();
     }
 
+    public Response postWithToken(String url, int responseCode, String body, String token) {
+        return given()
+                .header("Authorization", "Bearer " + token)
+                .contentType(ContentType.JSON)
+                .body(body)
+                .when()
+                .post(url)
+                .then()
+                .statusCode(responseCode)
+                .extract().response();
+    }
+
     public Response postWithHeader(String url, int responseCode, String body, String param, String paramValue) {
         return given()
                 .contentType(ContentType.JSON)
