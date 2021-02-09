@@ -1,11 +1,12 @@
 package tests.registration;
 
 import adapters.RegistrationAdapter;
+import models.Address;
 import models.TermsAndConditionDto;
+import models.User;
 import models.UserProfileDto;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 import tests.UserFactory;
@@ -35,14 +36,6 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "Registration with Partner Tracking Code")
     public void registrationWithPartnerTrackingCode() {
         user.setPartnerTrackingCode("bwin");
-        responseBody = new RegistrationAdapter().post(user, 200);
-        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
-        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
-    }
-
-    @Test(description = "Registration with the same phone")
-    public void registrationWithTheSamePhone() {
-        user.setPhone("+375292907810");
         responseBody = new RegistrationAdapter().post(user, 200);
         assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
         assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
@@ -87,6 +80,8 @@ public class RegistrationTest extends BaseTest {
                 {"Qwertyuiop!", "ER0001", "Wrong value format"},
                 //min length
                 {"Qw!123", "ER0007", "Wrong value size"},
+                //max length
+                {faker.lorem().characters(100) + "Qw!123", "ER0007", "Wrong value size"},
                 //is null
                 {null, "ER0004", "Field is mandatory"}
         };
@@ -102,28 +97,41 @@ public class RegistrationTest extends BaseTest {
         assertEquals(responseBody.getDescription(), description, "Invalid description");
     }
 
-    @DataProvider(name = "Invalid passwords with name")
-    public Object[][] invalidPasswordsWithNames() {
-        return new Object[][]{
-                //contain first name
-                {userProfileDto.getName()},
-                //contain last name
-                {userProfileDto.getSurname()},
-                //contain user name
-                {user.getUserName()}
-        };
+    @Test(description = "Registration with invalid password contains first name")
+    public void registrationWithInvalidPasswordContainsFirstName() {
+        user.setPassword(userProfileDto.getName() + "Q123!");
+        user.setRepeatedPassword(userProfileDto.getName() + "Q123!");
+        postAndValidateResponse(user);
     }
 
-    @Ignore
-    @Test(description = "Registration with invalid password contains name", dataProvider = "Invalid passwords with name")
-    public void registrationWithInvalidPasswordContainsName(String password) {
-        user.setPassword(password + "Q123!");
-        user.setRepeatedPassword(password + "Q123!");
+    @Test(description = "Registration with invalid password contains last name")
+    public void registrationWithInvalidPasswordContainsLastName() {
+        user.setPassword(userProfileDto.getSurname() + "Q123!");
+        user.setRepeatedPassword(userProfileDto.getSurname() + "Q123!");
+        postAndValidateResponse(user);
+    }
+
+    @Test(description = "Registration with invalid password contains user name")
+    public void registrationWithInvalidPasswordContainsUserName() {
+        user.setPassword(user.getUserName() + "Q123!");
+        user.setRepeatedPassword(user.getUserName() + "Q123!");
+        postAndValidateResponse(user);
+    }
+
+    public void postAndValidateResponse(User user) {
         responseBody = new RegistrationAdapter().post(user, 400);
         assertEquals(responseBody.getField(), "password.", "Invalid field");
         assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBody.getCode(), "ER0008", "Invalid code");
         assertEquals(responseBody.getDescription(), "Please do not use Username / Name / Surname as password", "Invalid description");
+    }
+
+    @Test(description = "Registration with the same phone")
+    public void registrationWithTheSamePhone() {
+        user.setPhone("+375292907810");
+        responseBody = new RegistrationAdapter().post(user, 200);
+        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
+        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
     }
 
     @DataProvider(name = "Invalid phones")
@@ -133,6 +141,8 @@ public class RegistrationTest extends BaseTest {
                 {"+xascasca", "ER0001", "Wrong value format"},
                 //without +
                 {"375292907810", "ER0001", "Wrong value format"},
+                //is empty
+                {"", "ER0001", "Wrong value format"},
                 //is null
                 {null, "ER0004", "Field is mandatory"},
                 //max length
@@ -199,9 +209,9 @@ public class RegistrationTest extends BaseTest {
     @DataProvider(name = "Invalid terms and conditions")
     public Object[][] invalidTermsAndConditions() {
         return new Object[][]{
-                //invalid termsAndConditionDto: is null
+                //is null
                 {null},
-                //invalid termsAndConditionDto: is false
+                //is false
                 {false}
         };
     }
@@ -229,16 +239,41 @@ public class RegistrationTest extends BaseTest {
         assertEquals(responseBody.getDescription(), "Field is mandatory", "Invalid description");
     }
 
-    //TODO invalid address block: empty fields
-    //TODO invalid address block: country code - not existing code
-    //TODO invalid address block: country code - unacceptable symbols
+    @DataProvider(name = "Invalid country codes")
+    public Object[][] invalidCountryCodes() {
+        return new Object[][]{
+                //unacceptable symbols
+                {"12", "userProfileDto.addresses[0].countryCode", "ER0001", "Wrong value format"},
+                //not existing code
+                {"ZZ", "countryCode", "ER0009", "Incorrect value"},
+                //is empty
+                {"", "userProfileDto.addresses[0].countryCode", "ER0001", "Wrong value format"},
+                //is null
+                {null, "userProfileDto.addresses[0].countryCode", "ER0004", "Field is mandatory"}
+        };
+    }
+
+    @Test(description = "Update user info with invalid country code", dataProvider = "Invalid country codes")
+    public void registrationWithInvalidCountryCode(String countryCode, String field, String code, String description) {
+        userProfileDto = user.getUserProfileDto();
+        Address[] addresses = userProfileDto.getAddresses();
+        addresses[0].setCountryCode(countryCode);
+        userProfileDto.setAddresses(addresses);
+        user.setUserProfileDto(userProfileDto);
+
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), field, "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
 
     @DataProvider(name = "Invalid birth dates")
     public Object[][] invalidBirthDate() {
         return new Object[][]{
                 //is null
                 {null},
-                //empty filed
+                //is empty
                 {""}
         };
     }
@@ -260,7 +295,7 @@ public class RegistrationTest extends BaseTest {
         return new Object[][]{
                 //false
                 {false, "dataTransferToBp", "ER0010", "You must agree to create an account"},
-                //null
+                //is null
                 {null, "userProfileDto.dataTransferToBp", "ER0004", "Field is mandatory"}
         };
     }
@@ -277,12 +312,34 @@ public class RegistrationTest extends BaseTest {
         assertEquals(responseBody.getDescription(), description, "Invalid description");
     }
 
+    @DataProvider(name = "Invalid dataTransferToCashOn")
+    public Object[][] invalidDataTransferToCashOn() {
+        return new Object[][]{
+                //false
+                {false, "dataTransferToCashOn", "ER0010", "You must agree to create an account"},
+                //is null
+                {null, "userProfileDto.dataTransferToCashOn", "ER0004", "Field is mandatory"}
+        };
+    }
+
+    @Test(description = "Registration with invalid dataTransferToCashOn", dataProvider = "Invalid dataTransferToCashOn")
+    public void registrationWithInvalidDataTransferToCashOn(Boolean dataTransferToCashOn, String field, String code, String description) {
+        userProfileDto = user.getUserProfileDto();
+        userProfileDto.setDataTransferToCashOn(dataTransferToCashOn);
+        user.setUserProfileDto(userProfileDto);
+        responseBody = new RegistrationAdapter().post(user, 400);
+        assertEquals(responseBody.getField(), field, "Invalid field");
+        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBody.getCode(), code, "Invalid code");
+        assertEquals(responseBody.getDescription(), description, "Invalid description");
+    }
+
     @DataProvider(name = "Invalid names")
     public Object[][] invalidName() {
         return new Object[][]{
-                //empty field
+                //is empty
                 {"", "ER0007", "Wrong value size"},
-                //null
+                //is null
                 {null, "ER0004", "Field is mandatory"}
         };
     }
@@ -326,7 +383,7 @@ public class RegistrationTest extends BaseTest {
         return new Object[][]{
                 //is 0
                 {0, "userProfileDto.nationalityId", "ER0006", "Choose the value"},
-                //null
+                //not existing
                 {999999, "nationalityId", "ER0009", "Incorrect value"}
         };
     }
@@ -348,7 +405,7 @@ public class RegistrationTest extends BaseTest {
         return new Object[][]{
                 //is 0
                 {0, "userProfileDto.title", "ER0006", "Choose the value"},
-                //null
+                //not existing
                 {121212, "titleId", "ER0009", "Incorrect value"}
         };
     }
@@ -375,7 +432,9 @@ public class RegistrationTest extends BaseTest {
                 //invalid username: existing username
                 {"testtest123", "ER0002", "Not unique value"},
                 //invalid username: is null
-                {null, "ER0004", "Field is mandatory"}
+                {null, "ER0004", "Field is mandatory"},
+                //invalid username: is empty
+                {"", "ER0001", "Wrong value format"},
         };
     }
 

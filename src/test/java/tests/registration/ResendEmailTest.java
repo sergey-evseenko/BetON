@@ -37,6 +37,8 @@ public class ResendEmailTest extends BaseTest {
                 {"changedqwerty75263gmail.com", "changedqwerty75263@gmail.com", 400, "ER0001", "Wrong value format"},
                 //without dot
                 {"changedqwerty75263@gmailcom", "changedqwerty75263@gmail.com", 400, "ER0001", "Wrong value format"},
+                //empty
+                {"", "changedqwerty75263@gmail.com", 400, "ER0001", "Wrong value format"},
                 //max size
                 {"123456789@1234567890123456789012345678901234567890123456789012345678.ru", "changedqwerty75263@gmail.com", 400, "ER0007", "Wrong value size"},
                 //not acceptable symbols
@@ -78,5 +80,4 @@ public class ResendEmailTest extends BaseTest {
             assertEquals(responseBody.getDescription(), errorDescription, "Invalid description");
         }
     }
-
 }
