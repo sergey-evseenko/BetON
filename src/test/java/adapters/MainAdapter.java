@@ -104,6 +104,17 @@ public class MainAdapter {
                 .extract().response();
     }
 
+    public Response putWithoutToken(String url, String body, int responseCode) {
+        return given()
+                .contentType(ContentType.JSON)
+                .body(body)
+                .when()
+                .put(url)
+                .then()
+                .statusCode(responseCode)
+                .extract().response();
+    }
+
     public Response putWithToken(String url, String token, String body, int responseCode) {
         return given()
                 .contentType(ContentType.JSON)
