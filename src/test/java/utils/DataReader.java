@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class DataReader {
-    public static final String DEFAULT_PATH = "src/test/resources/Data/";
+    public static final String DEFAULT_PATH = "src/test/resources/data/";
     protected Gson gson = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
             .create();
