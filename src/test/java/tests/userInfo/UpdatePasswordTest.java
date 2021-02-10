@@ -10,8 +10,8 @@ import static org.testng.Assert.assertEquals;
 
 public class UpdatePasswordTest extends BaseTest {
 
-    @Test(description = "update valid password")
-    public void updateValidPassword() {
+    @Test(description = "update password")
+    public void updatePassword() {
         Password validPassword = new Password("Qwerty!1231", "Qwerty!123", "Qwerty!1231");
         Password defaultPassword = new Password("Qwerty!123", "Qwerty!1231", "Qwerty!123");
         new UserAdapter().putPassword(validPassword, token, 200);
@@ -19,7 +19,7 @@ public class UpdatePasswordTest extends BaseTest {
     }
 
     @DataProvider(name = "Invalid passwords")
-    public Object[][] invalidPhones() {
+    public Object[][] invalidPasswords() {
         return new Object[][]{
                 //newPassword with upper case
                 {"QWERTY!1231", "Qwerty!123", "Qwerty!1231", "newPassword", "ER0001", "Wrong value format"},
@@ -52,8 +52,8 @@ public class UpdatePasswordTest extends BaseTest {
         };
     }
 
-    @Test(description = "update invalid password", dataProvider = "Invalid passwords")
-    public void updateInvalidPassword(String newPassword, String password, String repeatNewPassword, String field, String code, String description) {
+    @Test(description = "validate password", dataProvider = "Invalid passwords")
+    public void validatePassword(String newPassword, String password, String repeatNewPassword, String field, String code, String description) {
         Password invalidPassword = new Password(newPassword, password, repeatNewPassword);
         responseBody = new UserAdapter().putPassword(invalidPassword, token, 400);
         assertEquals(responseBody.getField(), field, "Invalid field");

@@ -22,8 +22,8 @@ public class UpdateUserInfoTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
     }
 
-    @Test(description = "Update user info with valid data")
-    public void updateValidUserData() {
+    @Test(description = "Update user info")
+    public void updateUserInfo() {
         User updatedUser = data.get("userUpdated.json", User.class);
         UserInfo expectedUserInfo = data.get("userInfoUpdated.json", UserInfo.class);
         UserInfo actualUserInfo = new UserAdapter().put(updatedUser, token);
@@ -48,8 +48,8 @@ public class UpdateUserInfoTest extends BaseTest {
         };
     }
 
-    @Test(description = "Update user info with invalid phone", dataProvider = "Invalid phones")
-    public void updateInvalidPhone(String phone, String code, String description) {
+    @Test(description = "validate phone", dataProvider = "Invalid phones")
+    public void validatePhone(String phone, String code, String description) {
         user.setPhone(phone);
         responseBody = new UserAdapter().putInvalidData(user, token);
         assertEquals(responseBody.getField(), "phone", "Invalid field");
@@ -69,8 +69,8 @@ public class UpdateUserInfoTest extends BaseTest {
         };
     }
 
-    @Test(description = "Update user info with invalid title", dataProvider = "Invalid titles")
-    public void updateInvalidTitle(int title, String field, String code, String description) {
+    @Test(description = "validate title", dataProvider = "Invalid titles")
+    public void validateTitle(int title, String field, String code, String description) {
         userProfileDto.setTitle(title);
         user.setUserProfileDto(userProfileDto);
 
@@ -93,8 +93,8 @@ public class UpdateUserInfoTest extends BaseTest {
         };
     }
 
-    @Test(description = "Update user info with invalid surname", dataProvider = "Invalid surnames")
-    public void updateInvalidSurname(String surname, String code, String description) {
+    @Test(description = "validate surname", dataProvider = "Invalid surnames")
+    public void validateSurname(String surname, String code, String description) {
         userProfileDto.setSurname(surname);
         user.setUserProfileDto(userProfileDto);
 
@@ -117,8 +117,8 @@ public class UpdateUserInfoTest extends BaseTest {
         };
     }
 
-    @Test(description = "Update user info with invalid phone codes", dataProvider = "Invalid phoneCodes")
-    public void updateInvalidPhoneCode(String phoneCode, String code, String description) {
+    @Test(description = "validate phone code", dataProvider = "Invalid phoneCodes")
+    public void validatePhoneCode(String phoneCode, String code, String description) {
         userProfileDto.setPhoneCode(phoneCode);
         user.setUserProfileDto(userProfileDto);
 
@@ -141,8 +141,8 @@ public class UpdateUserInfoTest extends BaseTest {
         };
     }
 
-    @Test(description = "Update user info with invalid passport numbers", dataProvider = "Invalid passportNumbers")
-    public void updateInvalidPassportNumber(String passportNumber, String code, String description) {
+    @Test(description = "validate passport number", dataProvider = "Invalid passportNumbers")
+    public void validatePassportNumber(String passportNumber, String code, String description) {
         userProfileDto.setPassportNumber(passportNumber);
         user.setUserProfileDto(userProfileDto);
 
@@ -164,8 +164,8 @@ public class UpdateUserInfoTest extends BaseTest {
         };
     }
 
-    @Test(description = "Update user info with invalid nationality id", dataProvider = "Invalid nationalityIds")
-    public void updateInvalidNationalityId(int nationalityId, String field, String code, String description) {
+    @Test(description = "validate nationality id", dataProvider = "Invalid nationalityIds")
+    public void validateNationalityId(int nationalityId, String field, String code, String description) {
         userProfileDto.setNationalityId(nationalityId);
         user.setUserProfileDto(userProfileDto);
 
@@ -188,8 +188,8 @@ public class UpdateUserInfoTest extends BaseTest {
         };
     }
 
-    @Test(description = "Update user info with invalid name", dataProvider = "Invalid names")
-    public void updateInvalidName(String name, String code, String description) {
+    @Test(description = "validate name", dataProvider = "Invalid names")
+    public void validateName(String name, String code, String description) {
         userProfileDto.setName(name);
         user.setUserProfileDto(userProfileDto);
 
@@ -210,8 +210,8 @@ public class UpdateUserInfoTest extends BaseTest {
         };
     }
 
-    @Test(description = "Update user info with empty birth date", dataProvider = "Invalid birth dates")
-    public void updateEmptyBirthDate(String birthDate) {
+    @Test(description = "validate birth date", dataProvider = "Invalid birth dates")
+    public void validateBirthDate(String birthDate) {
         userProfileDto.setBirthDate(birthDate);
         user.setUserProfileDto(userProfileDto);
 
@@ -245,8 +245,8 @@ public class UpdateUserInfoTest extends BaseTest {
         };
     }
 
-    @Test(description = "Update user info with invalid country code", dataProvider = "Invalid country codes")
-    public void updateInvalidCountryCode(String countryCode, String field, String code, String description) {
+    @Test(description = "validate country code", dataProvider = "Invalid country codes")
+    public void validateCountryCode(String countryCode, String field, String code, String description) {
         userProfileDto = user.getUserProfileDto();
         Address[] addresses = userProfileDto.getAddresses();
         addresses[0].setCountryCode(countryCode);

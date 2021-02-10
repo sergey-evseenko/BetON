@@ -26,8 +26,8 @@ public class RegistrationTest extends BaseTest {
         termsAndConditionDto = user.getTermsAndConditionDto();
     }
 
-    @Test(description = "Registration with valid data")
-    public void registrationWithValidData() {
+    @Test(description = "registration")
+    public void registration() {
         responseBody = new RegistrationAdapter().post(user, 200);
         assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
         assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
@@ -59,8 +59,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid email", dataProvider = "Invalid emails")
-    public void registrationWithInvalidEmail(String email, String code, String description) {
+    @Test(description = "validate email", dataProvider = "Invalid emails")
+    public void validateEmail(String email, String code, String description) {
         user.setEmail(email);
         responseBody = new RegistrationAdapter().post(user, 400);
         assertEquals(responseBody.getField(), "email", "Invalid field");
@@ -87,8 +87,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid password", dataProvider = "Invalid passwords")
-    public void registrationWithInvalidPassword(String password, String code, String description) {
+    @Test(description = "validate password", dataProvider = "Invalid passwords")
+    public void validatePassword(String password, String code, String description) {
         user.setPassword(password);
         responseBody = new RegistrationAdapter().post(user, 400);
         assertEquals(responseBody.getField(), "password", "Invalid field");
@@ -97,22 +97,22 @@ public class RegistrationTest extends BaseTest {
         assertEquals(responseBody.getDescription(), description, "Invalid description");
     }
 
-    @Test(description = "Registration with invalid password contains first name")
-    public void registrationWithInvalidPasswordContainsFirstName() {
+    @Test(description = "validate password contains first name")
+    public void validatePasswordContainsFirstName() {
         user.setPassword(userProfileDto.getName() + "Q123!");
         user.setRepeatedPassword(userProfileDto.getName() + "Q123!");
         postAndValidateResponse(user);
     }
 
-    @Test(description = "Registration with invalid password contains last name")
-    public void registrationWithInvalidPasswordContainsLastName() {
+    @Test(description = "validate password contains last name")
+    public void validatePasswordContainsLastName() {
         user.setPassword(userProfileDto.getSurname() + "Q123!");
         user.setRepeatedPassword(userProfileDto.getSurname() + "Q123!");
         postAndValidateResponse(user);
     }
 
-    @Test(description = "Registration with invalid password contains user name")
-    public void registrationWithInvalidPasswordContainsUserName() {
+    @Test(description = "validate password contains user name")
+    public void validatePasswordContainsUserName() {
         user.setPassword(user.getUserName() + "Q123!");
         user.setRepeatedPassword(user.getUserName() + "Q123!");
         postAndValidateResponse(user);
@@ -150,8 +150,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid phone", dataProvider = "Invalid phones")
-    public void registrationWithInvalidPhone(String phone, String code, String description) {
+    @Test(description = "validate phone", dataProvider = "Invalid phones")
+    public void validatePhone(String phone, String code, String description) {
         user.setPhone(phone);
         responseBody = new RegistrationAdapter().post(user, 400);
         assertEquals(responseBody.getField(), "phone", "Invalid field");
@@ -172,8 +172,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid repeated email", dataProvider = "Invalid repeated emails")
-    public void registrationWithInvalidRepeatedEmail(String repeatedEmail, String code, String description) {
+    @Test(description = "validate repeated email", dataProvider = "Invalid repeated emails")
+    public void validateRepeatedEmail(String repeatedEmail, String code, String description) {
         user.setRepeatedEmail(repeatedEmail);
         responseBody = new RegistrationAdapter().post(user, 400);
         assertEquals(responseBody.getField(), "repeatedEmail", "Invalid field");
@@ -196,8 +196,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid repeated password", dataProvider = "Invalid repeated passwords")
-    public void registrationWithInvalidRepeatedPassword(String repeatedPassword, String field, String code, String description) {
+    @Test(description = "validate repeated password", dataProvider = "Invalid repeated passwords")
+    public void validateRepeatedPassword(String repeatedPassword, String field, String code, String description) {
         user.setRepeatedPassword(repeatedPassword);
         responseBody = new RegistrationAdapter().post(user, 400);
         assertEquals(responseBody.getField(), field, "Invalid field");
@@ -216,8 +216,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid terms and conditions", dataProvider = "Invalid terms and conditions")
-    public void registrationWithInvalidTermsAndConditions(Boolean accept) {
+    @Test(description = "validate terms and conditions", dataProvider = "Invalid terms and conditions")
+    public void validateTermsAndConditions(Boolean accept) {
         termsAndConditionDto.setAccept(accept);
         user.setTermsAndConditionDto(termsAndConditionDto);
         responseBody = new RegistrationAdapter().post(user, 400);
@@ -253,8 +253,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Update user info with invalid country code", dataProvider = "Invalid country codes")
-    public void registrationWithInvalidCountryCode(String countryCode, String field, String code, String description) {
+    @Test(description = "validate country code", dataProvider = "Invalid country codes")
+    public void validateCountryCode(String countryCode, String field, String code, String description) {
         userProfileDto = user.getUserProfileDto();
         Address[] addresses = userProfileDto.getAddresses();
         addresses[0].setCountryCode(countryCode);
@@ -278,8 +278,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid birth date", dataProvider = "Invalid birth dates")
-    public void registrationWithInvalidBirthDate(String birthDate) {
+    @Test(description = "validate birth date", dataProvider = "Invalid birth dates")
+    public void validateBirthDate(String birthDate) {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setBirthDate(birthDate);
         user.setUserProfileDto(userProfileDto);
@@ -300,8 +300,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid dataTransferToBp", dataProvider = "Invalid dataTransferToBp")
-    public void registrationWithInvalidDataTransferToBp(Boolean dataTransferToBp, String field, String code, String description) {
+    @Test(description = "validate dataTransferToBp", dataProvider = "Invalid dataTransferToBp")
+    public void validateDataTransferToBp(Boolean dataTransferToBp, String field, String code, String description) {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setDataTransferToBp(dataTransferToBp);
         user.setUserProfileDto(userProfileDto);
@@ -322,8 +322,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid dataTransferToCashOn", dataProvider = "Invalid dataTransferToCashOn")
-    public void registrationWithInvalidDataTransferToCashOn(Boolean dataTransferToCashOn, String field, String code, String description) {
+    @Test(description = "validate dataTransferToCashOn", dataProvider = "Invalid dataTransferToCashOn")
+    public void validateDataTransferToCashOn(Boolean dataTransferToCashOn, String field, String code, String description) {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setDataTransferToCashOn(dataTransferToCashOn);
         user.setUserProfileDto(userProfileDto);
@@ -344,8 +344,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid name", dataProvider = "Invalid names")
-    public void registrationWithInvalidName(String name, String code, String description) {
+    @Test(description = "validate name", dataProvider = "Invalid names")
+    public void validateName(String name, String code, String description) {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setName(name);
         user.setUserProfileDto(userProfileDto);
@@ -366,8 +366,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid surname", dataProvider = "Invalid surnames")
-    public void registrationWithInvalidSurname(String surname, String code, String description) {
+    @Test(description = "validate surname", dataProvider = "Invalid surnames")
+    public void validateSurname(String surname, String code, String description) {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setSurname(surname);
         user.setUserProfileDto(userProfileDto);
@@ -388,8 +388,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid nationality id", dataProvider = "Invalid nationality ids")
-    public void registrationWithInvalidNationalityId(int nationalityId, String field, String code, String description) {
+    @Test(description = "validate nationality id", dataProvider = "Invalid nationality ids")
+    public void validateNationalityId(int nationalityId, String field, String code, String description) {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setNationalityId(nationalityId);
         user.setUserProfileDto(userProfileDto);
@@ -410,8 +410,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid title", dataProvider = "Invalid titles")
-    public void registrationWithInvalidTitle(int title, String field, String code, String description) {
+    @Test(description = "validate invalid title", dataProvider = "Invalid titles")
+    public void validateTitle(int title, String field, String code, String description) {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setTitle(title);
         user.setUserProfileDto(userProfileDto);
@@ -438,8 +438,8 @@ public class RegistrationTest extends BaseTest {
         };
     }
 
-    @Test(description = "Registration with invalid title", dataProvider = "Invalid usernames")
-    public void registrationWithInvalidUsername(String username, String code, String description) {
+    @Test(description = "validate title", dataProvider = "Invalid usernames")
+    public void validateUsername(String username, String code, String description) {
         user.setUserName(username);
         responseBody = new RegistrationAdapter().post(user, 400);
         assertEquals(responseBody.getField(), "username", "Invalid field");

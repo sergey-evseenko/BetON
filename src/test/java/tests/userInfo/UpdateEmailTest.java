@@ -31,14 +31,14 @@ public class UpdateEmailTest extends BaseTest {
         assertEquals(responseBody.getDescription(), description, "Invalid description");
     }
 
-    @Test(description = "Update valid email")
-    public void updateValidEmail() {
+    @Test(description = "Update email")
+    public void updateEmail() {
         Email validEmail = new Email("polinazz2@inbox.ru", "Qwerty!123", "polinazz2@inbox.ru");
         new UserAdapter().putEmail(validEmail, token, 200);
     }
 
     @DataProvider(name = "Invalid emails")
-    public Object[][] invalidPhones() {
+    public Object[][] invalidEmails() {
         return new Object[][]{
                 //emails are not equals
                 {"polinazz1234@inbox.ru", "Qwerty!123", "polinazz2@inbox.ru", "email", "ER0005", "Values are mismatch"},
@@ -67,8 +67,8 @@ public class UpdateEmailTest extends BaseTest {
         };
     }
 
-    @Test(description = "Update invalid email", dataProvider = "Invalid emails")
-    public void updateInvalidEmail(String email, String password, String repeatedEmail, String field, String code, String description) {
+    @Test(description = "validate email", dataProvider = "Invalid emails")
+    public void validateEmail(String email, String password, String repeatedEmail, String field, String code, String description) {
         Email invalidEmail = new Email(email, password, repeatedEmail);
         responseBody = new UserAdapter().putEmail(invalidEmail, token, 400);
         assertEquals(responseBody.getField(), field, "Invalid field");

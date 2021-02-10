@@ -7,7 +7,7 @@ import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
 
-public class CheckPassword extends BaseTest {
+public class CheckPasswordTest extends BaseTest {
 
     @DataProvider(name = "Passwords")
     public Object[][] passwords() {
@@ -22,7 +22,7 @@ public class CheckPassword extends BaseTest {
     }
 
     @Test(description = "check password", dataProvider = "Passwords")
-    public void checkPasswordValidFormat(String password, String code, String description) {
+    public void checkPassword(String password, String code, String description) {
         if (password != null) {
             String responseMessage = new UserAdapter().checkPassword(password, token);
             assertEquals(responseMessage, description, "Checking password error");
