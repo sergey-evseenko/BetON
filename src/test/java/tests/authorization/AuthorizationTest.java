@@ -14,14 +14,15 @@ public class AuthorizationTest extends BaseTest {
     User user = data.get("userForLogin.json", User.class);
 
     @Test(description = "Login with valid login/pass")
-    public void validLogin() {
+    public void login() {
         responseBody = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
         assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
         assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
     }
 
-    @Test(description = "Login with refresh token", dependsOnMethods = "validLogin")
-    public void validLoginWithRefreshToken() {
+    @Test(description = "Login with refresh token")
+    public void loginWithRefreshToken() {
+        responseBody = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
         responseBody = new AuthorizationAdapter().post(responseBody.getRefreshToken());
         assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
         assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
