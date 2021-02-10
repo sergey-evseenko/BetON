@@ -80,4 +80,21 @@ public class UserAdapter extends MainAdapter {
         return responseBodyErrors[0];
     }
 
+    public ResponseBody putSecurityOption(SecurityOption securityOption, String token, int responseCode) {
+        body = gson.toJson(securityOption);
+        response = put(url + "/security", token, body, responseCode);
+        if (responseCode == 400) {
+            ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
+            return responseBodyErrors[0];
+        } else {
+            return null;
+        }
+    }
+
+    public SecurityOption getSecurityOption(String token) {
+        response = getWithToken(url + "/security", 200, token);
+        return gson.fromJson(response.asString().trim(), SecurityOption.class);
+    }
+
+
 }
