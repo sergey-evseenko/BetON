@@ -10,7 +10,8 @@ public class ChangeLanguageTest extends BaseTest {
 
     @Test(description = "change language")
     public void changeLanguage() {
-        String language = "ru";
+        String[] languages = new String[]{"ru", "en", "de", "fr", "tr"};
+        String language = languages[random.nextInt(languages.length)];
         new PlayerAdapter().changeLanguage(token, language, 200);
         String updatedLanguage = new PlayerAdapter().getLanguage(token);
         assertEquals(updatedLanguage, language, "Changing language error");

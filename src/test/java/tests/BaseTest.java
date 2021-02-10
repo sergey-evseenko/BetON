@@ -9,12 +9,15 @@ import org.testng.annotations.Listeners;
 import utils.DataReader;
 import utils.TestListener;
 
+import java.util.Random;
+
 @Listeners(TestListener.class)
 public class BaseTest {
     protected String token;
     protected ResponseBody responseBody;
     protected User user;
     protected Faker faker = new Faker();
+    protected Random random = new Random();
     protected DataReader data = new DataReader();
 
     @BeforeClass
