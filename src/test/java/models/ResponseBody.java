@@ -31,4 +31,6 @@ public class ResponseBody {
     String field;
     @Expose
     String externalId;
+    @Expose
+    String message;
 }

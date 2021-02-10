@@ -29,26 +29,26 @@ public class UserAdapter extends MainAdapter {
 
     public UserInfo put(User user, String token) {
         body = gson.toJson(user);
-        response = put(url, token, body, 200);
+        response = putWithToken(url, token, body, 200);
         return gson.fromJson(response.asString().trim(), UserInfo.class);
     }
 
     public ResponseBody putInvalidData(User user, String token) {
         body = gson.toJson(user);
-        response = put(url, token, body, 400);
+        response = putWithToken(url, token, body, 400);
         ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
         return responseBodyErrors[0];
     }
 
     public ResponseBody putInvalidBirthDate(User user, String token) {
         body = gson.toJson(user);
-        response = put(url, token, body, 400);
+        response = putWithToken(url, token, body, 400);
         return gson.fromJson(response.asString().trim(), ResponseBody.class);
     }
 
     public ResponseBody putEmail(Email email, String token, int responseCode) {
         body = gson.toJson(email);
-        response = put(url + "/update-email", token, body, responseCode);
+        response = putWithToken(url + "/update-email", token, body, responseCode);
         if (responseCode == 400) {
             ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
             return responseBodyErrors[0];
@@ -59,7 +59,7 @@ public class UserAdapter extends MainAdapter {
 
     public ResponseBody putPassword(Password password, String token, int responseCode) {
         body = gson.toJson(password);
-        response = put(url + "/update-pwd", token, body, responseCode);
+        response = putWithToken(url + "/update-pwd", token, body, responseCode);
         if (responseCode == 400) {
             ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
             return responseBodyErrors[0];
@@ -82,7 +82,7 @@ public class UserAdapter extends MainAdapter {
 
     public ResponseBody putSecurityOption(SecurityOption securityOption, String token, int responseCode) {
         body = gson.toJson(securityOption);
-        response = put(url + "/security", token, body, responseCode);
+        response = putWithToken(url + "/security", token, body, responseCode);
         if (responseCode == 400) {
             ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
             return responseBodyErrors[0];
@@ -95,6 +95,4 @@ public class UserAdapter extends MainAdapter {
         response = getWithToken(url + "/security", 200, token);
         return gson.fromJson(response.asString().trim(), SecurityOption.class);
     }
-
-
 }

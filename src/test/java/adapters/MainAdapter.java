@@ -104,10 +104,23 @@ public class MainAdapter {
                 .extract().response();
     }
 
-    public Response put(String url, String token, String body, int responseCode) {
+    public Response putWithToken(String url, String token, String body, int responseCode) {
         return given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", "Bearer " + token)
+                .body(body)
+                .when()
+                .put(url)
+                .then()
+                .statusCode(responseCode)
+                .extract().response();
+    }
+
+    public Response putWithHeader(String url, String token, String body, int responseCode, String param, String paramValue) {
+        return given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token)
+                .header(param, paramValue)
                 .body(body)
                 .when()
                 .put(url)
