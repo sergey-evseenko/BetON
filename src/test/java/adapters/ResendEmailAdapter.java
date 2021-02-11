@@ -6,7 +6,8 @@ import models.ResponseBody;
 public class ResendEmailAdapter extends MainAdapter {
 
     public ResponseBody post(ResendEmailData resendEmailData, String token, int responseCode) {
-        response = postWithHeader("auth/v1/users/confirm/registration/resend", responseCode, gson.toJson(resendEmailData), "Authorization", "Bearer " + token);
+        body = gson.toJson(resendEmailData);
+        response = postWithHeader("auth/v1/users/confirm/registration/resend", responseCode, body, "Authorization", "Bearer " + token);
         if (responseCode == 200) {
             return null;
         } else {

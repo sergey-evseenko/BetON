@@ -7,7 +7,7 @@ public class PlayerAdapter extends MainAdapter {
 
     String url = "player/v1/players/";
 
-    public ResponseBody changeLanguage(String token, String language, int responseCode) {
+    public ResponseBody putLanguage(String token, String language, int responseCode) {
         response = putWithHeader(url + "lang", token, "", responseCode, "lang", language);
         return gson.fromJson(response.asString().trim(), ResponseBody.class);
     }
@@ -17,7 +17,7 @@ public class PlayerAdapter extends MainAdapter {
         return response.asString();
     }
 
-    public ResponseBody changeLanguageNoHeader(String token) {
+    public ResponseBody putLanguageNoHeader(String token) {
         response = putWithToken(url + "lang", token, "", 400);
         return gson.fromJson(response.asString().trim(), ResponseBody.class);
     }
@@ -46,6 +46,15 @@ public class PlayerAdapter extends MainAdapter {
 
     public ResponseBody getOptionListUnauthorized() {
         response = get(url + "options", 401);
+        return gson.fromJson(response.asString().trim(), ResponseBody.class);
+    }
+
+    public void putPPMO(String token, String ppmo, int responseCode) {
+        putWithToken(url + "ppmo?ppmo=" + ppmo, token, "", responseCode);
+    }
+
+    public ResponseBody getPPMO(String token) {
+        response = getWithToken(url + "ppmo", 200, token);
         return gson.fromJson(response.asString().trim(), ResponseBody.class);
     }
 

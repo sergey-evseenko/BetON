@@ -33,4 +33,6 @@ public class ResponseBody {
     String externalId;
     @Expose
     String message;
+    @Expose
+    String ppmo;
 }
