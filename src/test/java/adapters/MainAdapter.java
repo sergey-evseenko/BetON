@@ -3,8 +3,8 @@ package adapters;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import utils.DataReader;
 import utils.PropertyManager;
 
@@ -18,6 +18,7 @@ public class MainAdapter {
     Response response;
     String body;
     DataReader data;
+    RequestSpecification requestSpec;
 
     public MainAdapter() {
         data = new DataReader();
@@ -38,105 +39,34 @@ public class MainAdapter {
                 .extract().response();
     }
 
-    public Response getWithToken(String url, int responseCode, String token) {
+    public Response get(String url, RequestSpecification requestSpec, int expectedStatusCode) {
         return given()
-                .header("Authorization", "Bearer " + token)
+                .spec(requestSpec)
                 .when()
                 .get(url)
                 .then()
-                .statusCode(responseCode)
+                .statusCode(expectedStatusCode)
                 .extract().response();
     }
 
-    public Response getWithQueryParam(String url, int responseCode, String param, String paramValue) {
+    public Response post(String url, RequestSpecification requestSpec, int expectedStatusCode) {
         return given()
-                .queryParam(param, paramValue)
-                .when()
-                .get(url)
-                .then()
-                .statusCode(responseCode)
-                .extract().response();
-    }
-
-    public Response getWithTokenAndPathParam(String url, int responseCode, String token, String param, String paramValue) {
-        return given()
-                .header("Authorization", "Bearer " + token)
-                .pathParam(param, paramValue)
-                .when()
-                .get(url)
-                .then()
-                .statusCode(responseCode)
-                .extract().response();
-    }
-
-    public Response post(String url, int responseCode, String body) {
-        return given()
-                .contentType(ContentType.JSON)
-                .body(body)
+                .spec(requestSpec)
                 .when()
                 .post(url)
                 .then()
-                .statusCode(responseCode)
+                .statusCode(expectedStatusCode)
                 .extract().response();
     }
 
-    public Response postWithToken(String url, int responseCode, String body, String token) {
+    public Response put(String url, RequestSpecification requestSpec, int expectedStatusCode) {
         return given()
-                .header("Authorization", "Bearer " + token)
-                .contentType(ContentType.JSON)
-                .body(body)
-                .when()
-                .post(url)
-                .then()
-                .statusCode(responseCode)
-                .extract().response();
-    }
-
-    public Response postWithHeader(String url, int responseCode, String body, String param, String paramValue) {
-        return given()
-                .contentType(ContentType.JSON)
-                .header(param, paramValue)
-                .body(body)
-                .when()
-                .post(url)
-                .then()
-                .statusCode(responseCode)
-                .extract().response();
-    }
-
-    public Response putWithoutToken(String url, String body, int responseCode) {
-        return given()
-                .contentType(ContentType.JSON)
-                .body(body)
+                .spec(requestSpec)
                 .when()
                 .put(url)
                 .then()
-                .statusCode(responseCode)
+                .statusCode(expectedStatusCode)
                 .extract().response();
     }
 
-    public Response putWithToken(String url, String token, String body, int responseCode) {
-        return given()
-                .contentType(ContentType.JSON)
-                .header("Authorization", "Bearer " + token)
-                .body(body)
-                .when()
-                .put(url)
-                .then()
-                .statusCode(responseCode)
-                .extract().response();
-    }
-
-    public Response putWithHeader(String url, String token, String body, int responseCode, String param, String paramValue) {
-        return given()
-                .contentType(ContentType.JSON)
-                .header("Authorization", "Bearer " + token)
-                .header(param, paramValue)
-                .body(body)
-                .when()
-                .put(url)
-                .then()
-                .statusCode(responseCode)
-                .extract().response();
-    }
 }

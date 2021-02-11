@@ -1,6 +1,9 @@
 package adapters;
 
+import io.restassured.http.ContentType;
 import models.AddressForRegistration;
+
+import static io.restassured.RestAssured.given;
 
 public class SearchRegistrationDataAdapter extends MainAdapter {
 
@@ -33,7 +36,11 @@ public class SearchRegistrationDataAdapter extends MainAdapter {
             path = "content/v1/registration/search";
         }
 
-        response = post(path, 200, "");
+
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .body("");
+        response = post(path, requestSpec, 200);
         return gson.fromJson(response.asString().trim(), AddressForRegistration[].class);
     }
 }

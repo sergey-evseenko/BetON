@@ -1,14 +1,22 @@
 package adapters;
 
+import io.restassured.http.ContentType;
 import models.ResponseBody;
 import models.User;
 
-public class RegistrationAdapter extends MainAdapter {
+import static io.restassured.RestAssured.given;
 
-    public ResponseBody post(User user, int statusCode) {
+public class RegistrationAdapter extends MainAdapter {
+    String url = "auth/v1/users/register";
+
+    public ResponseBody post(User user, int expectedStatusCode) {
         body = gson.toJson(user);
-        response = postWithHeader("auth/v1/users/register", statusCode, body, "lang", "en");
-        if (statusCode == 200) {
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .header("lang", "en")
+                .body(body);
+        response = post(url, requestSpec, expectedStatusCode);
+        if (expectedStatusCode == 200) {
             return gson.fromJson(response.asString().trim(), ResponseBody.class);
         } else {
             ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);

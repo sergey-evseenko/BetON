@@ -1,9 +1,11 @@
 package adapters;
 
+import io.restassured.http.ContentType;
 import models.*;
 
-public class UserAdapter extends MainAdapter {
+import static io.restassured.RestAssured.given;
 
+public class UserAdapter extends MainAdapter {
     String url = "auth/v1/users";
 
     public ResponseBody confirmEmail(String code) {
@@ -13,12 +15,16 @@ public class UserAdapter extends MainAdapter {
     }
 
     public UserInfo getUserInfoWithValidToken(String token) {
-        response = getWithToken(url + "/me", 200, token);
+        requestSpec = given()
+                .header("Authorization", "Bearer " + token);
+        response = get(url + "/me", requestSpec, 200);
         return gson.fromJson(response.asString().trim(), UserInfo.class);
     }
 
     public ResponseBody getUserInfoWithExpiredToken(String token) {
-        response = getWithToken(url + "/me", 401, token);
+        requestSpec = given()
+                .header("Authorization", "Bearer " + token);
+        response = get(url + "/me", requestSpec, 401);
         return gson.fromJson(response.asString().trim(), ResponseBody.class);
     }
 
@@ -29,26 +35,42 @@ public class UserAdapter extends MainAdapter {
 
     public UserInfo put(User user, String token) {
         body = gson.toJson(user);
-        response = putWithToken(url, token, body, 200);
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token)
+                .body(body);
+        response = put(url, requestSpec, 200);
         return gson.fromJson(response.asString().trim(), UserInfo.class);
     }
 
     public ResponseBody putInvalidData(User user, String token) {
         body = gson.toJson(user);
-        response = putWithToken(url, token, body, 400);
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token)
+                .body(body);
+        response = put(url, requestSpec, 400);
         ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
         return responseBodyErrors[0];
     }
 
     public ResponseBody putInvalidBirthDate(User user, String token) {
         body = gson.toJson(user);
-        response = putWithToken(url, token, body, 400);
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token)
+                .body(body);
+        response = put(url, requestSpec, 400);
         return gson.fromJson(response.asString().trim(), ResponseBody.class);
     }
 
     public ResponseBody putEmail(Email email, String token, int responseCode) {
         body = gson.toJson(email);
-        response = putWithToken(url + "/update-email", token, body, responseCode);
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token)
+                .body(body);
+        response = put(url + "/update-email", requestSpec, responseCode);
         if (responseCode == 400) {
             ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
             return responseBodyErrors[0];
@@ -59,7 +81,11 @@ public class UserAdapter extends MainAdapter {
 
     public ResponseBody putPassword(Password password, String token, int responseCode) {
         body = gson.toJson(password);
-        response = putWithToken(url + "/update-pwd", token, body, responseCode);
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token)
+                .body(body);
+        response = put(url + "/update-pwd", requestSpec, responseCode);
         if (responseCode == 400) {
             ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
             return responseBodyErrors[0];
@@ -70,19 +96,30 @@ public class UserAdapter extends MainAdapter {
 
     public String checkPassword(String password, String token) {
         body = String.format("{\"password\" : \"%s\"}", password);
-        response = postWithToken(url + "/check-pwd", 200, body, token);
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token)
+                .body(body);
+        response = post(url + "/check-pwd", requestSpec, 200);
         return response.asString();
     }
 
     public ResponseBody checkNullPassword() {
-        response = post(url + "/check-pwd", 400, "{}");
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .body("{}");
+        response = post(url + "/check-pwd", requestSpec, 400);
         ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
         return responseBodyErrors[0];
     }
 
     public ResponseBody putSecurityOption(SecurityOption securityOption, String token, int responseCode) {
         body = gson.toJson(securityOption);
-        response = putWithToken(url + "/security", token, body, responseCode);
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .header("Authorization", "Bearer " + token)
+                .body(body);
+        response = put(url + "/security", requestSpec, responseCode);
         if (responseCode == 400) {
             ResponseBody[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBody[].class);
             return responseBodyErrors[0];
@@ -92,7 +129,9 @@ public class UserAdapter extends MainAdapter {
     }
 
     public SecurityOption getSecurityOption(String token) {
-        response = getWithToken(url + "/security", 200, token);
+        requestSpec = given()
+                .header("Authorization", "Bearer " + token);
+        response = get(url + "/security", requestSpec, 200);
         return gson.fromJson(response.asString().trim(), SecurityOption.class);
     }
 }
