@@ -18,19 +18,24 @@ public class ContentAdapter extends MainAdapter {
     }
 
     public ResponseBody validateParams(String name, String lang, boolean withChild, int expectedStatusCode) {
-        if (name != null) {
+        if ((name != null) && (lang != null)) {
             requestSpec = given()
                     .queryParam("lang", lang)
                     .queryParam("name", name)
                     .queryParam("with_child", String.valueOf(withChild));
-        } else {
+        }
+        if (name == null) {
             requestSpec = given()
                     .queryParam("lang", lang)
+                    .queryParam("with_child", String.valueOf(withChild));
+        }
+        if (lang == null) {
+            requestSpec = given()
+                    .queryParam("name", name)
                     .queryParam("with_child", String.valueOf(withChild));
         }
 
         response = get(url, requestSpec, expectedStatusCode);
         return gson.fromJson(response.asString().trim(), ResponseBody.class);
     }
-
 }

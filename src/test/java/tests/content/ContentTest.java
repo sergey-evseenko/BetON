@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNull;
 
 public class ContentTest extends BaseTest {
 
@@ -41,7 +42,7 @@ public class ContentTest extends BaseTest {
     @Test(description = "validate params: with_child is false")
     public void validateFalseWithChild() {
         page = new ContentAdapter().getDocumentByName("about", false);
-        assertEquals(page.getChildren(), null, "Displaying children pages error");
+        assertNull(page.getChildren(), "Displaying children pages error");
     }
 
     //TODO: validate params: with_child is null
@@ -52,7 +53,7 @@ public class ContentTest extends BaseTest {
         assertEquals(responseBody.getDescription(), "No translation", "validate content param error");
     }
 
-    @Ignore //TODO 500 Error
+    @Ignore //TODO Fix 500 error
     @Test(description = "validate params: lang is null")
     public void validateNullLang() {
         responseBody = new ContentAdapter().validateParams("about", null, true, 200);
