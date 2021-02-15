@@ -31,12 +31,20 @@ public class ContentTest extends BaseTest {
 
     @Test(description = "get document by name", dataProvider = "Pages")
     public void getDocumentByName(int id, String name, String title, int numberOfChildPages) {
-        page = new ContentAdapter().getDocumentByName(name);
+        page = new ContentAdapter().getDocumentByName(name, true);
         assertEquals(page.getId(), id, "Invalid page Id");
         assertEquals(page.getName(), name, "Invalid page name");
         assertEquals(page.getTitle(), title, "Invalid title");
         assertEquals(page.getChildren().size(), numberOfChildPages, "Invalid number of child pages");
     }
+
+    @Test(description = "validate params: with_child is false")
+    public void validateFalseWithChild() {
+        page = new ContentAdapter().getDocumentByName("about", false);
+        assertEquals(page.getChildren(), null, "Displaying children pages error");
+    }
+
+    //TODO: validate params: with_child is null
 
     @Test(description = "validate params: invalid lang")
     public void validateInvalidLang() {
@@ -56,19 +64,11 @@ public class ContentTest extends BaseTest {
         assertEquals(responseBody.getMessage(), "Document with name 'qwerty' is not found in database.", "validate content param error");
     }
 
-    //TODO validate params: name is null
-    /*
     @Test(description = "validate params: name is null")
     public void validateNullName(){
         responseBody = new ContentAdapter().validateParams(null, "en", true, 400);
         assertEquals(responseBody.getMessage(), "Required String parameter 'name' is not present", "validate content param error");
     }
-     */
 
-    //TODO validate params: with_child is false or null
-    /*
-    @Test(description = "validate params: with_child is false")
-    public void validateFalseWithChild(){
-    }
-     */
+
 }
