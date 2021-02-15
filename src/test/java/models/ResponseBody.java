@@ -35,4 +35,8 @@ public class ResponseBody {
     String message;
     @Expose
     String ppmo;
+    @Expose
+    String templateUrl;
+    @Expose
+    String jwtToken;
 }
