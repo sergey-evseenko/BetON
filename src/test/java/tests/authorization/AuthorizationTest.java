@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotEquals;
+import static org.testng.Assert.assertNotNull;
 
 public class AuthorizationTest extends BaseTest {
 
@@ -17,7 +17,7 @@ public class AuthorizationTest extends BaseTest {
     public void login() {
         responseBody = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
         assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
-        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
+        assertNotNull(responseBody.getAccessToken(), "Invalid access token");
     }
 
     @Test(description = "Login with refresh token")
@@ -25,7 +25,7 @@ public class AuthorizationTest extends BaseTest {
         responseBody = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
         responseBody = new AuthorizationAdapter().post(responseBody.getRefreshToken());
         assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
-        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
+        assertNotNull(responseBody.getAccessToken(), "Invalid access token");
     }
 
     @DataProvider(name = "List of invalid username/pass")

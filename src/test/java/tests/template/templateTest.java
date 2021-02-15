@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotEquals;
+import static org.testng.Assert.assertNotNull;
 
 public class templateTest extends BaseTest {
 
@@ -15,7 +15,7 @@ public class templateTest extends BaseTest {
     public void getTemplateLink() {
         responseBody = new TemplateAdapter().getTemplateUrl(token, 1, 200);
         assertEquals(responseBody.getTemplateUrl(), templateUrl, "invalid template url");
-        assertNotEquals(responseBody.getJwtToken(), null, "Invalid jwt token");
+        assertNotNull(responseBody.getJwtToken(), "Invalid jwt token");
 
     }
 
