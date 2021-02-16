@@ -27,11 +27,11 @@ public class CheckPasswordTest extends BaseTest {
             String responseMessage = new UserAdapter().checkPassword(password, token);
             assertEquals(responseMessage, description, "Checking password error");
         } else {
-            responseBody = new UserAdapter().checkNullPassword();
-            assertEquals(responseBody.getField(), "password", "Invalid field");
-            assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-            assertEquals(responseBody.getCode(), code, "Invalid code");
-            assertEquals(responseBody.getDescription(), description, "Invalid description");
+            response = new UserAdapter().checkNullPassword();
+            assertEquals(response.getField(), "password", "Invalid field");
+            assertEquals(response.getType(), "VALIDATION", "Invalid type");
+            assertEquals(response.getCode(), code, "Invalid code");
+            assertEquals(response.getDescription(), description, "Invalid description");
         }
     }
 

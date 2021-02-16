@@ -24,11 +24,11 @@ public class UpdateEmailTest extends BaseTest {
 
     @Test(description = "Confirm that email was changed", dataProvider = "Invalid codes")
     public void confirmChangedEmail(String confirmationCode, String code, String description) {
-        responseBody = new UserAdapter().confirmEmail(confirmationCode);
-        assertEquals(responseBody.getField(), "Confirmation code", "Invalid field");
-        assertEquals(responseBody.getType(), "CONFIRMATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new UserAdapter().confirmEmail(confirmationCode);
+        assertEquals(response.getField(), "Confirmation code", "Invalid field");
+        assertEquals(response.getType(), "CONFIRMATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @Test(description = "Update email")
@@ -70,10 +70,10 @@ public class UpdateEmailTest extends BaseTest {
     @Test(description = "validate email", dataProvider = "Invalid emails")
     public void validateEmail(String email, String password, String repeatedEmail, String field, String code, String description) {
         Email invalidEmail = new Email(email, password, repeatedEmail);
-        responseBody = new UserAdapter().putEmail(invalidEmail, token, 400);
-        assertEquals(responseBody.getField(), field, "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new UserAdapter().putEmail(invalidEmail, token, 400);
+        assertEquals(response.getField(), field, "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 }

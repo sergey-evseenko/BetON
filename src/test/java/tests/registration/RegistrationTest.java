@@ -28,17 +28,17 @@ public class RegistrationTest extends BaseTest {
 
     @Test(description = "registration")
     public void registration() {
-        responseBody = new RegistrationAdapter().post(user, 200);
-        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
-        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
+        response = new RegistrationAdapter().post(user, 200);
+        assertEquals(response.getEmail(), user.getEmail(), "Invalid email");
+        assertNotEquals(response.getAccessToken(), null, "Invalid access token");
     }
 
     @Test(description = "Registration with Partner Tracking Code")
     public void registrationWithPartnerTrackingCode() {
         user.setPartnerTrackingCode("bwin");
-        responseBody = new RegistrationAdapter().post(user, 200);
-        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
-        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
+        response = new RegistrationAdapter().post(user, 200);
+        assertEquals(response.getEmail(), user.getEmail(), "Invalid email");
+        assertNotEquals(response.getAccessToken(), null, "Invalid access token");
     }
 
     @DataProvider(name = "Invalid emails")
@@ -62,11 +62,11 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "validate email", dataProvider = "Invalid emails")
     public void validateEmail(String email, String code, String description) {
         user.setEmail(email);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), "email", "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), "email", "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @DataProvider(name = "Invalid passwords")
@@ -90,11 +90,11 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "validate password", dataProvider = "Invalid passwords")
     public void validatePassword(String password, String code, String description) {
         user.setPassword(password);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), "password", "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), "password", "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @Test(description = "validate password contains first name")
@@ -119,19 +119,19 @@ public class RegistrationTest extends BaseTest {
     }
 
     public void postAndValidateResponse(User user) {
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), "password.", "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), "ER0008", "Invalid code");
-        assertEquals(responseBody.getDescription(), "Please do not use Username / Name / Surname as password", "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), "password.", "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), "ER0008", "Invalid code");
+        assertEquals(response.getDescription(), "Please do not use Username / Name / Surname as password", "Invalid description");
     }
 
     @Test(description = "Registration with the same phone")
     public void registrationWithTheSamePhone() {
         user.setPhone("+375292907810");
-        responseBody = new RegistrationAdapter().post(user, 200);
-        assertEquals(responseBody.getEmail(), user.getEmail(), "Invalid email");
-        assertNotEquals(responseBody.getAccessToken(), null, "Invalid access token");
+        response = new RegistrationAdapter().post(user, 200);
+        assertEquals(response.getEmail(), user.getEmail(), "Invalid email");
+        assertNotEquals(response.getAccessToken(), null, "Invalid access token");
     }
 
     @DataProvider(name = "Invalid phones")
@@ -153,11 +153,11 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "validate phone", dataProvider = "Invalid phones")
     public void validatePhone(String phone, String code, String description) {
         user.setPhone(phone);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), "phone", "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), "phone", "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @DataProvider(name = "Invalid repeated emails")
@@ -175,11 +175,11 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "validate repeated email", dataProvider = "Invalid repeated emails")
     public void validateRepeatedEmail(String repeatedEmail, String code, String description) {
         user.setRepeatedEmail(repeatedEmail);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), "repeatedEmail", "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), "repeatedEmail", "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @DataProvider(name = "Invalid repeated passwords")
@@ -199,11 +199,11 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "validate repeated password", dataProvider = "Invalid repeated passwords")
     public void validateRepeatedPassword(String repeatedPassword, String field, String code, String description) {
         user.setRepeatedPassword(repeatedPassword);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), field, "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), field, "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @DataProvider(name = "Invalid terms and conditions")
@@ -220,11 +220,11 @@ public class RegistrationTest extends BaseTest {
     public void validateTermsAndConditions(Boolean accept) {
         termsAndConditionDto.setAccept(accept);
         user.setTermsAndConditionDto(termsAndConditionDto);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), "termsAndConditionDto.accept", "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), "ER0010", "Invalid code");
-        assertEquals(responseBody.getDescription(), "You must agree to create an account", "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), "termsAndConditionDto.accept", "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), "ER0010", "Invalid code");
+        assertEquals(response.getDescription(), "You must agree to create an account", "Invalid description");
     }
 
     @Test(description = "Registration with null address")
@@ -232,11 +232,11 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setAddresses(null);
         user.setUserProfileDto(userProfileDto);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), "userProfileDto.addresses", "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), "ER0004", "Invalid code");
-        assertEquals(responseBody.getDescription(), "Field is mandatory", "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), "userProfileDto.addresses", "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), "ER0004", "Invalid code");
+        assertEquals(response.getDescription(), "Field is mandatory", "Invalid description");
     }
 
     @DataProvider(name = "Invalid country codes")
@@ -261,11 +261,11 @@ public class RegistrationTest extends BaseTest {
         userProfileDto.setAddresses(addresses);
         user.setUserProfileDto(userProfileDto);
 
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), field, "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), field, "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @DataProvider(name = "Invalid birth dates")
@@ -283,11 +283,11 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setBirthDate(birthDate);
         user.setUserProfileDto(userProfileDto);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), "userProfileDto.birthDate", "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), "ER0004", "Invalid code");
-        assertEquals(responseBody.getDescription(), "Field is mandatory", "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), "userProfileDto.birthDate", "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), "ER0004", "Invalid code");
+        assertEquals(response.getDescription(), "Field is mandatory", "Invalid description");
     }
 
     @DataProvider(name = "Invalid dataTransferToBp")
@@ -305,11 +305,11 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setDataTransferToBp(dataTransferToBp);
         user.setUserProfileDto(userProfileDto);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), field, "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), field, "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @DataProvider(name = "Invalid dataTransferToCashOn")
@@ -327,11 +327,11 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setDataTransferToCashOn(dataTransferToCashOn);
         user.setUserProfileDto(userProfileDto);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), field, "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), field, "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @DataProvider(name = "Invalid names")
@@ -349,11 +349,11 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setName(name);
         user.setUserProfileDto(userProfileDto);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), "userProfileDto.name", "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), "userProfileDto.name", "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @DataProvider(name = "Invalid surnames")
@@ -371,11 +371,11 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setSurname(surname);
         user.setUserProfileDto(userProfileDto);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), "userProfileDto.surname", "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), "userProfileDto.surname", "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @DataProvider(name = "Invalid nationality ids")
@@ -393,11 +393,11 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setNationalityId(nationalityId);
         user.setUserProfileDto(userProfileDto);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), field, "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), field, "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @DataProvider(name = "Invalid titles")
@@ -415,11 +415,11 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setTitle(title);
         user.setUserProfileDto(userProfileDto);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), field, "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), field, "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @DataProvider(name = "Invalid usernames")
@@ -441,11 +441,11 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "validate title", dataProvider = "Invalid usernames")
     public void validateUsername(String username, String code, String description) {
         user.setUserName(username);
-        responseBody = new RegistrationAdapter().post(user, 400);
-        assertEquals(responseBody.getField(), "username", "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new RegistrationAdapter().post(user, 400);
+        assertEquals(response.getField(), "username", "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
 

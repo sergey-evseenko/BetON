@@ -1,7 +1,7 @@
 package adapters;
 
 import io.restassured.http.ContentType;
-import models.ResponseBody;
+import models.Response;
 import models.ValidateField;
 
 import static io.restassured.RestAssured.given;
@@ -9,12 +9,12 @@ import static io.restassured.RestAssured.given;
 public class FieldValidationAdapter extends MainAdapter {
     String url = "auth/v1/users/field/validate";
 
-    public ResponseBody[] post(ValidateField validateField) {
+    public Response[] post(ValidateField validateField) {
         body = gson.toJson(validateField);
         requestSpec = given()
                 .contentType(ContentType.JSON)
                 .body(body);
         response = post(url, requestSpec, 200);
-        return gson.fromJson(response.asString().trim(), ResponseBody[].class);
+        return gson.fromJson(response.asString().trim(), Response[].class);
     }
 }

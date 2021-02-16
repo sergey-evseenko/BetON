@@ -13,23 +13,23 @@ public class templateTest extends BaseTest {
 
     @Test(description = "getTemplateLink")
     public void getTemplateLink() {
-        responseBody = new TemplateAdapter().getTemplateUrl(token, 1, 200);
-        assertEquals(responseBody.getTemplateUrl(), templateUrl, "invalid template url");
-        assertNotNull(responseBody.getJwtToken(), "Invalid jwt token");
+        response = new TemplateAdapter().getTemplateUrl(token, 1, 200);
+        assertEquals(response.getTemplateUrl(), templateUrl, "invalid template url");
+        assertNotNull(response.getJwtToken(), "Invalid jwt token");
 
     }
 
     @Test(description = "invalid providerId")
     public void invalidProviderId() {
         int providerId = 1234;
-        responseBody = new TemplateAdapter().getTemplateUrl(token, providerId, 400);
-        assertEquals(responseBody.getMessage(), "Incorrect Provider ID=" + providerId, "invalid provider id error");
+        response = new TemplateAdapter().getTemplateUrl(token, providerId, 400);
+        assertEquals(response.getMessage(), "Incorrect Provider ID=" + providerId, "invalid provider id error");
     }
 
     @Test(description = "missed providerId")
     public void missedProviderId() {
-        responseBody = new TemplateAdapter().getTemplateUrl(token, 400);
-        assertEquals(responseBody.getMessage(), "Required Long parameter 'providerId' is not present", "missed provider id error");
+        response = new TemplateAdapter().getTemplateUrl(token, 400);
+        assertEquals(response.getMessage(), "Required Long parameter 'providerId' is not present", "missed provider id error");
     }
 
 

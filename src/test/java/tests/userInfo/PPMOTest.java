@@ -14,8 +14,8 @@ public class PPMOTest extends BaseTest {
         String[] ppmos = new String[]{"D", "O", "M"};
         String ppmo = ppmos[random.nextInt(ppmos.length)];
         new PlayerAdapter().putPPMO(token, ppmo, 200);
-        responseBody = new PlayerAdapter().getPPMO(token);
-        assertEquals(responseBody.getPpmo(), ppmo, "Updating ppmo error");
+        response = new PlayerAdapter().getPPMO(token);
+        assertEquals(response.getPpmo(), ppmo, "Updating ppmo error");
     }
 
     @DataProvider(name = "Invalid PPMO")

@@ -7,7 +7,7 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class ResponseBody {
+public class Response {
     @SerializedName("access_token")
     @Expose
     String accessToken;
@@ -16,6 +16,9 @@ public class ResponseBody {
     String refreshToken;
     @Expose
     String email;
+    @SerializedName("username")
+    @Expose
+    String userName;
     @Expose
     String type;
     @Expose
@@ -39,4 +42,10 @@ public class ResponseBody {
     String templateUrl;
     @Expose
     String jwtToken;
+    @Expose
+    String age;
+    @Expose
+    String place;
+    @Expose
+    String idCard;
 }

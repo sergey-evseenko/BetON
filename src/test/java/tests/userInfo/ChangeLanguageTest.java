@@ -19,13 +19,13 @@ public class ChangeLanguageTest extends BaseTest {
 
     @Test(description = "change language. Not existing language")
     public void putLanguageNotExistingLanguage() {
-        responseBody = new PlayerAdapter().putLanguage(token, "ua", 404);
-        assertEquals(responseBody.getMessage(), "Language 'ua' not found", "Changing language with not existing language error");
+        response = new PlayerAdapter().putLanguage(token, "ua", 404);
+        assertEquals(response.getMessage(), "Language 'ua' not found", "Changing language with not existing language error");
     }
 
     @Test(description = "change language without header")
     public void putLanguageWithoutHeader() {
-        responseBody = new PlayerAdapter().putLanguageNoHeader(token);
-        assertEquals(responseBody.getMessage(), "Missing request header 'lang' for method parameter of type String", "Changing language without header error");
+        response = new PlayerAdapter().putLanguageNoHeader(token);
+        assertEquals(response.getMessage(), "Missing request header 'lang' for method parameter of type String", "Changing language without header error");
     }
 }

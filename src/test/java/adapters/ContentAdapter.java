@@ -1,7 +1,7 @@
 package adapters;
 
 import models.Page;
-import models.ResponseBody;
+import models.Response;
 
 import static io.restassured.RestAssured.given;
 
@@ -17,7 +17,7 @@ public class ContentAdapter extends MainAdapter {
         return gson.fromJson(response.asString().trim(), Page.class);
     }
 
-    public ResponseBody validateParams(String name, String lang, boolean withChild, int expectedStatusCode) {
+    public Response validateParams(String name, String lang, boolean withChild, int expectedStatusCode) {
         if ((name != null) && (lang != null)) {
             requestSpec = given()
                     .queryParam("lang", lang)
@@ -36,6 +36,6 @@ public class ContentAdapter extends MainAdapter {
         }
 
         response = get(url, requestSpec, expectedStatusCode);
-        return gson.fromJson(response.asString().trim(), ResponseBody.class);
+        return gson.fromJson(response.asString().trim(), Response.class);
     }
 }

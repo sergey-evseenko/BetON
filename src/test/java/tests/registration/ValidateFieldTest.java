@@ -1,13 +1,11 @@
 package tests.registration;
 
 import adapters.FieldValidationAdapter;
-import models.ResponseBody;
+import models.Response;
 import models.ValidateField;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
-
-import java.io.FileNotFoundException;
 
 import static org.testng.Assert.assertEquals;
 
@@ -24,9 +22,9 @@ public class ValidateFieldTest extends BaseTest {
     }
 
     @Test(description = "validation of username and emails field", dataProvider = "fields values")
-    public void fieldValidation(String fieldType, String fieldValue, String field, Boolean isEmptyResponse) throws FileNotFoundException {
+    public void fieldValidation(String fieldType, String fieldValue, String field, Boolean isEmptyResponse) {
         ValidateField validateField = new ValidateField(fieldType, fieldValue);
-        ResponseBody[] responseBody = new FieldValidationAdapter().post(validateField);
+        Response[] responseBody = new FieldValidationAdapter().post(validateField);
         if (isEmptyResponse) {
             assertEquals(responseBody.length, 0, "Incorrect field validation");
         } else {

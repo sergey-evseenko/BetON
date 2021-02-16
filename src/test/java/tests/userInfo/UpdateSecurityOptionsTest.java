@@ -31,11 +31,11 @@ public class UpdateSecurityOptionsTest extends BaseTest {
     @Test(description = "validate security options", dataProvider = "Invalid security options")
     public void validateSecurityOptions(String question, int questionId, String field, String code, String description) {
         SecurityOption securityOption = new SecurityOption(question, questionId);
-        responseBody = new UserAdapter().putSecurityOption(securityOption, token, 400);
-        assertEquals(responseBody.getField(), field, "Invalid field");
-        assertEquals(responseBody.getType(), "VALIDATION", "Invalid type");
-        assertEquals(responseBody.getCode(), code, "Invalid code");
-        assertEquals(responseBody.getDescription(), description, "Invalid description");
+        response = new UserAdapter().putSecurityOption(securityOption, token, 400);
+        assertEquals(response.getField(), field, "Invalid field");
+        assertEquals(response.getType(), "VALIDATION", "Invalid type");
+        assertEquals(response.getCode(), code, "Invalid code");
+        assertEquals(response.getDescription(), description, "Invalid description");
     }
 
     @Test(description = "update security options")
