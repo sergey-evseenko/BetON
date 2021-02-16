@@ -1,0 +1,17 @@
+{
+  "address": {
+    "countryCode": "DE",
+    "city": "Minsk",
+    "street": "Brouki street",
+    "homeNumber": "8k",
+    "postalCode": "220072"
+  },
+  "birthDate": "1990-12-28",
+  "email": "qwerty81111@gmail.com",
+  "name": "testname",
+  "nationalityId": 1,
+  "passportNumber": "ASD846761",
+  "phone": "+5464846868",
+  "surname": "testsurname",
+  "username": "qwerty811111"
+}
