@@ -9,7 +9,7 @@ import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
 
-public class UserCheckTest extends BaseTest {
+public class UpdateUserCheckTest extends BaseTest {
 
     UserForCheck userForCheck;
     Address address;
@@ -23,8 +23,6 @@ public class UserCheckTest extends BaseTest {
     public void checkNotUniqEmail() {
         userForCheck.setEmail("qwerty81@gmail.com");
 
-        response = new RulesAdapter().checkUserPost(userForCheck);
-        assertEquals(response.getEmail(), "E0005", "Not uniq email error");
         response = new RulesAdapter().checkUserPut(userForCheck);
         assertEquals(response.getEmail(), "E0005", "Not uniq email error");
     }
@@ -33,8 +31,6 @@ public class UserCheckTest extends BaseTest {
     public void checkNotUniqUserName() {
         userForCheck.setUsername("qwerty81");
 
-        response = new RulesAdapter().checkUserPost(userForCheck);
-        assertEquals(response.getUserName(), "E0005", "Not uniq user name error");
         response = new RulesAdapter().checkUserPut(userForCheck);
         assertEquals(response.getUserName(), "E0005", "Not uniq user name error");
     }
@@ -46,8 +42,6 @@ public class UserCheckTest extends BaseTest {
         userForCheck.setNationalityId(19);
         userForCheck.setBirthDate("1990-02-05");
 
-        response = new RulesAdapter().checkUserPost(userForCheck);
-        assertEquals(response.getPlace(), "E0006", "Not uniq place error");
         response = new RulesAdapter().checkUserPut(userForCheck);
         assertEquals(response.getPlace(), "E0006", "Not uniq place error");
     }
@@ -59,8 +53,6 @@ public class UserCheckTest extends BaseTest {
         userForCheck.setAddress(address);
         userForCheck.setBirthDate("2005-12-28");
 
-        response = new RulesAdapter().checkUserPost(userForCheck);
-        assertEquals(response.getAge(), "E0002", "Invalid BirthDate error");
         response = new RulesAdapter().checkUserPut(userForCheck);
         assertEquals(response.getAge(), "E0002", "Invalid BirthDate error");
     }
@@ -72,8 +64,6 @@ public class UserCheckTest extends BaseTest {
         userForCheck.setAddress(address);
         userForCheck.setBirthDate("2001-02-05");
 
-        response = new RulesAdapter().checkUserPost(userForCheck);
-        assertEquals(response.getAge(), "E0002", "Invalid BirthDate error");
         response = new RulesAdapter().checkUserPut(userForCheck);
         assertEquals(response.getAge(), "E0002", "Invalid BirthDate error");
     }
@@ -82,8 +72,6 @@ public class UserCheckTest extends BaseTest {
     public void checkInvalidPasswordNumber() {
         userForCheck.setPassportNumber("ASD84676");
 
-        response = new RulesAdapter().checkUserPost(userForCheck);
-        assertEquals(response.getIdCard(), "E0007", "Invalid BirthDate error");
         response = new RulesAdapter().checkUserPut(userForCheck);
         assertEquals(response.getIdCard(), "E0007", "Invalid BirthDate error");
     }

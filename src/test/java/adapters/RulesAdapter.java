@@ -7,13 +7,12 @@ import models.UserForCheck;
 import static io.restassured.RestAssured.given;
 
 public class RulesAdapter extends MainAdapter {
-    String urlRegister = "rule/v1/rules/validate/register/";
-    String urlUpdate = "rule/v1/rules/validate/update/user";
+    String url = "rule/v1/rules/";
 
-    public Response get(String path, String param, String paramValue) {
+    public Response validate(String path, String param, String paramValue) {
         requestSpec = given()
                 .queryParam(param, paramValue);
-        response = get(urlRegister + path, requestSpec, 200);
+        response = get(url + "validate/register/" + path, requestSpec, 200);
         return gson.fromJson(response.asString().trim(), Response.class);
     }
 
@@ -22,7 +21,7 @@ public class RulesAdapter extends MainAdapter {
         requestSpec = given()
                 .contentType(ContentType.JSON)
                 .body(body);
-        response = post(urlRegister + "user", requestSpec, 200);
+        response = post(url + "validate/register/user", requestSpec, 200);
         return gson.fromJson(response.asString().trim(), Response.class);
     }
 
@@ -31,7 +30,14 @@ public class RulesAdapter extends MainAdapter {
         requestSpec = given()
                 .contentType(ContentType.JSON)
                 .body(body);
-        response = put(urlUpdate, requestSpec, 200);
+        response = put(url + "validate/update/user", requestSpec, 200);
         return gson.fromJson(response.asString().trim(), Response.class);
+    }
+
+    public String getProviders(String countryCode) {
+        requestSpec = given()
+                .queryParam("code", countryCode);
+        response = get(url + "bp/country", requestSpec, 200);
+        return response.asString().trim();
     }
 }
