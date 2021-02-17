@@ -18,7 +18,7 @@ public class ContentAdapter extends MainAdapter {
     }
 
     public Response validateParams(String name, String lang, boolean withChild, int expectedStatusCode) {
-        if ((name != null) && (lang != null)) {
+        if (name != null && lang != null) {
             requestSpec = given()
                     .queryParam("lang", lang)
                     .queryParam("name", name)
