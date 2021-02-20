@@ -17,6 +17,7 @@ public class MainAdapter {
     PropertyManager props;
     Response response;
     String body;
+    String token1;
     DataReader data;
     RequestSpecification requestSpec;
 
@@ -28,6 +29,24 @@ public class MainAdapter {
         gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
                 .create();
+
+        //get token
+        /*
+
+        User user = data.get("userForLogin.json", User.class);
+
+        requestSpec = given()
+                .formParam("username", user.getUserName())
+                .formParam("password", user.getPassword())
+                .formParam("grant_type", "password")
+                .formParam("response_type", "token")
+                .formParam("client_id", "clientId")
+                .formParam("client_secret", "secret");
+
+        models.Response response = gson.fromJson(post("auth/v1/oauth/token/beton", requestSpec, 200).asString().trim(), models.Response.class);
+        token1 = response.getAccessToken();
+
+         */
     }
 
     public Response get(String url, int responseCode) {
@@ -64,6 +83,16 @@ public class MainAdapter {
                 .spec(requestSpec)
                 .when()
                 .put(url)
+                .then()
+                .statusCode(expectedStatusCode)
+                .extract().response();
+    }
+
+    public Response delete(String url, RequestSpecification requestSpec, int expectedStatusCode) {
+        return given()
+                .spec(requestSpec)
+                .when()
+                .delete(url)
                 .then()
                 .statusCode(expectedStatusCode)
                 .extract().response();
