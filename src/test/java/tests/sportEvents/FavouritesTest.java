@@ -7,7 +7,7 @@ import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
 
-public class Favourites extends BaseTest {
+public class FavouritesTest extends BaseTest {
 
     FavouriteEvent favouriteEvent;
 

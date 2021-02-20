@@ -7,7 +7,7 @@ import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
 
-public class MatchDayDetermination extends BaseTest {
+public class MatchDayDeterminationTest extends BaseTest {
 
     @DataProvider(name = "Params")
     public Object[][] params() {
