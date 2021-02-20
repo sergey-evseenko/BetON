@@ -39,13 +39,14 @@ public class TranslationTest extends BaseTest {
 
     @Test(description = "translate matches with valid Id")
     public void translateMatches() {
-        liveMatch = data.get("LiveMatch.json", LiveMatch.class);
+        liveMatch = data.get("liveMatch.json", LiveMatch.class);
         new TranslationAdapter().post(liveMatch, 200);
+
     }
 
     @Test(description = "translate matches with invalid Id")
     public void translateMatchesInvalidId() {
-        liveMatch = data.get("LiveMatch.json", LiveMatch.class);
+        liveMatch = data.get("liveMatch.json", LiveMatch.class);
         liveMatch.setEventBetradarId(1);
         new TranslationAdapter().post(liveMatch, 417);
     }
