@@ -3,8 +3,39 @@
 Integration tests (Rest API).
 
 Current coverage:
-* Registration (_59 tests_)
-* Authorization (_13 tests_)
+
+* Authorization
+* Content
+* Registration:
+  * Confirm registration
+  * Get registration data
+  * BetOn registration
+  * Resend email
+  * Search registration data
+  * Validate field
+* Registration
+* Reset password (_skipped_)
+* Rules engine:
+  * Create user
+  * Get providers
+  * Update user
+  * Validate email
+* Sport events:
+  * Favourites
+  * Translation
+* Template
+* User info:
+  * Change language
+  * Check password
+  * Get user info
+  * Options list
+  * PPMO
+  * Update email
+  * Update password
+  * Update security options
+  * Update user info  
+
+
 
 
 
