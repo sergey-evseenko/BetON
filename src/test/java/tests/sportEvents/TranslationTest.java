@@ -1,6 +1,7 @@
 package tests.sportEvents;
 
 import adapters.TranslationAdapter;
+import models.LiveMatch;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
@@ -8,6 +9,8 @@ import tests.BaseTest;
 import static org.testng.Assert.assertEquals;
 
 public class TranslationTest extends BaseTest {
+
+    LiveMatch liveMatch;
 
     @DataProvider(name = "Params")
     public Object[][] params() {
@@ -32,6 +35,18 @@ public class TranslationTest extends BaseTest {
         if (expectedStatusCode == 400) {
             assertEquals(response.getMessage(), responseMessage, "Invalid response");
         }
+    }
 
+    @Test(description = "translate matches with valid Id")
+    public void translateMatches() {
+        liveMatch = data.get("LiveMatch.json", LiveMatch.class);
+        new TranslationAdapter().post(liveMatch, 200);
+    }
+
+    @Test(description = "translate matches with invalid Id")
+    public void translateMatchesInvalidId() {
+        liveMatch = data.get("LiveMatch.json", LiveMatch.class);
+        liveMatch.setEventBetradarId(1);
+        new TranslationAdapter().post(liveMatch, 417);
     }
 }
