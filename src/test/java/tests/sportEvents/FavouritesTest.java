@@ -26,9 +26,9 @@ public class FavouritesTest extends BaseTest {
     public void addAndRemoveEvent() {
         favouriteEvent = new FavouriteEvent(userId, eventId);
         //add event
-        new FavouritesAdapter().post(favouriteEvent, 200);
+        favouritesAdapter.post(favouriteEvent, 200);
         //add event that was already added
-        responseBetOn = new FavouritesAdapter().post(favouriteEvent, 400);
+        responseBetOn = favouritesAdapter.post(favouriteEvent, 400);
         assertEquals(responseBetOn.getMessage(), "User's favorite event already exists.", "Invalid response");
         //remove event
         new FavouritesAdapter().delete(favouriteEvent, 200);
@@ -39,7 +39,7 @@ public class FavouritesTest extends BaseTest {
     public void addEventNoUserId() {
         favouriteEvent = new FavouriteEvent();
         favouriteEvent.setEventId(eventId);
-        responseBetOn = new FavouritesAdapter().post(favouriteEvent, 400);
+        responseBetOn = favouritesAdapter.post(favouriteEvent, 400);
         assertEquals(responseBetOn.getError(), "Bad Request", "Invalid response");
     }
 
@@ -47,7 +47,7 @@ public class FavouritesTest extends BaseTest {
     public void addEventNoEventId() {
         favouriteEvent = new FavouriteEvent();
         favouriteEvent.setUserId(userId);
-        responseBetOn = new FavouritesAdapter().post(favouriteEvent, 400);
+        responseBetOn = favouritesAdapter.post(favouriteEvent, 400);
         assertEquals(responseBetOn.getError(), "Bad Request", "Invalid response");
     }
 }

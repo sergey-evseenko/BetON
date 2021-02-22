@@ -1,6 +1,5 @@
 package tests.userInfo;
 
-import adapters.PlayerAdapter;
 import models.OptionsList;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -27,21 +26,21 @@ public class OptionsListTest extends BaseTest {
     @Test(description = "validate options list", dataProvider = "Options list")
     public void putOptionList(int sportId, Boolean autoAccept, Boolean wantNewslettersOnEmail, int responseCode, String field, String code, String description) {
         OptionsList optionsList = new OptionsList(sportId, autoAccept, wantNewslettersOnEmail);
-        responseBetOn = new PlayerAdapter().putOptionsList(optionsList, responseCode);
+        responseBetOn = playerAdapter.putOptionsList(optionsList, responseCode);
         if (responseCode == 400) {
             assertEquals(responseBetOn.getField(), field, "Invalid field");
             assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
             assertEquals(responseBetOn.getCode(), code, "Invalid code");
             assertEquals(responseBetOn.getDescription(), description, "Invalid description");
         } else {
-            OptionsList actualOptionList = new PlayerAdapter().getOptionsList();
+            OptionsList actualOptionList = playerAdapter.getOptionsList();
             assertEquals(actualOptionList, optionsList, "Updating options list error");
         }
     }
 
     @Test(description = "get options list unauthorized")
     public void getOptionListUnauthorized() {
-        responseBetOn = new PlayerAdapter().getOptionListUnauthorized();
+        responseBetOn = playerAdapter.getOptionListUnauthorized();
         assertEquals(responseBetOn.getError(), "unauthorized", "authorization error");
         assertEquals(responseBetOn.getErrorDescription(), "Full authentication is required to access this resource", "authorization error");
     }
@@ -49,7 +48,7 @@ public class OptionsListTest extends BaseTest {
     @Test(description = "put options list unauthorized")
     public void putOptionListUnauthorized() {
         OptionsList optionsList = new OptionsList(1, true, true);
-        responseBetOn = new PlayerAdapter().putOptionListUnauthorized(optionsList);
+        responseBetOn = playerAdapter.putOptionListUnauthorized(optionsList);
         assertEquals(responseBetOn.getError(), "unauthorized", "authorization error");
         assertEquals(responseBetOn.getErrorDescription(), "Full authentication is required to access this resource", "authorization error");
     }

@@ -1,6 +1,5 @@
 package tests.userInfo;
 
-import adapters.UserAdapter;
 import models.Address;
 import models.User;
 import models.UserInfo;
@@ -26,10 +25,10 @@ public class UpdateUserInfoTest extends BaseTest {
     public void updateUserInfo() {
         User updatedUser = data.get("userUpdated.json", User.class);
         UserInfo expectedUserInfo = data.get("userInfoUpdated.json", UserInfo.class);
-        UserInfo actualUserInfo = new UserAdapter().put(updatedUser);
+        UserInfo actualUserInfo = userAdapter.put(updatedUser);
         assertEquals(actualUserInfo, expectedUserInfo, "Updating user info error");
         //set default user info
-        new UserAdapter().put(user);
+        userAdapter.put(user);
     }
 
     @DataProvider(name = "Invalid phones")
@@ -51,7 +50,7 @@ public class UpdateUserInfoTest extends BaseTest {
     @Test(description = "validate phone", dataProvider = "Invalid phones")
     public void validatePhone(String phone, String code, String description) {
         user.setPhone(phone);
-        responseBetOn = new UserAdapter().putInvalidData(user);
+        responseBetOn = userAdapter.putInvalidData(user);
         assertEquals(responseBetOn.getField(), "phone", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -74,7 +73,7 @@ public class UpdateUserInfoTest extends BaseTest {
         userProfileDto.setTitle(title);
         user.setUserProfileDto(userProfileDto);
 
-        responseBetOn = new UserAdapter().putInvalidData(user);
+        responseBetOn = userAdapter.putInvalidData(user);
         assertEquals(responseBetOn.getField(), field, "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -98,7 +97,7 @@ public class UpdateUserInfoTest extends BaseTest {
         userProfileDto.setSurname(surname);
         user.setUserProfileDto(userProfileDto);
 
-        responseBetOn = new UserAdapter().putInvalidData(user);
+        responseBetOn = userAdapter.putInvalidData(user);
         assertEquals(responseBetOn.getField(), "userProfileDto.surname", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -122,7 +121,7 @@ public class UpdateUserInfoTest extends BaseTest {
         userProfileDto.setPhoneCode(phoneCode);
         user.setUserProfileDto(userProfileDto);
 
-        responseBetOn = new UserAdapter().putInvalidData(user);
+        responseBetOn = userAdapter.putInvalidData(user);
         assertEquals(responseBetOn.getField(), "userProfileDto.phoneCode", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -146,7 +145,7 @@ public class UpdateUserInfoTest extends BaseTest {
         userProfileDto.setPassportNumber(passportNumber);
         user.setUserProfileDto(userProfileDto);
 
-        responseBetOn = new UserAdapter().putInvalidData(user);
+        responseBetOn = userAdapter.putInvalidData(user);
         assertEquals(responseBetOn.getField(), "userProfileDto.passportNumber", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -169,7 +168,7 @@ public class UpdateUserInfoTest extends BaseTest {
         userProfileDto.setNationalityId(nationalityId);
         user.setUserProfileDto(userProfileDto);
 
-        responseBetOn = new UserAdapter().putInvalidData(user);
+        responseBetOn = userAdapter.putInvalidData(user);
         assertEquals(responseBetOn.getField(), field, "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -193,7 +192,7 @@ public class UpdateUserInfoTest extends BaseTest {
         userProfileDto.setName(name);
         user.setUserProfileDto(userProfileDto);
 
-        responseBetOn = new UserAdapter().putInvalidData(user);
+        responseBetOn = userAdapter.putInvalidData(user);
         assertEquals(responseBetOn.getField(), "userProfileDto.name", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -215,7 +214,7 @@ public class UpdateUserInfoTest extends BaseTest {
         userProfileDto.setBirthDate(birthDate);
         user.setUserProfileDto(userProfileDto);
 
-        responseBetOn = new UserAdapter().putInvalidData(user);
+        responseBetOn = userAdapter.putInvalidData(user);
         assertEquals(responseBetOn.getField(), "userProfileDto.birthDate", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), "ER0004", "Invalid code");
@@ -227,7 +226,7 @@ public class UpdateUserInfoTest extends BaseTest {
         userProfileDto.setBirthDate("02-05-1990");
         user.setUserProfileDto(userProfileDto);
 
-        responseBetOn = new UserAdapter().putInvalidBirthDate(user);
+        responseBetOn = userAdapter.putInvalidBirthDate(user);
         assertEquals(responseBetOn.getError(), "Bad Request", "Invalid error message");
     }
 
@@ -253,7 +252,7 @@ public class UpdateUserInfoTest extends BaseTest {
         userProfileDto.setAddresses(addresses);
         user.setUserProfileDto(userProfileDto);
 
-        responseBetOn = new UserAdapter().putInvalidData(user);
+        responseBetOn = userAdapter.putInvalidData(user);
         assertEquals(responseBetOn.getField(), field, "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -266,7 +265,7 @@ public class UpdateUserInfoTest extends BaseTest {
         userProfileDto.setAddresses(null);
         user.setUserProfileDto(userProfileDto);
 
-        responseBetOn = new UserAdapter().putInvalidData(user);
+        responseBetOn = userAdapter.putInvalidData(user);
         assertEquals(responseBetOn.getField(), "userProfileDto.addresses", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), "ER0004", "Invalid code");

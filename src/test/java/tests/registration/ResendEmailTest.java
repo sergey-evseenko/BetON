@@ -1,7 +1,5 @@
 package tests.registration;
 
-import adapters.RegistrationAdapter;
-import adapters.ResendEmailAdapter;
 import models.ResendEmailData;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -18,7 +16,7 @@ public class ResendEmailTest extends BaseTest {
     @BeforeClass
     public void registration() {
         user = new UserFactory().getNewUser();
-        responseBetOn = new RegistrationAdapter().post(user, 200);
+        responseBetOn = registrationAdapter.post(user, 200);
         externalId = responseBetOn.getExternalId();
         accessToken = responseBetOn.getAccessToken();
     }
@@ -51,7 +49,7 @@ public class ResendEmailTest extends BaseTest {
         resendEmailData.setEmail(email);
         resendEmailData.setRepeatedEmail(repeatedEmail);
         resendEmailData.setExternalId(externalId);
-        responseBetOn = new ResendEmailAdapter().post(resendEmailData, accessToken, responseCode);
+        responseBetOn = resendEmailAdapter.post(resendEmailData, accessToken, responseCode);
         if (responseBetOn != null) {
             assertEquals(responseBetOn.getField(), "email", "Invalid field");
             assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
@@ -74,7 +72,7 @@ public class ResendEmailTest extends BaseTest {
 
     @Test(description = "resend to old email", dataProvider = "resend to old email")
     public void resendEmailToOldEmail(String externalId, String code, String errorDescription, int responseCode) {
-        responseBetOn = new ResendEmailAdapter().get(externalId, accessToken, responseCode);
+        responseBetOn = resendEmailAdapter.get(externalId, accessToken, responseCode);
         if (responseBetOn != null) {
             assertEquals(responseBetOn.getCode(), code, "Invalid code");
             assertEquals(responseBetOn.getDescription(), errorDescription, "Invalid description");

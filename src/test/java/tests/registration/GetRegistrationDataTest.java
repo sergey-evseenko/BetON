@@ -1,6 +1,5 @@
 package tests.registration;
 
-import adapters.GetRegistrationDataAdapted;
 import models.RegistrationDataAll;
 import models.RegistrationDataEN;
 import models.RegistrationDataRU;
@@ -17,7 +16,7 @@ public class GetRegistrationDataTest extends BaseTest {
     public void getRegistrationDataEN() {
         RegistrationDataEN expectedRegistrationData, actualRegistrationData;
         expectedRegistrationData = data.get("registrationDataEN.json", RegistrationDataEN.class);
-        actualRegistrationData = new GetRegistrationDataAdapted().getRegistrationDataEN();
+        actualRegistrationData = getRegistrationDataAdapted.getRegistrationDataEN();
         assertEquals(actualRegistrationData, expectedRegistrationData, "Invalid registration data for English language");
     }
 
@@ -25,7 +24,7 @@ public class GetRegistrationDataTest extends BaseTest {
     public void getRegistrationDataRU() {
         RegistrationDataRU expectedRegistrationData, actualRegistrationData;
         expectedRegistrationData = data.get("registrationDataRU.json", RegistrationDataRU.class);
-        actualRegistrationData = new GetRegistrationDataAdapted().getRegistrationDataRU();
+        actualRegistrationData = getRegistrationDataAdapted.getRegistrationDataRU();
         assertEquals(actualRegistrationData, expectedRegistrationData, "Invalid registration data for German language");
     }
 
@@ -42,7 +41,7 @@ public class GetRegistrationDataTest extends BaseTest {
     public void getRegistrationDataWithInvalidParam(String langParam) {
         RegistrationDataAll expectedRegistrationData, actualRegistrationData;
         expectedRegistrationData = data.get("registrationDataAll.json", RegistrationDataAll.class);
-        actualRegistrationData = new GetRegistrationDataAdapted().getRegistrationDataAll(langParam);
+        actualRegistrationData = getRegistrationDataAdapted.getRegistrationDataAll(langParam);
         assertEquals(actualRegistrationData, expectedRegistrationData, "Invalid registration data for invalid language parameter");
     }
 }

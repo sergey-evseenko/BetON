@@ -1,6 +1,5 @@
 package tests.userInfo;
 
-import adapters.UserAdapter;
 import models.Password;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -12,7 +11,6 @@ public class UpdatePasswordTest extends BaseTest {
 
     @Test(description = "update password")
     public void updatePassword() {
-        UserAdapter userAdapter = new UserAdapter();
         Password validPassword = new Password("Qwerty!1231", "Qwerty!123", "Qwerty!1231");
         Password defaultPassword = new Password("Qwerty!123", "Qwerty!1231", "Qwerty!123");
         userAdapter.putPassword(validPassword, 200);
@@ -56,7 +54,7 @@ public class UpdatePasswordTest extends BaseTest {
     @Test(description = "validate password", dataProvider = "Invalid passwords")
     public void validatePassword(String newPassword, String password, String repeatNewPassword, String field, String code, String description) {
         Password invalidPassword = new Password(newPassword, password, repeatNewPassword);
-        responseBetOn = new UserAdapter().putPassword(invalidPassword, 400);
+        responseBetOn = userAdapter.putPassword(invalidPassword, 400);
         assertEquals(responseBetOn.getField(), field, "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");

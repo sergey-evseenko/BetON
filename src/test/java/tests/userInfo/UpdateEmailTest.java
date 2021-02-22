@@ -1,6 +1,5 @@
 package tests.userInfo;
 
-import adapters.UserAdapter;
 import models.Email;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -24,7 +23,7 @@ public class UpdateEmailTest extends BaseTest {
 
     @Test(description = "Confirm that email was changed", dataProvider = "Invalid codes")
     public void confirmChangedEmail(String confirmationCode, String code, String description) {
-        responseBetOn = new UserAdapter().confirmEmail(confirmationCode);
+        responseBetOn = userAdapter.confirmEmail(confirmationCode);
         assertEquals(responseBetOn.getField(), "Confirmation code", "Invalid field");
         assertEquals(responseBetOn.getType(), "CONFIRMATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -34,7 +33,7 @@ public class UpdateEmailTest extends BaseTest {
     @Test(description = "Update email")
     public void updateEmail() {
         Email validEmail = new Email("polinazz2@inbox.ru", "Qwerty!123", "polinazz2@inbox.ru");
-        new UserAdapter().putEmail(validEmail, 200);
+        userAdapter.putEmail(validEmail, 200);
     }
 
     @DataProvider(name = "Invalid emails")
@@ -70,7 +69,7 @@ public class UpdateEmailTest extends BaseTest {
     @Test(description = "validate email", dataProvider = "Invalid emails")
     public void validateEmail(String email, String password, String repeatedEmail, String field, String code, String description) {
         Email invalidEmail = new Email(email, password, repeatedEmail);
-        responseBetOn = new UserAdapter().putEmail(invalidEmail, 400);
+        responseBetOn = userAdapter.putEmail(invalidEmail, 400);
         assertEquals(responseBetOn.getField(), field, "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");

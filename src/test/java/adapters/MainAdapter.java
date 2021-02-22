@@ -6,7 +6,6 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import models.User;
-import utils.DataReader;
 import utils.PropertyManager;
 
 import static io.restassured.RestAssured.given;
@@ -19,15 +18,12 @@ public class MainAdapter {
             .create();
     Response response;
     RequestSpecification requestSpec;
-    String body, token;
+    PropertyManager props = new PropertyManager();
+    String body;
 
     public MainAdapter() {
-        DataReader data = new DataReader();
-        User user = data.get("userForLogin.json", User.class);
-        PropertyManager props = new PropertyManager();
         RestAssured.baseURI = props.get("baseUrl");
         RestAssured.config = RestAssured.config().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));
-        token = getToken(user);
     }
 
     public String getToken(User user) {

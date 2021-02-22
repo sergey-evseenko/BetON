@@ -1,6 +1,5 @@
 package tests.registration;
 
-import adapters.RegistrationAdapter;
 import models.Address;
 import models.TermsAndConditionDto;
 import models.User;
@@ -28,7 +27,7 @@ public class RegistrationTest extends BaseTest {
 
     @Test(description = "registration")
     public void registration() {
-        responseBetOn = new RegistrationAdapter().post(user, 200);
+        responseBetOn = registrationAdapter.post(user, 200);
         assertEquals(responseBetOn.getEmail(), user.getEmail(), "Invalid email");
         assertNotEquals(responseBetOn.getAccessToken(), null, "Invalid access token");
     }
@@ -36,7 +35,7 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "Registration with Partner Tracking Code")
     public void registrationWithPartnerTrackingCode() {
         user.setPartnerTrackingCode("bwin");
-        responseBetOn = new RegistrationAdapter().post(user, 200);
+        responseBetOn = registrationAdapter.post(user, 200);
         assertEquals(responseBetOn.getEmail(), user.getEmail(), "Invalid email");
         assertNotEquals(responseBetOn.getAccessToken(), null, "Invalid access token");
     }
@@ -62,7 +61,7 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "validate email", dataProvider = "Invalid emails")
     public void validateEmail(String email, String code, String description) {
         user.setEmail(email);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), "email", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -90,7 +89,7 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "validate password", dataProvider = "Invalid passwords")
     public void validatePassword(String password, String code, String description) {
         user.setPassword(password);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), "password", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -119,7 +118,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     public void postAndValidateResponse(User user) {
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), "password.", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), "ER0008", "Invalid code");
@@ -129,7 +128,7 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "Registration with the same phone")
     public void registrationWithTheSamePhone() {
         user.setPhone("+375292907810");
-        responseBetOn = new RegistrationAdapter().post(user, 200);
+        responseBetOn = registrationAdapter.post(user, 200);
         assertEquals(responseBetOn.getEmail(), user.getEmail(), "Invalid email");
         assertNotEquals(responseBetOn.getAccessToken(), null, "Invalid access token");
     }
@@ -153,7 +152,7 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "validate phone", dataProvider = "Invalid phones")
     public void validatePhone(String phone, String code, String description) {
         user.setPhone(phone);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), "phone", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -175,7 +174,7 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "validate repeated email", dataProvider = "Invalid repeated emails")
     public void validateRepeatedEmail(String repeatedEmail, String code, String description) {
         user.setRepeatedEmail(repeatedEmail);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), "repeatedEmail", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -199,7 +198,7 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "validate repeated password", dataProvider = "Invalid repeated passwords")
     public void validateRepeatedPassword(String repeatedPassword, String field, String code, String description) {
         user.setRepeatedPassword(repeatedPassword);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), field, "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -220,7 +219,7 @@ public class RegistrationTest extends BaseTest {
     public void validateTermsAndConditions(Boolean accept) {
         termsAndConditionDto.setAccept(accept);
         user.setTermsAndConditionDto(termsAndConditionDto);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), "termsAndConditionDto.accept", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), "ER0010", "Invalid code");
@@ -232,7 +231,7 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setAddresses(null);
         user.setUserProfileDto(userProfileDto);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), "userProfileDto.addresses", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), "ER0004", "Invalid code");
@@ -261,7 +260,7 @@ public class RegistrationTest extends BaseTest {
         userProfileDto.setAddresses(addresses);
         user.setUserProfileDto(userProfileDto);
 
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), field, "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -283,7 +282,7 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setBirthDate(birthDate);
         user.setUserProfileDto(userProfileDto);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), "userProfileDto.birthDate", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), "ER0004", "Invalid code");
@@ -305,7 +304,7 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setDataTransferToBp(dataTransferToBp);
         user.setUserProfileDto(userProfileDto);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), field, "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -327,7 +326,7 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setDataTransferToCashOn(dataTransferToCashOn);
         user.setUserProfileDto(userProfileDto);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), field, "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -349,7 +348,7 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setName(name);
         user.setUserProfileDto(userProfileDto);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), "userProfileDto.name", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -371,7 +370,7 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setSurname(surname);
         user.setUserProfileDto(userProfileDto);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), "userProfileDto.surname", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -393,7 +392,7 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setNationalityId(nationalityId);
         user.setUserProfileDto(userProfileDto);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), field, "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -415,7 +414,7 @@ public class RegistrationTest extends BaseTest {
         userProfileDto = user.getUserProfileDto();
         userProfileDto.setTitle(title);
         user.setUserProfileDto(userProfileDto);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), field, "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -441,7 +440,7 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "validate title", dataProvider = "Invalid usernames")
     public void validateUsername(String username, String code, String description) {
         user.setUserName(username);
-        responseBetOn = new RegistrationAdapter().post(user, 400);
+        responseBetOn = registrationAdapter.post(user, 400);
         assertEquals(responseBetOn.getField(), "username", "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");

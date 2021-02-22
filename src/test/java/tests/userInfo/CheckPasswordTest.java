@@ -1,6 +1,5 @@
 package tests.userInfo;
 
-import adapters.UserAdapter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
@@ -24,10 +23,10 @@ public class CheckPasswordTest extends BaseTest {
     @Test(description = "check password", dataProvider = "Passwords")
     public void checkPassword(String password, String code, String description) {
         if (password != null) {
-            String responseMessage = new UserAdapter().checkPassword(password);
+            String responseMessage = userAdapter.checkPassword(password);
             assertEquals(responseMessage, description, "Checking password error");
         } else {
-            responseBetOn = new UserAdapter().checkNullPassword();
+            responseBetOn = userAdapter.checkNullPassword();
             assertEquals(responseBetOn.getField(), "password", "Invalid field");
             assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
             assertEquals(responseBetOn.getCode(), code, "Invalid code");

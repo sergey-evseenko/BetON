@@ -1,6 +1,5 @@
 package tests.content;
 
-import adapters.ContentAdapter;
 import models.Page;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Ignore;
@@ -32,7 +31,7 @@ public class ContentTest extends BaseTest {
 
     @Test(description = "get document by name", dataProvider = "Pages")
     public void getDocumentByName(int id, String name, String title, int numberOfChildPages) {
-        page = new ContentAdapter().getDocumentByName(name, true);
+        page = contentAdapter.getDocumentByName(name, true);
         assertEquals(page.getId(), id, "Invalid page Id");
         assertEquals(page.getName(), name, "Invalid page name");
         assertEquals(page.getTitle(), title, "Invalid title");
@@ -41,7 +40,7 @@ public class ContentTest extends BaseTest {
 
     @Test(description = "validate params: with_child is false")
     public void validateFalseWithChild() {
-        page = new ContentAdapter().getDocumentByName("about", false);
+        page = contentAdapter.getDocumentByName("about", false);
         assertNull(page.getChildren(), "Displaying children pages error");
     }
 
@@ -49,25 +48,25 @@ public class ContentTest extends BaseTest {
 
     @Test(description = "validate params: invalid lang")
     public void validateInvalidLang() {
-        responseBetOn = new ContentAdapter().validateParams("about", "qwerty", true, 200);
+        responseBetOn = contentAdapter.validateParams("about", "qwerty", true, 200);
         assertEquals(responseBetOn.getDescription(), "No translation", "validate content param error");
     }
 
     @Ignore //TODO Fix 500 error
     @Test(description = "validate params: lang is null")
     public void validateNullLang() {
-        responseBetOn = new ContentAdapter().validateParams("about", null, true, 200);
+        responseBetOn = contentAdapter.validateParams("about", null, true, 200);
     }
 
     @Test(description = "validate params: invalid name")
     public void validateInvalidName() {
-        responseBetOn = new ContentAdapter().validateParams("qwerty", "en", true, 404);
+        responseBetOn = contentAdapter.validateParams("qwerty", "en", true, 404);
         assertEquals(responseBetOn.getMessage(), "Document with name 'qwerty' is not found in database.", "validate content param error");
     }
 
     @Test(description = "validate params: name is null")
     public void validateNullName() {
-        responseBetOn = new ContentAdapter().validateParams(null, "en", true, 400);
+        responseBetOn = contentAdapter.validateParams(null, "en", true, 400);
         assertEquals(responseBetOn.getMessage(), "Required String parameter 'name' is not present", "validate content param error");
     }
 

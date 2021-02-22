@@ -1,6 +1,5 @@
 package tests.rulesEngine;
 
-import adapters.RulesAdapter;
 import models.Address;
 import models.UserForCheck;
 import org.testng.annotations.BeforeMethod;
@@ -23,7 +22,7 @@ public class UpdateUserCheckTest extends BaseTest {
     public void checkNotUniqEmail() {
         userForCheck.setEmail("qwerty81@gmail.com");
 
-        responseBetOn = new RulesAdapter().checkUserPut(userForCheck);
+        responseBetOn = rulesAdapter.checkUserPut(userForCheck);
         assertEquals(responseBetOn.getEmail(), "E0005", "Not uniq email error");
     }
 
@@ -31,7 +30,7 @@ public class UpdateUserCheckTest extends BaseTest {
     public void checkNotUniqUserName() {
         userForCheck.setUsername("qwerty81");
 
-        responseBetOn = new RulesAdapter().checkUserPut(userForCheck);
+        responseBetOn = rulesAdapter.checkUserPut(userForCheck);
         assertEquals(responseBetOn.getUserName(), "E0005", "Not uniq user name error");
     }
 
@@ -42,7 +41,7 @@ public class UpdateUserCheckTest extends BaseTest {
         userForCheck.setNationalityId(19);
         userForCheck.setBirthDate("1990-02-05");
 
-        responseBetOn = new RulesAdapter().checkUserPut(userForCheck);
+        responseBetOn = rulesAdapter.checkUserPut(userForCheck);
         assertEquals(responseBetOn.getPlace(), "E0006", "Not uniq place error");
     }
 
@@ -53,7 +52,7 @@ public class UpdateUserCheckTest extends BaseTest {
         userForCheck.setAddress(address);
         userForCheck.setBirthDate("2005-12-28");
 
-        responseBetOn = new RulesAdapter().checkUserPut(userForCheck);
+        responseBetOn = rulesAdapter.checkUserPut(userForCheck);
         assertEquals(responseBetOn.getAge(), "E0002", "Invalid BirthDate error");
     }
 
@@ -64,7 +63,7 @@ public class UpdateUserCheckTest extends BaseTest {
         userForCheck.setAddress(address);
         userForCheck.setBirthDate("2001-02-05");
 
-        responseBetOn = new RulesAdapter().checkUserPut(userForCheck);
+        responseBetOn = rulesAdapter.checkUserPut(userForCheck);
         assertEquals(responseBetOn.getAge(), "E0002", "Invalid BirthDate error");
     }
 
@@ -72,7 +71,7 @@ public class UpdateUserCheckTest extends BaseTest {
     public void checkInvalidPasswordNumber() {
         userForCheck.setPassportNumber("ASD84676");
 
-        responseBetOn = new RulesAdapter().checkUserPut(userForCheck);
+        responseBetOn = rulesAdapter.checkUserPut(userForCheck);
         assertEquals(responseBetOn.getIdCard(), "E0007", "Invalid BirthDate error");
     }
 }

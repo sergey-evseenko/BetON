@@ -1,6 +1,5 @@
 package tests.rulesEngine;
 
-import adapters.RulesAdapter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
@@ -25,7 +24,7 @@ public class ValidateEmailUserNameTest extends BaseTest {
 
     @Test(description = "validate params", dataProvider = "Params")
     public void validateParams(String path, String param, String paramValue, String code) {
-        responseBetOn = new RulesAdapter().validate(path, param, paramValue);
+        responseBetOn = rulesAdapter.validate(path, param, paramValue);
         if (path.equals("email")) {
             assertEquals(responseBetOn.getEmail(), code, "Invalid response message");
         }

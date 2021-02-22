@@ -1,6 +1,5 @@
 package tests.rulesEngine;
 
-import adapters.RulesAdapter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
@@ -23,7 +22,7 @@ public class GetProvidersTest extends BaseTest {
 
     @Test(description = "get providers by country code", dataProvider = "Country codes")
     public void getProviders(String countryCode, String expectedProvidersList) {
-        String providersList = new RulesAdapter().getProviders(countryCode);
+        String providersList = rulesAdapter.getProviders(countryCode);
         assertEquals(providersList, expectedProvidersList, "Invalid providers list");
     }
 }

@@ -1,6 +1,5 @@
 package tests.sportEvents;
 
-import adapters.TranslationAdapter;
 import models.LiveMatch;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -31,7 +30,7 @@ public class TranslationTest extends BaseTest {
     @Test(description = "translate match", dataProvider = "Params")
     public void translateMatch(String eventBetradarId, String langIso, String translation, int expectedStatusCode, String responseMessage) {
 
-        responseBetOn = new TranslationAdapter().get(eventBetradarId, langIso, translation, expectedStatusCode);
+        responseBetOn = translationAdapter.get(eventBetradarId, langIso, translation, expectedStatusCode);
         if (expectedStatusCode == 400) {
             assertEquals(responseBetOn.getMessage(), responseMessage, "Invalid response");
         }
@@ -40,7 +39,7 @@ public class TranslationTest extends BaseTest {
     @Test(description = "translate matches with valid Id")
     public void translateMatches() {
         liveMatch = data.get("liveMatch.json", LiveMatch.class);
-        new TranslationAdapter().post(liveMatch, 200);
+        translationAdapter.post(liveMatch, 200);
 
     }
 
@@ -48,6 +47,6 @@ public class TranslationTest extends BaseTest {
     public void translateMatchesInvalidId() {
         liveMatch = data.get("liveMatch.json", LiveMatch.class);
         liveMatch.setEventBetradarId(1);
-        new TranslationAdapter().post(liveMatch, 417);
+        translationAdapter.post(liveMatch, 417);
     }
 }

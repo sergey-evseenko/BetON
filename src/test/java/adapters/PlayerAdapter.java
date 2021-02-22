@@ -5,6 +5,7 @@ import models.OptionsList;
 import models.ResponseBetOn;
 
 import static io.restassured.RestAssured.given;
+import static tests.BaseTest.token;
 
 public class PlayerAdapter extends MainAdapter {
     String url = "player/v1/players/";

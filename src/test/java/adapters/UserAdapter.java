@@ -4,6 +4,7 @@ import io.restassured.http.ContentType;
 import models.*;
 
 import static io.restassured.RestAssured.given;
+import static tests.BaseTest.token;
 
 public class UserAdapter extends MainAdapter {
     String url = "auth/v1/users";

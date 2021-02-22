@@ -1,6 +1,5 @@
 package tests.sportEvents;
 
-import adapters.MatchDayAdapter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
@@ -28,7 +27,7 @@ public class MatchDayDeterminationTest extends BaseTest {
     @Test(description = "translate match", dataProvider = "Params")
     public void validateParams(String categoryId, String langIso, int expectedStatusCode, String responseMessage) {
 
-        responseBetOn = new MatchDayAdapter().validate(categoryId, langIso, expectedStatusCode);
+        responseBetOn = matchDayAdapter.validate(categoryId, langIso, expectedStatusCode);
         if (expectedStatusCode == 400) {
             assertEquals(responseBetOn.getMessage(), responseMessage, "Invalid response");
         }
@@ -37,11 +36,11 @@ public class MatchDayDeterminationTest extends BaseTest {
 
     @Test(description = "translate match")
     public void translateMatch() {
-        new MatchDayAdapter().get("de");
+        matchDayAdapter.get("de");
     }
 
     @Test(description = "translate match with invalid langIso")
     public void translateMatchInvaldLangIso() {
-        new MatchDayAdapter().get("qwerty");
+        matchDayAdapter.get("qwerty");
     }
 }

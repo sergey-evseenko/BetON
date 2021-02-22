@@ -1,6 +1,5 @@
 package tests.userInfo;
 
-import adapters.UserAdapter;
 import models.SecurityOption;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -31,7 +30,7 @@ public class UpdateSecurityOptionsTest extends BaseTest {
     @Test(description = "validate security options", dataProvider = "Invalid security options")
     public void validateSecurityOptions(String question, int questionId, String field, String code, String description) {
         SecurityOption securityOption = new SecurityOption(question, questionId);
-        responseBetOn = new UserAdapter().putSecurityOption(securityOption, 400);
+        responseBetOn = userAdapter.putSecurityOption(securityOption, 400);
         assertEquals(responseBetOn.getField(), field, "Invalid field");
         assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
         assertEquals(responseBetOn.getCode(), code, "Invalid code");
@@ -41,8 +40,8 @@ public class UpdateSecurityOptionsTest extends BaseTest {
     @Test(description = "update security options")
     public void updateSecurityOptions() {
         SecurityOption securityOption = new SecurityOption(faker.lorem().characters(10), faker.number().numberBetween(1, 5));
-        new UserAdapter().putSecurityOption(securityOption, 200);
-        SecurityOption actualSecurityOption = new UserAdapter().getSecurityOption();
+        userAdapter.putSecurityOption(securityOption, 200);
+        SecurityOption actualSecurityOption = userAdapter.getSecurityOption();
         assertEquals(actualSecurityOption, securityOption, "Invalid security option");
     }
 }

@@ -1,6 +1,5 @@
 package tests.userInfo;
 
-import adapters.PlayerAdapter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
@@ -13,8 +12,8 @@ public class PPMOTest extends BaseTest {
     public void putPPMO() {
         String[] ppmos = new String[]{"D", "O", "M"};
         String ppmo = ppmos[random.nextInt(ppmos.length)];
-        new PlayerAdapter().putPPMO(ppmo, 200);
-        responseBetOn = new PlayerAdapter().getPPMO();
+        playerAdapter.putPPMO(ppmo, 200);
+        responseBetOn = playerAdapter.getPPMO();
         assertEquals(responseBetOn.getPpmo(), ppmo, "Updating ppmo error");
     }
 
@@ -32,6 +31,6 @@ public class PPMOTest extends BaseTest {
 
     @Test(description = "validate PPMO", dataProvider = "Invalid PPMO")
     public void validatePPMO(String ppmo) {
-        new PlayerAdapter().putPPMO(ppmo, 400);
+        playerAdapter.putPPMO(ppmo, 400);
     }
 }
