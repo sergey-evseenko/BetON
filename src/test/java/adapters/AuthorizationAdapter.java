@@ -1,6 +1,6 @@
 package adapters;
 
-import models.Response;
+import models.ResponseBetOn;
 import models.User;
 
 import static io.restassured.RestAssured.given;
@@ -8,17 +8,17 @@ import static io.restassured.RestAssured.given;
 public class AuthorizationAdapter extends MainAdapter {
     String url = "auth/v1/oauth/token/beton";
 
-    public Response post(String refreshToken) {
+    public ResponseBetOn post(String refreshToken) {
         requestSpec = given()
                 .formParam("grant_type", "refresh_token")
                 .formParam("client_id", "clientId")
                 .formParam("client_secret", "secret")
                 .formParam("refresh_token", refreshToken);
         response = post(url, requestSpec, 200);
-        return gson.fromJson(response.asString().trim(), Response.class);
+        return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
     }
 
-    public Response post(User user, String clientID, String clientSecret, int expectedStatusCode) {
+    public ResponseBetOn post(User user, String clientID, String clientSecret, int expectedStatusCode) {
         requestSpec = given()
                 .formParam("username", user.getUserName())
                 .formParam("password", user.getPassword())
@@ -27,10 +27,10 @@ public class AuthorizationAdapter extends MainAdapter {
                 .formParam("client_id", clientID)
                 .formParam("client_secret", clientSecret);
         response = post(url, requestSpec, expectedStatusCode);
-        return gson.fromJson(response.asString().trim(), Response.class);
+        return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
     }
 
-    public Response post(String userName, String password, int expectedStatusCode) {
+    public ResponseBetOn post(String userName, String password, int expectedStatusCode) {
         requestSpec = given()
                 .formParam("username", userName)
                 .formParam("password", password)
@@ -39,7 +39,7 @@ public class AuthorizationAdapter extends MainAdapter {
                 .formParam("client_id", "clientId")
                 .formParam("client_secret", "secret");
         response = post(url, requestSpec, expectedStatusCode);
-        Response[] responseBodyErrors = gson.fromJson(response.asString().trim(), Response[].class);
+        ResponseBetOn[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBetOn[].class);
         return responseBodyErrors[0];
     }
 }

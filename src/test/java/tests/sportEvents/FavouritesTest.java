@@ -18,7 +18,7 @@ public class FavouritesTest extends BaseTest {
 
     @BeforeClass
     public void getUserId() {
-        UserInfo userInfo = new UserAdapter().getUserInfoWithValidToken(token);
+        UserInfo userInfo = new UserAdapter().getUserInfoWithValidToken();
         userId = String.valueOf(userInfo.getId());
     }
 
@@ -28,8 +28,8 @@ public class FavouritesTest extends BaseTest {
         //add event
         new FavouritesAdapter().post(favouriteEvent, 200);
         //add event that was already added
-        response = new FavouritesAdapter().post(favouriteEvent, 400);
-        assertEquals(response.getMessage(), "User's favorite event already exists.", "Invalid response");
+        responseBetOn = new FavouritesAdapter().post(favouriteEvent, 400);
+        assertEquals(responseBetOn.getMessage(), "User's favorite event already exists.", "Invalid response");
         //remove event
         new FavouritesAdapter().delete(favouriteEvent, 200);
     }
@@ -39,15 +39,15 @@ public class FavouritesTest extends BaseTest {
     public void addEventNoUserId() {
         favouriteEvent = new FavouriteEvent();
         favouriteEvent.setEventId(eventId);
-        response = new FavouritesAdapter().post(favouriteEvent, 400);
-        assertEquals(response.getError(), "Bad Request", "Invalid response");
+        responseBetOn = new FavouritesAdapter().post(favouriteEvent, 400);
+        assertEquals(responseBetOn.getError(), "Bad Request", "Invalid response");
     }
 
     @Test(description = "add favourite event without eventId")
     public void addEventNoEventId() {
         favouriteEvent = new FavouriteEvent();
         favouriteEvent.setUserId(userId);
-        response = new FavouritesAdapter().post(favouriteEvent, 400);
-        assertEquals(response.getError(), "Bad Request", "Invalid response");
+        responseBetOn = new FavouritesAdapter().post(favouriteEvent, 400);
+        assertEquals(responseBetOn.getError(), "Bad Request", "Invalid response");
     }
 }

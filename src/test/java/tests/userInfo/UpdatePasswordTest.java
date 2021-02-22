@@ -12,10 +12,11 @@ public class UpdatePasswordTest extends BaseTest {
 
     @Test(description = "update password")
     public void updatePassword() {
+        UserAdapter userAdapter = new UserAdapter();
         Password validPassword = new Password("Qwerty!1231", "Qwerty!123", "Qwerty!1231");
         Password defaultPassword = new Password("Qwerty!123", "Qwerty!1231", "Qwerty!123");
-        new UserAdapter().putPassword(validPassword, token, 200);
-        new UserAdapter().putPassword(defaultPassword, token, 200);
+        userAdapter.putPassword(validPassword, 200);
+        userAdapter.putPassword(defaultPassword, 200);
     }
 
     @DataProvider(name = "Invalid passwords")
@@ -55,10 +56,10 @@ public class UpdatePasswordTest extends BaseTest {
     @Test(description = "validate password", dataProvider = "Invalid passwords")
     public void validatePassword(String newPassword, String password, String repeatNewPassword, String field, String code, String description) {
         Password invalidPassword = new Password(newPassword, password, repeatNewPassword);
-        response = new UserAdapter().putPassword(invalidPassword, token, 400);
-        assertEquals(response.getField(), field, "Invalid field");
-        assertEquals(response.getType(), "VALIDATION", "Invalid type");
-        assertEquals(response.getCode(), code, "Invalid code");
-        assertEquals(response.getDescription(), description, "Invalid description");
+        responseBetOn = new UserAdapter().putPassword(invalidPassword, 400);
+        assertEquals(responseBetOn.getField(), field, "Invalid field");
+        assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBetOn.getCode(), code, "Invalid code");
+        assertEquals(responseBetOn.getDescription(), description, "Invalid description");
     }
 }

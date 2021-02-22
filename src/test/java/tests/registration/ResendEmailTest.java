@@ -18,9 +18,9 @@ public class ResendEmailTest extends BaseTest {
     @BeforeClass
     public void registration() {
         user = new UserFactory().getNewUser();
-        response = new RegistrationAdapter().post(user, 200);
-        externalId = response.getExternalId();
-        accessToken = response.getAccessToken();
+        responseBetOn = new RegistrationAdapter().post(user, 200);
+        externalId = responseBetOn.getExternalId();
+        accessToken = responseBetOn.getAccessToken();
     }
 
     @DataProvider(name = "resend to new email")
@@ -51,12 +51,12 @@ public class ResendEmailTest extends BaseTest {
         resendEmailData.setEmail(email);
         resendEmailData.setRepeatedEmail(repeatedEmail);
         resendEmailData.setExternalId(externalId);
-        response = new ResendEmailAdapter().post(resendEmailData, accessToken, responseCode);
-        if (response != null) {
-            assertEquals(response.getField(), "email", "Invalid field");
-            assertEquals(response.getType(), "VALIDATION", "Invalid type");
-            assertEquals(response.getCode(), code, "Invalid code");
-            assertEquals(response.getDescription(), errorDescription, "Invalid description");
+        responseBetOn = new ResendEmailAdapter().post(resendEmailData, accessToken, responseCode);
+        if (responseBetOn != null) {
+            assertEquals(responseBetOn.getField(), "email", "Invalid field");
+            assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
+            assertEquals(responseBetOn.getCode(), code, "Invalid code");
+            assertEquals(responseBetOn.getDescription(), errorDescription, "Invalid description");
         }
     }
 
@@ -74,10 +74,10 @@ public class ResendEmailTest extends BaseTest {
 
     @Test(description = "resend to old email", dataProvider = "resend to old email")
     public void resendEmailToOldEmail(String externalId, String code, String errorDescription, int responseCode) {
-        response = new ResendEmailAdapter().get(externalId, accessToken, responseCode);
-        if (response != null) {
-            assertEquals(response.getCode(), code, "Invalid code");
-            assertEquals(response.getDescription(), errorDescription, "Invalid description");
+        responseBetOn = new ResendEmailAdapter().get(externalId, accessToken, responseCode);
+        if (responseBetOn != null) {
+            assertEquals(responseBetOn.getCode(), code, "Invalid code");
+            assertEquals(responseBetOn.getDescription(), errorDescription, "Invalid description");
         }
     }
 }

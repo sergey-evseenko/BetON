@@ -27,30 +27,30 @@ public class OptionsListTest extends BaseTest {
     @Test(description = "validate options list", dataProvider = "Options list")
     public void putOptionList(int sportId, Boolean autoAccept, Boolean wantNewslettersOnEmail, int responseCode, String field, String code, String description) {
         OptionsList optionsList = new OptionsList(sportId, autoAccept, wantNewslettersOnEmail);
-        response = new PlayerAdapter().putOptionsList(optionsList, responseCode, token);
+        responseBetOn = new PlayerAdapter().putOptionsList(optionsList, responseCode);
         if (responseCode == 400) {
-            assertEquals(response.getField(), field, "Invalid field");
-            assertEquals(response.getType(), "VALIDATION", "Invalid type");
-            assertEquals(response.getCode(), code, "Invalid code");
-            assertEquals(response.getDescription(), description, "Invalid description");
+            assertEquals(responseBetOn.getField(), field, "Invalid field");
+            assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
+            assertEquals(responseBetOn.getCode(), code, "Invalid code");
+            assertEquals(responseBetOn.getDescription(), description, "Invalid description");
         } else {
-            OptionsList actualOptionList = new PlayerAdapter().getOptionsList(token);
+            OptionsList actualOptionList = new PlayerAdapter().getOptionsList();
             assertEquals(actualOptionList, optionsList, "Updating options list error");
         }
     }
 
     @Test(description = "get options list unauthorized")
     public void getOptionListUnauthorized() {
-        response = new PlayerAdapter().getOptionListUnauthorized();
-        assertEquals(response.getError(), "unauthorized", "authorization error");
-        assertEquals(response.getErrorDescription(), "Full authentication is required to access this resource", "authorization error");
+        responseBetOn = new PlayerAdapter().getOptionListUnauthorized();
+        assertEquals(responseBetOn.getError(), "unauthorized", "authorization error");
+        assertEquals(responseBetOn.getErrorDescription(), "Full authentication is required to access this resource", "authorization error");
     }
 
     @Test(description = "put options list unauthorized")
     public void putOptionListUnauthorized() {
         OptionsList optionsList = new OptionsList(1, true, true);
-        response = new PlayerAdapter().putOptionListUnauthorized(optionsList);
-        assertEquals(response.getError(), "unauthorized", "authorization error");
-        assertEquals(response.getErrorDescription(), "Full authentication is required to access this resource", "authorization error");
+        responseBetOn = new PlayerAdapter().putOptionListUnauthorized(optionsList);
+        assertEquals(responseBetOn.getError(), "unauthorized", "authorization error");
+        assertEquals(responseBetOn.getErrorDescription(), "Full authentication is required to access this resource", "authorization error");
     }
 }

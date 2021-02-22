@@ -31,18 +31,18 @@ public class UpdateSecurityOptionsTest extends BaseTest {
     @Test(description = "validate security options", dataProvider = "Invalid security options")
     public void validateSecurityOptions(String question, int questionId, String field, String code, String description) {
         SecurityOption securityOption = new SecurityOption(question, questionId);
-        response = new UserAdapter().putSecurityOption(securityOption, token, 400);
-        assertEquals(response.getField(), field, "Invalid field");
-        assertEquals(response.getType(), "VALIDATION", "Invalid type");
-        assertEquals(response.getCode(), code, "Invalid code");
-        assertEquals(response.getDescription(), description, "Invalid description");
+        responseBetOn = new UserAdapter().putSecurityOption(securityOption, 400);
+        assertEquals(responseBetOn.getField(), field, "Invalid field");
+        assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBetOn.getCode(), code, "Invalid code");
+        assertEquals(responseBetOn.getDescription(), description, "Invalid description");
     }
 
     @Test(description = "update security options")
     public void updateSecurityOptions() {
         SecurityOption securityOption = new SecurityOption(faker.lorem().characters(10), faker.number().numberBetween(1, 5));
-        new UserAdapter().putSecurityOption(securityOption, token, 200);
-        SecurityOption actualSecurityOption = new UserAdapter().getSecurityOption(token);
+        new UserAdapter().putSecurityOption(securityOption, 200);
+        SecurityOption actualSecurityOption = new UserAdapter().getSecurityOption();
         assertEquals(actualSecurityOption, securityOption, "Invalid security option");
     }
 }

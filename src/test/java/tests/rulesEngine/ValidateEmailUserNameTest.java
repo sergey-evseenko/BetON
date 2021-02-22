@@ -25,12 +25,12 @@ public class ValidateEmailUserNameTest extends BaseTest {
 
     @Test(description = "validate params", dataProvider = "Params")
     public void validateParams(String path, String param, String paramValue, String code) {
-        response = new RulesAdapter().validate(path, param, paramValue);
+        responseBetOn = new RulesAdapter().validate(path, param, paramValue);
         if (path.equals("email")) {
-            assertEquals(response.getEmail(), code, "Invalid response message");
+            assertEquals(responseBetOn.getEmail(), code, "Invalid response message");
         }
         if (path.equals("username")) {
-            assertEquals(response.getUserName(), code, "Invalid response message");
+            assertEquals(responseBetOn.getUserName(), code, "Invalid response message");
         }
     }
 }

@@ -23,16 +23,16 @@ public class CreateUserCheckTest extends BaseTest {
     public void checkNotUniqEmail() {
         userForCheck.setEmail("qwerty81@gmail.com");
 
-        response = new RulesAdapter().checkUserPost(userForCheck);
-        assertEquals(response.getEmail(), "E0005", "Not uniq email error");
+        responseBetOn = new RulesAdapter().checkUserPost(userForCheck);
+        assertEquals(responseBetOn.getEmail(), "E0005", "Not uniq email error");
     }
 
     @Test(description = "check not uniq user name")
     public void checkNotUniqUserName() {
         userForCheck.setUsername("qwerty81");
 
-        response = new RulesAdapter().checkUserPost(userForCheck);
-        assertEquals(response.getUserName(), "E0005", "Not uniq user name error");
+        responseBetOn = new RulesAdapter().checkUserPost(userForCheck);
+        assertEquals(responseBetOn.getUserName(), "E0005", "Not uniq user name error");
     }
 
     @Test(description = "check not uniq FN, LN, nationality, date of birth")
@@ -42,8 +42,8 @@ public class CreateUserCheckTest extends BaseTest {
         userForCheck.setNationalityId(19);
         userForCheck.setBirthDate("1990-02-05");
 
-        response = new RulesAdapter().checkUserPost(userForCheck);
-        assertEquals(response.getPlace(), "E0006", "Not uniq place error");
+        responseBetOn = new RulesAdapter().checkUserPost(userForCheck);
+        assertEquals(responseBetOn.getPlace(), "E0006", "Not uniq place error");
     }
 
     @Test(description = "check invalid age 18")
@@ -53,8 +53,8 @@ public class CreateUserCheckTest extends BaseTest {
         userForCheck.setAddress(address);
         userForCheck.setBirthDate("2005-12-28");
 
-        response = new RulesAdapter().checkUserPost(userForCheck);
-        assertEquals(response.getAge(), "E0002", "Invalid BirthDate error");
+        responseBetOn = new RulesAdapter().checkUserPost(userForCheck);
+        assertEquals(responseBetOn.getAge(), "E0002", "Invalid BirthDate error");
     }
 
     @Test(description = "check invalid age 21")
@@ -64,15 +64,15 @@ public class CreateUserCheckTest extends BaseTest {
         userForCheck.setAddress(address);
         userForCheck.setBirthDate("2001-02-05");
 
-        response = new RulesAdapter().checkUserPost(userForCheck);
-        assertEquals(response.getAge(), "E0002", "Invalid BirthDate error");
+        responseBetOn = new RulesAdapter().checkUserPost(userForCheck);
+        assertEquals(responseBetOn.getAge(), "E0002", "Invalid BirthDate error");
     }
 
     @Test(description = "check invalid passport number")
     public void checkInvalidPasswordNumber() {
         userForCheck.setPassportNumber("ASD84676");
 
-        response = new RulesAdapter().checkUserPost(userForCheck);
-        assertEquals(response.getIdCard(), "E0007", "Invalid BirthDate error");
+        responseBetOn = new RulesAdapter().checkUserPost(userForCheck);
+        assertEquals(responseBetOn.getIdCard(), "E0007", "Invalid BirthDate error");
     }
 }

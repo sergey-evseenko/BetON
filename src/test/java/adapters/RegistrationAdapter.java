@@ -1,7 +1,7 @@
 package adapters;
 
 import io.restassured.http.ContentType;
-import models.Response;
+import models.ResponseBetOn;
 import models.User;
 
 import static io.restassured.RestAssured.given;
@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 public class RegistrationAdapter extends MainAdapter {
     String url = "auth/v1/users/register";
 
-    public Response post(User user, int expectedStatusCode) {
+    public ResponseBetOn post(User user, int expectedStatusCode) {
         body = gson.toJson(user);
         requestSpec = given()
                 .contentType(ContentType.JSON)
@@ -17,9 +17,9 @@ public class RegistrationAdapter extends MainAdapter {
                 .body(body);
         response = post(url, requestSpec, expectedStatusCode);
         if (expectedStatusCode == 200) {
-            return gson.fromJson(response.asString().trim(), Response.class);
+            return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
         } else {
-            Response[] responseBodyErrors = gson.fromJson(response.asString().trim(), Response[].class);
+            ResponseBetOn[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBetOn[].class);
             return responseBodyErrors[0];
         }
     }

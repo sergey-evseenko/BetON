@@ -24,17 +24,17 @@ public class UpdateEmailTest extends BaseTest {
 
     @Test(description = "Confirm that email was changed", dataProvider = "Invalid codes")
     public void confirmChangedEmail(String confirmationCode, String code, String description) {
-        response = new UserAdapter().confirmEmail(confirmationCode);
-        assertEquals(response.getField(), "Confirmation code", "Invalid field");
-        assertEquals(response.getType(), "CONFIRMATION", "Invalid type");
-        assertEquals(response.getCode(), code, "Invalid code");
-        assertEquals(response.getDescription(), description, "Invalid description");
+        responseBetOn = new UserAdapter().confirmEmail(confirmationCode);
+        assertEquals(responseBetOn.getField(), "Confirmation code", "Invalid field");
+        assertEquals(responseBetOn.getType(), "CONFIRMATION", "Invalid type");
+        assertEquals(responseBetOn.getCode(), code, "Invalid code");
+        assertEquals(responseBetOn.getDescription(), description, "Invalid description");
     }
 
     @Test(description = "Update email")
     public void updateEmail() {
         Email validEmail = new Email("polinazz2@inbox.ru", "Qwerty!123", "polinazz2@inbox.ru");
-        new UserAdapter().putEmail(validEmail, token, 200);
+        new UserAdapter().putEmail(validEmail, 200);
     }
 
     @DataProvider(name = "Invalid emails")
@@ -70,10 +70,10 @@ public class UpdateEmailTest extends BaseTest {
     @Test(description = "validate email", dataProvider = "Invalid emails")
     public void validateEmail(String email, String password, String repeatedEmail, String field, String code, String description) {
         Email invalidEmail = new Email(email, password, repeatedEmail);
-        response = new UserAdapter().putEmail(invalidEmail, token, 400);
-        assertEquals(response.getField(), field, "Invalid field");
-        assertEquals(response.getType(), "VALIDATION", "Invalid type");
-        assertEquals(response.getCode(), code, "Invalid code");
-        assertEquals(response.getDescription(), description, "Invalid description");
+        responseBetOn = new UserAdapter().putEmail(invalidEmail, 400);
+        assertEquals(responseBetOn.getField(), field, "Invalid field");
+        assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
+        assertEquals(responseBetOn.getCode(), code, "Invalid code");
+        assertEquals(responseBetOn.getDescription(), description, "Invalid description");
     }
 }

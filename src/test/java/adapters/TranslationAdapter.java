@@ -2,7 +2,7 @@ package adapters;
 
 import io.restassured.http.ContentType;
 import models.LiveMatch;
-import models.Response;
+import models.ResponseBetOn;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
@@ -12,7 +12,7 @@ public class TranslationAdapter extends MainAdapter {
     String urlMatches = "sport-events/v1/translation/translateLiveMatches";
 
 
-    public Response get(String eventBetradarId, String langIso, String translation, int expectedStatusCode) {
+    public ResponseBetOn get(String eventBetradarId, String langIso, String translation, int expectedStatusCode) {
         if (eventBetradarId != null && langIso != null) {
             requestSpec = given()
                     .queryParam("eventBetradarId", eventBetradarId)
@@ -32,7 +32,7 @@ public class TranslationAdapter extends MainAdapter {
             assertEquals(response.path("bId").toString(), eventBetradarId, "Invalid betradar id");
             return null;
         } else {
-            return gson.fromJson(response.asString().trim(), Response.class);
+            return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
         }
     }
 

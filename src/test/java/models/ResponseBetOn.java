@@ -7,7 +7,7 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class Response {
+public class ResponseBetOn {
     @SerializedName("access_token")
     @Expose
     String accessToken;

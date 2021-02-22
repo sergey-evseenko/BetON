@@ -49,26 +49,26 @@ public class ContentTest extends BaseTest {
 
     @Test(description = "validate params: invalid lang")
     public void validateInvalidLang() {
-        response = new ContentAdapter().validateParams("about", "qwerty", true, 200);
-        assertEquals(response.getDescription(), "No translation", "validate content param error");
+        responseBetOn = new ContentAdapter().validateParams("about", "qwerty", true, 200);
+        assertEquals(responseBetOn.getDescription(), "No translation", "validate content param error");
     }
 
     @Ignore //TODO Fix 500 error
     @Test(description = "validate params: lang is null")
     public void validateNullLang() {
-        response = new ContentAdapter().validateParams("about", null, true, 200);
+        responseBetOn = new ContentAdapter().validateParams("about", null, true, 200);
     }
 
     @Test(description = "validate params: invalid name")
     public void validateInvalidName() {
-        response = new ContentAdapter().validateParams("qwerty", "en", true, 404);
-        assertEquals(response.getMessage(), "Document with name 'qwerty' is not found in database.", "validate content param error");
+        responseBetOn = new ContentAdapter().validateParams("qwerty", "en", true, 404);
+        assertEquals(responseBetOn.getMessage(), "Document with name 'qwerty' is not found in database.", "validate content param error");
     }
 
     @Test(description = "validate params: name is null")
     public void validateNullName() {
-        response = new ContentAdapter().validateParams(null, "en", true, 400);
-        assertEquals(response.getMessage(), "Required String parameter 'name' is not present", "validate content param error");
+        responseBetOn = new ContentAdapter().validateParams(null, "en", true, 400);
+        assertEquals(responseBetOn.getMessage(), "Required String parameter 'name' is not present", "validate content param error");
     }
 
 

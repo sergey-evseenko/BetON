@@ -1,13 +1,13 @@
 package adapters;
 
-import models.Response;
+import models.ResponseBetOn;
 
 public class ConfirmRegistrationAdapter extends MainAdapter {
     String url = "auth/v1/users/confirm/registration/";
 
-    public Response getConfirmRegistration(String registrationCode, int expectedStatusCode) {
+    public ResponseBetOn getConfirmRegistration(String registrationCode, int expectedStatusCode) {
         response = get(url + registrationCode, expectedStatusCode);
-        Response[] responseBodyErrors = gson.fromJson(response.asString().trim(), Response[].class);
+        ResponseBetOn[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBetOn[].class);
         return responseBodyErrors[0];
     }
 }

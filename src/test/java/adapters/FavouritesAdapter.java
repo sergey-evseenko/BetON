@@ -2,7 +2,7 @@ package adapters;
 
 import io.restassured.http.ContentType;
 import models.FavouriteEvent;
-import models.Response;
+import models.ResponseBetOn;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 public class FavouritesAdapter extends MainAdapter {
     String url = "sport-events/v1/favourite/events/";
 
-    public Response post(FavouriteEvent favouriteEvent, int expectedStatusCode) {
+    public ResponseBetOn post(FavouriteEvent favouriteEvent, int expectedStatusCode) {
         body = gson.toJson(favouriteEvent);
         requestSpec = given()
                 .contentType(ContentType.JSON)
@@ -20,7 +20,7 @@ public class FavouritesAdapter extends MainAdapter {
             assertEquals(response.asString(), "", "Invalid response");
             return null;
         } else {
-            return gson.fromJson(response.asString().trim(), Response.class);
+            return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
         }
 
     }

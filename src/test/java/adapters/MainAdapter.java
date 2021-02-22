@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import models.User;
 import utils.DataReader;
 import utils.PropertyManager;
 
@@ -13,28 +14,24 @@ import static io.restassured.config.DecoderConfig.decoderConfig;
 
 public class MainAdapter {
 
-    Gson gson;
-    PropertyManager props;
+    Gson gson = new GsonBuilder()
+            .excludeFieldsWithoutExposeAnnotation()
+            .create();
     Response response;
-    String body;
-    String token1;
-    DataReader data;
     RequestSpecification requestSpec;
+    String body, token;
 
     public MainAdapter() {
-        data = new DataReader();
-        props = new PropertyManager();
+        DataReader data = new DataReader();
+        User user = data.get("userForLogin.json", User.class);
+        PropertyManager props = new PropertyManager();
         RestAssured.baseURI = props.get("baseUrl");
         RestAssured.config = RestAssured.config().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));
-        gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .create();
+        token = getToken(user);
+    }
 
-        //get token
-        /*
-
-        User user = data.get("userForLogin.json", User.class);
-
+    public String getToken(User user) {
+        System.out.println("CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!");
         requestSpec = given()
                 .formParam("username", user.getUserName())
                 .formParam("password", user.getPassword())
@@ -42,11 +39,8 @@ public class MainAdapter {
                 .formParam("response_type", "token")
                 .formParam("client_id", "clientId")
                 .formParam("client_secret", "secret");
-
-        models.Response response = gson.fromJson(post("auth/v1/oauth/token/beton", requestSpec, 200).asString().trim(), models.Response.class);
-        token1 = response.getAccessToken();
-
-         */
+        response = post("auth/v1/oauth/token/beton", requestSpec, 200);
+        return response.path("access_token");
     }
 
     public Response get(String url, int responseCode) {
@@ -97,5 +91,4 @@ public class MainAdapter {
                 .statusCode(expectedStatusCode)
                 .extract().response();
     }
-
 }

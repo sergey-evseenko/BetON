@@ -1,7 +1,7 @@
 package tests.registration;
 
 import adapters.FieldValidationAdapter;
-import models.Response;
+import models.ResponseBetOn;
 import models.ValidateField;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -24,7 +24,7 @@ public class ValidateFieldTest extends BaseTest {
     @Test(description = "validation of username and emails field", dataProvider = "fields values")
     public void fieldValidation(String fieldType, String fieldValue, String field, Boolean isEmptyResponse) {
         ValidateField validateField = new ValidateField(fieldType, fieldValue);
-        Response[] responseBody = new FieldValidationAdapter().post(validateField);
+        ResponseBetOn[] responseBody = new FieldValidationAdapter().post(validateField);
         if (isEmptyResponse) {
             assertEquals(responseBody.length, 0, "Incorrect field validation");
         } else {

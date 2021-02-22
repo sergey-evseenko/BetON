@@ -15,17 +15,17 @@ public class AuthorizationTest extends BaseTest {
 
     @Test(description = "Login with valid login/pass")
     public void login() {
-        response = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
-        assertEquals(response.getEmail(), user.getEmail(), "Invalid email");
-        assertNotNull(response.getAccessToken(), "Invalid access token");
+        responseBetOn = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
+        assertEquals(responseBetOn.getEmail(), user.getEmail(), "Invalid email");
+        assertNotNull(responseBetOn.getAccessToken(), "Invalid access token");
     }
 
     @Test(description = "Login with refresh token")
     public void loginWithRefreshToken() {
-        response = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
-        response = new AuthorizationAdapter().post(response.getRefreshToken());
-        assertEquals(response.getEmail(), user.getEmail(), "Invalid email");
-        assertNotNull(response.getAccessToken(), "Invalid access token");
+        responseBetOn = new AuthorizationAdapter().post(user, "clientId", "secret", 200);
+        responseBetOn = new AuthorizationAdapter().post(responseBetOn.getRefreshToken());
+        assertEquals(responseBetOn.getEmail(), user.getEmail(), "Invalid email");
+        assertNotNull(responseBetOn.getAccessToken(), "Invalid access token");
     }
 
     @DataProvider(name = "List of invalid username/pass")
@@ -52,10 +52,10 @@ public class AuthorizationTest extends BaseTest {
 
     @Test(description = "validate username/pass", dataProvider = "List of invalid username/pass")
     public void validateCredentials(String userName, String password, String code, String description, int responseCode) {
-        response = new AuthorizationAdapter().post(userName, password, responseCode);
-        assertEquals(response.getType(), "AUTHENTICATION", "Invalid type");
-        assertEquals(response.getCode(), code, "Invalid code");
-        assertEquals(response.getDescription(), description, "Invalid description");
+        responseBetOn = new AuthorizationAdapter().post(userName, password, responseCode);
+        assertEquals(responseBetOn.getType(), "AUTHENTICATION", "Invalid type");
+        assertEquals(responseBetOn.getCode(), code, "Invalid code");
+        assertEquals(responseBetOn.getDescription(), description, "Invalid description");
         //for avoid blocking user
         if (userName == user.getUserName()) {
             return;
@@ -74,8 +74,8 @@ public class AuthorizationTest extends BaseTest {
 
     @Test(description = "validate clientId/clientSecret", dataProvider = "List of invalid clientId/clientSecret")
     public void validateFormData(String clientID, String clientSecret, String errorDescription) {
-        response = new AuthorizationAdapter().post(user, clientID, clientSecret, 401);
-        assertEquals(response.getError(), "invalid_client", "Invalid error message");
-        assertEquals(response.getErrorDescription(), errorDescription, "Invalid error description");
+        responseBetOn = new AuthorizationAdapter().post(user, clientID, clientSecret, 401);
+        assertEquals(responseBetOn.getError(), "invalid_client", "Invalid error message");
+        assertEquals(responseBetOn.getErrorDescription(), errorDescription, "Invalid error description");
     }
 }

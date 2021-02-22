@@ -28,9 +28,9 @@ public class MatchDayDeterminationTest extends BaseTest {
     @Test(description = "translate match", dataProvider = "Params")
     public void validateParams(String categoryId, String langIso, int expectedStatusCode, String responseMessage) {
 
-        response = new MatchDayAdapter().validate(categoryId, langIso, expectedStatusCode);
+        responseBetOn = new MatchDayAdapter().validate(categoryId, langIso, expectedStatusCode);
         if (expectedStatusCode == 400) {
-            assertEquals(response.getMessage(), responseMessage, "Invalid response");
+            assertEquals(responseBetOn.getMessage(), responseMessage, "Invalid response");
         }
 
     }

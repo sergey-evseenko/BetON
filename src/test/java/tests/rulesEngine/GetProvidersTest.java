@@ -13,7 +13,7 @@ public class GetProvidersTest extends BaseTest {
     public Object[][] countryCodes() {
         return new Object[][]{
                 //valid country code
-                {"BY", "[3,4,13]"},
+                {"BY", "[3,4]"},
                 //unknown country code
                 {"ZZ", "[]"},
                 //invalid country code

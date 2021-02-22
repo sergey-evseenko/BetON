@@ -2,14 +2,14 @@ package adapters;
 
 import io.restassured.http.ContentType;
 import models.ResendEmailData;
-import models.Response;
+import models.ResponseBetOn;
 
 import static io.restassured.RestAssured.given;
 
 public class ResendEmailAdapter extends MainAdapter {
     String url = "auth/v1/users/confirm/registration/resend";
 
-    public Response post(ResendEmailData resendEmailData, String token, int expectedStatusCode) {
+    public ResponseBetOn post(ResendEmailData resendEmailData, String token, int expectedStatusCode) {
         body = gson.toJson(resendEmailData);
         requestSpec = given()
                 .contentType(ContentType.JSON)
@@ -19,12 +19,12 @@ public class ResendEmailAdapter extends MainAdapter {
         if (expectedStatusCode == 200) {
             return null;
         } else {
-            Response[] responseBodyErrors = gson.fromJson(response.asString().trim(), Response[].class);
+            ResponseBetOn[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBetOn[].class);
             return responseBodyErrors[0];
         }
     }
 
-    public Response get(String externalId, String token, int expectedStatusCode) {
+    public ResponseBetOn get(String externalId, String token, int expectedStatusCode) {
         requestSpec = given()
                 .header("Authorization", "Bearer " + token)
                 .pathParam("externalId", externalId);
@@ -32,7 +32,7 @@ public class ResendEmailAdapter extends MainAdapter {
         if (expectedStatusCode == 200) {
             return null;
         } else {
-            Response[] responseBodyErrors = gson.fromJson(response.asString().trim(), Response[].class);
+            ResponseBetOn[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBetOn[].class);
             return responseBodyErrors[0];
         }
     }

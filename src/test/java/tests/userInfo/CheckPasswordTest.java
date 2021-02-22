@@ -24,14 +24,14 @@ public class CheckPasswordTest extends BaseTest {
     @Test(description = "check password", dataProvider = "Passwords")
     public void checkPassword(String password, String code, String description) {
         if (password != null) {
-            String responseMessage = new UserAdapter().checkPassword(password, token);
+            String responseMessage = new UserAdapter().checkPassword(password);
             assertEquals(responseMessage, description, "Checking password error");
         } else {
-            response = new UserAdapter().checkNullPassword();
-            assertEquals(response.getField(), "password", "Invalid field");
-            assertEquals(response.getType(), "VALIDATION", "Invalid type");
-            assertEquals(response.getCode(), code, "Invalid code");
-            assertEquals(response.getDescription(), description, "Invalid description");
+            responseBetOn = new UserAdapter().checkNullPassword();
+            assertEquals(responseBetOn.getField(), "password", "Invalid field");
+            assertEquals(responseBetOn.getType(), "VALIDATION", "Invalid type");
+            assertEquals(responseBetOn.getCode(), code, "Invalid code");
+            assertEquals(responseBetOn.getDescription(), description, "Invalid description");
         }
     }
 

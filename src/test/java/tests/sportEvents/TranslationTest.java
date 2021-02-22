@@ -31,9 +31,9 @@ public class TranslationTest extends BaseTest {
     @Test(description = "translate match", dataProvider = "Params")
     public void translateMatch(String eventBetradarId, String langIso, String translation, int expectedStatusCode, String responseMessage) {
 
-        response = new TranslationAdapter().get(eventBetradarId, langIso, translation, expectedStatusCode);
+        responseBetOn = new TranslationAdapter().get(eventBetradarId, langIso, translation, expectedStatusCode);
         if (expectedStatusCode == 400) {
-            assertEquals(response.getMessage(), responseMessage, "Invalid response");
+            assertEquals(responseBetOn.getMessage(), responseMessage, "Invalid response");
         }
     }
 
