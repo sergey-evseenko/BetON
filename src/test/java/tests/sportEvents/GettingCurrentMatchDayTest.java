@@ -23,8 +23,8 @@ public class GettingCurrentMatchDayTest extends BaseTest {
         };
     }
 
-    @Test(description = "translate match", dataProvider = "Params")
-    public void validateParams(String tournamentId, String roundId, String langIso, int expectedStatusCode, String responseMessage) {
+    @Test(description = "get current match day", dataProvider = "Params")
+    public void getMatchDay(String tournamentId, String roundId, String langIso, int expectedStatusCode, String responseMessage) {
 
         responseBetOn = matchDayAdapter.getMatchDay(tournamentId, roundId, langIso, expectedStatusCode);
         if (expectedStatusCode == 400) {
