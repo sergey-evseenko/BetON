@@ -31,6 +31,7 @@ public class BaseTest {
     protected PlayerAdapter playerAdapter = new PlayerAdapter();
     protected UserAdapter userAdapter = new UserAdapter();
     protected FavouritesAdapter favouritesAdapter = new FavouritesAdapter();
+    protected CatalogAdapter catalogAdapter = new CatalogAdapter();
 
     @BeforeSuite
     public void getToken() {
