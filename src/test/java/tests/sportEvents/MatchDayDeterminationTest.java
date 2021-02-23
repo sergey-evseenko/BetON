@@ -31,16 +31,15 @@ public class MatchDayDeterminationTest extends BaseTest {
         if (expectedStatusCode == 400) {
             assertEquals(responseBetOn.getMessage(), responseMessage, "Invalid response");
         }
-
     }
 
     @Test(description = "translate match")
     public void translateMatch() {
-        matchDayAdapter.get("de");
+        matchDayAdapter.getMatchDay("de");
     }
 
     @Test(description = "translate match with invalid langIso")
     public void translateMatchInvaldLangIso() {
-        matchDayAdapter.get("qwerty");
+        matchDayAdapter.getMatchDay("qwerty");
     }
 }
