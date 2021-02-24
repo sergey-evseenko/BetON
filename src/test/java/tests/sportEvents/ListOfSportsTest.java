@@ -16,8 +16,8 @@ public class ListOfSportsTest extends BaseTest {
         assertEquals(responseList, listOfSports, "Invalid list pf sports");
     }
 
-    @DataProvider(name = "langIso")
-    public Object[][] langIso() {
+    @DataProvider(name = "params")
+    public Object[][] params() {
         return new Object[][]{
                 //valid param
                 {"en", 200, ""},
@@ -33,7 +33,7 @@ public class ListOfSportsTest extends BaseTest {
         };
     }
 
-    @Test(description = "validate", dataProvider = "langIso")
+    @Test(description = "validate", dataProvider = "params")
     public void validateLangIso(String langIso, int expectedStatusCode, String responseMessage) {
 
         responseBetOn = catalogAdapter.getSports(langIso, expectedStatusCode);
