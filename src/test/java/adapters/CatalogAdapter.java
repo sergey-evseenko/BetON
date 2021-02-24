@@ -3,6 +3,7 @@ package adapters;
 import models.Category;
 import models.ResponseBetOn;
 import models.Sport;
+import models.Tournament;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
@@ -53,6 +54,35 @@ public class CatalogAdapter extends MainAdapter {
         response = get(url + "allCategories", requestSpec, expectedStatusCode);
         if (expectedStatusCode == 200) {
             assertEquals(response.path("sp.nm[0]"), "Soccer", "Invalid response");
+            return null;
+        }
+        return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
+    }
+
+    public Tournament[] getTournaments(String langIso, String categoryId) {
+        requestSpec = given()
+                .queryParam("langIso", langIso)
+                .queryParam("categoryId", categoryId);
+
+        response = get(url + "tournament", requestSpec, 200);
+        return gson.fromJson(response.asString().trim(), Tournament[].class);
+    }
+
+    public ResponseBetOn getTournaments(String langIso, String categoryId, int expectedStatusCode) {
+        if (langIso != null & categoryId != null)
+            requestSpec = given()
+                    .queryParam("langIso", langIso)
+                    .queryParam("categoryId", categoryId);
+        if (categoryId == null)
+            requestSpec = given()
+                    .queryParam("langIso", langIso);
+        if (langIso == null)
+            requestSpec = given()
+                    .queryParam("categoryId", categoryId);
+
+        response = get(url + "tournament", requestSpec, expectedStatusCode);
+        if (expectedStatusCode == 200) {
+            assertEquals(response.path("ct.snm[0]"), "inter", "Invalid response");
             return null;
         }
         return gson.fromJson(response.asString().trim(), ResponseBetOn.class);

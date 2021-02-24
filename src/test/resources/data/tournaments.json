@@ -1,0 +1,442 @@
+[
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 1,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "Setka Cup",
+    "snm": "tr_sv",
+    "tr": 13,
+    "cr": 13,
+    "tgn": "empty",
+    "cup": false,
+    "srid": 92757,
+    "cht": {
+      "ti": 1,
+      "chi": [
+        2
+      ]
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 5,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "TT Cup",
+    "snm": "tr_sv",
+    "tr": 15,
+    "cr": 15,
+    "tgn": "empty",
+    "cup": false,
+    "srid": 41115,
+    "cht": {
+      "ti": 5,
+      "chi": [
+        6
+      ]
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 14,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "Ukraine Win Cup",
+    "snm": "tr_sv",
+    "tr": 1,
+    "cr": 1,
+    "tgn": "empty",
+    "cup": false,
+    "srid": 93329,
+    "cht": {
+      "ti": 14,
+      "chi": [
+        15
+      ]
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 61,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "Ukraine Win Cup, Women",
+    "snm": "tr_sv",
+    "tr": 1,
+    "cr": 1,
+    "tgn": "empty",
+    "cup": false,
+    "srid": 93411,
+    "cht": {
+      "ti": 61,
+      "chi": [
+        62
+      ]
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 99,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "Setka Cup, Women",
+    "snm": "tr_sv",
+    "tr": 1,
+    "cr": 1,
+    "tgn": "empty",
+    "cup": false,
+    "srid": 92756,
+    "cht": {
+      "ti": 99,
+      "chi": [
+        100,
+        3423
+      ]
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 916,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "TT Cup, Women",
+    "snm": "tr_sv",
+    "tr": 10,
+    "cr": 10,
+    "tgn": "empty",
+    "cup": false,
+    "srid": 48084,
+    "cht": {
+      "ti": 916,
+      "chi": [
+        917
+      ]
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 1067,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "Challenger Series",
+    "snm": "tr_sv",
+    "tr": 1,
+    "cr": 1,
+    "tgn": "empty",
+    "cup": false,
+    "srid": 95199,
+    "cht": {
+      "ti": 1067,
+      "chi": [
+        1068,
+        1092,
+        1465,
+        1778,
+        1791,
+        2290,
+        2363,
+        2499,
+        2530,
+        2737,
+        2807,
+        3405,
+        3451,
+        3526,
+        3540,
+        3656,
+        3657,
+        4043,
+        4446,
+        4471,
+        5713,
+        6706,
+        6772,
+        6850,
+        6951,
+        6952,
+        7086,
+        7177,
+        7237,
+        7325,
+        8146,
+        8147
+      ]
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 3227,
+    "bid": 79640,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "World Cup, Frauen",
+    "snm": "tr_sv",
+    "tr": 1,
+    "cr": 1,
+    "tgn": "empty",
+    "cup": false,
+    "srid": 97373,
+    "scid": 79640,
+    "cht": {
+      "ti": 3227,
+      "chi": [
+        3228,
+        3229,
+        3230,
+        3231
+      ]
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 3341,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "World Cup",
+    "snm": "tr_sv",
+    "tr": 1,
+    "cr": 1,
+    "tgn": "empty",
+    "cup": false,
+    "srid": 97379,
+    "cht": {
+      "ti": 3341,
+      "chi": [
+        3342,
+        3343,
+        3344,
+        3345
+      ]
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 3464,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "Ittf Finals, MS",
+    "snm": "tr_sv",
+    "tr": 1,
+    "cr": 1,
+    "tgn": "empty",
+    "cup": true,
+    "rn": "round_of_16",
+    "crm": [
+      {
+        "round": 1,
+        "name": "round_of_16"
+      }
+    ],
+    "cht": {
+      "ti": 3464,
+      "chi": []
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 3465,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "Ittf Finals, Ws",
+    "snm": "tr_sv",
+    "tr": 1,
+    "cr": 1,
+    "tgn": "empty",
+    "cup": true,
+    "rn": "round_of_16",
+    "crm": [
+      {
+        "round": 1,
+        "name": "round_of_16"
+      }
+    ],
+    "cht": {
+      "ti": 3465,
+      "chi": []
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 3483,
+    "bid": 79824,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "World Tour Grand Finals, MS",
+    "snm": "tr_sv",
+    "tr": 3,
+    "cr": 6,
+    "tgn": "empty",
+    "cup": true,
+    "rn": "final",
+    "crm": [
+      {
+        "round": 3,
+        "name": "quarterfinal"
+      },
+      {
+        "round": 4,
+        "name": "semifinal"
+      },
+      {
+        "round": 6,
+        "name": "final"
+      }
+    ],
+    "scid": 79824,
+    "cht": {
+      "ti": 3483,
+      "chi": []
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 3484,
+    "bid": 79826,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "World Tour Grand Finals, WS",
+    "snm": "tr_sv",
+    "tr": 3,
+    "cr": 6,
+    "tgn": "empty",
+    "cup": true,
+    "rn": "final",
+    "crm": [
+      {
+        "round": 3,
+        "name": "quarterfinal"
+      },
+      {
+        "round": 4,
+        "name": "semifinal"
+      },
+      {
+        "round": 6,
+        "name": "final"
+      }
+    ],
+    "scid": 79826,
+    "cht": {
+      "ti": 3484,
+      "chi": []
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 3750,
+    "bid": 80028,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "Champions League Frauen",
+    "snm": "tr_sv",
+    "tr": 1,
+    "cr": 1,
+    "tgn": "empty",
+    "cup": false,
+    "srid": 18714,
+    "scid": 80028,
+    "cht": {
+      "ti": 3750,
+      "chi": [
+        3751
+      ]
+    }
+  },
+  {
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 4403,
+    "bid": 79822,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "Champions League",
+    "snm": "tr_sv",
+    "tr": 1,
+    "cr": 1,
+    "tgn": "empty",
+    "cup": false,
+    "srid": 1088,
+    "scid": 79822,
+    "cht": {
+      "ti": 4403,
+      "chi": [
+        4404
+      ]
+    }
+  }
+]
