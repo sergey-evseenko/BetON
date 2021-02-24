@@ -7,13 +7,13 @@ import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
 
-public class ListOfCategories extends BaseTest {
+public class ListOfCategoriesTest extends BaseTest {
 
     @Test(description = "get list of categories")
     public void getListOfCategories() {
         Category[] listOfCategories = data.get("categories.json", Category[].class);
         Category[] responseList = catalogAdapter.getCategories("de", "1");
-        assertEquals(responseList, listOfCategories, "Invalid list pf sports");
+        assertEquals(responseList, listOfCategories, "Invalid list of categories");
     }
 
     @DataProvider(name = "params")
@@ -36,8 +36,8 @@ public class ListOfCategories extends BaseTest {
         };
     }
 
-    @Test(description = "validate", dataProvider = "params")
-    public void validateLangIso(String langIso, String sportId, int expectedStatusCode, String responseMessage) {
+    @Test(description = "validate params", dataProvider = "params")
+    public void validateParams(String langIso, String sportId, int expectedStatusCode, String responseMessage) {
 
         responseBetOn = catalogAdapter.getCategories(langIso, sportId, expectedStatusCode);
         if (expectedStatusCode == 400) {

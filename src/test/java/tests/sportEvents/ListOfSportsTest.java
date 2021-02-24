@@ -13,7 +13,7 @@ public class ListOfSportsTest extends BaseTest {
     public void getListOfSports() {
         Sport[] listOfSports = data.get("sports.json", Sport[].class);
         Sport[] responseList = catalogAdapter.getSports("de");
-        assertEquals(responseList, listOfSports, "Invalid list pf sports");
+        assertEquals(responseList, listOfSports, "Invalid list of sports");
     }
 
     @DataProvider(name = "params")
@@ -33,8 +33,8 @@ public class ListOfSportsTest extends BaseTest {
         };
     }
 
-    @Test(description = "validate", dataProvider = "params")
-    public void validateLangIso(String langIso, int expectedStatusCode, String responseMessage) {
+    @Test(description = "validate params", dataProvider = "params")
+    public void validateParams(String langIso, int expectedStatusCode, String responseMessage) {
 
         responseBetOn = catalogAdapter.getSports(langIso, expectedStatusCode);
         if (expectedStatusCode == 400) {
