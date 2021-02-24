@@ -1,0 +1,2942 @@
+[
+  {
+    "id": 76,
+    "bId": 30,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Deutschland",
+    "snm": "de",
+    "tpi": 0,
+    "si": 1,
+    "fl": {
+      "fl": "country/deu.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 79,
+    "bId": 32,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Spanien",
+    "snm": "sp",
+    "tpi": 0,
+    "si": 7,
+    "fl": {
+      "fl": "country/esp.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 40,
+    "bId": 47,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Polen",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 9,
+    "fl": {
+      "fl": "country/pol.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 69,
+    "bId": 1,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "England",
+    "snm": "en",
+    "tpi": 0,
+    "si": 14,
+    "fl": {
+      "fl": "country/eng.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 139,
+    "bId": 385,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Usbekistan",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 16,
+    "fl": {
+      "fl": "country/uzb.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 100,
+    "bId": 31,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Italien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 21,
+    "fl": {
+      "fl": "country/ita.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 356,
+    "bId": 490,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Irak",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 26,
+    "fl": {
+      "fl": "country/irq.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 56,
+    "bId": 46,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Türkei",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 31,
+    "fl": {
+      "fl": "country/tur.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 17,
+    "bId": 52,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Japan",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 37,
+    "fl": {
+      "fl": "country/jpn.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 32,
+    "bId": 7,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Frankreich",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 40,
+    "fl": {
+      "fl": "country/fra.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 46,
+    "bId": 21,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Russland",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 48,
+    "fl": {
+      "fl": "country/rus.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 119,
+    "bId": 91,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Weißrussland",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 54,
+    "fl": {
+      "fl": "country/blr.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 129,
+    "bId": 86,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Ukraine",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 57,
+    "fl": {
+      "fl": "country/ukr.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 89,
+    "bId": 77,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Rumänien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 58,
+    "fl": {
+      "fl": "country/rou.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 165,
+    "bId": 297,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Aserbaidschan",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 60,
+    "fl": {
+      "fl": "country/aze.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 63,
+    "bId": 35,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Niederlande",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 62,
+    "fl": {
+      "fl": "country/nld.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 64,
+    "bId": 8,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Dänemark",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 64,
+    "fl": {
+      "fl": "country/dnk.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 92,
+    "bId": 95,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Dänemark Amateur",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 67,
+    "fl": {
+      "fl": "country/dnk.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 93,
+    "bId": 158,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Bosnien und Herzegowina",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 69,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 38,
+    "bId": 305,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Ägypten",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 72,
+    "fl": {
+      "fl": "country/egy.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 287,
+    "bId": 257,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Albanien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 75,
+    "fl": {
+      "fl": "country/alb.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 351,
+    "bId": 48,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Argentinien",
+    "snm": "Arg",
+    "tpi": 0,
+    "si": 79,
+    "fl": {
+      "fl": "country/arg.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 162,
+    "bId": 296,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Armenien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 84,
+    "fl": {
+      "fl": "country/arm.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 44,
+    "bId": 34,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Australien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 90,
+    "fl": {
+      "fl": "country/aus.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 170,
+    "bId": 351,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Bahrain",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 91,
+    "fl": {
+      "fl": "country/bhr.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 36,
+    "bId": 33,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Belgien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 94,
+    "fl": {
+      "fl": "country/bel.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 244,
+    "bId": 1043,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Bhutan",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 96,
+    "fl": {
+      "fl": "country/bhu.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 101,
+    "bId": 17,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Österreich",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 98,
+    "fl": {
+      "fl": "country/aut.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 47,
+    "bId": 13,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Brasilien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 102,
+    "fl": {
+      "fl": "country/bra.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 143,
+    "bId": 78,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Bulgarien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 103,
+    "fl": {
+      "fl": "country/bgr.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 42,
+    "bId": 49,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Chile",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 104,
+    "fl": {
+      "fl": "country/chl.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 33,
+    "bId": 99,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "China",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 105,
+    "fl": {
+      "fl": "country/chn.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 208,
+    "bId": 793,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Chinesisch Taipeh",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 107,
+    "fl": {
+      "fl": "country/twn.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 74,
+    "bId": 289,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Costa Rica",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 110,
+    "fl": {
+      "fl": "country/crc.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 150,
+    "bId": 25,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Schweiz",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 111,
+    "fl": {
+      "fl": "country/che.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 31,
+    "bId": 122,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Deutschland Amateu",
+    "snm": "de",
+    "tpi": 0,
+    "si": 117,
+    "fl": {
+      "fl": "country/deu.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 127,
+    "bId": 165,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Ecuador",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 118,
+    "fl": {
+      "fl": "country/ecu.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 310,
+    "bId": 367,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "El Salvador",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 125,
+    "fl": {
+      "fl": "country/slv.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 6,
+    "bId": 1033,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Electronic Leagues",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 127,
+    "fl": {
+      "fl": "supercar.png",
+      "ty": "other"
+    }
+  },
+  {
+    "id": 128,
+    "bId": 252,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "England Amateur",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 129,
+    "fl": {
+      "fl": "country/eng.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 134,
+    "bId": 92,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Estland",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 130,
+    "fl": {
+      "fl": "country/est.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 140,
+    "bId": 201,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Färöer",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 135,
+    "fl": {
+      "fl": "country/fro.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 72,
+    "bId": 19,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Finnland",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 136,
+    "fl": {
+      "fl": "country/fin.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 131,
+    "bId": 207,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Finnland Amateur",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 137,
+    "fl": {
+      "fl": "country/fin.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 48,
+    "bId": 270,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Georgien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 139,
+    "fl": {
+      "fl": "country/geo.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 370,
+    "bId": 542,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Ghana",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 143,
+    "fl": {
+      "fl": "country/gha.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 177,
+    "bId": 67,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Griechenland",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 157,
+    "fl": {
+      "fl": "country/grc.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 164,
+    "bId": 365,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Guatemala",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 159,
+    "fl": {
+      "fl": "country/gtm.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 283,
+    "bId": 437,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Honduras",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 161,
+    "fl": {
+      "fl": "country/hnd.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 253,
+    "bId": 339,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Hong Kong, China",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 162,
+    "fl": {
+      "fl": "country/hkg.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 364,
+    "bId": 352,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Indien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 165,
+    "fl": {
+      "fl": "country/ind.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 34,
+    "bId": 4,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "International",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 169,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 51,
+    "bId": 392,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "International Jugend",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 172,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 52,
+    "bId": 393,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Internationale Klubturniere",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 178,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 30,
+    "bId": 301,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Iran",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 183,
+    "fl": {
+      "fl": "country/irn.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 65,
+    "bId": 51,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Irland",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 184,
+    "fl": {
+      "fl": "country/irl.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 87,
+    "bId": 10,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Island",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 186,
+    "fl": {
+      "fl": "country/isl.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 49,
+    "bId": 66,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Israel",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 189,
+    "fl": {
+      "fl": "country/isr.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 166,
+    "bId": 329,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Jordanien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 192,
+    "fl": {
+      "fl": "country/jor.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 136,
+    "bId": 388,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Kanada",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 193,
+    "fl": {
+      "fl": "country/can.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 200,
+    "bId": 278,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Kasachstan",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 194,
+    "fl": {
+      "fl": "country/kaz.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 23,
+    "bId": 353,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Katar",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 195,
+    "fl": {
+      "fl": "country/qat.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 183,
+    "bId": 274,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Kolumbien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 201,
+    "fl": {
+      "fl": "country/col.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 201,
+    "bId": 565,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Kosovo",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 203,
+    "fl": {
+      "fl": "country/xkx.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 157,
+    "bId": 1057,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Krim",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 205,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 97,
+    "bId": 14,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Kroatien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 206,
+    "fl": {
+      "fl": "country/hrv.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 11,
+    "bId": 331,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Kuwait",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 211,
+    "fl": {
+      "fl": "country/kwt.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 176,
+    "bId": 163,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Lettland",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 212,
+    "fl": {
+      "fl": "country/lva.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 337,
+    "bId": 428,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Libanon",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 213,
+    "fl": {
+      "fl": "country/lbn.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 66,
+    "bId": 160,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Litauen",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 215,
+    "fl": {
+      "fl": "country/ltu.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 224,
+    "bId": 197,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Luxemburg",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 216,
+    "fl": {
+      "fl": "country/lux.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 37,
+    "bId": 85,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Malaysia",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 219,
+    "fl": {
+      "fl": "country/mys.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 242,
+    "bId": 134,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Malta",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 220,
+    "fl": {
+      "fl": "country/mlt.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 185,
+    "bId": 303,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Marokko",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 221,
+    "fl": {
+      "fl": "country/mar.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 54,
+    "bId": 12,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Mexiko",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 223,
+    "fl": {
+      "fl": "country/mex.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 121,
+    "bId": 279,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Moldawien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 225,
+    "fl": {
+      "fl": "country/mda.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 112,
+    "bId": 1042,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Mongolei",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 226,
+    "fl": {
+      "fl": "country/mng.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 96,
+    "bId": 386,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Montenegro",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 229,
+    "fl": {
+      "fl": "country/mne.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 77,
+    "bId": 790,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Myanmar",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 230,
+    "fl": {
+      "fl": "country/mmr.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 353,
+    "bId": 148,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Neuseeland",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 233,
+    "fl": {
+      "fl": "country/nzl.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 114,
+    "bId": 389,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Nicaragua",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 239,
+    "fl": {
+      "fl": "country/nic.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 196,
+    "bId": 130,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Nordirland",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 240,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 95,
+    "bId": 159,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Nordmazedonien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 241,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 59,
+    "bId": 5,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Norwegen",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 242,
+    "fl": {
+      "fl": "country/nor.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 137,
+    "bId": 94,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Norwegen Amateur",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 244,
+    "fl": {
+      "fl": "country/nor.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 344,
+    "bId": 415,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Oman",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 245,
+    "fl": {
+      "fl": "country/omn.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 75,
+    "bId": 97,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Österreich Amateur",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 246,
+    "fl": {
+      "fl": "country/aut.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 266,
+    "bId": 755,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Pakistan",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 247,
+    "fl": {
+      "fl": "country/pak.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 357,
+    "bId": 540,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Palästina",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 249,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 349,
+    "bId": 526,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Panama",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 250,
+    "fl": {
+      "fl": "country/pan.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 86,
+    "bId": 280,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Paraguay",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 257,
+    "fl": {
+      "fl": "country/pry.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 152,
+    "bId": 20,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Peru",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 264,
+    "fl": {
+      "fl": "country/per.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 340,
+    "bId": 847,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Philippinen",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 272,
+    "fl": {
+      "fl": "country/phl.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 335,
+    "bId": 421,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Spanien Amateur",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 277,
+    "fl": {
+      "fl": "country/esp.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 88,
+    "bId": 44,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Portugal",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 278,
+    "fl": {
+      "fl": "country/prt.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 67,
+    "bId": 291,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Republik Korea",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 279,
+    "fl": {
+      "fl": "country/kor.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 358,
+    "bId": 812,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Sambia",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 280,
+    "fl": {
+      "fl": "country/zmb.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 207,
+    "bId": 387,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "San Marino",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 281,
+    "fl": {
+      "fl": "country/smr.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 133,
+    "bId": 310,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Saudi Arabien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 287,
+    "fl": {
+      "fl": "country/sau.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 73,
+    "bId": 22,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Schottland",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 288,
+    "fl": {
+      "fl": "country/sco.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 55,
+    "bId": 9,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Schweden",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 294,
+    "fl": {
+      "fl": "country/swe.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 302,
+    "bId": 155,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Schweden Amateur",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 295,
+    "fl": {
+      "fl": "country/swe.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 94,
+    "bId": 152,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Serbien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 297,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 20,
+    "bId": 2123,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Simulated Reality League",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 303,
+    "fl": {
+      "fl": "country/special.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 153,
+    "bId": 2246,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Simulated Reality Women",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 309,
+    "fl": {
+      "fl": "country/special.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 232,
+    "bId": 45,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Singapur",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 316,
+    "fl": {
+      "fl": "country/sgp.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 26,
+    "bId": 23,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Slowakei",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 317,
+    "fl": {
+      "fl": "country/svk.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 98,
+    "bId": 24,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Slowenien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 318,
+    "fl": {
+      "fl": "country/svn.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 111,
+    "bId": 322,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Südafrika",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 319,
+    "fl": {
+      "fl": "country/zaf.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 197,
+    "bId": 825,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Tadschikistan",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 322,
+    "fl": {
+      "fl": "country/tjk.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 161,
+    "bId": 803,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Tansania",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 330,
+    "fl": {
+      "fl": "country/tza.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 105,
+    "bId": 485,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Thailand",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 333,
+    "fl": {
+      "fl": "country/tha.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 91,
+    "bId": 18,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Tschechische Republik",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 334,
+    "fl": {
+      "fl": "country/cze.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 147,
+    "bId": 378,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Tunesien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 337,
+    "fl": {
+      "fl": "country/tun.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 252,
+    "bId": 254,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Türkei Amateur",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 342,
+    "fl": {
+      "fl": "country/tur.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 285,
+    "bId": 867,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Turkmenistan",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 348,
+    "fl": {
+      "fl": "country/tkm.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 71,
+    "bId": 11,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Ungarn",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 353,
+    "fl": {
+      "fl": "country/hun.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 104,
+    "bId": 57,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Uruguay",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 357,
+    "fl": {
+      "fl": "country/ury.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 45,
+    "bId": 26,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "USA",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 358,
+    "fl": {
+      "fl": "country/usa.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 316,
+    "bId": 281,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Venezuela",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 359,
+    "fl": {
+      "fl": "country/ven.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 99,
+    "bId": 299,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Vereinigte Arabische Emirate",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 360,
+    "fl": {
+      "fl": "country/are.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 206,
+    "bId": 366,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Vietnam",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 364,
+    "fl": {
+      "fl": "country/vnm.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 178,
+    "bId": 131,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Wales",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 366,
+    "fl": {
+      "fl": "country/wal.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 179,
+    "bId": 102,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Zypern",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 373,
+    "fl": {
+      "fl": "country/cyp.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 376,
+    "bId": 391,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Kamerun",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 447,
+    "fl": {
+      "fl": "country/cmr.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 386,
+    "bId": 829,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Malawi",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 457,
+    "fl": {
+      "fl": "country/mwi.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 388,
+    "bId": 304,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Algerien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 459,
+    "fl": {
+      "fl": "country/dza.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 397,
+    "bId": 379,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Bolivien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 468,
+    "fl": {
+      "fl": "country/bol.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 400,
+    "bId": 380,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Syrien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 471,
+    "fl": {
+      "fl": "country/syr.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 401,
+    "bId": 805,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Kenia",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 472,
+    "fl": {
+      "fl": "country/ken.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 405,
+    "bId": 376,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Andorra",
+    "snm": "Andorrrrrraaaa",
+    "tpi": 0,
+    "si": 476,
+    "fl": {
+      "fl": "country/and.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 406,
+    "bId": 824,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Uganda",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 477,
+    "fl": {
+      "fl": "country/uga.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 407,
+    "bId": 582,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Demokratische Republik Kongo",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 478,
+    "fl": {
+      "fl": "country/cod.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 408,
+    "bId": 951,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Ruanda",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 479,
+    "fl": {
+      "fl": "country/rwa.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 427,
+    "bId": 912,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Mauritius",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 498,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 433,
+    "bId": 532,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Nigeria",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 504,
+    "fl": {
+      "fl": "country/ner.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 435,
+    "bId": 500,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Angola",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 506,
+    "fl": {
+      "fl": "country/ago.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 437,
+    "bId": 953,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Liberia",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 508,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 438,
+    "bId": 914,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Äthiopien",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 509,
+    "fl": {
+      "fl": "country/eth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 441,
+    "bId": 886,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Senegal",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 512,
+    "fl": {
+      "fl": "country/sen.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 442,
+    "bId": 806,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Mosambik",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 513,
+    "fl": {
+      "fl": "country/moz.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 443,
+    "bId": 469,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Bangladesch",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 514,
+    "fl": {
+      "fl": "country/bgd.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 444,
+    "bId": 905,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Nepal",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 515,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 447,
+    "bId": 961,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Madagaskar",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 518,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 452,
+    "bId": 807,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Fidschi",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 523,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 453,
+    "bId": 957,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Gambia",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 524,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  },
+  {
+    "id": 454,
+    "bId": 898,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Republik Kongo",
+    "snm": "cat_sv",
+    "tpi": 0,
+    "si": 525,
+    "fl": {
+      "fl": "country/earth.png",
+      "ty": "country"
+    }
+  }
+]
