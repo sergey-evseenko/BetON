@@ -6,7 +6,7 @@ import tests.BaseTest;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
-public class templateTest extends BaseTest {
+public class TemplateTest extends BaseTest {
 
     String templateUrl = "https://sdk1-beton.ngsb-rc.com/sdk/service/v1/bet-on/template/registration";
 
