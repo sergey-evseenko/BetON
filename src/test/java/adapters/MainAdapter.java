@@ -2,14 +2,10 @@ package adapters;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import models.User;
-import utils.PropertyManager;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.config.DecoderConfig.decoderConfig;
 
 public class MainAdapter {
 
@@ -18,22 +14,11 @@ public class MainAdapter {
             .create();
     Response response;
     RequestSpecification requestSpec;
-    PropertyManager props = new PropertyManager();
     String body;
+    static String token;
 
-    public String getToken(User user) {
-        System.out.println("CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!");
-        RestAssured.baseURI = props.get("baseUrl");
-        RestAssured.config = RestAssured.config().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));
-        requestSpec = given()
-                .formParam("username", user.getUserName())
-                .formParam("password", user.getPassword())
-                .formParam("grant_type", "password")
-                .formParam("response_type", "token")
-                .formParam("client_id", "clientId")
-                .formParam("client_secret", "secret");
-        response = post("auth/v1/oauth/token/beton", requestSpec, 200);
-        return response.path("access_token");
+    public MainAdapter() {
+        token = TokenProvider.getToken();
     }
 
     public Response get(String url, int responseCode) {

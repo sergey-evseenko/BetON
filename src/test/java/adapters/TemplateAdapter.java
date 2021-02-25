@@ -3,7 +3,7 @@ package adapters;
 import models.ResponseBetOn;
 
 import static io.restassured.RestAssured.given;
-import static tests.BaseTest.token;
+
 
 public class TemplateAdapter extends MainAdapter {
     String url = "bp/v1/bp-integrator/template/registration";
