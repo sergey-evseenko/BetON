@@ -21,13 +21,10 @@ public class MainAdapter {
     PropertyManager props = new PropertyManager();
     String body;
 
-    public MainAdapter() {
-        RestAssured.baseURI = props.get("baseUrl");
-        RestAssured.config = RestAssured.config().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));
-    }
-
     public String getToken(User user) {
         System.out.println("CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!CALLING GET TOKEN!!!!");
+        RestAssured.baseURI = props.get("baseUrl");
+        RestAssured.config = RestAssured.config().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));
         requestSpec = given()
                 .formParam("username", user.getUserName())
                 .formParam("password", user.getPassword())
