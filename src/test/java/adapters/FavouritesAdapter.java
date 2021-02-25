@@ -28,8 +28,8 @@ public class FavouritesAdapter extends MainAdapter {
     public void delete(FavouriteEvent favouriteEvent, int expectedStatusCode) {
         requestSpec = given()
                 .contentType(ContentType.JSON);
-        url = url + favouriteEvent.getEventId() + "/users/" + favouriteEvent.getUserId();
-        response = delete(url, requestSpec, expectedStatusCode);
+        String deleteUrl = url + favouriteEvent.getEventId() + "/users/" + favouriteEvent.getUserId();
+        response = delete(deleteUrl, requestSpec, expectedStatusCode);
         assertEquals(response.asString(), "", "Invalid response");
     }
 }
