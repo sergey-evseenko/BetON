@@ -1,6 +1,5 @@
 package tests.sportEvents;
 
-import adapters.FavouritesAdapter;
 import adapters.UserAdapter;
 import models.FavouriteEvent;
 import models.UserInfo;
@@ -24,14 +23,14 @@ public class FavouritesTest extends BaseTest {
 
     @Test(description = "add and remove favourite event", invocationCount = 2)
     public void addAndRemoveEvent() {
-        favouriteEvent = new FavouriteEvent(userId, eventId);
+        favouriteEvent = new FavouriteEvent(eventId, userId);
         //add event
         favouritesAdapter.post(favouriteEvent, 200);
         //add event that was already added
         responseBetOn = favouritesAdapter.post(favouriteEvent, 400);
         assertEquals(responseBetOn.getMessage(), "User's favorite event already exists.", "Invalid response");
         //remove event
-        new FavouritesAdapter().delete(favouriteEvent, 200);
+        favouritesAdapter.delete(favouriteEvent, 200);
     }
 
 
