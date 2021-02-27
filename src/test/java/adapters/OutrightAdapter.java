@@ -1,5 +1,6 @@
 package adapters;
 
+import io.restassured.http.ContentType;
 import models.ResponseBetOn;
 import org.apache.commons.lang3.StringUtils;
 
@@ -34,4 +35,34 @@ public class OutrightAdapter extends MainAdapter {
             return null;
         }
     }
+
+    public void getOutrightByBid(int[] bids) {
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .queryParam("langIso", "en")
+                .body("[" + bids[0] + "," + bids[1] + "]");
+        response = put(url, requestSpec, 200);
+        assertEquals(response.path("bid[0]"), bids[0], "invalid response");
+        assertEquals(response.path("bid[1]"), bids[1], "invalid response");
+    }
+
+    public void getOutrightByBidInvalid() {
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .queryParam("langIso", "en")
+                .body("[99999999]");
+        response = put(url, requestSpec, 200);
+        assertEquals(response.asString().trim(), "[]", "invalid response");
+    }
+
+    public void getOutrightByBidEmpty() {
+        requestSpec = given()
+                .contentType(ContentType.JSON)
+                .queryParam("langIso", "en")
+                .body("[]");
+        response = put(url, requestSpec, 200);
+        assertEquals(response.asString().trim(), "[]", "invalid response");
+    }
+
+
 }

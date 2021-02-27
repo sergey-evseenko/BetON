@@ -113,4 +113,20 @@ public class Outright extends BaseTest {
             assertEquals(responseBetOn.getMessage(), responseMessage, "Invalid response");
         }
     }
+
+    @Test(description = "get list of outrights by bid")
+    public void getOutrightByBid() {
+        int[] bids = {92973, 103718};
+        outrightAdapter.getOutrightByBid(bids);
+    }
+
+    @Test(description = "get list of outrights by bid (invalid value)")
+    public void getOutrightByBidInvalid() {
+        outrightAdapter.getOutrightByBidInvalid();
+    }
+
+    @Test(description = "get list of outrights by bid (empty value)")
+    public void getOutrightByBidEmpty() {
+        outrightAdapter.getOutrightByBidEmpty();
+    }
 }
