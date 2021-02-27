@@ -64,7 +64,8 @@ public class PlayerAdapter extends MainAdapter {
     }
 
     public ResponseBetOn getOptionListUnauthorized() {
-        response = get(url + "options", 401);
+        requestSpec = given();
+        response = get(url + "options", requestSpec, 401);
         return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
     }
 

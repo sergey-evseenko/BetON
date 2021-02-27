@@ -10,7 +10,8 @@ public class UserAdapter extends MainAdapter {
     String url = "auth/v1/users";
 
     public ResponseBetOn confirmEmail(String code) {
-        response = get(url + "/confirm/email/" + code, 400);
+        requestSpec = given();
+        response = get(url + "/confirm/email/" + code, requestSpec, 400);
         ResponseBetOn[] responseBodyErrors = gson.fromJson(response.asString().trim(), ResponseBetOn[].class);
         return responseBodyErrors[0];
     }
@@ -31,7 +32,8 @@ public class UserAdapter extends MainAdapter {
     }
 
     public ResponseBetOn getInfoWithoutToken() {
-        response = get(url + "/me", 401);
+        requestSpec = given();
+        response = get(url + "/me", requestSpec, 401);
         return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
     }
 

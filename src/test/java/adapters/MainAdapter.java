@@ -21,21 +21,14 @@ public class MainAdapter {
         token = TokenProvider.getToken();
     }
 
-    public Response get(String url, int responseCode) {
-        return given()
-                .when()
-                .get(url)
-                .then()
-                .statusCode(responseCode)
-                .extract().response();
-    }
-
     public Response get(String url, RequestSpecification requestSpec, int expectedStatusCode) {
         return given()
                 .spec(requestSpec)
+                .log().all()
                 .when()
                 .get(url)
                 .then()
+                .log().body()
                 .statusCode(expectedStatusCode)
                 .extract().response();
     }
