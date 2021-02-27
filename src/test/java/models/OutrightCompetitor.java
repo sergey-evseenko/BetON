@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 @Data
-public class Outright {
+public class OutrightCompetitor {
     @Expose
     int id;
     @SerializedName("obid")

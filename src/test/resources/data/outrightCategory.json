@@ -1,0 +1,27 @@
+{
+  "translations": {},
+  "tournament": {
+    "id": 1417,
+    "bid": 93569,
+    "hl": false,
+    "snm": "",
+    "cup": false
+  },
+  "id": 838,
+  "bid": 92973,
+  "st": "BEFORE",
+  "act": true,
+  "sid": 15,
+  "sn": "Golf",
+  "sbid": 9,
+  "cid": 27,
+  "cn": "Men",
+  "cbid": 28,
+  "cf": "itf.png",
+  "tid": 1417,
+  "tn": "The Open Championship 2021",
+  "tbid": 93569,
+  "oc": 1,
+  "sd": 1625983200,
+  "sni": 93569
+}
