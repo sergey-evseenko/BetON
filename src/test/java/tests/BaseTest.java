@@ -30,5 +30,6 @@ public class BaseTest {
     protected UserAdapter userAdapter = new UserAdapter();
     protected FavouritesAdapter favouritesAdapter = new FavouritesAdapter();
     protected CatalogAdapter catalogAdapter = new CatalogAdapter();
+    protected OutrightAdapter outrightAdapter = new OutrightAdapter();
 }
 

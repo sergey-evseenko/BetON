@@ -24,11 +24,9 @@ public class MainAdapter {
     public Response get(String url, RequestSpecification requestSpec, int expectedStatusCode) {
         return given()
                 .spec(requestSpec)
-                .log().all()
                 .when()
                 .get(url)
                 .then()
-                .log().body()
                 .statusCode(expectedStatusCode)
                 .extract().response();
     }
