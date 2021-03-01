@@ -11,9 +11,9 @@ public class ListOfTournamentsTest extends BaseTest {
 
     @Test(description = "get list of tournaments")
     public void getListOfTournaments() {
-        Tournament[] listOfTournaments = data.get("tournaments.json", Tournament[].class);
+        Tournament tournament = data.get("tournament.json", Tournament.class);
         Tournament[] responseList = catalogAdapter.getTournaments("de", "1");
-        assertEquals(responseList, listOfTournaments, "Invalid list of tournaments");
+        assertEquals(responseList[0], tournament, "Invalid list of tournaments");
     }
 
     @DataProvider(name = "params")

@@ -11,9 +11,9 @@ public class ListOfCategoriesTest extends BaseTest {
 
     @Test(description = "get list of categories")
     public void getListOfCategories() {
-        Category[] listOfCategories = data.get("categories.json", Category[].class);
+        Category category = data.get("category.json", Category.class);
         Category[] responseList = catalogAdapter.getCategories("de", "1");
-        assertEquals(responseList, listOfCategories, "Invalid list of categories");
+        assertEquals(responseList[0], category, "Invalid list of categories");
     }
 
     @DataProvider(name = "params")

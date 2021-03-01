@@ -11,9 +11,9 @@ public class ListOfSportsTest extends BaseTest {
 
     @Test(description = "get list of sports")
     public void getListOfSports() {
-        Sport[] listOfSports = data.get("sports.json", Sport[].class);
+        Sport sport = data.get("sport.json", Sport.class);
         Sport[] responseList = catalogAdapter.getSports("de");
-        assertEquals(responseList, listOfSports, "Invalid list of sports");
+        assertEquals(responseList[0], sport, "Invalid list of sports");
     }
 
     @DataProvider(name = "params")
