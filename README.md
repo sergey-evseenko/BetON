@@ -13,7 +13,6 @@ Current coverage:
   * Resend email
   * Search registration data
   * Validate field
-* Registration
 * Reset password (_skipped_)
 * Rules engine:
   * Create user
@@ -22,8 +21,20 @@ Current coverage:
   * Validate email
 * Sport events:
   * Favourites
+  * Getting Current Match Day
+  * List Of Categories
+  * List Of Sports
+  * List Of Tournaments
+  * MatchDayDetermination
+  * Outright
+    * Get available outrights
+    * Get available outrights for tournaments
+    * Get available outrights for category
+    * Get outrights for tournaments and competitors by outrightBetradarId
+    * Get list of outright by outrightBetradarIds
   * Translation
-* Template
+
+* Template Controller
 * User info:
   * Change language
   * Check password
