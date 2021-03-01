@@ -1,8 +1,14 @@
 package adapters;
 
 import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import models.User;
+import org.apache.commons.lang3.StringUtils;
+import utils.DataReader;
 import utils.PropertyManager;
 
+import static io.restassured.RestAssured.given;
 import static io.restassured.config.DecoderConfig.decoderConfig;
 
 public class TokenProvider {
@@ -12,7 +18,6 @@ public class TokenProvider {
     private TokenProvider() {
     }
 
-    /*
     public static String getToken() {
         if (StringUtils.isEmpty(token)) {
             User user = new DataReader().get("userForLogin.json", User.class);
@@ -37,12 +42,5 @@ public class TokenProvider {
             token = response.path("access_token");
         }
         return token;
-    }
-
-     */
-    public static String getToken() {
-        RestAssured.baseURI = new PropertyManager().get("baseUrl");
-        RestAssured.config = RestAssured.config().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));
-        return null;
     }
 }
