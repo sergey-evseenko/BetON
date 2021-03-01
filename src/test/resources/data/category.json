@@ -1,0 +1,20 @@
+{
+    "id": 76,
+    "bId": 30,
+    "sp": {
+      "id": 1,
+      "ac": true,
+      "si": 1,
+      "bId": 1,
+      "nm": "Fußball",
+      "snm": ""
+    },
+    "nm": "Deutschland",
+    "snm": "de",
+    "tpi": 0,
+    "si": 1,
+    "fl": {
+      "fl": "country/deu.png",
+      "ty": "country"
+    }
+}

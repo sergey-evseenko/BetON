@@ -1,0 +1,24 @@
+{
+    "tournamentPriorityId": 0,
+    "sortIndex": 0,
+    "id": 1,
+    "ct": {
+      "id": 1,
+      "nm": "International+",
+      "snm": "cat_sv"
+    },
+    "hl": false,
+    "nm": "Setka Cup",
+    "snm": "tr_sv",
+    "tr": 13,
+    "cr": 13,
+    "tgn": "empty",
+    "cup": false,
+    "srid": 92757,
+    "cht": {
+      "ti": 1,
+      "chi": [
+        2
+      ]
+    }
+}
