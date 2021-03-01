@@ -10,7 +10,7 @@ import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
 
-public class Outright extends BaseTest {
+public class OutrightTest extends BaseTest {
 
     @Test(description = "get available outright for competitors")
     public void getOutrightForCompetitors() {
@@ -102,6 +102,10 @@ public class Outright extends BaseTest {
                 {"category", "", null, 400, "Required String parameter 'langIso' is not present"},
                 //outrightId=unknown
                 {"category", "12345", "en", 200, ""},
+
+                //outright by id
+                //langIso=null
+                {"", "103718", null, 400, "Required String parameter 'langIso' is not present"}
         };
     }
 
@@ -114,19 +118,39 @@ public class Outright extends BaseTest {
         }
     }
 
-    @Test(description = "get list of outrights by bid")
-    public void getOutrightByBid() {
+    @Test(description = "put list of outright by bid")
+    public void putOutrightByBid() {
         int[] bids = {92973, 103718};
-        outrightAdapter.getOutrightByBid(bids);
+        outrightAdapter.putOutrightByBid(bids);
     }
 
-    @Test(description = "get list of outrights by bid (invalid value)")
-    public void getOutrightByBidInvalid() {
-        outrightAdapter.getOutrightByBidInvalid();
+    @Test(description = "put list of outright by bid (invalid values)")
+    public void putOutrightByInvalidBid() {
+        //invalid bid
+        outrightAdapter.putOutrightByInvalidBid("[99999999]");
+        //empty bid
+        outrightAdapter.putOutrightByInvalidBid("[]");
     }
 
-    @Test(description = "get list of outrights by bid (empty value)")
-    public void getOutrightByBidEmpty() {
-        outrightAdapter.getOutrightByBidEmpty();
+    @Test(description = "get outright by bid")
+    public void getOutrightByBid() {
+        String bid = "103718";
+        OutrightCategory outright = outrightAdapter.getOutright(bid, "en", "", OutrightCategory.class);
+        assertEquals(String.valueOf(outright.getBid()), bid, "Invalid bid");
+    }
+
+    @DataProvider(name = "Outright params")
+    public Object[][] outrightParams() {
+        return new Object[][]{
+                //langIso is invalid
+                {"92973", "enff"},
+                //bid is invalid
+                {"345676543", "en"}
+        };
+    }
+
+    @Test(description = "get outright by bid with invalid params", dataProvider = "Outright params")
+    public void getOutrightByBidWithInvalidParams(String bid, String langIso) {
+        outrightAdapter.getOutright(bid, langIso);
     }
 }
