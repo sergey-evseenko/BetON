@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data
 public class OutrightCategory {
-    @Expose
     Tournament tournament;
     @Expose
     int id;
@@ -37,8 +36,6 @@ public class OutrightCategory {
     int tbid;
     @Expose
     int oc;
-    @Expose
-    String sd;
     @Expose
     int sni;
 }

@@ -30,7 +30,5 @@ public class OutrightTournament {
     @Expose
     String on;
     @Expose
-    String sd;
-    @Expose
     int cc;
 }
