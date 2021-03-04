@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import models.User;
+import utils.DataReader;
 
 import static io.restassured.RestAssured.given;
 
@@ -12,13 +14,14 @@ public class MainAdapter {
     Gson gson = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
             .create();
+    User user = new DataReader().get("userForLogin.json", User.class);
     Response response;
     RequestSpecification requestSpec;
     String body;
     static String token;
 
     public MainAdapter() {
-        token = TokenProvider.getToken();
+        token = TokenProvider.getToken(user);
     }
 
     public Response get(String url, RequestSpecification requestSpec, int expectedStatusCode) {

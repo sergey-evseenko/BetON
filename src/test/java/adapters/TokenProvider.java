@@ -5,7 +5,6 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import models.User;
 import org.apache.commons.lang3.StringUtils;
-import utils.DataReader;
 import utils.PropertyManager;
 
 import static io.restassured.RestAssured.given;
@@ -18,9 +17,8 @@ public class TokenProvider {
     private TokenProvider() {
     }
 
-    public static String getToken() {
+    public static String getToken(User user) {
         if (StringUtils.isEmpty(token)) {
-            User user = new DataReader().get("userForLogin.json", User.class);
             RestAssured.baseURI = new PropertyManager().get("baseUrl");
             RestAssured.config = RestAssured.config().decoderConfig(decoderConfig().defaultContentCharset("UTF-8"));
 
