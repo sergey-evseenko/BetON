@@ -11,59 +11,111 @@ import tests.BaseTest;
 import static org.testng.Assert.assertEquals;
 
 public class OutrightTest extends BaseTest {
+    OutrightCompetitor[] outrightCompetitorList;
+    OutrightTournament[] outrightTournamentsList;
+    OutrightCategory[] outrightCategoryList;
+    OutrightCompetitor outrightCompetitor = data.get("outrightCompetitor.json", OutrightCompetitor.class);
+    OutrightTournament outrightTournaments = data.get("outrightTournament.json", OutrightTournament.class);
+    OutrightCategory outrightCategory = data.get("outrightCategory.json", OutrightCategory.class);
 
-    @Test(description = "get available outright for competitors")
-    public void getOutrightForCompetitors() {
-        OutrightCompetitor[] outrightList;
-        OutrightCompetitor outright = data.get("outrightCompetitor.json", OutrightCompetitor.class);
+
+    @Test(description = "get available outright for competitors (EN)")
+    public void getOutrightForCompetitorsEn() {
         //for english (en)
-        outrightList = outrightAdapter.getOutright("1", "en", "competitors", OutrightCompetitor[].class);
-        assertEquals(outrightList[0], outright, "Invalid list of outright for competitors");
-        //for german (de)
-        outrightList = outrightAdapter.getOutright("1", "de", "competitors", OutrightCompetitor[].class);
-        assertEquals(outrightList[0].getCn(), "Claverie, Luis", "Invalid German translation");
-        //for russian (ru)
-        outrightList = outrightAdapter.getOutright("1", "ru", "competitors", OutrightCompetitor[].class);
-        assertEquals(outrightList[0].getCn(), "", "Invalid Russian translation");
+        outrightCompetitorList = outrightAdapter.getOutright("1", "en", "competitors", OutrightCompetitor[].class);
+        assertEquals(outrightCompetitorList[0], outrightCompetitor, "Invalid list of outright for competitors");
     }
 
-    @Test(description = "get available outright for tournaments")
-    public void getOutrightForTournaments() {
-        OutrightTournament[] outrightList;
-        OutrightTournament outright = data.get("outrightTournament.json", OutrightTournament.class);
-        //for english (en)
-        outrightList = outrightAdapter.getOutright("25", "en", "tournament", OutrightTournament[].class);
-        assertEquals(outrightList[0], outright, "Invalid list of outright for tournaments");
-        //for german (de)
-        outrightList = outrightAdapter.getOutright("25", "de", "tournament", OutrightTournament[].class);
-        assertEquals(outrightList[0].getOn(), "NCAA(F) - Conference - Atlantic Coast - Sieger", "Invalid German translation");
-        //for russian (ru)
-        outrightList = outrightAdapter.getOutright("25", "ru", "tournament", OutrightTournament[].class);
-        assertEquals(outrightList[0].getOn(), "", "Invalid Russian translation");
-
+    @Test(description = "get available outright for competitors (invalid lang)")
+    public void getOutrightForCompetitorsInvalidLang() {
+        //for invalid language
+        outrightCompetitorList = outrightAdapter.getOutright("1", "qwerty", "competitors", OutrightCompetitor[].class);
+        assertEquals(outrightCompetitorList[0], outrightCompetitor, "Invalid list of outright for competitors");
     }
 
-    @Test(description = "get available outright for categories")
-    public void getOutrightForCategory() {
-        OutrightCategory[] outrightList;
-        OutrightCategory outright = data.get("outrightCategory.json", OutrightCategory.class);
-        //for english (en)
-        outrightList = outrightAdapter.getOutright("27", "en", "category", OutrightCategory[].class);
-        assertEquals(outrightList[0], outright, "Invalid list of outright for categories (en)");
+    @Test(description = "get available outright for competitors (DE)")
+    public void getOutrightForCompetitorsInvalidLangDe() {
         //for german (de)
-        outrightList = outrightAdapter.getOutright("27", "de", "category", OutrightCategory[].class);
-        assertEquals(outrightList[0].getCn(), "Männer", "Invalid German translation");
+        outrightCompetitorList = outrightAdapter.getOutright("1", "de", "competitors", OutrightCompetitor[].class);
+        assertEquals(outrightCompetitorList[0].getCn(), "Claverie, Luis", "Invalid German translation");
+    }
+
+    @Test(description = "get available outright for competitors (RU)")
+    public void getOutrightForCompetitorsInvalidLangRu() {
         //for russian (ru)
-        outrightList = outrightAdapter.getOutright("27", "ru", "category", OutrightCategory[].class);
-        assertEquals(outrightList[0].getSn(), "Гольф", "Invalid Russian translation");
+        outrightCompetitorList = outrightAdapter.getOutright("1", "ru", "competitors", OutrightCompetitor[].class);
+        assertEquals(outrightCompetitorList[0].getCn(), "", "Invalid Russian translation");
+    }
+
+    @Test(description = "get available outright for tournaments (EN)")
+    public void getOutrightForTournamentsEN() {
+        //for english (en)
+        outrightTournamentsList = outrightAdapter.getOutright("25", "en", "tournament", OutrightTournament[].class);
+        assertEquals(outrightTournamentsList[0], outrightTournaments, "Invalid list of outright for tournaments");
+    }
+
+    @Test(description = "get available outright for tournaments (invalid lang)")
+    public void getOutrightForTournamentsInvalidLang() {
+        //for invalid language
+        outrightTournamentsList = outrightAdapter.getOutright("25", "qwerty", "tournament", OutrightTournament[].class);
+        assertEquals(outrightTournamentsList[0], outrightTournaments, "Invalid list of outright for tournaments");
+    }
+
+    @Test(description = "get available outright for tournaments (DE)")
+    public void getOutrightForTournamentsDe() {
+        //for german (de)
+        outrightTournamentsList = outrightAdapter.getOutright("25", "de", "tournament", OutrightTournament[].class);
+        assertEquals(outrightTournamentsList[0].getOn(), "NCAA(F) - Conference - Atlantic Coast - Sieger", "Invalid German translation");
+    }
+
+    @Test(description = "get available outright for tournaments (RU)")
+    public void getOutrightForTournamentsRu() {
+        //for russian (ru)
+        outrightTournamentsList = outrightAdapter.getOutright("25", "ru", "tournament", OutrightTournament[].class);
+        assertEquals(outrightTournamentsList[0].getOn(), "", "Invalid Russian translation");
+    }
+
+    @Test(description = "get available outright for categories (EN)")
+    public void getOutrightForCategoryEN() {
+        //for english (en)
+        outrightCategoryList = outrightAdapter.getOutright("27", "en", "category", OutrightCategory[].class);
+        assertEquals(outrightCategoryList[0], outrightCategory, "Invalid list of outright for categories (en)");
+    }
+
+    @Test(description = "get available outright for categories (invalid lang)")
+    public void getOutrightForCategoryInvalidLang() {
+        //for invalid language
+        outrightCategoryList = outrightAdapter.getOutright("27", "qwerty", "category", OutrightCategory[].class);
+        assertEquals(outrightCategoryList[0], outrightCategory, "Invalid list of outright for categories (en)");
+        //for german (de)
+        outrightCategoryList = outrightAdapter.getOutright("27", "de", "category", OutrightCategory[].class);
+        assertEquals(outrightCategoryList[0].getCn(), "Männer", "Invalid German translation");
+        //for russian (ru)
+        outrightCategoryList = outrightAdapter.getOutright("27", "ru", "category", OutrightCategory[].class);
+        assertEquals(outrightCategoryList[0].getSn(), "Гольф", "Invalid Russian translation");
+    }
+
+    @Test(description = "get available outright for categories (DE)")
+    public void getOutrightForCategoryDE() {
+        //for german (de)
+        outrightCategoryList = outrightAdapter.getOutright("27", "de", "category", OutrightCategory[].class);
+        assertEquals(outrightCategoryList[0].getCn(), "Männer", "Invalid German translation");
+        //for russian (ru)
+        outrightCategoryList = outrightAdapter.getOutright("27", "ru", "category", OutrightCategory[].class);
+        assertEquals(outrightCategoryList[0].getSn(), "Гольф", "Invalid Russian translation");
+    }
+
+    @Test(description = "get available outright for categories (RU)")
+    public void getOutrightForCategoryRU() {
+        //for russian (ru)
+        outrightCategoryList = outrightAdapter.getOutright("27", "ru", "category", OutrightCategory[].class);
+        assertEquals(outrightCategoryList[0].getSn(), "Гольф", "Invalid Russian translation");
     }
 
     @DataProvider(name = "Params")
     public Object[][] params() {
         return new Object[][]{
                 //outrights for competitors
-                //langIso=invalid
-                {"competitors", "1", "qwerty", 400, ""},
                 //langIso=null
                 {"competitors", "1", null, 400, "Required String parameter 'langIso' is not present"},
                 //outrightId=invalid
@@ -76,8 +128,6 @@ public class OutrightTest extends BaseTest {
                 {"competitors", "12345", "en", 200, ""},
 
                 //outrights for tournament
-                //langIso=invalid
-                {"tournament", "25", "qwerty", 400, ""},
                 //langIso=null
                 {"tournament", "25", null, 400, "Required String parameter 'langIso' is not present"},
                 //outrightId=invalid
@@ -90,8 +140,6 @@ public class OutrightTest extends BaseTest {
                 {"tournament", "12345", "en", 200, ""},
 
                 //outrights for category
-                //langIso=invalid
-                {"category", "27", "qwerty", 400, ""},
                 //langIso=null
                 {"category", "27", null, 400, "Required String parameter 'langIso' is not present"},
                 //outrightId=invalid
@@ -139,18 +187,16 @@ public class OutrightTest extends BaseTest {
         assertEquals(String.valueOf(outright.getBid()), bid, "Invalid bid");
     }
 
-    @DataProvider(name = "Outright params")
-    public Object[][] outrightParams() {
-        return new Object[][]{
-                //langIso is invalid
-                {"92973", "enff"},
-                //bid is invalid
-                {"345676543", "en"}
-        };
+    @Test(description = "get outright by bid with invalid langIso")
+    public void getOutrightByBidInvalidLangIso() {
+        String bid = "103718";
+        OutrightCategory outright = outrightAdapter.getOutright(bid, "qwerty", "", OutrightCategory.class);
+        assertEquals(String.valueOf(outright.getBid()), bid, "Invalid bid");
     }
 
-    @Test(description = "get outright by bid with invalid params", dataProvider = "Outright params")
-    public void getOutrightByBidWithInvalidParams(String bid, String langIso) {
-        outrightAdapter.getOutright(bid, langIso);
+    @Test(description = "get outright by bid with invalid bid")
+    public void getOutrightByBidInvalidBid() {
+        String bid = "345676543";
+        outrightAdapter.getOutright(bid, "en");
     }
 }
