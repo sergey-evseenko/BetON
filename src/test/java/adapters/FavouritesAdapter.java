@@ -22,7 +22,6 @@ public class FavouritesAdapter extends MainAdapter {
         } else {
             return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
         }
-
     }
 
     public void delete(FavouriteEvent favouriteEvent, int expectedStatusCode) {
