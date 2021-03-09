@@ -21,15 +21,20 @@ public class FavouritesTest extends BaseTest {
         userId = String.valueOf(userInfo.getId());
     }
 
-    @Test(description = "add and remove favourite event", invocationCount = 2)
-    public void addAndRemoveEvent() {
+    @Test(description = "add favourite event", priority = 1)
+    public void addEvent() {
         favouriteEvent = new FavouriteEvent(eventId, userId);
-        //add event
         favouritesAdapter.post(favouriteEvent, 200);
-        //add event that was already added
+    }
+
+    @Test(description = "add already added favourite event", priority = 2)
+    public void addEventAlreadyAdded() {
         responseBetOn = favouritesAdapter.post(favouriteEvent, 400);
         assertEquals(responseBetOn.getMessage(), "User's favorite event already exists.", "Invalid response");
-        //remove event
+    }
+
+    @Test(description = "delete favourite event", priority = 3)
+    public void deleteEvent() {
         favouritesAdapter.delete(favouriteEvent, 200);
     }
 
