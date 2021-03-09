@@ -31,5 +31,6 @@ public class BaseTest {
     protected FavouritesAdapter favouritesAdapter = new FavouritesAdapter();
     protected CatalogAdapter catalogAdapter = new CatalogAdapter();
     protected OutrightAdapter outrightAdapter = new OutrightAdapter();
+    protected BetSlipAdapter betSlipAdapter = new BetSlipAdapter();
 }
 
