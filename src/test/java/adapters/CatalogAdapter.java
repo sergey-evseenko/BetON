@@ -10,7 +10,6 @@ import static org.testng.Assert.assertEquals;
 
 public class CatalogAdapter extends MainAdapter {
     String url = "sport-events/v1/catalogs/";
-    String urlTournaments = "sport-events/v1/catalogs/tournament";
 
     public Sport[] getSports(String langIso) {
         requestSpec = given()

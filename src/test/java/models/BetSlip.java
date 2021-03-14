@@ -1,18 +1,26 @@
 package models;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
+@AllArgsConstructor
 @Data
 public class BetSlip {
+    @SerializedName("bmi")
     @Expose
-    int bmi;
+    int bId;
+    @SerializedName("ei")
     @Expose
-    String ei;
+    String eventId;
+    @SerializedName("lc")
     @Expose
-    String lc;
+    String language;
+    @SerializedName("mi")
     @Expose
-    String mi;
+    String marketId;
+    @SerializedName("oi")
     @Expose
-    int oi;
+    int outcomeId;
 }

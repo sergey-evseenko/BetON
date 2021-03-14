@@ -1,9 +1,14 @@
 package tests.betSlip;
 
+import adapters.SoonLiveWebSocket;
 import models.BetSlip;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
+import utils.PropertyManager;
+
+import java.net.URI;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -13,9 +18,13 @@ public class BetSlipTest extends BaseTest {
 
     BetSlip betSlip;
 
-    @BeforeMethod
-    public void getBet() {
-        betSlip = data.get("betSlip.json", BetSlip.class);
+    @BeforeClass
+    public void getBet() throws Exception {
+        String webSocketUrl = new PropertyManager().get("webSocketUrl");
+        SoonLiveWebSocket webSocketClientEndpoint = new SoonLiveWebSocket(new URI(webSocketUrl));
+        webSocketClientEndpoint.sendMessage("{\"desktop\":true,\"sportId\":1,\"langIso\":\"en\",\"soonType\":\"SOON\"}");
+        Thread.sleep(1000);
+        betSlip = webSocketClientEndpoint.getBetSlip();
     }
 
     @Test(description = "Add bet", priority = 1)
@@ -52,46 +61,33 @@ public class BetSlipTest extends BaseTest {
         assertEquals(responseBetOn.getMessage(), "BetSlip not found", "Invalid response");
     }
 
-    @Test(description = "Add bet. Not existing event id")
-    public void addBetNotExistEventId() {
-        betSlip.setEi("111");
-        responseBetOn = betSlipAdapter.addBet(betSlip, 404);
-        assertEquals(responseBetOn.getMessage(), "No live events found for that pick", "Invalid response");
+    @DataProvider(name = "Params")
+    public Object[][] params() {
+        int bId = betSlip.getBId();
+        String eventId = betSlip.getEventId();
+        String language = betSlip.getLanguage();
+        String marketId = betSlip.getMarketId();
+        int outcomeId = betSlip.getOutcomeId();
+        return new Object[][]{
+                //Not existing event id
+                {bId, "111", language, marketId, outcomeId, 404, "No live events found for that pick"},
+                //Event id is null
+                {bId, null, language, marketId, outcomeId, 400, "Pick has wrong values"},
+                //Not existing market id
+                {bId, eventId, language, "qwe", outcomeId, 404, "No markets found matching that pick"},
+                //Market id is null
+                {bId, eventId, language, null, outcomeId, 400, "Pick has wrong values"},
+                //Language is null
+                {bId, eventId, null, marketId, outcomeId, 400, "field 'languageCode': rejected value [null]"},
+                //Not existing outcomes
+                {bId, eventId, language, marketId, 123456789, 404, "No outcomes found matching that pick"},
+        };
     }
 
-    @Test(description = "Add bet. Event id is null")
-    public void addBetNullEventId() {
-        betSlip.setEi(null);
-        responseBetOn = betSlipAdapter.addBet(betSlip, 400);
-        assertEquals(responseBetOn.getMessage(), "Pick has wrong values", "Invalid response");
+    @Test(description = "Add bet. Validate params", dataProvider = "Params")
+    public void validateBet(int bId, String eventId, String language, String marketId, int outcomeId, int expectedStatusCode, String responseMessage) {
+        BetSlip invalidBetSlip = new BetSlip(bId, eventId, language, marketId, outcomeId);
+        responseBetOn = betSlipAdapter.addBet(invalidBetSlip, expectedStatusCode);
+        assertTrue(responseBetOn.getMessage().contains(responseMessage), "Invalid response");
     }
-
-    @Test(description = "Add bet. Not existing market id")
-    public void addBetNotExistMarketId() {
-        betSlip.setMi("qwe");
-        responseBetOn = betSlipAdapter.addBet(betSlip, 404);
-        assertEquals(responseBetOn.getMessage(), "No markets found matching that pick", "Invalid response");
-    }
-
-    @Test(description = "Add bet. Market id is null ")
-    public void addBetNullMarketId() {
-        betSlip.setMi(null);
-        responseBetOn = betSlipAdapter.addBet(betSlip, 400);
-        assertEquals(responseBetOn.getMessage(), "Pick has wrong values", "Invalid response");
-    }
-
-    @Test(description = "Add bet. Language is null")
-    public void addBetNullLanguage() {
-        betSlip.setLc(null);
-        responseBetOn = betSlipAdapter.addBet(betSlip, 400);
-        assertTrue(responseBetOn.getMessage().contains("field 'languageCode': rejected value [null]"), "Invalid response");
-    }
-
-    @Test(description = "Add bet. Not existing outcomes")
-    public void addBetNotExistOutcomes() {
-        betSlip.setOi(123456789);
-        responseBetOn = betSlipAdapter.addBet(betSlip, 404);
-        assertEquals(responseBetOn.getMessage(), "No outcomes found matching that pick", "Invalid response");
-    }
-    //TODO: more then 30 picks
 }

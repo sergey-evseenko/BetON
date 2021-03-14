@@ -1,11 +1,14 @@
 package tests.betSlip;
 
+import adapters.SoonLiveWebSocket;
 import models.BetSlip;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.BaseTest;
+import utils.PropertyManager;
+
+import java.net.URI;
 
 import static org.testng.Assert.assertEquals;
 
@@ -14,8 +17,12 @@ public class BankerTest extends BaseTest {
     BetSlip betSlip;
 
     @BeforeClass
-    public void addBet() {
-        betSlip = data.get("betSlip.json", BetSlip.class);
+    public void addBet() throws Exception {
+        String webSocketUrl = new PropertyManager().get("webSocketUrl");
+        SoonLiveWebSocket webSocketClientEndpoint = new SoonLiveWebSocket(new URI(webSocketUrl));
+        webSocketClientEndpoint.sendMessage("{\"desktop\":true,\"sportId\":1,\"langIso\":\"en\",\"soonType\":\"SOON\"}");
+        Thread.sleep(1000);
+        betSlip = webSocketClientEndpoint.getBetSlip();
         betSlipAdapter.addBet(betSlip, 200);
     }
 
@@ -24,33 +31,25 @@ public class BankerTest extends BaseTest {
         betSlipAdapter.deleteBet(betSlip, 200);
     }
 
-    @BeforeMethod
-    public void getBet() {
-        betSlip = data.get("betSlip.json", BetSlip.class);
-    }
-
     @Test(description = "Add banker", priority = 1)
     public void addBanker() {
-        betSlipAdapter.addBanker(betSlip, 200);
+        betSlipAdapter.addBanker(betSlip.getEventId(), 200);
     }
 
     @Test(description = "Delete banker", priority = 2)
     public void deleteBanker() {
-        betSlipAdapter.deleteBanker(betSlip, 200);
+        betSlipAdapter.deleteBanker(betSlip.getEventId(), 200);
     }
 
     @Test(description = "Add banker. Not existing event id")
     public void addBankerNotExistEventId() {
-        betSlip.setEi("111");
-        responseBetOn = betSlipAdapter.addBanker(betSlip, 404);
+        responseBetOn = betSlipAdapter.addBanker("111", 404);
         assertEquals(responseBetOn.getMessage(), "Event not found", "Invalid response");
     }
 
     @Test(description = "Delete banker. Not existing event id")
     public void deleteBankerNotExistEventId() {
-        betSlip.setEi("111");
-        responseBetOn = betSlipAdapter.deleteBanker(betSlip, 404);
+        responseBetOn = betSlipAdapter.deleteBanker("111", 404);
         assertEquals(responseBetOn.getMessage(), "Event not found", "Invalid response");
     }
-
 }
