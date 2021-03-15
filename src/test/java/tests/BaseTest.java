@@ -2,10 +2,12 @@ package tests;
 
 import adapters.*;
 import com.github.javafaker.Faker;
+import models.BetSlip;
 import models.ResponseBetOn;
 import models.User;
 import org.testng.annotations.Listeners;
 import utils.DataReader;
+import utils.PropertyManager;
 import utils.TestListener;
 
 import java.util.Random;
@@ -14,6 +16,7 @@ import java.util.Random;
 public class BaseTest {
     protected ResponseBetOn responseBetOn;
     protected User user;
+    protected BetSlip betSlip;
     protected Faker faker = new Faker();
     protected Random random = new Random();
     protected DataReader data = new DataReader();
@@ -32,5 +35,7 @@ public class BaseTest {
     protected CatalogAdapter catalogAdapter = new CatalogAdapter();
     protected OutrightAdapter outrightAdapter = new OutrightAdapter();
     protected BetSlipAdapter betSlipAdapter = new BetSlipAdapter();
+    protected String webSocketUrl = new PropertyManager().get("webSocketUrl");
+    protected String webSocketRequest;
+    protected SoonLiveWebSocket webSocketClientEndpoint;
 }
-

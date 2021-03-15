@@ -1,26 +1,24 @@
 package tests.betSlip;
 
 import adapters.SoonLiveWebSocket;
-import models.BetSlip;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import tests.BaseTest;
-import utils.PropertyManager;
 
 import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static org.testng.Assert.assertEquals;
 
 public class BankerTest extends BaseTest {
 
-    BetSlip betSlip;
-
     @BeforeClass
     public void addBet() throws Exception {
-        String webSocketUrl = new PropertyManager().get("webSocketUrl");
-        SoonLiveWebSocket webSocketClientEndpoint = new SoonLiveWebSocket(new URI(webSocketUrl));
-        webSocketClientEndpoint.sendMessage("{\"desktop\":true,\"sportId\":1,\"langIso\":\"en\",\"soonType\":\"SOON\"}");
+        webSocketClientEndpoint = new SoonLiveWebSocket(new URI(webSocketUrl));
+        webSocketRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/data/webSocketRequest.json")));
+        webSocketClientEndpoint.sendMessage(webSocketRequest);
         Thread.sleep(1000);
         betSlip = webSocketClientEndpoint.getBetSlip();
         betSlipAdapter.addBet(betSlip, 200);

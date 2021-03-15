@@ -10,7 +10,7 @@ import lombok.Data;
 public class BetSlip {
     @SerializedName("bmi")
     @Expose
-    int bId;
+    int betRadarId;
     @SerializedName("ei")
     @Expose
     String eventId;

@@ -19,9 +19,11 @@ public class MainAdapter {
     RequestSpecification requestSpec;
     String body;
     static String token;
+    static String betSlipId;
 
     public MainAdapter() {
         token = TokenProvider.getToken(user);
+        betSlipId = CookiesProvider.getBetSlipId();
     }
 
     public Response get(String url, RequestSpecification requestSpec, int expectedStatusCode) {

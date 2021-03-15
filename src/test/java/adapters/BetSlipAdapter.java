@@ -3,14 +3,12 @@ package adapters;
 import io.restassured.http.ContentType;
 import models.BetSlip;
 import models.ResponseBetOn;
-import utils.PropertyManager;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
 public class BetSlipAdapter extends MainAdapter {
     String url = "sport-events/v1/betslip/";
-    String betSlipId = new PropertyManager().get("betSlipId");
 
     public ResponseBetOn addBet(BetSlip betSlip, int expectedStatusCode) {
         String jsonPath = "ps." + betSlip.getEventId();
@@ -24,7 +22,7 @@ public class BetSlipAdapter extends MainAdapter {
             assertEquals(response.path(jsonPath + ".ei[0]").toString(), betSlip.getEventId());
             assertEquals(response.path(jsonPath + ".mi[0]"), betSlip.getMarketId());
             assertEquals(response.path(jsonPath + ".oi[0]"), betSlip.getOutcomeId());
-            assertEquals(response.path(jsonPath + ".bmi[0]"), betSlip.getBId());
+            assertEquals(response.path(jsonPath + ".bmi[0]"), betSlip.getBetRadarId());
             return null;
         } else {
             return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
