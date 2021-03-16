@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 
 public class BetSlipTest extends BaseTest {
@@ -75,7 +76,7 @@ public class BetSlipTest extends BaseTest {
                 //Market id is null
                 {bId, eventId, language, null, outcomeId, 400, "Pick has wrong values"},
                 //Language is null
-                //{bId, eventId, null, marketId, outcomeId, 400, "field 'languageCode': rejected value [null]"},
+                {bId, eventId, null, marketId, outcomeId, 400, "field 'languageCode': rejected value [null]"},
                 //Not existing outcomes
                 {bId, eventId, language, marketId, 123456789, 404, "No outcomes found matching that pick"},
         };
@@ -85,6 +86,6 @@ public class BetSlipTest extends BaseTest {
     public void validateBet(int bId, String eventId, String language, String marketId, int outcomeId, int expectedStatusCode, String responseMessage) {
         BetSlip invalidBetSlip = new BetSlip(bId, eventId, language, marketId, outcomeId);
         responseBetOn = betSlipAdapter.addBet(invalidBetSlip, expectedStatusCode);
-        assertEquals(responseBetOn.getMessage(), responseMessage, "Invalid response");
+        assertTrue(responseBetOn.getMessage().contains(responseMessage), "Invalid response");
     }
 }
