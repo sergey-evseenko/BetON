@@ -6,7 +6,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class AuthorizationTest extends BaseTest {
 
@@ -16,7 +17,6 @@ public class AuthorizationTest extends BaseTest {
     public void login() {
         responseBetOn = authorizationAdapter.post(user, "clientId", "secret", 200);
         assertEquals(responseBetOn.getEmail(), user.getEmail(), "Invalid email");
-        assertNotNull(responseBetOn.getAccessToken(), "Invalid access token");
         assertTrue(StringUtils.isNotEmpty(responseBetOn.getAccessToken()), "Missed access token");
     }
 
@@ -25,24 +25,24 @@ public class AuthorizationTest extends BaseTest {
         responseBetOn = authorizationAdapter.post(user, "clientId", "secret", 200);
         responseBetOn = authorizationAdapter.post(responseBetOn.getRefreshToken());
         assertEquals(responseBetOn.getEmail(), user.getEmail(), "Invalid email");
-        assertNotNull(responseBetOn.getAccessToken(), "Invalid access token");
+        assertTrue(StringUtils.isNotEmpty(responseBetOn.getAccessToken()), "Missed access token");
     }
 
     @DataProvider(name = "List of invalid username/pass")
     public Object[][] invalidCredentials() {
         return new Object[][]{
                 //invalid username
-                {"pollyisthebestqa11", "Nextnext!1", "ER2002", "Bad credentials", 404},
+                {"autotests1", "Qwerty!123", "ER2002", "Bad credentials", 404},
                 //username: is null
-                {null, "Nextnext!1", "ER2002", "Bad credentials", 404},
+                {null, "Qwerty!123", "ER2002", "Bad credentials", 404},
                 //username: empty field
                 {"", "Qwerty!123", "ER2002", "Bad credentials", 404},
                 //invalid password
-                {"pollyisthebestqa", "Nextnext!11", "ER2002", "Bad credentials", 401},
+                {"autotests", "Qwerty!1231", "ER2002", "Bad credentials", 401},
                 //password: is null
-                {"pollyisthebestqa", null, "ER2002", "Bad credentials", 401},
+                {"autotests", null, "ER2002", "Bad credentials", 401},
                 //password: empty field
-                {"pollyisthebestqa", "", "ER2002", "Bad credentials", 401},
+                {"autotests", "", "ER2002", "Bad credentials", 401},
                 //blocked user
                 {"qwerty8291", "Qwerty!12311", "ER2003", "User has been blocked", 401},
                 //unconfirmed registration
