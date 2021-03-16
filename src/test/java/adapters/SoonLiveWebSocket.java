@@ -31,13 +31,6 @@ public class SoonLiveWebSocket extends MainAdapter {
             int outcomeId = JsonPath.read(message, "ms[0].mr.1.oc[0].bid");
             betSlip = new BetSlip(marketId, eventId, "en", "1", outcomeId);
             isFirstMessage = false;
-        } else {
-            try {
-                session.close();
-                System.out.println("web socket connection was closed...");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 
@@ -46,6 +39,23 @@ public class SoonLiveWebSocket extends MainAdapter {
     }
 
     public BetSlip getBetSlip() {
+        for (int i = 0; i < 100; i++) {
+            if (betSlip == null) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    session.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("web socket connection was closed...");
+                break;
+            }
+        }
         return betSlip;
     }
 }

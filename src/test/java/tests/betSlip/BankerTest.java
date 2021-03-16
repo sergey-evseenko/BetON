@@ -19,7 +19,6 @@ public class BankerTest extends BaseTest {
         webSocketClientEndpoint = new SoonLiveWebSocket(new URI(webSocketUrl));
         webSocketRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/data/webSocketRequest.json")));
         webSocketClientEndpoint.sendMessage(webSocketRequest);
-        Thread.sleep(1000);
         betSlip = webSocketClientEndpoint.getBetSlip();
         betSlipAdapter.addBet(betSlip, 200);
     }
