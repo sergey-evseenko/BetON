@@ -44,8 +44,6 @@ public class ContentTest extends BaseTest {
         assertNull(page.getChildren(), "Displaying children pages error");
     }
 
-    //TODO: validate params: with_child is null
-
     @Test(description = "validate params: invalid lang")
     public void validateInvalidLang() {
         responseBetOn = contentAdapter.validateParams("about", "qwerty", true, 200);
@@ -69,6 +67,4 @@ public class ContentTest extends BaseTest {
         responseBetOn = contentAdapter.validateParams(null, "en", true, 400);
         assertEquals(responseBetOn.getMessage(), "Required String parameter 'name' is not present", "validate content param error");
     }
-
-
 }
