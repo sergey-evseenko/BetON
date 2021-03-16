@@ -69,9 +69,9 @@ public class CreateUserCheckTest extends BaseTest {
 
     @Test(description = "check invalid passport number")
     public void checkInvalidPasswordNumber() {
-        userForCheck.setPassportNumber("ASD84676");
+        userForCheck.setPassportNumber("KB2068392");
 
         responseBetOn = rulesAdapter.checkUserPost(userForCheck);
-        assertEquals(responseBetOn.getIdCard(), "E0007", "Invalid BirthDate error");
+        assertEquals(responseBetOn.getIdCard(), "E0007", "Invalid password error");
     }
 }
