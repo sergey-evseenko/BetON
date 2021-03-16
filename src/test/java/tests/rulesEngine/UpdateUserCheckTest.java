@@ -69,7 +69,7 @@ public class UpdateUserCheckTest extends BaseTest {
 
     @Test(description = "check invalid passport number")
     public void checkInvalidPasswordNumber() {
-        userForCheck.setPassportNumber("ASD84676");
+        userForCheck.setPassportNumber("KB2068392");
 
         responseBetOn = rulesAdapter.checkUserPut(userForCheck);
         assertEquals(responseBetOn.getIdCard(), "E0007", "Invalid BirthDate error");
