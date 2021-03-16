@@ -1,12 +1,12 @@
 package tests.authorization;
 
 import models.User;
+import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.*;
 
 public class AuthorizationTest extends BaseTest {
 
@@ -17,6 +17,7 @@ public class AuthorizationTest extends BaseTest {
         responseBetOn = authorizationAdapter.post(user, "clientId", "secret", 200);
         assertEquals(responseBetOn.getEmail(), user.getEmail(), "Invalid email");
         assertNotNull(responseBetOn.getAccessToken(), "Invalid access token");
+        assertTrue(StringUtils.isNotEmpty(responseBetOn.getAccessToken()), "Missed access token");
     }
 
     @Test(description = "Login with refresh token")
