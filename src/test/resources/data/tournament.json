@@ -4,12 +4,10 @@
     "id": 1,
     "ct": {
       "id": 1,
-      "nm": "International+",
-      "snm": "cat_sv"
+      "nm": "International"
     },
     "hl": false,
     "nm": "Setka Cup",
-    "snm": "tr_sv",
     "tr": 13,
     "cr": 13,
     "tgn": "empty",

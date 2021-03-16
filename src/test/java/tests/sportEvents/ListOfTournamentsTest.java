@@ -12,15 +12,13 @@ public class ListOfTournamentsTest extends BaseTest {
     @Test(description = "get list of tournaments")
     public void getListOfTournaments() {
         Tournament tournament = data.get("tournament.json", Tournament.class);
-        Tournament[] responseList = catalogAdapter.getTournaments("de", "1");
+        Tournament[] responseList = catalogAdapter.getTournaments("en", "1");
         assertEquals(responseList[0], tournament, "Invalid list of tournaments");
     }
 
     @DataProvider(name = "params")
     public Object[][] params() {
         return new Object[][]{
-                //langIso is en
-                {"en", "1", 200, ""},
                 //empty langIso
                 {"", "1", 200, ""},
                 //invalid langIso

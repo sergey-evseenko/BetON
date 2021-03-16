@@ -9,7 +9,5 @@ public class Ct {
     int id;
     @Expose
     String nm;
-    @Expose
-    String snm;
 }
 

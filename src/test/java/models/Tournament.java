@@ -18,8 +18,6 @@ public class Tournament {
     @Expose
     String nm;
     @Expose
-    String snm;
-    @Expose
     int tr;
     @Expose
     int cr;

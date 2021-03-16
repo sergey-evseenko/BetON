@@ -81,7 +81,7 @@ public class CatalogAdapter extends MainAdapter {
 
         response = get(url + "tournament", requestSpec, expectedStatusCode);
         if (expectedStatusCode == 200) {
-            assertEquals(response.path("ct.snm[0]"), "inter", "Invalid response");
+            assertEquals(response.path("ct.nm[0]"), "International", "Invalid response");
             return null;
         }
         return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
