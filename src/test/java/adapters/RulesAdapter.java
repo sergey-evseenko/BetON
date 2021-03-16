@@ -34,10 +34,10 @@ public class RulesAdapter extends MainAdapter {
         return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
     }
 
-    public String getProviders(String countryCode) {
+    public int[] getProviders(String countryCode) {
         requestSpec = given()
                 .queryParam("code", countryCode);
         response = get(url + "bp/country", requestSpec, 200);
-        return response.asString().trim();
+        return gson.fromJson(response.asString().trim(), int[].class);
     }
 }
