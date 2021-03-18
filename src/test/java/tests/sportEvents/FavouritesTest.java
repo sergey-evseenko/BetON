@@ -2,7 +2,6 @@ package tests.sportEvents;
 
 import adapters.SoonLiveWebSocket;
 import models.FavouriteEvent;
-import models.UserInfo;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import tests.BaseTest;
@@ -20,9 +19,8 @@ public class FavouritesTest extends BaseTest {
     String userId;
 
     @BeforeClass
-    public void getUserId() throws Exception {
-        UserInfo userInfo = userAdapter.getUserInfoWithValidToken();
-        userId = String.valueOf(userInfo.getId());
+    public void getUserIdEventId() throws Exception {
+        userId = userAdapter.getUserId();
 
         webSocketClientEndpoint = new SoonLiveWebSocket(new URI(webSocketUrl));
         webSocketRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/data/webSocketRequest.json")));

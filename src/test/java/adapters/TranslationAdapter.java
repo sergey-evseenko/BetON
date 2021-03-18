@@ -44,7 +44,7 @@ public class TranslationAdapter extends MainAdapter {
         response = post(urlMatches, requestSpec, expectedStatusCode);
         if (expectedStatusCode == 200) {
             assertEquals(response.path("sp.nm[0]"), "Fußball", "Invalid translation");
-            assertEquals(response.path("bId[0]"), liveMatch.getEventBetradarId(), "Invalid betradar id");
+            assertEquals(response.path("bId[0]").toString(), liveMatch.getEventId(), "Invalid betradar id");
         } else {
             assertEquals(response.asString().trim(), "[]", "Invalid betradar id error");
         }

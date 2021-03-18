@@ -8,10 +8,6 @@ import lombok.Data;
 @Data
 public class UserInfo {
     @Expose
-    int id;
-    @Expose
-    int externalId;
-    @Expose
     String username;
     @Expose
     String email;

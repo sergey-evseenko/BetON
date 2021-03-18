@@ -27,9 +27,9 @@ public class SoonLiveWebSocket extends MainAdapter {
     public void onMessage(String message) {
         if (isFirstMessage) {
             String eventId = JsonPath.read(message, "ms[0].bId").toString();
-            int marketId = JsonPath.read(message, "ms[0].mr.1.bId");
+            int betRadarId = JsonPath.read(message, "ms[0].mr.1.bId");
             int outcomeId = JsonPath.read(message, "ms[0].mr.1.oc[0].bid");
-            betSlip = new BetSlip(marketId, eventId, "en", "1", outcomeId);
+            betSlip = new BetSlip(betRadarId, eventId, "en", "1", outcomeId);
             isFirstMessage = false;
         }
     }

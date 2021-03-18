@@ -1,10 +1,11 @@
 package tests.template;
 
+import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
 
 public class TemplateTest extends BaseTest {
 
@@ -14,8 +15,7 @@ public class TemplateTest extends BaseTest {
     public void getTemplateLink() {
         responseBetOn = templateAdapter.getTemplateUrl(1, 200);
         assertEquals(responseBetOn.getTemplateUrl(), templateUrl, "invalid template url");
-        assertNotNull(responseBetOn.getJwtToken(), "Invalid jwt token");
-
+        assertTrue(StringUtils.isNotEmpty(responseBetOn.getJwtToken()), "Invalid jwt token");
     }
 
     @Test(description = "invalid providerId")
@@ -30,6 +30,4 @@ public class TemplateTest extends BaseTest {
         responseBetOn = templateAdapter.getTemplateUrl(400);
         assertEquals(responseBetOn.getMessage(), "Required Long parameter 'providerId' is not present", "missed provider id error");
     }
-
-
 }
