@@ -32,17 +32,17 @@ public class AuthorizationTest extends BaseTest {
     public Object[][] invalidCredentials() {
         return new Object[][]{
                 //invalid username
-                {"autotests1", "Qwerty!123", "ER2002", "Bad credentials", 404},
+                {"pollyisthebestqa11", "Qwerty!123", "ER2002", "Bad credentials", 404},
                 //username: is null
                 {null, "Qwerty!123", "ER2002", "Bad credentials", 404},
                 //username: empty field
                 {"", "Qwerty!123", "ER2002", "Bad credentials", 404},
                 //invalid password
-                {"autotests", "Qwerty!1231", "ER2002", "Bad credentials", 401},
+                {"pollyisthebestqa", "Qwerty!1231", "ER2002", "Bad credentials", 401},
                 //password: is null
-                {"autotests", null, "ER2002", "Bad credentials", 401},
+                {"pollyisthebestqa", null, "ER2002", "Bad credentials", 401},
                 //password: empty field
-                {"autotests", "", "ER2002", "Bad credentials", 401},
+                {"pollyisthebestqa", "", "ER2002", "Bad credentials", 401},
                 //blocked user
                 {"qwerty8291", "Qwerty!12311", "ER2003", "User has been blocked", 401},
                 //unconfirmed registration
