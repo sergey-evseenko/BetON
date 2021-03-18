@@ -1,14 +1,9 @@
 package tests.sportEvents;
 
-import adapters.SoonLiveWebSocket;
 import models.FavouriteEvent;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import tests.BaseTest;
-
-import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static org.testng.Assert.assertEquals;
 
@@ -21,12 +16,7 @@ public class FavouritesTest extends BaseTest {
     @BeforeClass
     public void getUserIdEventId() throws Exception {
         userId = userAdapter.getUserId();
-
-        webSocketClientEndpoint = new SoonLiveWebSocket(new URI(webSocketUrl));
-        webSocketRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/data/webSocketRequest.json")));
-        webSocketClientEndpoint.sendMessage(webSocketRequest);
-        betSlip = webSocketClientEndpoint.getBetSlip();
-        eventId = betSlip.getEventId();
+        eventId = getBetSlip().getEventId();
     }
 
     @Test(description = "add favourite event", priority = 1)

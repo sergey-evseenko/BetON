@@ -7,7 +7,6 @@ import models.ResponseBetOn;
 import models.User;
 import org.testng.annotations.Listeners;
 import utils.DataReader;
-import utils.PropertyManager;
 import utils.TestListener;
 
 import java.util.Random;
@@ -35,7 +34,10 @@ public class BaseTest {
     protected CatalogAdapter catalogAdapter = new CatalogAdapter();
     protected OutrightAdapter outrightAdapter = new OutrightAdapter();
     protected BetSlipAdapter betSlipAdapter = new BetSlipAdapter();
-    protected String webSocketUrl = new PropertyManager().get("webSocketUrl");
-    protected String webSocketRequest;
-    protected SoonLiveWebSocket webSocketClientEndpoint;
+
+    public BetSlip getBetSlip() throws Exception {
+        SoonLiveWebSocket webSocketClientEndpoint = new SoonLiveWebSocket();
+        webSocketClientEndpoint.sendMessage();
+        return webSocketClientEndpoint.getBetSlip();
+    }
 }

@@ -1,16 +1,11 @@
 package tests.sportEvents;
 
-import adapters.SoonLiveWebSocket;
 import models.BetSlip;
 import models.LiveMatch;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
-
-import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static org.testng.Assert.assertEquals;
 
@@ -24,10 +19,7 @@ public class TranslationTest extends BaseTest {
 
     @BeforeClass
     public void getEventIdMarketId() throws Exception {
-        webSocketClientEndpoint = new SoonLiveWebSocket(new URI(webSocketUrl));
-        webSocketRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/data/webSocketRequest.json")));
-        webSocketClientEndpoint.sendMessage(webSocketRequest);
-        betSlip = webSocketClientEndpoint.getBetSlip();
+        betSlip = getBetSlip();
         eventId = betSlip.getEventId();
         marketId = betSlip.getMarketId();
         markets[0] = marketId;

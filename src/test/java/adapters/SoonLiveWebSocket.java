@@ -3,23 +3,27 @@ package adapters;
 import com.jayway.jsonpath.JsonPath;
 import models.BetSlip;
 import org.glassfish.tyrus.client.ClientManager;
+import utils.PropertyManager;
 
 import javax.websocket.ClientEndpoint;
-import javax.websocket.DeploymentException;
 import javax.websocket.OnMessage;
 import javax.websocket.Session;
 import java.io.IOException;
 import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @ClientEndpoint
 public class SoonLiveWebSocket extends MainAdapter {
     private final Session session;
     BetSlip betSlip;
     Boolean isFirstMessage = true;
+    String webSocketUrl = new PropertyManager().get("webSocketUrl");
+    String webSocketRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/data/webSocketRequest.json")));
 
 
-    public SoonLiveWebSocket(URI serverEndpointURI) throws IOException, DeploymentException {
-        this.session = ClientManager.createClient().connectToServer(this, serverEndpointURI);
+    public SoonLiveWebSocket() throws Exception {
+        this.session = ClientManager.createClient().connectToServer(this, new URI(webSocketUrl));
         System.out.println("web socket connection was opened...");
     }
 
@@ -34,8 +38,8 @@ public class SoonLiveWebSocket extends MainAdapter {
         }
     }
 
-    public void sendMessage(String message) throws IOException {
-        this.session.getBasicRemote().sendText(message);
+    public void sendMessage() throws IOException {
+        this.session.getBasicRemote().sendText(webSocketRequest);
     }
 
     public BetSlip getBetSlip() {
