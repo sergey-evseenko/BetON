@@ -14,7 +14,7 @@ public class BetSlipTest extends BaseTest {
 
     @BeforeClass
     public void getBet() throws Exception {
-        betSlip = getBetSlip();
+        betSlip = getBetSlip(0);
     }
 
     @Test(description = "Add bet", priority = 1)

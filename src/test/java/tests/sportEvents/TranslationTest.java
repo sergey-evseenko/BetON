@@ -19,7 +19,7 @@ public class TranslationTest extends BaseTest {
 
     @BeforeClass
     public void getEventIdMarketId() throws Exception {
-        betSlip = getBetSlip();
+        betSlip = getBetSlip(0);
         eventId = betSlip.getEventId();
         marketId = betSlip.getMarketId();
         markets[0] = marketId;

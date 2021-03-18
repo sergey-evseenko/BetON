@@ -20,6 +20,7 @@ public class SoonLiveWebSocket extends MainAdapter {
     Boolean isFirstMessage = true;
     String webSocketUrl = new PropertyManager().get("webSocketUrl");
     String webSocketRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/data/webSocketRequest.json")));
+    int betSlipNumber;
 
 
     public SoonLiveWebSocket() throws Exception {
@@ -30,9 +31,9 @@ public class SoonLiveWebSocket extends MainAdapter {
     @OnMessage
     public void onMessage(String message) {
         if (isFirstMessage) {
-            String eventId = JsonPath.read(message, "ms[0].bId").toString();
-            int betRadarId = JsonPath.read(message, "ms[0].mr.1.bId");
-            int outcomeId = JsonPath.read(message, "ms[0].mr.1.oc[0].bid");
+            String eventId = JsonPath.read(message, "ms[" + betSlipNumber + "].bId").toString();
+            int betRadarId = JsonPath.read(message, "ms[" + betSlipNumber + "].mr.1.bId");
+            int outcomeId = JsonPath.read(message, "ms[" + betSlipNumber + "].mr.1.oc[0].bid");
             betSlip = new BetSlip(betRadarId, eventId, "en", "1", outcomeId);
             isFirstMessage = false;
         }
@@ -42,7 +43,8 @@ public class SoonLiveWebSocket extends MainAdapter {
         this.session.getBasicRemote().sendText(webSocketRequest);
     }
 
-    public BetSlip getBetSlip() {
+    public BetSlip getBetSlip(int id) {
+        betSlipNumber = id;
         for (int i = 0; i < 100; i++) {
             if (betSlip == null) {
                 try {

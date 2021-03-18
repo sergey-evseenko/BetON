@@ -35,9 +35,9 @@ public class BaseTest {
     protected OutrightAdapter outrightAdapter = new OutrightAdapter();
     protected BetSlipAdapter betSlipAdapter = new BetSlipAdapter();
 
-    public BetSlip getBetSlip() throws Exception {
+    public BetSlip getBetSlip(int betSlipNumber) throws Exception {
         SoonLiveWebSocket webSocketClientEndpoint = new SoonLiveWebSocket();
         webSocketClientEndpoint.sendMessage();
-        return webSocketClientEndpoint.getBetSlip();
+        return webSocketClientEndpoint.getBetSlip(betSlipNumber);
     }
 }

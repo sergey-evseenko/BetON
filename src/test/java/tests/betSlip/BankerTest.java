@@ -11,7 +11,7 @@ public class BankerTest extends BaseTest {
 
     @BeforeClass
     public void addBet() throws Exception {
-        betSlip = getBetSlip();
+        betSlip = getBetSlip(0);
         betSlipAdapter.addBet(betSlip, 200);
     }
 

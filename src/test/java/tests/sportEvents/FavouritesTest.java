@@ -16,7 +16,7 @@ public class FavouritesTest extends BaseTest {
     @BeforeClass
     public void getUserIdEventId() throws Exception {
         userId = userAdapter.getUserId();
-        eventId = getBetSlip().getEventId();
+        eventId = getBetSlip(0).getEventId();
     }
 
     @Test(description = "add favourite event", priority = 1)
