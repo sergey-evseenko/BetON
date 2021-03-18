@@ -2,6 +2,7 @@ package adapters;
 
 import io.restassured.http.ContentType;
 import models.BetSlip;
+import models.Combination;
 import models.ResponseBetOn;
 
 import static io.restassured.RestAssured.given;
@@ -78,5 +79,75 @@ public class BetSlipAdapter extends MainAdapter {
         } else {
             return null;
         }
+    }
+
+    public void addCombination(Combination combination) {
+        body = gson.toJson(combination);
+        requestSpec = given()
+                .cookie("betSlipId", betSlipId)
+                .contentType(ContentType.JSON)
+                .body(body);
+        response = post(url + "combination", requestSpec, 404);
+        assertEquals(response.path("message"), "BetSlip not found", "invalid response");
+    }
+
+    public void addCombination(Combination combination, String eventId) {
+        body = gson.toJson(combination);
+        requestSpec = given()
+                .cookie("betSlipId", betSlipId)
+                .contentType(ContentType.JSON)
+                .body(body);
+        response = post(url + "combination", requestSpec, 200);
+        assertEquals(response.path("selectionCount"), 1, "invalid count");
+        assertEquals(response.path("to.bt"), "SINGLE", "invalid count");
+        assertEquals(response.path("to.evs[0].id").toString(), eventId, "invalid count");
+    }
+
+    public void addCombination(Combination combination, String[] eventIds) {
+        body = gson.toJson(combination);
+        requestSpec = given()
+                .cookie("betSlipId", betSlipId)
+                .contentType(ContentType.JSON)
+                .body(body);
+        response = post(url + "combination", requestSpec, 200);
+        assertEquals(response.path("selectionCount"), 2, "invalid count");
+        assertEquals(response.path("to.bt"), "COMBINATION", "invalid count");
+        assertEquals(response.path("to.evs[0].id").toString(), eventIds[0], "invalid count");
+        assertEquals(response.path("to.evs[1].id").toString(), eventIds[1], "invalid count");
+    }
+
+    public void deleteCombination(Combination combination) {
+        body = gson.toJson(combination);
+        requestSpec = given()
+                .cookie("betSlipId", betSlipId)
+                .contentType(ContentType.JSON)
+                .body(body);
+        response = delete(url + "combination", requestSpec, 404);
+        assertEquals(response.path("message"), "BetSlip not found", "invalid response");
+    }
+
+    public void deleteCombination(Combination combination, String eventId) {
+        body = gson.toJson(combination);
+        requestSpec = given()
+                .cookie("betSlipId", betSlipId)
+                .contentType(ContentType.JSON)
+                .body(body);
+        response = delete(url + "combination", requestSpec, 200);
+        assertEquals(response.path("selectionCount"), 1, "invalid count");
+        assertEquals(response.path("to.bt"), "SINGLE", "invalid count");
+        assertEquals(response.path("to.evs[0].id").toString(), eventId, "invalid count");
+    }
+
+    public void deleteCombination(Combination combination, String[] eventIds) {
+        body = gson.toJson(combination);
+        requestSpec = given()
+                .cookie("betSlipId", betSlipId)
+                .contentType(ContentType.JSON)
+                .body(body);
+        response = delete(url + "combination", requestSpec, 200);
+        assertEquals(response.path("selectionCount"), 2, "invalid count");
+        assertEquals(response.path("to.bt"), "COMBINATION", "invalid count");
+        assertEquals(response.path("to.evs[0].id").toString(), eventIds[0], "invalid count");
+        assertEquals(response.path("to.evs[1].id").toString(), eventIds[1], "invalid count");
     }
 }
