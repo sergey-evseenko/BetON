@@ -16,7 +16,7 @@ public class CombinationsTest extends BaseTest {
         betSlipAdapter.deleteCombination(combination);
     }
 
-    @Test(description = "add/delete single combination")
+    @Test(description = "add/delete single combination (one event)")
     public void singleCombination() throws Exception {
         betSlip = getBetSlip(0);
         betSlipAdapter.addBet(betSlip, 200);
@@ -25,7 +25,7 @@ public class CombinationsTest extends BaseTest {
         betSlipAdapter.deleteAll(200);
     }
 
-    @Test(description = "add/delete combination")
+    @Test(description = "add/delete combination (two events)")
     public void doubleCombination() throws Exception {
         String[] eventIds = new String[2];
 
