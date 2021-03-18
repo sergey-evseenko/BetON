@@ -2,7 +2,6 @@ package tests.content;
 
 import models.Page;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
@@ -48,12 +47,6 @@ public class ContentTest extends BaseTest {
     public void validateInvalidLang() {
         responseBetOn = contentAdapter.validateParams("about", "qwerty", true, 200);
         assertEquals(responseBetOn.getDescription(), "No translation", "validate content param error");
-    }
-
-    @Ignore //TODO Fix 500 error
-    @Test(description = "validate params: lang is null")
-    public void validateNullLang() {
-        responseBetOn = contentAdapter.validateParams("about", null, true, 200);
     }
 
     @Test(description = "validate params: invalid name")
