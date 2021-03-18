@@ -15,16 +15,12 @@ public class OutrightTest extends BaseTest {
     OutrightCompetitor[] outrightCompetitorList;
     OutrightTournament[] outrightTournamentsList;
     OutrightCategory[] outrightCategoryList;
-    //OutrightCompetitor outrightCompetitor = data.get("outrightCompetitor.json", OutrightCompetitor.class);
-    //OutrightTournament outrightTournaments = data.get("outrightTournament.json", OutrightTournament.class);
-    //OutrightCategory outrightCategory = data.get("outrightCategory.json", OutrightCategory.class);
 
     @Test(description = "get available outright for competitors (EN)")
     public void getOutrightForCompetitorsEn() {
         //for english (en)
         outrightCompetitorList = outrightAdapter.getOutright("1", "en", "competitors", OutrightCompetitor[].class);
         assertTrue(outrightCompetitorList.length > 0, "List of outright for competitors is empty");
-        //assertEquals(outrightCompetitorList[0], outrightCompetitor, "Invalid list of outright for competitors");
     }
 
     @Test(description = "get available outright for competitors (invalid lang)")
@@ -32,7 +28,6 @@ public class OutrightTest extends BaseTest {
         //for invalid language
         outrightCompetitorList = outrightAdapter.getOutright("1", "qwerty", "competitors", OutrightCompetitor[].class);
         assertTrue(outrightCompetitorList.length > 0, "List of outright for competitors is empty");
-        //assertEquals(outrightCompetitorList[0], outrightCompetitor, "Invalid list of outright for competitors");
     }
 
     @Test(description = "get available outright for competitors (DE)")
@@ -40,7 +35,6 @@ public class OutrightTest extends BaseTest {
         //for german (de)
         outrightCompetitorList = outrightAdapter.getOutright("1", "de", "competitors", OutrightCompetitor[].class);
         assertTrue(outrightCompetitorList.length > 0, "List of outright for competitors is empty");
-        //assertEquals(outrightCompetitorList[0].getCn(), "Claverie, Luis", "Invalid German translation");
     }
 
     @Test(description = "get available outright for competitors (RU)")
@@ -48,7 +42,6 @@ public class OutrightTest extends BaseTest {
         //for russian (ru)
         outrightCompetitorList = outrightAdapter.getOutright("1", "ru", "competitors", OutrightCompetitor[].class);
         assertTrue(outrightCompetitorList.length > 0, "List of outright for competitors is empty");
-        //assertEquals(outrightCompetitorList[0].getCn(), "", "Invalid Russian translation");
     }
 
     @Test(description = "get available outright for tournaments (EN)")
@@ -56,7 +49,6 @@ public class OutrightTest extends BaseTest {
         //for english (en)
         outrightTournamentsList = outrightAdapter.getOutright("25", "en", "tournament", OutrightTournament[].class);
         assertTrue(outrightTournamentsList.length > 0, "List of outright for tournaments is empty");
-        //assertEquals(outrightTournamentsList[0], outrightTournaments, "Invalid list of outright for tournaments");
     }
 
     @Test(description = "get available outright for tournaments (invalid lang)")
@@ -64,7 +56,6 @@ public class OutrightTest extends BaseTest {
         //for invalid language
         outrightTournamentsList = outrightAdapter.getOutright("25", "qwerty", "tournament", OutrightTournament[].class);
         assertTrue(outrightTournamentsList.length > 0, "List of outright for tournaments is empty");
-        //assertEquals(outrightTournamentsList[0], outrightTournaments, "Invalid list of outright for tournaments");
     }
 
     @Test(description = "get available outright for tournaments (DE)")
@@ -72,7 +63,6 @@ public class OutrightTest extends BaseTest {
         //for german (de)
         outrightTournamentsList = outrightAdapter.getOutright("25", "de", "tournament", OutrightTournament[].class);
         assertTrue(outrightTournamentsList.length > 0, "List of outright for tournaments is empty");
-        //assertEquals(outrightTournamentsList[0].getOn(), "NCAA(F) - Conference - Atlantic Coast - Sieger", "Invalid German translation");
     }
 
     @Test(description = "get available outright for tournaments (RU)")
@@ -80,7 +70,6 @@ public class OutrightTest extends BaseTest {
         //for russian (ru)
         outrightTournamentsList = outrightAdapter.getOutright("25", "ru", "tournament", OutrightTournament[].class);
         assertTrue(outrightTournamentsList.length > 0, "List of outright for tournaments is empty");
-        //assertEquals(outrightTournamentsList[0].getOn(), "", "Invalid Russian translation");
     }
 
     @Test(description = "get available outright for categories (EN)")
@@ -88,7 +77,6 @@ public class OutrightTest extends BaseTest {
         //for english (en)
         outrightCategoryList = outrightAdapter.getOutright("27", "en", "category", OutrightCategory[].class);
         assertTrue(outrightCategoryList.length > 0, "List of outright for categories is empty");
-        //assertEquals(outrightCategoryList[0], outrightCategory, "Invalid list of outright for categories (en)");
     }
 
     @Test(description = "get available outright for categories (invalid lang)")
@@ -96,7 +84,6 @@ public class OutrightTest extends BaseTest {
         //for invalid language
         outrightCategoryList = outrightAdapter.getOutright("27", "qwerty", "category", OutrightCategory[].class);
         assertTrue(outrightCategoryList.length > 0, "List of outright for categories is empty");
-        //assertEquals(outrightCategoryList[0], outrightCategory, "Invalid list of outright for categories (en)");
     }
 
     @Test(description = "get available outright for categories (DE)")
@@ -104,7 +91,6 @@ public class OutrightTest extends BaseTest {
         //for german (de)
         outrightCategoryList = outrightAdapter.getOutright("27", "de", "category", OutrightCategory[].class);
         assertTrue(outrightCategoryList.length > 0, "List of outright for categories is empty");
-        //assertEquals(outrightCategoryList[0].getCn(), "Männer", "Invalid German translation");
     }
 
     @Test(description = "get available outright for categories (RU)")
@@ -112,7 +98,6 @@ public class OutrightTest extends BaseTest {
         //for russian (ru)
         outrightCategoryList = outrightAdapter.getOutright("27", "ru", "category", OutrightCategory[].class);
         assertTrue(outrightCategoryList.length > 0, "List of outright for categories is empty");
-        //assertEquals(outrightCategoryList[0].getSn(), "Гольф", "Invalid Russian translation");
     }
 
     @DataProvider(name = "Params")
