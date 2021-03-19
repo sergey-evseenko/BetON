@@ -5,6 +5,11 @@ Integration tests (Rest API).
 Current coverage:
 
 * Authorization
+* Bet Slip
+  * Add/delete bet
+  * Clear bets
+  * Add/delete banker
+  * Add/delete combination (types: single, combination, system)
 * Content
 * Registration:
   * Confirm registration
