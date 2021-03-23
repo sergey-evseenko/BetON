@@ -1,6 +1,6 @@
 package adapters;
 
-import models.Category;
+import models.Categories;
 import models.ResponseBetOn;
 import models.Sport;
 import models.Tournament;
@@ -29,13 +29,13 @@ public class CatalogAdapter extends MainAdapter {
         return gson.fromJson(response.asString().trim(), ResponseBetOn.class);
     }
 
-    public Category[] getCategories(String langIso, String sportId) {
+    public Categories getCategories(String langIso, String sportId) {
         requestSpec = given()
                 .queryParam("langIso", langIso)
                 .queryParam("sportId", sportId);
 
         response = get(url + "allCategories", requestSpec, 200);
-        return gson.fromJson(response.asString().trim(), Category[].class);
+        return gson.fromJson(response.asString().trim(), Categories.class);
     }
 
     public ResponseBetOn getCategories(String langIso, String sportId, int expectedStatusCode) {
@@ -52,7 +52,7 @@ public class CatalogAdapter extends MainAdapter {
 
         response = get(url + "allCategories", requestSpec, expectedStatusCode);
         if (expectedStatusCode == 200) {
-            assertEquals(response.path("sp.nm[0]"), "Soccer", "Invalid response");
+            assertEquals(response.path("categories.sp.nm[0]"), "Soccer", "Invalid response");
             return null;
         }
         return gson.fromJson(response.asString().trim(), ResponseBetOn.class);

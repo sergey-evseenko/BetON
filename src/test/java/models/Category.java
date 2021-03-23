@@ -14,6 +14,8 @@ public class Category {
     @Expose
     String nm;
     @Expose
+    String snm;
+    @Expose
     int tpi;
     @Expose
     int si;

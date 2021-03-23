@@ -1,19 +1,22 @@
 package tests.sportEvents;
 
+import models.Categories;
 import models.Category;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class ListOfCategoriesTest extends BaseTest {
 
     @Test(description = "get list of categories")
     public void getListOfCategories() {
         Category category = data.get("category.json", Category.class);
-        Category[] responseList = catalogAdapter.getCategories("de", "1");
-        assertEquals(responseList[0], category, "Invalid list of categories");
+        Categories categories = catalogAdapter.getCategories("de", "1");
+        assertEquals(categories.getCategories()[0], category, "Invalid list of categories");
+        assertTrue(categories.getMarketLayers().length > 0, "Invalid list of market layers");
     }
 
     @DataProvider(name = "params")
