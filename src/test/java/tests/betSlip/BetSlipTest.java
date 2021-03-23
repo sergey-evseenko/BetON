@@ -34,7 +34,7 @@ public class BetSlipTest extends BaseTest {
     }
 
     @Test(description = "Delete bet already deleted", priority = 4)
-    public void deleteBetAlreadyDeleted() {
+    public void deleteBetNoBets() {
         responseBetOn = betSlipAdapter.deleteBet(betSlip, 404);
         assertEquals(responseBetOn.getMessage(), "BetSlip not found", "Invalid response");
     }
@@ -46,7 +46,7 @@ public class BetSlipTest extends BaseTest {
     }
 
     @Test(description = "Delete all bets already deleted", priority = 6)
-    public void deleteAllBetsAlreadyDeleted() {
+    public void deleteAllBetsNoBets() {
         responseBetOn = betSlipAdapter.deleteAll(404);
         assertEquals(responseBetOn.getMessage(), "BetSlip not found", "Invalid response");
     }
@@ -80,4 +80,5 @@ public class BetSlipTest extends BaseTest {
         responseBetOn = betSlipAdapter.addBet(invalidBetSlip, expectedStatusCode);
         assertTrue(responseBetOn.getMessage().contains(responseMessage), "Invalid response");
     }
+
 }
