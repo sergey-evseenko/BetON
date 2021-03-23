@@ -81,8 +81,8 @@ public class BetSlipAdapter extends MainAdapter {
         }
     }
 
-    public void addCombination(String path, BetSlip[] bets, int size, String type, int expectedStatusCode) {
-        File file = new File(path);
+    public void addCombination(String fileName, BetSlip[] bets, int size, String type, int expectedStatusCode) {
+        File file = new File("src/test/resources/data/" + fileName);
         requestSpec = given()
                 .cookie("betSlipId", betSlipId)
                 .contentType(ContentType.JSON)
@@ -100,8 +100,8 @@ public class BetSlipAdapter extends MainAdapter {
 
     }
 
-    public void deleteCombination(String path, BetSlip[] bets, int size, String type, int expectedStatusCode) {
-        File file = new File(path);
+    public void deleteCombination(String fileName, BetSlip[] bets, int size, String type, int expectedStatusCode) {
+        File file = new File("src/test/resources/data/" + fileName);
         requestSpec = given()
                 .cookie("betSlipId", betSlipId)
                 .contentType(ContentType.JSON)

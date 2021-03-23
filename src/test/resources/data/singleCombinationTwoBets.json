@@ -1,12 +1,12 @@
 {
   "bss": {
+    "bnk": 0,
     "bssn": "SINGLE",
     "num": 1,
-    "den": 1,
-    "bnk": 0,
+    "den": 2,
     "cs": 1
   },
   "ssel": false,
   "usel": false,
-  "nbet": 1
+  "nbet": 2
 }

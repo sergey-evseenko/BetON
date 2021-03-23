@@ -1,10 +1,10 @@
 {
   "bss": {
+    "bnk": 0,
     "bssn": "COMBINATION",
     "num": 2,
-    "den": 1,
-    "bnk": 0,
-    "cs": 1
+    "den": 2,
+    "cs": 2
   },
   "ssel": true,
   "usel": false,

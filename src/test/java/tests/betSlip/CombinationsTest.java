@@ -2,6 +2,7 @@ package tests.betSlip;
 
 import models.BetSlip;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
@@ -9,9 +10,6 @@ import tests.BaseTest;
 public class CombinationsTest extends BaseTest {
 
     BetSlip[] bets = new BetSlip[3];
-    String singlePtah = "src/test/resources/data/single.json";
-    String combinationPath = "src/test/resources/data/combination.json";
-    String systemPath = "src/test/resources/data/system.json";
 
     @BeforeClass()
     public void getBets() throws Exception {
@@ -20,38 +18,35 @@ public class CombinationsTest extends BaseTest {
         }
     }
 
-    @Test(description = "add/delete combination without bet slip")
-    public void combinationNoBet() {
-        betSlipAdapter.addCombination(singlePtah, null, 0, "", 404);
-        betSlipAdapter.deleteCombination(singlePtah, null, 0, "", 404);
+    @DataProvider(name = "Combinations")
+    public Object[][] combinations() {
+        return new Object[][]{
+                //single combination, no bets
+                {0, "SINGLE", "singleCombinationOneBet.json", 404},
+                //single combination, one bet
+                {1, "SINGLE", "singleCombinationOneBet.json", 200},
+                //single combination, two bets
+                {2, "SINGLE", "singleCombinationTwoBets.json", 200},
+                //single combination, three bets
+                {3, "SINGLE", "singleCombinationThreeBets.json", 200},
+                //combi combination, two bets
+                {2, "COMBINATION", "combiCombinationTwoBets.json", 200},
+                //combi combination, three bets
+                {3, "COMBINATION", "combiCombinationThreeBets.json", 200},
+                //system combination, three bets
+                {3, "SYSTEM", "systemCombinationThreeBets.json", 200},
+        };
     }
 
-    @Test(description = "add/delete single combination (one event)")
-    public void single() {
-        betSlipAdapter.addBet(bets[0], 200);
-        betSlipAdapter.addCombination(singlePtah, bets, 1, "SINGLE", 200);
-        betSlipAdapter.deleteCombination(singlePtah, bets, 1, "SINGLE", 200);
-        betSlipAdapter.deleteAll(200);
-    }
-
-    @Test(description = "add/delete combination (two events)")
-    public void combination() {
-        for (int i = 0; i < 2; i++) {
+    @Test(description = "add/delete combinations", dataProvider = "Combinations")
+    public void combinations(int numberOfBets, String combinationType, String fileName, int expectedStatusCode) {
+        for (int i = 0; i < numberOfBets; i++) {
             betSlipAdapter.addBet(bets[i], 200);
         }
-        betSlipAdapter.addCombination(combinationPath, bets, 2, "COMBINATION", 200);
-        betSlipAdapter.deleteCombination(combinationPath, bets, 2, "COMBINATION", 200);
-        betSlipAdapter.deleteAll(200);
-    }
+        betSlipAdapter.addCombination(fileName, bets, numberOfBets, combinationType, expectedStatusCode);
+        betSlipAdapter.deleteCombination(fileName, bets, numberOfBets, combinationType, expectedStatusCode);
+        betSlipAdapter.deleteAll(expectedStatusCode);
 
-    @Test(description = "add/delete system combination (three events)")
-    public void system() {
-        for (int i = 0; i < 3; i++) {
-            betSlipAdapter.addBet(bets[i], 200);
-        }
-        betSlipAdapter.addCombination(systemPath, bets, 3, "SYSTEM", 200);
-        betSlipAdapter.deleteCombination(systemPath, bets, 3, "SYSTEM", 200);
-        betSlipAdapter.deleteAll(200);
     }
 
     @Test(description = "Get full bet slip")
