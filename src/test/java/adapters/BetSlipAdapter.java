@@ -3,6 +3,7 @@ package adapters;
 import io.restassured.http.ContentType;
 import models.BetSlip;
 import models.ResponseBetOn;
+import models.Wager;
 
 import java.io.File;
 
@@ -141,6 +142,36 @@ public class BetSlipAdapter extends MainAdapter {
                 responseBets = gson.fromJson(response.path("ps." + bets[i].getEventId()).toString(), BetSlip[].class);
                 responseBets[0].setLanguage("en");
                 assertEquals(responseBets[0], bets[i], "Invalid response");
+            }
+        } else {
+            assertEquals(response.path("message"), "BetSlip not found", "invalid response");
+        }
+    }
+
+    public void changeWager(Wager wager, String type, int expectedStatusCode) {
+        int n;
+        if (type == "COMBINATION") {
+            n = 1;
+        } else {
+            n = 3;
+        }
+
+        body = gson.toJson(wager, Wager.class);
+        requestSpec = given()
+                .cookie("betSlipId", betSlipId)
+                .contentType(ContentType.JSON)
+                .body(body);
+        response = put(url + "wager", requestSpec, expectedStatusCode);
+        if (expectedStatusCode == 200) {
+            assertEquals(response.path("to.bt"), type, "invalid count");
+            if (wager.getWagerType() == "T") {
+                assertEquals(response.path("to.wa"), wager.getWager(), "invalid total wager");
+                float betWager = response.path("to.bw");
+                assertEquals((int) betWager, wager.getWager() / n, "invalid bet wager");
+            } else {
+                float totalWager = response.path("to.wa");
+                assertEquals((int) totalWager, wager.getWager() * n, "invalid total wager");
+                assertEquals(response.path("to.bw"), wager.getWager(), "invalid bet wager");
             }
         } else {
             assertEquals(response.path("message"), "BetSlip not found", "invalid response");
