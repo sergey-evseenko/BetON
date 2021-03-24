@@ -10,7 +10,8 @@ import tests.BaseTest;
 public class WagerTests extends BaseTest {
 
     BetSlip[] bets = new BetSlip[3];
-    Wager wager = new Wager(300, null);
+    Wager wagerT = new Wager(300, "T");
+    Wager wagerB = new Wager(300, "B");
 
     @BeforeClass()
     public void getBets() throws Exception {
@@ -33,27 +34,34 @@ public class WagerTests extends BaseTest {
 
     @Test(description = "Change wager", dataProvider = "Wagers")
     public void changeWager(String combinationType, String fileName) {
-        for (int i = 0; i < 3; i++) {
+        int numberOfBets = 3;
+        for (int i = 0; i < numberOfBets; i++) {
             betSlipAdapter.addBet(bets[i], 200);
         }
-        betSlipAdapter.addCombination(fileName, bets, 3, combinationType, 200);
+        betSlipAdapter.addCombination(fileName, bets, numberOfBets, combinationType, 200);
 
-        wager.setWagerType("T");
-        betSlipAdapter.changeWager(wager, combinationType, 200);
-
-        wager.setWagerType("B");
-        betSlipAdapter.changeWager(wager, combinationType, 200);
+        betSlipAdapter.changeWager(wagerT, combinationType, 200, numberOfBets);
+        betSlipAdapter.changeWager(wagerB, combinationType, 200, numberOfBets);
 
         betSlipAdapter.deleteAll(200);
     }
 
-    @Test(description = "Change wager. No bets")
-    public void changeWagerNoBets() {
+    @DataProvider(name = "Invalid wagers")
+    public Object[][] invalidWagers() {
+        return new Object[][]{
+                //no bets
+                {100, "T", 404},
+                //wager is negative
+                {-100, "T", 400},
+                //invalid wager type
+                {100, "X", 400},
+        };
+    }
 
-        wager.setWagerType("T");
-        betSlipAdapter.changeWager(wager, null, 404);
-
-        wager.setWagerType("B");
-        betSlipAdapter.changeWager(wager, null, 404);
+    @Test(description = "Change wager. Invalid wager.", dataProvider = "Invalid wagers")
+    public void test(int value, String combinationType, int expectedStatusCode) {
+        wagerT.setWager(value);
+        wagerT.setWagerType(combinationType);
+        betSlipAdapter.changeWager(wagerT, expectedStatusCode);
     }
 }

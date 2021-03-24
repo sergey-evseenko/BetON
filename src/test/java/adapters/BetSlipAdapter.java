@@ -148,12 +148,12 @@ public class BetSlipAdapter extends MainAdapter {
         }
     }
 
-    public void changeWager(Wager wager, String type, int expectedStatusCode) {
+    public void changeWager(Wager wager, String combinationType, int expectedStatusCode, int numberOfBets) {
         int n;
-        if (type == "COMBINATION") {
+        if (combinationType == "COMBINATION") {
             n = 1;
         } else {
-            n = 3;
+            n = numberOfBets;
         }
 
         body = gson.toJson(wager, Wager.class);
@@ -162,19 +162,24 @@ public class BetSlipAdapter extends MainAdapter {
                 .contentType(ContentType.JSON)
                 .body(body);
         response = put(url + "wager", requestSpec, expectedStatusCode);
-        if (expectedStatusCode == 200) {
-            assertEquals(response.path("to.bt"), type, "invalid count");
-            if (wager.getWagerType() == "T") {
-                assertEquals(response.path("to.wa"), wager.getWager(), "invalid total wager");
-                float betWager = response.path("to.bw");
-                assertEquals((int) betWager, wager.getWager() / n, "invalid bet wager");
-            } else {
-                float totalWager = response.path("to.wa");
-                assertEquals((int) totalWager, wager.getWager() * n, "invalid total wager");
-                assertEquals(response.path("to.bw"), wager.getWager(), "invalid bet wager");
-            }
+        assertEquals(response.path("to.bt"), combinationType, "invalid count");
+        if (wager.getWagerType() == "T") {
+            assertEquals(response.path("to.wa"), wager.getWager(), "invalid total wager");
+            float betWager = response.path("to.bw");
+            assertEquals((int) betWager, wager.getWager() / n, "invalid bet wager");
         } else {
-            assertEquals(response.path("message"), "BetSlip not found", "invalid response");
+            float totalWager = response.path("to.wa");
+            assertEquals((int) totalWager, wager.getWager() * n, "invalid total wager");
+            assertEquals(response.path("to.bw"), wager.getWager(), "invalid bet wager");
         }
+    }
+
+    public void changeWager(Wager wager, int expectedStatusCode) {
+        body = gson.toJson(wager, Wager.class);
+        requestSpec = given()
+                .cookie("betSlipId", betSlipId)
+                .contentType(ContentType.JSON)
+                .body(body);
+        response = put(url + "wager", requestSpec, expectedStatusCode);
     }
 }
