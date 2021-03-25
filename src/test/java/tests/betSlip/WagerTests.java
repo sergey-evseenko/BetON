@@ -1,24 +1,14 @@
 package tests.betSlip;
 
-import models.BetSlip;
 import models.Wager;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import tests.BaseTest;
+import tests.BetSlip;
 
-public class WagerTests extends BaseTest {
+public class WagerTests extends BetSlip {
 
-    BetSlip[] bets = new BetSlip[3];
     Wager wagerT = new Wager(300, "T");
     Wager wagerB = new Wager(300, "B");
-
-    @BeforeClass()
-    public void getBets() throws Exception {
-        for (int i = 0; i < 3; i++) {
-            bets[i] = getBetSlip(i);
-        }
-    }
 
     @DataProvider(name = "Wagers")
     public Object[][] wagers() {
@@ -34,7 +24,6 @@ public class WagerTests extends BaseTest {
 
     @Test(description = "Change wager", dataProvider = "Wagers")
     public void changeWager(String combinationType, String fileName) {
-        int numberOfBets = 3;
         for (int i = 0; i < numberOfBets; i++) {
             betSlipAdapter.addBet(bets[i], 200);
         }

@@ -8,7 +8,7 @@ import models.Wager;
 import java.io.File;
 
 import static io.restassured.RestAssured.given;
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 public class BetSlipAdapter extends MainAdapter {
     String url = "sport-events/v1/betslip/";
@@ -181,5 +181,27 @@ public class BetSlipAdapter extends MainAdapter {
                 .contentType(ContentType.JSON)
                 .body(body);
         response = put(url + "wager", requestSpec, expectedStatusCode);
+    }
+
+    public void deleteOutcome(String eventId, int section) {
+        requestSpec = given()
+                .cookie("betSlipId", betSlipId);
+        response = delete(url + "event/" + eventId + "/selection/" + section, requestSpec, 200);
+        assertEquals(response.path("selectionCount"), 2, "invalid number of events");
+        assertFalse(response.asString().contains(eventId), "event wasn't removed");
+    }
+
+    public void deleteOutcome(String eventId, int section, String message) {
+        requestSpec = given()
+                .cookie("betSlipId", betSlipId);
+        response = delete(url + "event/" + eventId + "/selection/" + section, requestSpec, 404);
+        assertEquals(response.path("message"), message, "invalid response");
+    }
+
+    public void deleteOutcomeAll(BetSlip[] bets) {
+        for (int i = 0; i < 3; i++) {
+            response = delete(url + "event/" + bets[i].getEventId() + "/selection/1", requestSpec, 200);
+        }
+        assertTrue(response.asString().isEmpty(), "invalid response");
     }
 }

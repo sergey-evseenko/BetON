@@ -1,22 +1,11 @@
 package tests.betSlip;
 
-import models.BetSlip;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import tests.BaseTest;
+import tests.BetSlip;
 
 
-public class CombinationsTest extends BaseTest {
-
-    BetSlip[] bets = new BetSlip[3];
-
-    @BeforeClass()
-    public void getBets() throws Exception {
-        for (int i = 0; i < 3; i++) {
-            bets[i] = getBetSlip(i);
-        }
-    }
+public class CombinationsTest extends BetSlip {
 
     @DataProvider(name = "Combinations")
     public Object[][] combinations() {
