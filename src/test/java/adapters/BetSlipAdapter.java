@@ -1,7 +1,7 @@
 package adapters;
 
 import io.restassured.http.ContentType;
-import models.BetSlip;
+import models.Bet;
 import models.ResponseBetOn;
 import models.Wager;
 
@@ -12,9 +12,9 @@ import static org.testng.Assert.*;
 
 public class BetSlipAdapter extends MainAdapter {
     String url = "sport-events/v1/betslip/";
-    BetSlip[] responseBets;
+    Bet[] responseBets;
 
-    public ResponseBetOn addBet(BetSlip bet, int expectedStatusCode) {
+    public ResponseBetOn addBet(Bet bet, int expectedStatusCode) {
         body = gson.toJson(bet);
         requestSpec = given()
                 .cookie("betSlipId", betSlipId)
@@ -22,7 +22,7 @@ public class BetSlipAdapter extends MainAdapter {
                 .body(body);
         response = post(url + "pick", requestSpec, expectedStatusCode);
         if (expectedStatusCode == 200) {
-            responseBets = gson.fromJson(response.path("ps." + bet.getEventId()).toString(), BetSlip[].class);
+            responseBets = gson.fromJson(response.path("ps." + bet.getEventId()).toString(), Bet[].class);
             responseBets[0].setLanguage("en");
             assertEquals(responseBets[0], bet, "Invalid response");
             return null;
@@ -44,8 +44,8 @@ public class BetSlipAdapter extends MainAdapter {
         }
     }
 
-    public ResponseBetOn deleteBet(BetSlip betSlip, int expectedStatusCode) {
-        body = gson.toJson(betSlip);
+    public ResponseBetOn deleteBet(Bet bet, int expectedStatusCode) {
+        body = gson.toJson(bet);
         requestSpec = given()
                 .cookie("betSlipId", betSlipId)
                 .contentType(ContentType.JSON)
@@ -100,7 +100,7 @@ public class BetSlipAdapter extends MainAdapter {
         response = delete(url + "combination", requestSpec, expectedStatusCode);
     }
 
-    public void validateCombinationResponse(BetSlip[] bets, int size, String type, int expectedStatusCode) {
+    public void validateCombinationResponse(Bet[] bets, int size, String type, int expectedStatusCode) {
         if (expectedStatusCode == 200) {
             assertEquals(response.path("selectionCount"), size, "invalid count");
             assertEquals(response.path("to.bt"), type, "invalid count");
@@ -112,7 +112,7 @@ public class BetSlipAdapter extends MainAdapter {
         }
     }
 
-    public void getAll(BetSlip[] bets, int expectedStatusCode) {
+    public void getAll(Bet[] bets, int expectedStatusCode) {
         requestSpec = given()
                 .cookie("betSlipId", betSlipId);
         response = get(url + "full", requestSpec, expectedStatusCode);
@@ -126,13 +126,13 @@ public class BetSlipAdapter extends MainAdapter {
         }
     }
 
-    public void getShort(BetSlip[] bets, int expectedStatusCode) {
+    public void getShort(Bet[] bets, int expectedStatusCode) {
         requestSpec = given()
                 .cookie("betSlipId", betSlipId);
         response = get(url + "short", requestSpec, expectedStatusCode);
         if (expectedStatusCode == 200) {
             for (int i = 0; i < 3; i++) {
-                responseBets = gson.fromJson(response.path("ps." + bets[i].getEventId()).toString(), BetSlip[].class);
+                responseBets = gson.fromJson(response.path("ps." + bets[i].getEventId()).toString(), Bet[].class);
                 responseBets[0].setLanguage("en");
                 assertEquals(responseBets[0], bets[i], "Invalid response");
             }
@@ -191,7 +191,7 @@ public class BetSlipAdapter extends MainAdapter {
         assertEquals(response.path("message"), message, "invalid response");
     }
 
-    public void deleteOutcomeAll(BetSlip[] bets) {
+    public void deleteOutcomeAll(Bet[] bets) {
         for (int i = 0; i < 3; i++) {
             response = delete(url + "event/" + bets[i].getEventId() + "/selection/1", requestSpec, 200);
         }

@@ -11,23 +11,23 @@ public class BankerTest extends BaseTest {
 
     @BeforeClass
     public void addBet() throws Exception {
-        betSlip = getBetSlip(0);
-        betSlipAdapter.addBet(betSlip, 200);
+        bet = getBets()[0];
+        betSlipAdapter.addBet(bet, 200);
     }
 
     @AfterClass
     public void deleteBet() {
-        betSlipAdapter.deleteBet(betSlip, 200);
+        betSlipAdapter.deleteBet(bet, 200);
     }
 
     @Test(description = "Add banker", priority = 1)
     public void addBanker() {
-        betSlipAdapter.addBanker(betSlip.getEventId(), 200);
+        betSlipAdapter.addBanker(bet.getEventId(), 200);
     }
 
     @Test(description = "Delete banker", priority = 2)
     public void deleteBanker() {
-        betSlipAdapter.deleteBanker(betSlip.getEventId(), 200);
+        betSlipAdapter.deleteBanker(bet.getEventId(), 200);
     }
 
     @Test(description = "Add banker. Not existing event id")

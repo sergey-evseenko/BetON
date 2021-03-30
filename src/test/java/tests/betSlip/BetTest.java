@@ -1,41 +1,35 @@
 package tests.betSlip;
 
-import models.BetSlip;
-import org.testng.annotations.BeforeClass;
+import models.Bet;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import tests.BaseTest;
+import tests.Bets;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 
-public class BetSlipTest extends BaseTest {
-
-    @BeforeClass
-    public void getBet() throws Exception {
-        betSlip = getBetSlip(0);
-    }
+public class BetTest extends Bets {
 
     @Test(description = "Add bet", priority = 1)
     public void addBet() {
-        betSlipAdapter.addBet(betSlip, 200);
+        betSlipAdapter.addBet(bets[0], 200);
     }
 
     @Test(description = "Add bet that was already added", priority = 2)
     public void addBetAlreadyAdded() {
-        responseBetOn = betSlipAdapter.addBet(betSlip, 400);
+        responseBetOn = betSlipAdapter.addBet(bets[0], 400);
         assertEquals(responseBetOn.getMessage(), "Pick already exists in betslip", "Invalid response");
     }
 
     @Test(description = "Delete bet", priority = 3)
     public void deleteBet() {
-        betSlipAdapter.deleteBet(betSlip, 200);
+        betSlipAdapter.deleteBet(bets[0], 200);
     }
 
     @Test(description = "Delete bet already deleted", priority = 4)
     public void deleteBetNoBets() {
-        responseBetOn = betSlipAdapter.deleteBet(betSlip, 404);
+        responseBetOn = betSlipAdapter.deleteBet(bets[0], 404);
         assertEquals(responseBetOn.getMessage(), "BetSlip not found", "Invalid response");
     }
 
@@ -53,11 +47,11 @@ public class BetSlipTest extends BaseTest {
 
     @DataProvider(name = "Params")
     public Object[][] params() {
-        int bId = betSlip.getBetRadarId();
-        String eventId = betSlip.getEventId();
-        String language = betSlip.getLanguage();
-        String marketId = betSlip.getMarketId();
-        int outcomeId = betSlip.getOutcomeId();
+        int bId = bets[0].getBetRadarId();
+        String eventId = bets[0].getEventId();
+        String language = bets[0].getLanguage();
+        String marketId = bets[0].getMarketId();
+        int outcomeId = bets[0].getOutcomeId();
         return new Object[][]{
                 //Not existing event id
                 {bId, "111", language, marketId, outcomeId, 404, "No live events found for that pick"},
@@ -76,8 +70,8 @@ public class BetSlipTest extends BaseTest {
 
     @Test(description = "Add bet. Validate params", dataProvider = "Params", priority = 7)
     public void validateBet(int bId, String eventId, String language, String marketId, int outcomeId, int expectedStatusCode, String responseMessage) {
-        BetSlip invalidBetSlip = new BetSlip(bId, eventId, language, marketId, outcomeId);
-        responseBetOn = betSlipAdapter.addBet(invalidBetSlip, expectedStatusCode);
+        Bet invalidBet = new Bet(bId, eventId, language, marketId, outcomeId);
+        responseBetOn = betSlipAdapter.addBet(invalidBet, expectedStatusCode);
         assertTrue(responseBetOn.getMessage().contains(responseMessage), "Invalid response");
     }
 

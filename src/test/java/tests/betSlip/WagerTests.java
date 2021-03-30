@@ -3,9 +3,9 @@ package tests.betSlip;
 import models.Wager;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import tests.BetSlip;
+import tests.Bets;
 
-public class WagerTests extends BetSlip {
+public class WagerTests extends Bets {
 
     Wager wagerT = new Wager(300, "T");
     Wager wagerB = new Wager(300, "B");

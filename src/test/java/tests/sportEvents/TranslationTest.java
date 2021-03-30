@@ -1,6 +1,6 @@
 package tests.sportEvents;
 
-import models.BetSlip;
+import models.Bet;
 import models.LiveMatch;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -12,16 +12,16 @@ import static org.testng.Assert.assertEquals;
 public class TranslationTest extends BaseTest {
 
     LiveMatch liveMatch;
-    BetSlip betSlip;
+    Bet bet;
     String eventId;
     String marketId;
     String[] markets = new String[1];
 
     @BeforeClass
     public void getEventIdMarketId() throws Exception {
-        betSlip = getBetSlip(0);
-        eventId = betSlip.getEventId();
-        marketId = betSlip.getMarketId();
+        bet = getBets()[0];
+        eventId = bet.getEventId();
+        marketId = bet.getMarketId();
         markets[0] = marketId;
     }
 

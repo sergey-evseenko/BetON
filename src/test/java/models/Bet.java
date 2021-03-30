@@ -7,7 +7,7 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class BetSlip {
+public class Bet {
     @SerializedName("bmi")
     @Expose
     int betRadarId;

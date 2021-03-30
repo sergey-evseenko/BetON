@@ -2,10 +2,10 @@ package tests.betSlip;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import tests.BetSlip;
+import tests.Bets;
 
 
-public class CombinationsTest extends BetSlip {
+public class CombinationsTest extends Bets {
 
     @DataProvider(name = "Combinations")
     public Object[][] combinations() {

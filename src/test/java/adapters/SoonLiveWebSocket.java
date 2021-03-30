@@ -1,7 +1,7 @@
 package adapters;
 
 import com.jayway.jsonpath.JsonPath;
-import models.BetSlip;
+import models.Bet;
 import org.glassfish.tyrus.client.ClientManager;
 import utils.PropertyManager;
 
@@ -16,11 +16,11 @@ import java.nio.file.Paths;
 @ClientEndpoint
 public class SoonLiveWebSocket extends MainAdapter {
     private final Session session;
-    BetSlip betSlip;
+    int numberOfBets = 3;
+    Bet[] bets = new Bet[numberOfBets];
     Boolean isFirstMessage = true;
     String webSocketUrl = new PropertyManager().get("webSocketUrl");
     String webSocketRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/data/webSocketRequest.json")));
-    int betSlipNumber;
 
 
     public SoonLiveWebSocket() throws Exception {
@@ -31,10 +31,12 @@ public class SoonLiveWebSocket extends MainAdapter {
     @OnMessage
     public void onMessage(String message) {
         if (isFirstMessage) {
-            String eventId = JsonPath.read(message, "ms[" + betSlipNumber + "].bId").toString();
-            int betRadarId = JsonPath.read(message, "ms[" + betSlipNumber + "].mr.1.bId");
-            int outcomeId = JsonPath.read(message, "ms[" + betSlipNumber + "].mr.1.oc[0].bid");
-            betSlip = new BetSlip(betRadarId, eventId, "en", "1", outcomeId);
+            for (int i = 0; i < numberOfBets; i++) {
+                String eventId = JsonPath.read(message, "ms[" + i + "].bId").toString();
+                int betRadarId = JsonPath.read(message, "ms[" + i + "].mr.1.bId");
+                int outcomeId = JsonPath.read(message, "ms[" + i + "].mr.1.oc[0].bid");
+                bets[i] = new Bet(betRadarId, eventId, "en", "1", outcomeId);
+            }
             isFirstMessage = false;
         }
     }
@@ -43,10 +45,9 @@ public class SoonLiveWebSocket extends MainAdapter {
         this.session.getBasicRemote().sendText(webSocketRequest);
     }
 
-    public BetSlip getBetSlip(int id) {
-        betSlipNumber = id;
+    public Bet[] getBets() {
         for (int i = 0; i < 100; i++) {
-            if (betSlip == null) {
+            if (bets[numberOfBets - 1] == null) {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
@@ -62,6 +63,6 @@ public class SoonLiveWebSocket extends MainAdapter {
                 break;
             }
         }
-        return betSlip;
+        return bets;
     }
 }
