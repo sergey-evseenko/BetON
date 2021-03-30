@@ -82,32 +82,25 @@ public class BetSlipAdapter extends MainAdapter {
         }
     }
 
-    public void addCombination(String fileName, BetSlip[] bets, int size, String type, int expectedStatusCode) {
+    public void addCombination(String fileName, int expectedStatusCode) {
         File file = new File("src/test/resources/data/" + fileName);
         requestSpec = given()
                 .cookie("betSlipId", betSlipId)
                 .contentType(ContentType.JSON)
                 .body(file);
         response = post(url + "combination", requestSpec, expectedStatusCode);
-        if (expectedStatusCode == 200) {
-            assertEquals(response.path("selectionCount"), size, "invalid count");
-            assertEquals(response.path("to.bt"), type, "invalid count");
-            for (int i = 0; i < size; i++) {
-                assertEquals(response.path(String.format("to.evs[%s].id", i)).toString(), bets[i].getEventId(), "invalid count");
-            }
-        } else {
-            assertEquals(response.path("message"), "BetSlip not found", "invalid response");
-        }
-
     }
 
-    public void deleteCombination(String fileName, BetSlip[] bets, int size, String type, int expectedStatusCode) {
+    public void deleteCombination(String fileName, int expectedStatusCode) {
         File file = new File("src/test/resources/data/" + fileName);
         requestSpec = given()
                 .cookie("betSlipId", betSlipId)
                 .contentType(ContentType.JSON)
                 .body(file);
         response = delete(url + "combination", requestSpec, expectedStatusCode);
+    }
+
+    public void validateCombinationResponse(BetSlip[] bets, int size, String type, int expectedStatusCode) {
         if (expectedStatusCode == 200) {
             assertEquals(response.path("selectionCount"), size, "invalid count");
             assertEquals(response.path("to.bt"), type, "invalid count");
@@ -150,7 +143,7 @@ public class BetSlipAdapter extends MainAdapter {
 
     public void changeWager(Wager wager, String combinationType, int expectedStatusCode, int numberOfBets) {
         int n;
-        if (combinationType == "COMBINATION") {
+        if (combinationType.equals("COMBINATION")) {
             n = 1;
         } else {
             n = numberOfBets;
@@ -163,7 +156,7 @@ public class BetSlipAdapter extends MainAdapter {
                 .body(body);
         response = put(url + "wager", requestSpec, expectedStatusCode);
         assertEquals(response.path("to.bt"), combinationType, "invalid count");
-        if (wager.getWagerType() == "T") {
+        if (wager.getWagerType().equals("T")) {
             assertEquals(response.path("to.wa"), wager.getWager(), "invalid total wager");
             float betWager = response.path("to.bw");
             assertEquals((int) betWager, wager.getWager() / n, "invalid bet wager");

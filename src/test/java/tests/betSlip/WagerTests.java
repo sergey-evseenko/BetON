@@ -27,7 +27,7 @@ public class WagerTests extends BetSlip {
         for (int i = 0; i < numberOfBets; i++) {
             betSlipAdapter.addBet(bets[i], 200);
         }
-        betSlipAdapter.addCombination(fileName, bets, numberOfBets, combinationType, 200);
+        betSlipAdapter.addCombination(fileName, 200);
 
         betSlipAdapter.changeWager(wagerT, combinationType, 200, numberOfBets);
         betSlipAdapter.changeWager(wagerB, combinationType, 200, numberOfBets);

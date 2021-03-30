@@ -32,8 +32,10 @@ public class CombinationsTest extends BetSlip {
         for (int i = 0; i < numberOfBets; i++) {
             betSlipAdapter.addBet(bets[i], 200);
         }
-        betSlipAdapter.addCombination(fileName, bets, numberOfBets, combinationType, expectedStatusCode);
-        betSlipAdapter.deleteCombination(fileName, bets, numberOfBets, combinationType, expectedStatusCode);
+        betSlipAdapter.addCombination(fileName, expectedStatusCode);
+        betSlipAdapter.validateCombinationResponse(bets, numberOfBets, combinationType, expectedStatusCode);
+        betSlipAdapter.deleteCombination(fileName, expectedStatusCode);
+        betSlipAdapter.validateCombinationResponse(bets, numberOfBets, combinationType, expectedStatusCode);
         betSlipAdapter.deleteAll(expectedStatusCode);
 
     }
