@@ -27,17 +27,14 @@ public class CombinationsTest extends Bets {
         };
     }
 
-    @Test(description = "add/delete combinations", dataProvider = "Combinations")
-    public void combinations(int numberOfBets, String combinationType, String fileName, int expectedStatusCode) {
+    @Test(description = "add combinations", dataProvider = "Combinations")
+    public void addCombinations(int numberOfBets, String combinationType, String fileName, int expectedStatusCode) {
         for (int i = 0; i < numberOfBets; i++) {
             betSlipAdapter.addBet(bets[i], 200);
         }
         betSlipAdapter.addCombination(fileName, expectedStatusCode);
         betSlipAdapter.validateCombinationResponse(bets, numberOfBets, combinationType, expectedStatusCode);
-        betSlipAdapter.deleteCombination(fileName, expectedStatusCode);
-        betSlipAdapter.validateCombinationResponse(bets, numberOfBets, combinationType, expectedStatusCode);
         betSlipAdapter.deleteAll(expectedStatusCode);
-
     }
 
     @Test(description = "Get full bet slip")
