@@ -13,6 +13,7 @@ import static org.testng.Assert.*;
 public class BetSlipAdapter extends MainAdapter {
     String url = "sport-events/v1/betslip/";
     Bet[] responseBets;
+    float maxOddActual, maxOddExpected;
 
     public ResponseBetOn addBet(Bet bet, int expectedStatusCode) {
         body = gson.toJson(bet);
@@ -196,5 +197,34 @@ public class BetSlipAdapter extends MainAdapter {
             response = delete(url + "event/" + bets[i].getEventId() + "/selection/1", requestSpec, 200);
         }
         assertTrue(response.asString().isEmpty(), "invalid response");
+    }
+
+    public float[] getRates(int numberOfBets, int expectedStatusCode) {
+        float[] rates = new float[numberOfBets];
+        requestSpec = given()
+                .cookie("betSlipId", betSlipId);
+        response = get(url + "full", requestSpec, expectedStatusCode);
+        for (int i = 0; i < numberOfBets; i++) {
+            rates[i] = response.path("to.evs[" + i + "].sl.sel." + (i + 1) + ".oc.odd.fval");
+        }
+        return rates;
+    }
+
+    public void validateMaxOddSingle(float[] rates) {
+        maxOddActual = response.path("to.mo");
+        maxOddExpected = rates[0] + rates[1] + rates[2];
+        assertEquals((int) maxOddActual * 100, (int) maxOddExpected * 100, "invalid maxOdd");
+    }
+
+    public void validateMaxOddCombi(float[] rates) {
+        maxOddActual = response.path("to.mo");
+        maxOddExpected = rates[0] * rates[1] * rates[2];
+        assertEquals((int) maxOddActual * 100, (int) maxOddExpected * 100, "invalid maxOdd");
+    }
+
+    public void validateMaxOddSystem(float[] rates) {
+        maxOddActual = response.path("to.mo");
+        maxOddExpected = rates[0] * rates[1] + rates[0] * rates[2] + rates[1] * rates[2];
+        assertEquals((int) maxOddActual * 100, (int) maxOddExpected * 100, "invalid maxOdd");
     }
 }
