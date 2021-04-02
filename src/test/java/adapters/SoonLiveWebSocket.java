@@ -16,8 +16,7 @@ import java.nio.file.Paths;
 @ClientEndpoint
 public class SoonLiveWebSocket extends MainAdapter {
     private final Session session;
-    int numberOfBets = 3;
-    Bet[] bets = new Bet[numberOfBets];
+    Bet[] bets = new Bet[3];
     Boolean isFirstMessage = true;
     String webSocketUrl = new PropertyManager().get("webSocketUrl");
     String webSocketRequest = new String(Files.readAllBytes(Paths.get("src/test/resources/data/webSocketRequest.json")));
@@ -31,7 +30,7 @@ public class SoonLiveWebSocket extends MainAdapter {
     @OnMessage
     public void onMessage(String message) {
         if (isFirstMessage) {
-            for (int i = 0; i < numberOfBets; i++) {
+            for (int i = 0; i < bets.length; i++) {
                 String eventId = JsonPath.read(message, "ms[" + i + "].bId").toString();
                 int betRadarId = JsonPath.read(message, "ms[" + i + "].mr.1.bId");
                 int outcomeId = JsonPath.read(message, "ms[" + i + "].mr.1.oc[0].bid");
@@ -47,7 +46,7 @@ public class SoonLiveWebSocket extends MainAdapter {
 
     public Bet[] getBets() {
         for (int i = 0; i < 100; i++) {
-            if (bets[numberOfBets - 1] == null) {
+            if (bets[bets.length - 1] == null) {
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {

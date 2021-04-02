@@ -24,13 +24,11 @@ public class WagerTests extends Bets {
 
     @Test(description = "Change wager", dataProvider = "Wagers")
     public void changeWager(String combinationType, String fileName) {
-        for (int i = 0; i < numberOfBets; i++) {
-            betSlipAdapter.addBet(bets[i], 200);
-        }
+        betSlipAdapter.addBets(bets);
         betSlipAdapter.addCombination(fileName, 200);
 
-        betSlipAdapter.changeWager(wagerT, combinationType, 200, numberOfBets);
-        betSlipAdapter.changeWager(wagerB, combinationType, 200, numberOfBets);
+        betSlipAdapter.changeWager(wagerT, combinationType, 200, bets.length);
+        betSlipAdapter.changeWager(wagerB, combinationType, 200, bets.length);
 
         betSlipAdapter.deleteAll(200);
     }

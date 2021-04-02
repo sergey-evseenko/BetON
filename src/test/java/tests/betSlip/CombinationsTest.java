@@ -39,9 +39,7 @@ public class CombinationsTest extends Bets {
 
     @Test(description = "Get full bet slip")
     public void getAllBets() {
-        for (int i = 0; i < 3; i++) {
-            betSlipAdapter.addBet(bets[i], 200);
-        }
+        betSlipAdapter.addBets(bets);
         betSlipAdapter.getAll(bets, 200);
         betSlipAdapter.deleteAll(200);
     }
@@ -53,9 +51,7 @@ public class CombinationsTest extends Bets {
 
     @Test(description = "Get short bet slip")
     public void getShortBet() {
-        for (int i = 0; i < 3; i++) {
-            betSlipAdapter.addBet(bets[i], 200);
-        }
+        betSlipAdapter.addBets(bets);
         betSlipAdapter.getShort(bets, 200);
         betSlipAdapter.deleteAll(200);
     }
@@ -67,37 +63,31 @@ public class CombinationsTest extends Bets {
 
     @Test(description = "Delete single combination")
     public void deleteSingleCombination() {
-        for (int i = 0; i < numberOfBets; i++) {
-            betSlipAdapter.addBet(bets[i], 200);
-        }
+        betSlipAdapter.addBets(bets);
         betSlipAdapter.addCombination("singleCombinationThreeBets.json", 200);
         betSlipAdapter.deleteCombination("singleCombinationDelete.json", 200);
-        betSlipAdapter.validateCombinationResponse(bets, numberOfBets, "COMBINATION", 200);
+        betSlipAdapter.validateCombinationResponse(bets, bets.length, "COMBINATION", 200);
         betSlipAdapter.deleteAll(200);
     }
 
     @Test(description = "Delete combi combination")
     public void deleteCombiCombination() {
-        for (int i = 0; i < numberOfBets; i++) {
-            betSlipAdapter.addBet(bets[i], 200);
-        }
+        betSlipAdapter.addBets(bets);
         betSlipAdapter.addCombination("singleCombinationThreeBets.json", 200);
         betSlipAdapter.addCombination("combiCombinationThreeBets.json", 200);
-        betSlipAdapter.validateCombinationResponse(bets, numberOfBets, "SYSTEM", 200);
+        betSlipAdapter.validateCombinationResponse(bets, bets.length, "SYSTEM", 200);
         betSlipAdapter.deleteCombination("combiCombinationDelete.json", 200);
-        betSlipAdapter.validateCombinationResponse(bets, numberOfBets, "SINGLE", 200);
+        betSlipAdapter.validateCombinationResponse(bets, bets.length, "SINGLE", 200);
         betSlipAdapter.deleteAll(200);
 
     }
 
     @Test(description = "Delete system combination")
     public void deleteSystemCombination() {
-        for (int i = 0; i < numberOfBets; i++) {
-            betSlipAdapter.addBet(bets[i], 200);
-        }
+        betSlipAdapter.addBets(bets);
         betSlipAdapter.addCombination("systemCombinationThreeBets.json", 200);
         betSlipAdapter.deleteCombination("systemCombinationDelete.json", 200);
-        betSlipAdapter.validateCombinationResponse(bets, numberOfBets, "COMBINATION", 200);
+        betSlipAdapter.validateCombinationResponse(bets, bets.length, "COMBINATION", 200);
         betSlipAdapter.deleteAll(200);
     }
 }

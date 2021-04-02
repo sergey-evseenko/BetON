@@ -6,14 +6,12 @@ import org.testng.annotations.Test;
 import tests.Bets;
 
 public class CalculatorTest extends Bets {
-    float[] rates = new float[numberOfBets];
+    float[] rates = new float[bets.length];
 
     @BeforeMethod
-    public void addBets() {
-        for (int i = 0; i < numberOfBets; i++) {
-            betSlipAdapter.addBet(bets[i], 200);
-        }
-        rates = betSlipAdapter.getRates(numberOfBets, 200);
+    public void addBetsAndGetRates() {
+        betSlipAdapter.addBets(bets);
+        rates = betSlipAdapter.getRates(bets.length, 200);
     }
 
     @AfterMethod

@@ -9,9 +9,7 @@ public class DeleteOutcomeTest extends Bets {
 
     @BeforeMethod
     public void addBets() {
-        for (int i = 0; i < numberOfBets; i++) {
-            betSlipAdapter.addBet(bets[i], 200);
-        }
+        betSlipAdapter.addBets(bets);
     }
 
     @AfterMethod

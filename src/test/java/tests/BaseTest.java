@@ -34,8 +34,7 @@ public class BaseTest {
     protected CatalogAdapter catalogAdapter = new CatalogAdapter();
     protected OutrightAdapter outrightAdapter = new OutrightAdapter();
     protected BetSlipAdapter betSlipAdapter = new BetSlipAdapter();
-    protected int numberOfBets = 3;
-    protected Bet[] bets = new Bet[numberOfBets];
+    protected Bet[] bets = new Bet[3];
 
     public Bet[] getBets() throws Exception {
         SoonLiveWebSocket webSocketClientEndpoint = new SoonLiveWebSocket();

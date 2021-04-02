@@ -32,6 +32,12 @@ public class BetSlipAdapter extends MainAdapter {
         }
     }
 
+    public void addBets(Bet[] bets) {
+        for (Bet bet : bets) {
+            addBet(bet, 200);
+        }
+    }
+
     public ResponseBetOn addBanker(String eventId, int expectedStatusCode) {
         requestSpec = given()
                 .cookie("betSlipId", betSlipId);
@@ -101,11 +107,11 @@ public class BetSlipAdapter extends MainAdapter {
         response = delete(url + "combination", requestSpec, expectedStatusCode);
     }
 
-    public void validateCombinationResponse(Bet[] bets, int size, String type, int expectedStatusCode) {
+    public void validateCombinationResponse(Bet[] bets, int numberOfBets, String type, int expectedStatusCode) {
         if (expectedStatusCode == 200) {
-            assertEquals(response.path("selectionCount"), size, "invalid count");
+            assertEquals(response.path("selectionCount"), numberOfBets, "invalid count");
             assertEquals(response.path("to.bt"), type, "invalid count");
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < numberOfBets; i++) {
                 assertEquals(response.path(String.format("to.evs[%s].id", i)).toString(), bets[i].getEventId(), "invalid count");
             }
         } else {
@@ -119,7 +125,7 @@ public class BetSlipAdapter extends MainAdapter {
         response = get(url + "full", requestSpec, expectedStatusCode);
         if (expectedStatusCode == 200) {
             assertEquals(response.path("selectionCount"), 3, "invalid count");
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < bets.length; i++) {
                 assertEquals(response.path(String.format("to.evs[%s].id", i)).toString(), bets[i].getEventId(), "invalid count");
             }
         } else {
@@ -132,10 +138,10 @@ public class BetSlipAdapter extends MainAdapter {
                 .cookie("betSlipId", betSlipId);
         response = get(url + "short", requestSpec, expectedStatusCode);
         if (expectedStatusCode == 200) {
-            for (int i = 0; i < 3; i++) {
-                responseBets = gson.fromJson(response.path("ps." + bets[i].getEventId()).toString(), Bet[].class);
+            for (Bet bet : bets) {
+                responseBets = gson.fromJson(response.path("ps." + bet.getEventId()).toString(), Bet[].class);
                 responseBets[0].setLanguage("en");
-                assertEquals(responseBets[0], bets[i], "Invalid response");
+                assertEquals(responseBets[0], bet, "Invalid response");
             }
         } else {
             assertEquals(response.path("message"), "BetSlip not found", "invalid response");
@@ -206,6 +212,7 @@ public class BetSlipAdapter extends MainAdapter {
         response = get(url + "full", requestSpec, expectedStatusCode);
         for (int i = 0; i < numberOfBets; i++) {
             rates[i] = response.path("to.evs[" + i + "].sl.sel." + (i + 1) + ".oc.odd.fval");
+            System.out.println(rates[i]);
         }
         return rates;
     }
