@@ -1,0 +1,13 @@
+{
+  "bss": {
+    "bssn": "SINGLE",
+    "num": 1,
+    "den": 3,
+    "bnk": 0,
+    "cs": 1
+  },
+  "ssel": false,
+  "usel": true,
+  "isel": "SINGLE",
+  "nbet": 3
+}

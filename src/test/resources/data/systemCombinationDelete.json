@@ -1,0 +1,13 @@
+{
+  "bss": {
+    "bssn": "SYSTEM",
+    "num": 2,
+    "den": 3,
+    "bnk": 0,
+    "cs": 2
+  },
+  "ssel": false,
+  "usel": true,
+  "isel": "SYSTEM",
+  "nbet": 3
+}
