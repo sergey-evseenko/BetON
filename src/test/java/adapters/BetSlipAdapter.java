@@ -212,7 +212,6 @@ public class BetSlipAdapter extends MainAdapter {
         response = get(url + "full", requestSpec, expectedStatusCode);
         for (int i = 0; i < numberOfBets; i++) {
             rates[i] = response.path("to.evs[" + i + "].sl.sel." + (i + 1) + ".oc.odd.fval");
-            System.out.println(rates[i]);
         }
         return rates;
     }
